@@ -1,0 +1,19 @@
+{
+  "sales": [
+    {
+      "year": 2023,
+      "amount": 5000,
+      "colorcode": "red"
+    },
+    {
+      "year": 2020,
+      "amount": 2000,
+      "colorcode": "blue"
+    },
+    {
+      "year": 2021,
+      "amount": 6000,
+      "colorcode": "green"
+    }
+  ]
+}

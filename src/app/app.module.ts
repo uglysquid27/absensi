@@ -3,14 +3,29 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { ChartComponent } from './contents/chart/chart.component';
+import { HttpClientModule } from '@angular/common/http';
+import { SidebarComponent } from './layouts/sidebar/sidebar.component';
+import { NavbarComponent } from './layouts/navbar/navbar.component';
+import { PatientComponent } from './contents/patient/patient.component';
+import { HomeComponent } from './home/home.component';
+import { FooterComponent } from './layouts/footer/footer.component';
+// import {MatTableModule} from '@angular/material/table';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ChartComponent,
+    SidebarComponent,
+    NavbarComponent,
+    PatientComponent,
+    HomeComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
