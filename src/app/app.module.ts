@@ -10,6 +10,7 @@ import { NavbarComponent } from './layouts/navbar/navbar.component';
 import { PatientComponent } from './contents/patient/patient.component';
 import { HomeComponent } from './home/home.component';
 import { FooterComponent } from './layouts/footer/footer.component';
+import { PesertaComponent } from './peserta/peserta.component';
 // import {MatTableModule} from '@angular/material/table';
 
 @NgModule({
@@ -20,7 +21,8 @@ import { FooterComponent } from './layouts/footer/footer.component';
     NavbarComponent,
     PatientComponent,
     HomeComponent,
-    FooterComponent
+    FooterComponent,
+    PesertaComponent
   ],
   imports: [
     BrowserModule,
