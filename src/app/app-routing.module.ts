@@ -1,3 +1,4 @@
+import { ProfilComponent } from './profil/profil.component';
 import { LoginComponent } from './auth/login/login.component';
 import { PesertaComponent } from './peserta/peserta.component';
 import { NgModule } from '@angular/core';
@@ -9,7 +10,8 @@ import { HomeComponent } from './home/home.component';
 const routes: Routes = [
   { path: '', component: HomeComponent},
   { path: 'peserta', component: PesertaComponent},
-  { path: 'login', component: LoginComponent}
+  { path: 'login', component: LoginComponent},
+  { path: 'profil', component: ProfilComponent}
 ];
 
 @NgModule({

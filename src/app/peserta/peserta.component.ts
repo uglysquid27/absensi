@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import * as Aos from 'aos';
 
 @Component({
@@ -8,7 +9,9 @@ import * as Aos from 'aos';
 })
 export class PesertaComponent {
 
-  constructor(){}
+  constructor(public router: Router) {
+    console.log(this.router.url)
+  }
 
   ngOnInit() {
     Aos.init({

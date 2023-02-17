@@ -22,3 +22,13 @@
         max-width:1280px
     }
 }
+
+.hover-2 {
+  background:
+    linear-gradient(#1095c1 0 0) no-repeat
+    calc(200% - var(--i, 0) * 100%) 100% / 200% calc(100% * var(--i, 0) + .08em);
+  transition: .3s calc(var(--i, 0) * .3s), background-position .3s calc(.3s - calc(var(--i, 0) * .3s));
+}
+.hover-2:hover {
+  --i: 1;
+}

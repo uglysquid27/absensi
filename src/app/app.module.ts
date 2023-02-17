@@ -12,6 +12,7 @@ import { HomeComponent } from './home/home.component';
 import { FooterComponent } from './layouts/footer/footer.component';
 import { PesertaComponent } from './peserta/peserta.component';
 import { LoginComponent } from './auth/login/login.component';
+import { ProfilComponent } from './profil/profil.component';
 // import {MatTableModule} from '@angular/material/table';
 
 @NgModule({
@@ -24,7 +25,8 @@ import { LoginComponent } from './auth/login/login.component';
     HomeComponent,
     FooterComponent,
     PesertaComponent,
-    LoginComponent
+    LoginComponent,
+    ProfilComponent
   ],
   imports: [
     BrowserModule,
