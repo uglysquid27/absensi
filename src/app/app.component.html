@@ -1,8 +1,8 @@
 <main>
-    <app-navbar></app-navbar>
+    <app-navbar *ngIf="router.url != '/login'"></app-navbar>
     <div class="w-full mx-auto ">
       <router-outlet>
       </router-outlet>
     </div>
-    <app-footer></app-footer>
+    <app-footer *ngIf="router.url != '/login'"></app-footer>
   </main>
