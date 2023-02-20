@@ -1,5 +1,5 @@
-import { DashboardComponentComponent } from './dashboard-component/dashboard-component.component';
-import { ProfilComponent } from './profil/profil.component';
+import { DashboardComponentComponent } from './dashboard/dashboard-component/dashboard-component.component';
+import { ProfilComponent } from './dashboard/profil/profil.component';
 import { LoginComponent } from './auth/login/login.component';
 import { PesertaComponent } from './peserta/peserta.component';
 import { NgModule } from '@angular/core';

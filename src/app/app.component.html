@@ -1,10 +1,10 @@
 <main>
-    <app-navbar *ngIf="router.url != '/login' && router.url!= '/profil'"></app-navbar>
+    <app-navbar *ngIf="router.url != '/login' && router.url!= '/profil' && router.url!= '/dashboard'"></app-navbar>
     <app-sidebar *ngIf="router.url == '/dashboard' || router.url== '/profil'"></app-sidebar>
     <app-sidenav *ngIf="router.url == '/dashboard' || router.url== '/profil'" class="lg:hidden"></app-sidenav>
     <div class="w-full mx-auto ">
       <router-outlet>
       </router-outlet>
     </div>
-    <app-footer *ngIf="router.url != '/login' && '/profil'"></app-footer>
+    <app-footer *ngIf="router.url != '/login' && router.url!= '/profil' && router.url!= '/dashboard'"></app-footer>
   </main>

@@ -12,10 +12,10 @@ import { HomeComponent } from './home/home.component';
 import { FooterComponent } from './layouts/footer/footer.component';
 import { PesertaComponent } from './peserta/peserta.component';
 import { LoginComponent } from './auth/login/login.component';
-import { ProfilComponent } from './profil/profil.component';
+import { ProfilComponent } from './dashboard/profil/profil.component';
 import { NgApexchartsModule } from 'ng-apexcharts';
 import { SidenavComponent } from './sidenav/sidenav.component';
-import { DashboardComponentComponent } from './dashboard-component/dashboard-component.component';
+import { DashboardComponentComponent } from './dashboard/dashboard-component/dashboard-component.component';
 // import {MatTableModule} from '@angular/material/table';
 
 @NgModule({
