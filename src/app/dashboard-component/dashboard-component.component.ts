@@ -17,11 +17,11 @@ export type ChartOptions = {
 };
 
 @Component({
-  selector: 'app-profil',
-  templateUrl: './profil.component.html',
-  styleUrls: ['./profil.component.css']
+  selector: 'app-dashboard-component',
+  templateUrl: './dashboard-component.component.html',
+  styleUrls: ['./dashboard-component.component.css']
 })
-export class ProfilComponent {
+export class DashboardComponentComponent {
 
   @ViewChild("chart") chart!: ChartComponent;
   public chartOptions: Partial<ChartOptions> | any;

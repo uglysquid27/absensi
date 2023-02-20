@@ -1,3 +1,4 @@
+import { DashboardComponentComponent } from './dashboard-component/dashboard-component.component';
 import { ProfilComponent } from './profil/profil.component';
 import { LoginComponent } from './auth/login/login.component';
 import { PesertaComponent } from './peserta/peserta.component';
@@ -11,7 +12,8 @@ const routes: Routes = [
   { path: '', component: HomeComponent},
   { path: 'peserta', component: PesertaComponent},
   { path: 'login', component: LoginComponent},
-  { path: 'profil', component: ProfilComponent}
+  { path: 'profil', component: ProfilComponent},
+  { path: 'dashboard', component: DashboardComponentComponent}
 ];
 
 @NgModule({
