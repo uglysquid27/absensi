@@ -5,12 +5,12 @@ import * as Aos from 'aos';
 @Component({
   selector: 'app-peserta',
   templateUrl: './peserta.component.html',
-  styleUrls: ['./peserta.component.css']
+  host: { class: 'flex justify-center' },
+  styleUrls: ['./peserta.component.css'],
 })
 export class PesertaComponent {
-
   constructor(public router: Router) {
-    console.log(this.router.url)
+    console.log(this.router.url);
   }
 
   ngOnInit() {
@@ -18,5 +18,4 @@ export class PesertaComponent {
       duration: 1200,
     });
   }
-
 }
