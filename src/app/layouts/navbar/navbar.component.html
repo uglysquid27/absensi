@@ -1,15 +1,15 @@
 <nav class="bg-transparent bg-opacity-0 absolute px-2 sm:px-4 py-2.5 fixed w-full z-20 top-0 left-0">
   <div class="container flex flex-wrap items-center justify-between mx-auto">
     <div *ngIf="router.url != '/peserta'">
-      <a href="https://flowbite.com/" class="flex items-center">
+      <a   [routerLink]="['']"  class="flex items-center">
         <img src="https://www.aio.co.id/assets/images/logo-otsuka-aio-1d4745d44cbb6ad4430c1c3a05b9dce4.png"
-          class="h-6 mr-3 sm:h-9" alt="Otsuka Logo">
+          class="pl-3 h-10 mr-3 sm:h-9" alt="Otsuka Logo">
       </a>
     </div>
     <div *ngIf="router.url == '/peserta'">
-      <a  href="https://flowbite.com/" class="flex items-center">
+      <a  [routerLink]="['']" class="flex items-center">
         <img src="https://www.aio.co.id/assets/images/logo-otsuka-aio-fc-5152dcf72befeb8e418adcc6d8d0481d.png"
-          class="h-6 mr-3 sm:h-9" alt="Otsuka Logo">
+          class="pl-3 h-10 h-6 mr-3 sm:h-9" alt="Otsuka Logo">
       </a>
     </div>
 
