@@ -1,127 +1,31 @@
-import { Component, ViewChild } from '@angular/core';
+import { AttendanceService } from './../../service/attendance.service';
+import { HttpClient } from '@angular/common/http';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 
-import {
-  ApexAxisChartSeries,
-  ApexTitleSubtitle,
-  ApexDataLabels,
-  ApexChart,
-  ChartComponent
-} from "ng-apexcharts";
 
-export type ChartOptions = {
-  series: ApexAxisChartSeries;
-  chart: ApexChart;
-  dataLabels: ApexDataLabels;
-  title: ApexTitleSubtitle;
-  colors: any;
-};
 
 @Component({
   selector: 'app-profil',
   templateUrl: './profil.component.html',
   styleUrls: ['./profil.component.css']
 })
-export class ProfilComponent {
+export class ProfilComponent implements OnInit{
 
-  @ViewChild("chart") chart!: ChartComponent;
-  public chartOptions: Partial<ChartOptions> | any;
+  profile: any;
+  service: any;
+  property: any;
 
-  constructor() {
-    this.chartOptions = {
-      series: [
-        {
-          name: "Metric1",
-          data: this.generateData(18, {
-            min: 0,
-            max: 90
-          })
-        },
-        {
-          name: "Metric2",
-          data: this.generateData(18, {
-            min: 0,
-            max: 90
-          })
-        },
-        {
-          name: "Metric3",
-          data: this.generateData(18, {
-            min: 0,
-            max: 90
-          })
-        },
-        {
-          name: "Metric4",
-          data: this.generateData(18, {
-            min: 0,
-            max: 90
-          })
-        },
-        {
-          name: "Metric5",
-          data: this.generateData(18, {
-            min: 0,
-            max: 90
-          })
-        },
-        {
-          name: "Metric6",
-          data: this.generateData(18, {
-            min: 0,
-            max: 90
-          })
-        },
-        {
-          name: "Metric7",
-          data: this.generateData(18, {
-            min: 0,
-            max: 90
-          })
-        },
-        {
-          name: "Metric8",
-          data: this.generateData(18, {
-            min: 0,
-            max: 90
-          })
-        },
-        {
-          name: "Metric9",
-          data: this.generateData(18, {
-            min: 0,
-            max: 90
-          })
-        }
-      ],
-      chart: {
-        height: 350,
-        type: "heatmap"
-      },
-      dataLabels: {
-        enabled: false
-      },
-      colors: ["#008FFB"],
-      title: {
-        text: "HeatMap Chart (Single color)"
-      }
-    };
+  constructor(private httpClient: HttpClient, private attendance: AttendanceService) {}
+
+  ngOnInit(): void {
+    this.getProfile();
   }
 
-  public generateData(count: number, yrange: { min: any; max: any; }) {
-    var i = 0;
-    var series = [];
-    while (i < count) {
-      var x = "w" + (i + 1).toString();
-      var y =
-        Math.floor(Math.random() * (yrange.max - yrange.min + 1)) + yrange.min;
-
-      series.push({
-        x: x,
-        y: y
-      });
-      i++;
-    }
-    return series;
+  getProfile(){
+    this.attendance.getProfile().subscribe((result:any)=>{
+      this.profile=result;
+      console.log(this.profile);
+    })
   }
 
 }

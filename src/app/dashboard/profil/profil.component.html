@@ -10,8 +10,8 @@
                     <img class="h-auto w-full mx-auto"
                         src="https://lavinephotography.com.au/wp-content/uploads/2017/01/PROFILE-Photography-112.jpg"
                         alt="">
-                </div> -->
-            <h1 class="text-gray-900 font-bold text-xl leading-8 my-1">Jane Doe</h1>
+                </div> -->1
+            <h1 class="text-gray-900 font-bold text-xl leading-8 my-1">{{ profile.data[0].name }}</h1>
             <h3 class="text-gray-600 font-lg text-semibold leading-6">Owner at Her Company Inc.</h3>
             <p class="text-sm text-gray-500 hover:text-gray-600 leading-6">Lorem ipsum dolor sit amet
               consectetur adipisicing elit.
@@ -91,7 +91,7 @@
               <div class="grid md:grid-cols-2 text-sm">
                 <div class="grid grid-cols-2">
                   <div class="px-4 py-2 font-semibold">First Name</div>
-                  <div class="px-4 py-2">Jane</div>
+                  <div class="px-4 py-2">{{ profile.data[0].name }}</div>
                 </div>
                 <div class="grid grid-cols-2">
                   <div class="px-4 py-2 font-semibold">Last Name</div>
