@@ -10,9 +10,7 @@ import { Router } from '@angular/router';
 })
 export class AppComponent {
 
-  constructor(public router: Router) {
-    console.log(this.router.url)
-  }
+  constructor(public router: Router) {}
 
   title(title: any) {
     throw new Error('Method not implemented.');

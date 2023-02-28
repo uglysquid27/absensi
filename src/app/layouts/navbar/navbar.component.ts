@@ -9,9 +9,7 @@ import * as Aos from 'aos';
 })
 export class NavbarComponent {
 
-  constructor(public router: Router) {
-    console.log(this.router.url)
-  }
+  constructor(public router: Router) {}
 
   scroll(el: HTMLElement) {
     el.scrollIntoView();
