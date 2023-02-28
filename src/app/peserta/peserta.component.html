@@ -2,7 +2,7 @@
   <div class="mt-8 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
     <a *ngFor="let profile of profile"
       data-aos="fade-up"
-      [routerLink]="['/dashboard']"
+      [routerLink]="['/profil', profile.nik]"
       class="relative block group drop-shadow-lg"
     >
       <div
