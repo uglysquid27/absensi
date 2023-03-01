@@ -57,6 +57,7 @@ export class ProfilComponent implements OnInit {
             console.log('fail');
 
           }
+          break;
         }
 
         console.log("test");
