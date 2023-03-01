@@ -10,12 +10,13 @@
                     <img class="h-auto w-full mx-auto"
                         src="https://lavinephotography.com.au/wp-content/uploads/2017/01/PROFILE-Photography-112.jpg"
                         alt="">
-                </div> -->1
-            <h1 class="text-gray-900 font-bold text-xl leading-8 my-1">{{ profile.data[0].name }}</h1>
-            <h3 class="text-gray-600 font-lg text-semibold leading-6">Owner at Her Company Inc.</h3>
-            <p class="text-sm text-gray-500 hover:text-gray-600 leading-6">Lorem ipsum dolor sit amet
-              consectetur adipisicing elit.
-              Reprehenderit, eligendi dolorum sequi illum qui unde aspernatur non deserunt</p>
+                </div> -->
+                <div class="mt-8 text-center">
+                  <img src="../../assets/img/Satriya-Polinema.jpg" alt="" class="m-auto rounded-full object-cover w-28 h-28">
+                  <h5 class="mt-4 text-xl font-semibold text-gray-600">{{ profile.name }}</h5>
+                  <span class="text-gray-400 lg:block pb-2">{{profile}}</span>
+                </div>
+            <h3 class="text-gray-600 font-lg text-semibold leading-6 text-center">Owner at Her Company Inc.</h3>
             <ul
               class="bg-gray-100 text-gray-600 hover:text-gray-700 hover:shadow py-2 px-3 mt-3 divide-y rounded shadow-sm">
               <li class="flex items-center py-3">
@@ -91,7 +92,7 @@
               <div class="grid md:grid-cols-2 text-sm">
                 <div class="grid grid-cols-2">
                   <div class="px-4 py-2 font-semibold">First Name</div>
-                  <div class="px-4 py-2">{{ profile.data[0].name }}</div>
+                  <div class="px-4 py-2">{{ profile }}</div>
                 </div>
                 <div class="grid grid-cols-2">
                   <div class="px-4 py-2 font-semibold">Last Name</div>

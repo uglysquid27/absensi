@@ -14,4 +14,7 @@ export class AttendanceService {
   getProfile() {
     return this.httpClient.get(api + "profile");
   }
+  getEmployeeStatus(){
+    return this.httpClient.get(api + 'employeestatus');
+  }
 }

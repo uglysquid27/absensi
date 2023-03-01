@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { MasterService } from './service/master.service';
 import { Chart, registerables } from 'chart.js';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class AppComponent {
 
-  constructor(public router: Router) {}
+  constructor(public router: Router, private route:ActivatedRoute) {}
 
   title(title: any) {
     throw new Error('Method not implemented.');
@@ -20,6 +20,11 @@ export class AppComponent {
   total: any;
   chart: any = [];
 
+  params:any;
+
   ngOnInit() {
+    // console.log(this.router);
+
+
   }
 }

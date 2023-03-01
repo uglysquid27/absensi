@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 export class SidebarComponent {
 
   constructor(public router: Router) {
-    console.log(this.router.url)
+    // console.log(this.router.url)
   }
 
 }
