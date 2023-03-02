@@ -14,6 +14,7 @@ import { forkJoin } from 'rxjs';
 export class ProfilComponent implements OnInit {
 
   profile: any;
+  profileAll: any;
   gender: any;
   statusId: any;
   bankId: any;
@@ -49,7 +50,8 @@ export class ProfilComponent implements OnInit {
       this.attendance.getDepartements(),
       ).subscribe(([profileRes, statusRes, bankRes, institutionRes, departementRes,])=>{
         //PROFILE
-        this.profile = profileRes;
+        this.profile = profileRes
+        this.profileAll = profileRes;
         this.employeeStatus = statusRes;
         this.bank = bankRes;
         this.institution = institutionRes;
@@ -59,9 +61,14 @@ export class ProfilComponent implements OnInit {
         let lengthBank = this.bank.data.length;
         let lengthInstitution = this.institution.data.length;
         let lengthDepartement = this.departement.data.length;
-        console.log(lengthDepartement);
 
-
+        //GET PROFILE ALL
+        for(let i = 0; i < lenght; i++){
+            this.profileAll = this.profileAll.data[i];
+            console.log(this.profileAll);
+          break;
+        }
+        //GET PROFILE
         for (let i = 0; i < lenght; i++) {
           if (this.profile.data[i].nik == this.id) {
             this.profile = this.profile.data[i];
