@@ -14,9 +14,8 @@
                 <div class="mt-8 text-center">
                   <img src="../../assets/img/Satriya-Polinema.jpg" alt="" class="m-auto rounded-full object-cover w-28 h-28">
                   <h5 class="mt-4 text-xl font-semibold text-gray-600">{{ profile.name }}</h5>
-                  <span class="text-gray-400 lg:block pb-2">{{profile}}</span>
+                  <span class="text-gray-400 lg:block pb-2">{{ employeeStatus.employeeStatus }}</span>
                 </div>
-            <h3 class="text-gray-600 font-lg text-semibold leading-6 text-center">Owner at Her Company Inc.</h3>
             <ul
               class="bg-gray-100 text-gray-600 hover:text-gray-700 hover:shadow py-2 px-3 mt-3 divide-y rounded shadow-sm">
               <li class="flex items-center py-3">
@@ -25,8 +24,8 @@
                     class="bg-green-500 py-1 px-2 rounded text-white text-sm">Active</span></span>
               </li>
               <li class="flex items-center py-3">
-                <span>Member since</span>
-                <span class="ml-auto">Nov 07, 2016</span>
+                <span>Since</span>
+                <span class="ml-auto">{{ profile.dateIn | date}}</span>
               </li>
             </ul>
           </div>
@@ -45,7 +44,7 @@
               <span>Similar Profiles</span>
             </div>
             <div class="grid grid-cols-3">
-              <!-- <div class="text-center my-2">
+              <div class="text-center my-2">
                         <img class="h-16 w-16 rounded-full mx-auto"
                             src="https://cdn.australianageingagenda.com.au/wp-content/uploads/2015/06/28085920/Phil-Beckett-2-e1435107243361.jpg"
                             alt="">
@@ -68,7 +67,7 @@
                             src="https://bucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com/public/images/f04b52da-12f2-449f-b90c-5e4d5e2b1469_361x361.png"
                             alt="">
                         <a href="#" class="text-main-color">Casey</a>
-                    </div> -->
+                    </div>
             </div>
           </div>
           <!-- End of friends card -->
@@ -92,15 +91,15 @@
               <div class="grid md:grid-cols-2 text-sm">
                 <div class="grid grid-cols-2">
                   <div class="px-4 py-2 font-semibold">First Name</div>
-                  <div class="px-4 py-2">{{ profile }}</div>
+                  <div class="px-4 py-2">{{ profile.name }}</div>
                 </div>
-                <div class="grid grid-cols-2">
+                <!-- <div class="grid grid-cols-2">
                   <div class="px-4 py-2 font-semibold">Last Name</div>
                   <div class="px-4 py-2">Doe</div>
-                </div>
+                </div> -->
                 <div class="grid grid-cols-2">
                   <div class="px-4 py-2 font-semibold">Gender</div>
-                  <div class="px-4 py-2">Female</div>
+                  <div class="px-4 py-2">{{ gender }}</div>
                 </div>
                 <div class="grid grid-cols-2">
                   <div class="px-4 py-2 font-semibold">Contact No.</div>
@@ -117,18 +116,18 @@
                 <div class="grid grid-cols-2">
                   <div class="px-4 py-2 font-semibold">Email.</div>
                   <div class="px-4 py-2">
-                    <a class="text-blue-800" href="mailto:jane@example.com">jane@example.com</a>
+                    <a class="text-blue-800" href="mailto:{{profile.email}}">{{profile.email}}</a>
                   </div>
                 </div>
                 <div class="grid grid-cols-2">
                   <div class="px-4 py-2 font-semibold">Birthday</div>
-                  <div class="px-4 py-2">Feb 06, 1998</div>
+                  <div class="px-4 py-2">{{ profile.dateOfBirth | date }}</div>
                 </div>
               </div>
             </div>
-            <button
+            <!-- <button
               class="block w-full text-blue-800 text-sm font-semibold rounded-lg hover:bg-gray-100 focus:outline-none focus:shadow-outline focus:bg-gray-100 hover:shadow-xs p-3 my-4">Show
-              Full Information</button>
+              Full Information</button> -->
           </div>
           <!-- End of about section -->
 
@@ -147,24 +146,12 @@
                         d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                     </svg>
                   </span>
-                  <span class="tracking-wide">Experience</span>
+                  <span class="tracking-wide">Bank</span>
                 </div>
                 <ul class="list-inside space-y-2">
                   <li>
-                    <div class="text-teal-600">Owner at Her Company Inc.</div>
-                    <div class="text-gray-500 text-xs">March 2020 - Now</div>
-                  </li>
-                  <li>
-                    <div class="text-teal-600">Owner at Her Company Inc.</div>
-                    <div class="text-gray-500 text-xs">March 2020 - Now</div>
-                  </li>
-                  <li>
-                    <div class="text-teal-600">Owner at Her Company Inc.</div>
-                    <div class="text-gray-500 text-xs">March 2020 - Now</div>
-                  </li>
-                  <li>
-                    <div class="text-teal-600">Owner at Her Company Inc.</div>
-                    <div class="text-gray-500 text-xs">March 2020 - Now</div>
+                    <div class="text-gray-600">{{ bank.bankName }}</div>
+                    <div class="text-gray-500 text-xs">Salary Rp. {{ employeeStatus.salary }}</div>
                   </li>
                 </ul>
               </div>
@@ -184,12 +171,8 @@
                 </div>
                 <ul class="list-inside space-y-2">
                   <li>
-                    <div class="text-teal-600">Masters Degree in Oxford</div>
-                    <div class="text-gray-500 text-xs">March 2020 - Now</div>
-                  </li>
-                  <li>
-                    <div class="text-teal-600">Bachelors Degreen in LPU</div>
-                    <div class="text-gray-500 text-xs">March 2020 - Now</div>
+                    <div class="text-teal-600">Student in {{ institution.institution }} </div>
+                    <div class="text-gray-500 text-xs">{{ profile.existingEdu }} - {{ profile.major }}</div>
                   </li>
                 </ul>
               </div>

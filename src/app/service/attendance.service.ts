@@ -17,4 +17,13 @@ export class AttendanceService {
   getEmployeeStatus(){
     return this.httpClient.get(api + 'employeestatus');
   }
+  getBank(){
+    return this.httpClient.get(api + 'banks');
+  }
+  getInstitutions(){
+    return this.httpClient.get(api + 'institutions');
+  }
+  getDepartements(){
+    return this.httpClient.get(api + 'departements');
+  }
 }

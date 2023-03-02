@@ -10,11 +10,10 @@ import { AttendanceService } from '../service/attendance.service';
   styleUrls: ['./peserta.component.css'],
 })
 export class PesertaComponent {
-  constructor(private attendance: AttendanceService) {
+  constructor(private attendance: AttendanceService, private router: Router) {
   }
 
   profile:any;
-  profilearr= [];
 
   ngOnInit() {
     this.getProfile();
@@ -22,6 +21,7 @@ export class PesertaComponent {
       duration: 1200,
     });
   }
+
 
   getProfile(){
     this.attendance.getProfile().subscribe((result:any)=>{
@@ -31,7 +31,7 @@ export class PesertaComponent {
           return result.data[key];
 
         });
-        console.log(array);
+        // console.log(array);
 
       })
     })
