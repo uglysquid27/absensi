@@ -30,6 +30,11 @@
     <router-outlet> </router-outlet>
   </div>
   <app-footer
-    *ngIf="router.url == '/' || router.url == '/peserta'"
+    *ngIf="
+      router.url == '/' ||
+      router.url == '/peserta' ||
+      router.url == '/#about' ||
+      router.url == '/#project'
+    "
   ></app-footer>
 </main>
