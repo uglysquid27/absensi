@@ -1,10 +1,35 @@
 <main>
-    <app-navbar *ngIf="router.url == '/' ||router.url== '/peserta'"></app-navbar>
-    <app-sidebar *ngIf="router.url != '/' && router.url!= '/login' && router.url != '/peserta'"></app-sidebar>
-    <app-sidenav *ngIf="router.url != '/' && router.url!= '/login' && router.url != '/peserta'" class="lg:hidden"></app-sidenav>
-    <div class="w-full mx-auto ">
-      <router-outlet>
-      </router-outlet>
-    </div>
-    <app-footer *ngIf="router.url == '/' ||router.url== '/peserta'"></app-footer>
-  </main>
+  <app-navbar
+    *ngIf="
+      router.url == '/' ||
+      router.url == '/peserta' ||
+      router.url == '/#about' ||
+      router.url == '/#project'
+    "
+  ></app-navbar>
+  <app-sidebar
+    *ngIf="
+      router.url != '/' &&
+      router.url != '/login' &&
+      router.url != '/peserta' &&
+      router.url != '/#about' &&
+      router.url != '/#project'
+    "
+  ></app-sidebar>
+  <app-sidenav
+    *ngIf="
+      router.url != '/' &&
+      router.url != '/login' &&
+      router.url != '/peserta' &&
+      router.url != '/#about' &&
+      router.url != '/#project'
+    "
+    class="lg:hidden"
+  ></app-sidenav>
+  <div class="w-full mx-auto">
+    <router-outlet> </router-outlet>
+  </div>
+  <app-footer
+    *ngIf="router.url == '/' || router.url == '/peserta'"
+  ></app-footer>
+</main>
