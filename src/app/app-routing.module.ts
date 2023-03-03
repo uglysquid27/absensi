@@ -11,6 +11,9 @@ import { HomeComponent } from './home/home.component';
 const routes: Routes = [
   { path: '', component: HomeComponent},
   { path: 'peserta', component: PesertaComponent},
+  { path: 'pkl', component: PesertaComponent},
+  { path: 'magang', component: PesertaComponent},
+  { path: 'intern', component: PesertaComponent},
   { path: 'login', component: LoginComponent},
   { path: 'profil/:id', component: ProfilComponent},
   { path: 'dashboard/:id', component: DashboardComponentComponent}

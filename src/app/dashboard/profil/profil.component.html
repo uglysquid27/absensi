@@ -20,7 +20,11 @@
             class="bg-gray-100 text-gray-600 hover:text-gray-700 hover:shadow py-2 px-3 mt-3 divide-y rounded shadow-sm">
             <li class="flex items-center py-3">
               <span>Status</span>
-              <span class="ml-auto"><span class="bg-green-500 py-1 px-2 rounded text-white text-sm">Active</span></span>
+
+                <span *ngIf="profile.isActive == 1" class="ml-auto"><span class="bg-green-500 py-1 px-2 rounded text-white text-sm">Active</span></span>
+
+                <span *ngIf="profile.isActive == 0" class="ml-auto"><span class="bg-gray-500 py-1 px-2 rounded text-white text-sm">Inactive</span></span>
+
             </li>
             <li class="flex items-center py-3">
               <span>Since</span>
@@ -86,7 +90,7 @@
           <div class="text-gray-700">
             <div class="grid md:grid-cols-2 text-sm">
               <div class="grid grid-cols-2">
-                <div class="px-4 py-2 font-semibold">First Name</div>
+                <div class="px-4 py-2 font-semibold">Full Name</div>
                 <div class="px-4 py-2">{{ profile.name }}</div>
               </div>
               <!-- <div class="grid grid-cols-2">
