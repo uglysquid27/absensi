@@ -4,6 +4,7 @@ import { LoginComponent } from './auth/login/login.component';
 import { PesertaComponent } from './peserta/peserta.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import {  } from "./service/auth/auth.guard";
 // import { AppComponent } from './app.component';
 
 import { HomeComponent } from './home/home.component';

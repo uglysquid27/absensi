@@ -4,15 +4,12 @@ import { HttpClient } from '@angular/common/http';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { forkJoin } from 'rxjs';
 
-
-
 @Component({
   selector: 'app-profil',
   templateUrl: './profil.component.html',
-  styleUrls: ['./profil.component.css']
+  styleUrls: ['./profil.component.css'],
 })
 export class ProfilComponent implements OnInit {
-
   profile: any;
   profileAll: any;
   gender: any;
@@ -26,7 +23,10 @@ export class ProfilComponent implements OnInit {
   departement: any;
   id = this.actRoute.snapshot.paramMap.get('id');
 
-  constructor(private actRoute: ActivatedRoute, private attendance: AttendanceService) { }
+  constructor(
+    private actRoute: ActivatedRoute,
+    private attendance: AttendanceService
+  ) {}
 
   ngOnInit(): void {
     this.getProfileData();
@@ -37,20 +37,20 @@ export class ProfilComponent implements OnInit {
   //     this.profile = result.data;
   //     let lenght = this.profile.length;
 
-
-    // })
+  // })
   // }
 
-  getProfileData(){
+  getProfileData() {
     forkJoin(
       this.attendance.getProfile(),
       this.attendance.getEmployeeStatus(),
       this.attendance.getBank(),
       this.attendance.getInstitutions(),
-      this.attendance.getDepartements(),
-      ).subscribe(([profileRes, statusRes, bankRes, institutionRes, departementRes,])=>{
+      this.attendance.getDepartements()
+    ).subscribe(
+      ([profileRes, statusRes, bankRes, institutionRes, departementRes]) => {
         //PROFILE
-        this.profile = profileRes
+        this.profile = profileRes;
         this.profileAll = profileRes;
         this.employeeStatus = statusRes;
         this.bank = bankRes;
@@ -63,70 +63,69 @@ export class ProfilComponent implements OnInit {
         let lengthDepartement = this.departement.data.length;
 
         //GET PROFILE ALL
-        for(let i = 0; i < lenght; i++){
-            this.profileAll = this.profileAll.data[i];
-            console.log(this.profileAll);
+        for (let i = 0; i < lenght; i++) {
+          this.profileAll = this.profileAll.data[i];
+          console.log(this.profileAll);
           break;
         }
         //GET PROFILE
         for (let i = 0; i < lenght; i++) {
           if (this.profile.data[i].nik == this.id) {
+            console.log(this.profile);
+
             this.profile = this.profile.data[i];
             this.statusId = this.profile.employeeStatusId;
             this.bankId = this.profile.bankId;
             this.institutionId = this.profile.institutionId;
             this.departementId = this.profile.departementId;
-            if(this.profile.gender == 'P'){
+            if (this.profile.gender == 'P') {
               this.gender = 'Perempuan';
-
-            }else if(this.profile.gender == 'L'){
+            } else if (this.profile.gender == 'L') {
               this.gender = 'Laki-laki';
             }
             break;
           }
         }
         //EMPLOYEE STATUS
-        for(let i = 0; i < lengthStatus; i++){
-          if(this.employeeStatus.data[i].id == this.statusId){
+        for (let i = 0; i < lengthStatus; i++) {
+          if (this.employeeStatus.data[i].id == this.statusId) {
             this.employeeStatus = this.employeeStatus.data[i];
             console.log(this.employeeStatus);
-          }else{
+          } else {
             console.log('status fail');
           }
         }
         //BANK
-        for(let i = 0; i < lengthBank; i++){
-          if(this.bank.data[i].id == this.bankId){
+        for (let i = 0; i < lengthBank; i++) {
+          if (this.bank.data[i].id == this.bankId) {
             this.bank = this.bank.data[i];
             console.log(this.bank.bankName);
             break;
-          }else{
+          } else {
             console.log('bank fail');
           }
         }
         //INSTITUTIONS
-        for(let i = 0; i < lengthInstitution; i++){
-          if(this.institution.data[i].id == this.institutionId){
+        for (let i = 0; i < lengthInstitution; i++) {
+          if (this.institution.data[i].id == this.institutionId) {
             this.institution = this.institution.data[i];
             console.log(this.institution);
             break;
-          }else{
+          } else {
             console.log('inst fail');
           }
         }
         //DEPARTEMENTS
-        for(let i = 0; i < lengthDepartement; i++){
-          if(this.departement.data[i].id == this.departementId){
+        for (let i = 0; i < lengthDepartement; i++) {
+          if (this.departement.data[i].id == this.departementId) {
             this.departement = this.departement.data[i];
             console.log(this.departement);
             break;
-          }else{
+          } else {
             console.log('dept fail');
           }
         }
-
-      });
+      }
+    );
   }
-
-
 }

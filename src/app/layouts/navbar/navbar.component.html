@@ -2,7 +2,14 @@
   class="bg-transparent bg-opacity-0 px-2 sm:px-4 py-2.5 fixed w-full z-20 top-0 left-0"
 >
   <div class="container flex flex-wrap items-center justify-between mx-auto">
-    <div *ngIf="router.url != '/peserta'  && router.url != '/pkl' && router.url != '/magang' && router.url != '/intern'">
+    <div
+      *ngIf="
+        router.url != '/peserta' &&
+        router.url != '/pkl' &&
+        router.url != '/magang' &&
+        router.url != '/intern'
+      "
+    >
       <a [routerLink]="['']" class="flex items-center">
         <img
           src="https://www.aio.co.id/assets/images/logo-otsuka-aio-1d4745d44cbb6ad4430c1c3a05b9dce4.png"
@@ -11,7 +18,14 @@
         />
       </a>
     </div>
-    <div *ngIf="router.url == '/peserta' || router.url == '/pkl' || router.url == '/magang' || router.url == '/intern'">
+    <div
+      *ngIf="
+        router.url == '/peserta' ||
+        router.url == '/pkl' ||
+        router.url == '/magang' ||
+        router.url == '/intern'
+      "
+    >
       <a [routerLink]="['']" class="flex items-center">
         <img
           src="https://www.aio.co.id/assets/images/logo-otsuka-aio-fc-5152dcf72befeb8e418adcc6d8d0481d.png"
@@ -24,7 +38,13 @@
     <div class="flex md:order-2">
       <button
         [routerLink]="['/login']"
-        *ngIf="router.url != '/peserta' && router.url != '/pkl' && router.url != '/magang' && router.url != '/intern'"
+        *ngIf="
+          !boolAvatar &&
+          router.url != '/peserta' &&
+          router.url != '/pkl' &&
+          router.url != '/magang' &&
+          router.url != '/intern'
+        "
         type="button"
         class="text-blue-700 bg-white hover:bg-blue-800 hover:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-3 md:mr-0"
       >
@@ -32,12 +52,74 @@
       </button>
       <button
         [routerLink]="['/login']"
-        *ngIf="router.url == '/peserta' || router.url == '/pkl'|| router.url == '/magang' || router.url == '/intern'"
+        *ngIf="
+          (!boolAvatar && router.url == '/peserta') ||
+          router.url == '/pkl' ||
+          router.url == '/magang' ||
+          router.url == '/intern'
+        "
         type="button"
         class="text-white bg-blue-500 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-3 md:mr-0"
       >
         Login
       </button>
+      <div class="">
+        <img
+          *ngIf="boolAvatar"
+          id="avatarButton"
+          type="button"
+          (click)="avatarDropdown()"
+          class="w-10 h-10 rounded-full cursor-pointer"
+          src="assets/img/timur.jpg"
+          alt="User dropdown"
+        />
+
+        <!-- Dropdown menu -->
+        <div
+          *ngIf="boolAvatarDropdown"
+          id="userDropdown"
+          class="z-10 fixed bg-gray-700 divide-y divide-gray-600 rounded-lg shadow w-44 dark:bg-white dark:divide-gray-100 right-4"
+        >
+          <div class="px-4 py-3 text-sm text-white dark:text-gray-900">
+            <div>Bonnie Green</div>
+            <div class="font-medium truncate">name@flowbite.com</div>
+          </div>
+          <ul
+            class="py-2 text-sm text-gray-200 dark:text-gray-700"
+            aria-labelledby="avatarButton"
+          >
+            <li>
+              <a
+                href="#"
+                class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                >Dashboard</a
+              >
+            </li>
+            <li>
+              <a
+                href="#"
+                class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                >Settings</a
+              >
+            </li>
+            <li>
+              <a
+                href="#"
+                class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                >Earnings</a
+              >
+            </li>
+          </ul>
+          <div class="py-1">
+            <a
+              (click)="signOut()"
+              class="block px-4 py-2 text-sm text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-700 dark:hover:text-white"
+              >Sign out</a
+            >
+          </div>
+        </div>
+      </div>
+
       <button
         type="button"
         class="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200"
@@ -66,7 +148,12 @@
     </div>
 
     <div
-      *ngIf="router.url != '/peserta'  && router.url != '/pkl' && router.url != '/magang' && router.url != '/intern'"
+      *ngIf="
+        router.url != '/peserta' &&
+        router.url != '/pkl' &&
+        router.url != '/magang' &&
+        router.url != '/intern'
+      "
       class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1"
       id="navbar-sticky"
       data-te-collapse-item
@@ -106,12 +193,17 @@
       </ul>
     </div>
     <div
-      *ngIf="router.url == '/peserta'  || router.url == '/pkl' || router.url == '/magang' || router.url == '/intern'"
-      class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1 "
+      *ngIf="
+        router.url == '/peserta' ||
+        router.url == '/pkl' ||
+        router.url == '/magang' ||
+        router.url == '/intern'
+      "
+      class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1"
       id="navbar-sticky"
     >
       <ul
-        class=" bg-gray-900 flex flex-col p-4 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0"
+        class="bg-gray-900 flex flex-col p-4 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0"
       >
         <li>
           <a

@@ -10,14 +10,12 @@ import { AttendanceService } from '../service/attendance.service';
   styleUrls: ['./peserta.component.css'],
 })
 export class PesertaComponent {
-  constructor(private attendance: AttendanceService, public router: Router) {
-  }
+  constructor(private attendance: AttendanceService, public router: Router) {}
 
   profile: any;
-  profilePKL: any[] =[];
-  profileMagang: any[] =[];
-  profileInternship: any[] =[];
-
+  profilePKL: any[] = [];
+  profileMagang: any[] = [];
+  profileInternship: any[] = [];
 
   ngOnInit() {
     this.getProfile();
@@ -26,17 +24,14 @@ export class PesertaComponent {
     });
   }
 
-
   getProfile() {
     this.attendance.getProfile().subscribe((result: any) => {
       this.profile = result.data;
       let length = this.profile.length;
-      console.log(length);
+      // console.log(length);
 
       for (let i = 0; i < length; i++) {
         // if(this.profile)
-
-
 
         if (this.profile[i].employeeStatusId == 1) {
           this.profilePKL.push(this.profile[i]);
@@ -44,14 +39,11 @@ export class PesertaComponent {
           this.profileInternship.push(this.profile[i]);
         } else if (this.profile[i].employeeStatusId == 3) {
           this.profileMagang.push(this.profile[i]);
-
         }
       }
-      console.log(this.profilePKL);
+      console.log(this.profilePKL[0].dateIn.getMonth());
 
       console.log(this.profileMagang);
-    })
+    });
   }
 }
-
-

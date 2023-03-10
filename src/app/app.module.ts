@@ -16,6 +16,7 @@ import { ProfilComponent } from './dashboard/profil/profil.component';
 import { NgApexchartsModule } from 'ng-apexcharts';
 import { SidenavComponent } from './sidenav/sidenav.component';
 import { DashboardComponentComponent } from './dashboard/dashboard-component/dashboard-component.component';
+import { FormsModule } from '@angular/forms';
 // import {MatTableModule} from '@angular/material/table';
 
 @NgModule({
@@ -31,16 +32,16 @@ import { DashboardComponentComponent } from './dashboard/dashboard-component/das
     LoginComponent,
     ProfilComponent,
     SidenavComponent,
-    DashboardComponentComponent
+    DashboardComponentComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgApexchartsModule,
     HttpClientModule,
-
+    FormsModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
