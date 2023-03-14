@@ -19,21 +19,10 @@ import { alertAnimate } from './animation.component';
   animations: [alertAnimate],
 })
 export class AlertComponent implements OnInit, OnDestroy, OnChanges {
-  // constructor(private router: Router, private alertService: AlertService) {}
-
-  // ngOnInit(): void {}
-  // ngOnDestroy(): void {}
-
-  @Input() id = 'default-alert';
-  @Input() fade = true;
   show: Boolean = false;
 
   message: any;
   type: any;
-
-  alerts: Alert[] = [];
-  alertSubscription!: Subscription;
-  routeSubscription!: Subscription;
 
   constructor(private router: Router, private alertService: AlertService) {}
 
