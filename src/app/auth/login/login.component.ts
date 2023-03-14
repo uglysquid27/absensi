@@ -63,16 +63,19 @@ export class LoginComponent {
           this.tokenStorage.saveToken(data.access_token);
           this.tokenStorage.saveUser(data);
 
-          this.isLoginFailed = false;
-          this.isLoggedIn = true;
+          // this.isLoginFailed = false;
+          // this.isLoggedIn = true;
           // this.roles = this.tokenStorage.getUser().roles;
           this.alertService.onCallAlert('Login Success', AlertType.Success);
           this.reloadPage();
         },
         (err) => {
-          this.alertService.onCallAlert('Login Failed', AlertType.Error);
+          this.alertService.onCallAlert(
+            'Invalid Email or Password',
+            AlertType.Error
+          );
           // this.errorMessage = err.error.message;
-          this.isLoginFailed = true;
+          // this.isLoginFailed = true;
           this.submitted = false;
           this.form.setValue({ email: '', password: '' });
         }
