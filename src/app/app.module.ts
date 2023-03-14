@@ -16,7 +16,7 @@ import { ProfilComponent } from './dashboard/profil/profil.component';
 import { NgApexchartsModule } from 'ng-apexcharts';
 import { SidenavComponent } from './sidenav/sidenav.component';
 import { DashboardComponentComponent } from './dashboard/dashboard-component/dashboard-component.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AlertComponent } from './alert/alert.component';
 import { AngularNotificationModule } from 'angular-notification-alert';
 // import {MatTableModule} from '@angular/material/table';
@@ -44,6 +44,7 @@ import { AngularNotificationModule } from 'angular-notification-alert';
     HttpClientModule,
     FormsModule,
     AngularNotificationModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

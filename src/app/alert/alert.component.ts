@@ -24,8 +24,10 @@ export class AlertComponent implements OnInit, OnDestroy, OnChanges {
 
   @Input() id = 'default-alert';
   @Input() fade = true;
+  show: Boolean = false;
 
-  message: any = this.alertService.getAlert().mess;
+  message: any;
+  type: any;
 
   alerts: Alert[] = [];
   alertSubscription!: Subscription;
@@ -37,15 +39,28 @@ export class AlertComponent implements OnInit, OnDestroy, OnChanges {
     console.log('oh');
   }
 
-  callAlert() {
-    console.log('Alert Success');
+  callAlert(alert: any) {
+    if (alert.message != '') {
+      this.show = true;
+      this.message = alert.message;
+      this.type = alert.type;
+
+      setTimeout(() => {
+        this.show = false;
+        this.message = '';
+        this.type = AlertType.None;
+      }, 3000);
+    }
+    console.log(alert.message);
+
+    console.log('');
   }
 
   ngOnInit() {
     if (this.alertService.subsVar == undefined) {
       this.alertService.subsVar = this.alertService.invokeAlert.subscribe(
-        () => {
-          this.callAlert();
+        (alert) => {
+          this.callAlert(alert);
         }
       );
     }

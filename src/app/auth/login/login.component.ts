@@ -26,54 +26,57 @@ export class LoginComponent {
     private router: Router,
     private notif: AngularNotificationService // private componentFactoryResolver: ComponentFactoryResolver, // private componentRef: ComponentRef<any>
   ) {}
-  // form!: FormGroup;
-  form: any = {
-    email: null,
-    password: null,
-  };
+  form!: FormGroup;
+  // form: any = {
+  //   email: null,
+  //   password: null,
+  // };
+  submitted = false;
   isLoggedIn = false;
   isLoginFailed = false;
   errorMessage = '';
   roles: string[] = [];
 
   ngOnInit() {
-    this.alertService.setAlert('haloo', AlertType.Warning);
-    console.log(this.alertService.getAlert().mess);
-    console.log(this.alertService.getAlert().typ);
-    this.alertService.clearAlert();
-    console.log(this.alertService.getAlert().mess);
-    console.log(this.alertService.getAlert().typ);
-
-    // this.form = this.formBuilder.group({
-    //   username: ['', Validators.required],
-    //   password: ['', Validators.required],
-    // });
+    this.form = this.formBuilder.group({
+      email: ['', Validators.required],
+      password: ['', Validators.required],
+    });
   }
 
   get f() {
     return this.form.controls;
   }
   onSubmit(): void {
-    const { email, password } = this.form;
+    // const { email, password } = this.f;
+    this.submitted = true;
+    if (this.form.invalid) {
+      return;
+    }
 
-    this.authService.login(email, password).subscribe(
-      (data) => {
-        console.log(data.access_token);
+    this.authService
+      .login(this.f['email'].value, this.f['password'].value)
+      .subscribe(
+        (data) => {
+          console.log(data.access_token);
 
-        this.tokenStorage.saveToken(data.access_token);
-        this.tokenStorage.saveUser(data);
+          this.tokenStorage.saveToken(data.access_token);
+          this.tokenStorage.saveUser(data);
 
-        this.isLoginFailed = false;
-        this.isLoggedIn = true;
-        // this.roles = this.tokenStorage.getUser().roles;
-        this.reloadPage();
-      },
-      (err) => {
-        this.errorMessage = err.error.message;
-        this.isLoginFailed = true;
-      }
-    );
-    // this.alertService.onCallAlert();
+          this.isLoginFailed = false;
+          this.isLoggedIn = true;
+          // this.roles = this.tokenStorage.getUser().roles;
+          this.alertService.onCallAlert('Login Success', AlertType.Success);
+          this.reloadPage();
+        },
+        (err) => {
+          this.alertService.onCallAlert('Login Failed', AlertType.Error);
+          // this.errorMessage = err.error.message;
+          this.isLoginFailed = true;
+          this.submitted = false;
+          this.form.setValue({ email: '', password: '' });
+        }
+      );
   }
 
   reloadPage(): void {
