@@ -1,6 +1,14 @@
-import { Component } from '@angular/core';
+import {
+  Component,
+  ViewContainerRef,
+  // ComponentFactoryResolver,
+  // ComponentRef,
+} from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AngularNotificationService } from 'angular-notification-alert';
+import { AlertType } from 'src/app/service/alert/alert.model';
+import { AlertService } from 'src/app/service/alert/alert.service';
 import { AuthService } from 'src/app/service/auth/auth.service';
 import { TokenStorageService } from 'src/app/service/auth/token-storage.service';
 
@@ -13,8 +21,10 @@ export class LoginComponent {
   constructor(
     private authService: AuthService,
     private tokenStorage: TokenStorageService,
+    private alertService: AlertService,
     private formBuilder: FormBuilder,
-    private router: Router
+    private router: Router,
+    private notif: AngularNotificationService // private componentFactoryResolver: ComponentFactoryResolver, // private componentRef: ComponentRef<any>
   ) {}
   // form!: FormGroup;
   form: any = {
@@ -27,6 +37,13 @@ export class LoginComponent {
   roles: string[] = [];
 
   ngOnInit() {
+    this.alertService.setAlert('haloo', AlertType.Warning);
+    console.log(this.alertService.getAlert().mess);
+    console.log(this.alertService.getAlert().typ);
+    this.alertService.clearAlert();
+    console.log(this.alertService.getAlert().mess);
+    console.log(this.alertService.getAlert().typ);
+
     // this.form = this.formBuilder.group({
     //   username: ['', Validators.required],
     //   password: ['', Validators.required],
@@ -56,6 +73,7 @@ export class LoginComponent {
         this.isLoginFailed = true;
       }
     );
+    // this.alertService.onCallAlert();
   }
 
   reloadPage(): void {

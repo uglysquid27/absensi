@@ -17,6 +17,8 @@ import { NgApexchartsModule } from 'ng-apexcharts';
 import { SidenavComponent } from './sidenav/sidenav.component';
 import { DashboardComponentComponent } from './dashboard/dashboard-component/dashboard-component.component';
 import { FormsModule } from '@angular/forms';
+import { AlertComponent } from './alert/alert.component';
+import { AngularNotificationModule } from 'angular-notification-alert';
 // import {MatTableModule} from '@angular/material/table';
 
 @NgModule({
@@ -33,6 +35,7 @@ import { FormsModule } from '@angular/forms';
     ProfilComponent,
     SidenavComponent,
     DashboardComponentComponent,
+    AlertComponent,
   ],
   imports: [
     BrowserModule,
@@ -40,6 +43,7 @@ import { FormsModule } from '@angular/forms';
     NgApexchartsModule,
     HttpClientModule,
     FormsModule,
+    AngularNotificationModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

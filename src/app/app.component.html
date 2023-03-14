@@ -1,4 +1,5 @@
 <main>
+  <app-alert></app-alert>
   <app-navbar
     *ngIf="
       router.url == '/' ||
@@ -12,7 +13,6 @@
   ></app-navbar>
   <app-sidebar
     *ngIf="
-    
       router.url != '/' &&
       router.url != '/login' &&
       router.url != '/peserta' &&
