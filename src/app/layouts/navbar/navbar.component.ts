@@ -11,6 +11,7 @@ import { TokenStorageService } from 'src/app/service/auth/token-storage.service'
 })
 export class NavbarComponent {
   @ViewChild('avatarList') avatarList!: ElementRef;
+  @ViewChild('signOutModal') ModalElement!: ElementRef;
   boolAvatar: any;
   boolAvatarDropdown: any;
   boolModal: boolean = false;
@@ -36,7 +37,14 @@ export class NavbarComponent {
       !this.avatarList.nativeElement.contains(event.target) &&
       this.boolAvatarDropdown
     ) {
-      this.boolAvatarDropdown = false;
+      if (
+        this.ModalElement &&
+        this.ModalElement.nativeElement.contains(event.target)
+      ) {
+        // console.log('test1');
+      } else {
+        this.boolAvatarDropdown = false;
+      }
     }
   }
   avatarDropdown() {
