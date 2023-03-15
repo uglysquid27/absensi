@@ -11,7 +11,7 @@ import { TokenStorageService } from 'src/app/service/auth/token-storage.service'
 export class NavbarComponent {
   boolAvatar: any;
   boolAvatarDropdown: any;
-  constructor(public router: Router, private session: TokenStorageService) {}
+  constructor(public router: Router, public session: TokenStorageService) {}
 
   scroll(el: HTMLElement) {
     el.scrollIntoView();

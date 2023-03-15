@@ -81,8 +81,8 @@
           class="z-10 fixed bg-gray-700 divide-y divide-gray-600 rounded-lg shadow w-44 dark:bg-white dark:divide-gray-100 right-4"
         >
           <div class="px-4 py-3 text-sm text-white dark:text-gray-900">
-            <div>Bonnie Green</div>
-            <div class="font-medium truncate">name@flowbite.com</div>
+            <div>{{ this.session.getUser().name }}</div>
+            <div class="font-medium truncate">{{ this.session.getUser().email }}</div>
           </div>
           <ul
             class="py-2 text-sm text-gray-200 dark:text-gray-700"

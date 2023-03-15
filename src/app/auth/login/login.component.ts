@@ -61,7 +61,8 @@ export class LoginComponent {
           console.log(data.access_token);
 
           this.tokenStorage.saveToken(data.access_token);
-          this.tokenStorage.saveUser(data);
+          this.tokenStorage.saveUser(data.user);
+          console.log(data);
 
           // this.isLoginFailed = false;
           // this.isLoggedIn = true;
@@ -70,10 +71,17 @@ export class LoginComponent {
           this.reloadPage();
         },
         (err) => {
-          this.alertService.onCallAlert(
-            'Invalid Email or Password',
-            AlertType.Error
-          );
+          if (err.statusText == 'Unauthorized') {
+            this.alertService.onCallAlert(
+              'Invalid Email or Password',
+              AlertType.Error
+            );
+          } else {
+            this.alertService.onCallAlert('Login Failed', AlertType.Error);
+          }
+
+          console.log(err.statusText);
+
           // this.errorMessage = err.error.message;
           // this.isLoginFailed = true;
           this.submitted = false;

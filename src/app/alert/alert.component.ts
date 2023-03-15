@@ -40,9 +40,6 @@ export class AlertComponent implements OnInit, OnDestroy, OnChanges {
         this.type = AlertType.None;
       }, 4000);
     }
-    console.log(alert.message);
-
-    console.log('');
   }
 
   ngOnInit() {

@@ -21,6 +21,7 @@ export class AuthService {
       },
       httpOptions
     );
+    
   }
 
   register(email: string, password: string): Observable<any> {
