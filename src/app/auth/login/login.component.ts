@@ -80,7 +80,7 @@ export class LoginComponent {
             this.alertService.onCallAlert('Login Failed', AlertType.Error);
           }
 
-          console.log(err.statusText);
+          // console.log(err.statusText);
 
           // this.errorMessage = err.error.message;
           // this.isLoginFailed = true;
