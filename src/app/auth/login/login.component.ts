@@ -58,11 +58,11 @@ export class LoginComponent {
       .login(this.f['email'].value, this.f['password'].value)
       .subscribe(
         (data) => {
-          console.log(data.access_token);
+          // console.log(data.access_token);
 
           this.tokenStorage.saveToken(data.access_token);
           this.tokenStorage.saveUser(data.user);
-          console.log(data);
+          // console.log(data);
 
           // this.isLoginFailed = false;
           // this.isLoggedIn = true;
