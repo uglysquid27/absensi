@@ -6,7 +6,6 @@ import {
 } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AngularNotificationService } from 'angular-notification-alert';
 import { AlertType } from 'src/app/service/alert/alert.model';
 import { AlertService } from 'src/app/service/alert/alert.service';
 import { AuthService } from 'src/app/service/auth/auth.service';
@@ -23,8 +22,7 @@ export class LoginComponent {
     private tokenStorage: TokenStorageService,
     private alertService: AlertService,
     private formBuilder: FormBuilder,
-    private router: Router,
-    private notif: AngularNotificationService // private componentFactoryResolver: ComponentFactoryResolver, // private componentRef: ComponentRef<any>
+    private router: Router // private componentFactoryResolver: ComponentFactoryResolver, // private componentRef: ComponentRef<any>
   ) {}
   form!: FormGroup;
   // form: any = {

@@ -19,7 +19,14 @@ import { SidenavComponent } from './sidenav/sidenav.component';
 import { DashboardComponentComponent } from './dashboard/dashboard-component/dashboard-component.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AlertComponent } from './alert/alert.component';
-import { AngularNotificationModule } from 'angular-notification-alert';
+import { NgIdleModule } from '@ng-idle/core';
+import { NgIdleKeepaliveModule } from '@ng-idle/keepalive';
+import { DashboardComponent } from './dashboard/dashboard/dashboard.component';
+import { DashboardAdminComponent } from './dashboard/dashboard-admin/dashboard-admin.component';
+import { TestComponent } from './dashboard/test/test.component';
+import { UserStatusComponent } from './dashboard/tables/user-status/user-status.component';
+import { UsersComponent } from './dashboard/tables/users/users.component';
+import { InstitutionsComponent } from './dashboard/tables/institutions/institutions.component';
 // import {MatTableModule} from '@angular/material/table';
 
 @NgModule({
@@ -37,6 +44,12 @@ import { AngularNotificationModule } from 'angular-notification-alert';
     SidenavComponent,
     DashboardComponentComponent,
     AlertComponent,
+    DashboardComponent,
+    DashboardAdminComponent,
+    TestComponent,
+    UserStatusComponent,
+    UsersComponent,
+    InstitutionsComponent,
   ],
   imports: [
     BrowserModule,
@@ -44,10 +57,10 @@ import { AngularNotificationModule } from 'angular-notification-alert';
     NgApexchartsModule,
     HttpClientModule,
     FormsModule,
-    AngularNotificationModule,
     ReactiveFormsModule,
     BrowserModule,
     BrowserAnimationsModule,
+    NgIdleKeepaliveModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent],

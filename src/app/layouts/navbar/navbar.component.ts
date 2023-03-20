@@ -57,7 +57,7 @@ export class NavbarComponent {
     // console.log(event.target.id);
     if (event.target.id == 'yesBtn') {
       this.session.signOut();
-      window.location.reload();
+      
     } else {
       this.signOutModal();
     }

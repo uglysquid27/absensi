@@ -1,4 +1,9 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
+import { DEFAULT_INTERRUPTSOURCES, Idle } from '@ng-idle/core';
+import { Keepalive } from '@ng-idle/keepalive';
+import { AlertType } from '../alert/alert.model';
+import { AlertService } from '../alert/alert.service';
 
 const TOKEN_KEY = 'auth-token';
 const USER_KEY = 'auth-user';
@@ -7,9 +12,15 @@ const USER_KEY = 'auth-user';
   providedIn: 'root',
 })
 export class TokenStorageService {
-  constructor() {}
+  constructor(
+    private router: Router,
+    private idle: Idle,
+    private alertService: AlertService,
+    private keepLive: Keepalive
+  ) {}
   signOut(): void {
     window.sessionStorage.clear();
+    window.location.reload();
   }
 
   public saveToken(token: string): void {

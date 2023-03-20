@@ -9,9 +9,22 @@ import { AuthGuard } from './service/auth/auth.guard';
 
 import { HomeComponent } from './home/home.component';
 import { OnAuthGuard } from './service/auth/on-auth.guard';
+import { DashboardComponent } from './dashboard/dashboard/dashboard.component';
+import { DashboardAdminComponent } from './dashboard/dashboard-admin/dashboard-admin.component';
+import { TestComponent } from './dashboard/test/test.component';
+import { UsersComponent } from './dashboard/tables/users/users.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
+  {
+    path: 'dashboard',
+    component: DashboardComponent,
+    children: [
+      { path: '', component: DashboardAdminComponent },
+      { path: 'users', component: UsersComponent },
+      { path: 'test', component: TestComponent },
+    ],
+  },
   { path: 'peserta', component: PesertaComponent },
   { path: 'pkl', component: PesertaComponent },
   { path: 'magang', component: PesertaComponent },

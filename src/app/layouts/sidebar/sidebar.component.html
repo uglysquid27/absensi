@@ -1,109 +1,454 @@
-<!-- component -->
-<div class="fixed min-h-screen flex flex-col flex-auto flex-shrink-0 antialiased bg-gray-50 text-gray-800 max-lg:hidden max-md:hidden">
-  <div class="fixed flex flex-col top-0 left-0 w-64 bg-white h-full border-r">
-    <a [routerLink]="['/']" class="flex items-center justify-center h-28 border-b">
-      <img src="https://www.aio.co.id/assets/images/logo-otsuka-aio-fc-5152dcf72befeb8e418adcc6d8d0481d.png" class="w-28" alt="">
-    </a>
+<div
+  class="fixed flex flex-col top-0 left-0 w-52 bg-white h-full border-r max-lg:hidden"
+>
+  <a
+    [routerLink]="['/']"
+    class="flex items-center justify-center h-28 border-b"
+  >
+    <img
+      src="https://www.aio.co.id/assets/images/logo-otsuka-aio-fc-5152dcf72befeb8e418adcc6d8d0481d.png"
+      class="w-28"
+      alt=""
+    />
+  </a>
 
-    <div class="overflow-y-auto overflow-x-hidden flex-grow">
-      <ul class="flex flex-col py-4 space-y-1">
-        <li class="px-5">
-          <div class="flex flex-row items-center h-8">
-            <div class="text-sm font-light tracking-wide text-gray-500">Menu</div>
+  <div class="overflow-y-auto overflow-x-hidden flex-grow">
+    <ul class="flex flex-col py-4 space-y-1" role="group">
+      <!-- <li class="px-5">
+        <div class="flex flex-row items-center h-8">
+          <div class="text-sm font-light tracking-wide text-gray-500">Menu</div>
+        </div>
+      </li> -->
+
+      <li>
+        <a
+          [routerLink]="['/dashboard']"
+          class="relative flex items-center space-x-4 py-3"
+          [ngClass]="
+            router.url == '/dashboard'
+              ? 'bg-gradient-to-r from-sky-600 to-cyan-400  text-white  border-l-0 px-1 '
+              : 'bg-white text-gray-600 hover:bg-gray-50 hover:text-gray-800 border-l-4 border-transparent hover:border-indigo-500'
+          "
+        >
+          <span class="inline-flex justify-center items-center ml-3">
+            <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none">
+              <path
+                d="M6 8a2 2 0 0 1 2-2h1a2 2 0 0 1 2 2v1a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V8ZM6 15a2 2 0 0 1 2-2h1a2 2 0 0 1 2 2v1a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2v-1Z"
+                class="fill-current text-cyan-400 dark:fill-slate-600"
+              ></path>
+              <path
+                d="M13 8a2 2 0 0 1 2-2h1a2 2 0 0 1 2 2v1a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2V8Z"
+                class="fill-current text-cyan-200 group-hover:text-cyan-300"
+              ></path>
+              <path
+                d="M13 15a2 2 0 0 1 2-2h1a2 2 0 0 1 2 2v1a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-1Z"
+                class="fill-current group-hover:text-sky-300"
+              ></path>
+            </svg>
+          </span>
+          <span class="ml-2 text-sm tracking-wide truncate">Dashboard</span>
+        </a>
+      </li>
+      <li>
+        <a
+          [routerLink]="['/dashboard/test']"
+          class="relative flex items-center space-x-4 py-3"
+          [ngClass]="
+            router.url == '/dashboard/test'
+              ? 'bg-gradient-to-r from-sky-600 to-cyan-400 text-white  border-l-0 px-1'
+              : 'bg-white text-gray-600 hover:bg-gray-50 hover:text-gray-800 border-l-4 border-transparent hover:border-indigo-500'
+          "
+        >
+          <span class="inline-flex justify-center items-center ml-4">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-5 w-5"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+            >
+              <path
+                class="fill-current text-gray-600 group-hover:text-cyan-600"
+                fill-rule="evenodd"
+                d="M2 5a2 2 0 012-2h8a2 2 0 012 2v10a2 2 0 002 2H4a2 2 0 01-2-2V5zm3 1h6v4H5V6zm6 6H5v2h6v-2z"
+                clip-rule="evenodd"
+              />
+              <path
+                class="fill-current text-gray-300 group-hover:text-cyan-300"
+                d="M15 7h1a2 2 0 012 2v5.5a1.5 1.5 0 01-3 0V7z"
+              />
+            </svg>
+          </span>
+          <span class="ml-2 text-sm tracking-wide truncate">Activity</span>
+        </a>
+      </li>
+
+      <li>
+        <a
+          (click)="dropdown()"
+          class="relative flex flex-row items-center space-x-4 h-11 focus:outline-none hover:bg-gray-50 text-gray-600 hover:text-gray-800 border-l-4 border-transparent hover:border-indigo-500 pr-6"
+          [ngClass]="boolDropdown ? 'bg-gray-50' : ''"
+        >
+          <span class="inline-flex justify-center items-center ml-4">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-5 w-5"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+            >
+              <path
+                class="fill-current text-gray-600 group-hover:text-cyan-600"
+                fill-rule="evenodd"
+                d="M2 5a2 2 0 012-2h8a2 2 0 012 2v10a2 2 0 002 2H4a2 2 0 01-2-2V5zm3 1h6v4H5V6zm6 6H5v2h6v-2z"
+                clip-rule="evenodd"
+              />
+              <path
+                class="fill-current text-gray-300 group-hover:text-cyan-300"
+                d="M15 7h1a2 2 0 012 2v5.5a1.5 1.5 0 01-3 0V7z"
+              />
+            </svg>
+          </span>
+          <span class="ml-2 text-sm tracking-wide truncate">Tables</span>
+          <span class="grow flex justify-end">
+            <svg
+              class="w-5 h-5 text-gray-800 dark:text-white"
+              [ngClass]="boolDropdown ? 'rotate-180' : ''"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                clip-rule="evenodd"
+                fill="gray"
+              />
+            </svg>
+          </span>
+        </a>
+        <ul
+          *ngIf="boolDropdown"
+          class="mx-auto shadow bg-base-100 rounded-sm w-11/12 text-sm truncate"
+        >
+          <li>
+            <a
+              [routerLink]="['/dashboard/users']"
+              routerLinkActive="router-link-active"
+              class="relative flex items-center space-x-4 p-3"
+              [ngClass]="
+                router.url == '/dashboard/users'
+                  ? 'bg-gradient-to-r from-sky-600 to-cyan-400  px-4  text-white  border-l-0  '
+                  : 'bg-white text-gray-600 hover:bg-gray-50 hover:text-gray-800 border-l-4 border-transparent hover:border-indigo-500'
+              "
+              >Users</a
+            >
+          </li>
+          <li>
+            <a
+              class="relative flex items-center space-x-4 p-3"
+              [ngClass]="
+                router.url == '//'
+                  ? 'bg-gradient-to-r from-sky-600 to-cyan-400  px-4  text-white  border-l-0  '
+                  : 'bg-white text-gray-600 hover:bg-gray-50 hover:text-gray-800 border-l-4 border-transparent hover:border-indigo-500'
+              "
+              >User Status</a
+            >
+          </li>
+          <li>
+            <a
+              class="relative flex items-center space-x-4 p-3"
+              [ngClass]="
+                router.url == '//'
+                  ? 'bg-gradient-to-r from-sky-600 to-cyan-400  px-4  text-white  border-l-0  '
+                  : 'bg-white text-gray-600 hover:bg-gray-50 hover:text-gray-800 border-l-4 border-transparent hover:border-indigo-500'
+              "
+              >Institutions</a
+            >
+          </li>
+          <li>
+            <a
+              class="relative flex items-center space-x-4 p-3"
+              [ngClass]="
+                router.url == '//'
+                  ? 'bg-gradient-to-r from-sky-600 to-cyan-400  px-4  text-white  border-l-0  '
+                  : 'bg-white text-gray-600 hover:bg-gray-50 hover:text-gray-800 border-l-4 border-transparent hover:border-indigo-500'
+              "
+              >Departments</a
+            >
+          </li>
+          <li>
+            <a
+              class="relative flex items-center space-x-4 p-3"
+              [ngClass]="
+                router.url == '//'
+                  ? 'bg-gradient-to-r from-sky-600 to-cyan-400  px-4  text-white  border-l-0  '
+                  : 'bg-white text-gray-600 hover:bg-gray-50 hover:text-gray-800 border-l-4 border-transparent hover:border-indigo-500'
+              "
+              >Banks</a
+            >
+          </li>
+        </ul>
+      </li>
+      <li>
+        <a
+          href="#"
+          class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-50 text-gray-600 hover:text-gray-800 border-l-4 border-transparent hover:border-indigo-500 pr-6"
+        >
+          <span class="inline-flex justify-center items-center ml-4">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-5 w-5"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+            >
+              <path
+                class="fill-current text-gray-600 group-hover:text-cyan-600"
+                d="M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z"
+              />
+              <path
+                class="fill-current text-gray-300 group-hover:text-cyan-300"
+                d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z"
+              />
+            </svg>
+          </span>
+          <span class="ml-2 text-sm tracking-wide truncate">Chart</span>
+        </a>
+      </li>
+      <li>
+        <a
+          href="#"
+          class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-50 text-gray-600 hover:text-gray-800 border-l-4 border-transparent hover:border-indigo-500 pr-6"
+        >
+          <span class="inline-flex justify-center items-center ml-4">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-5 w-5"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+            >
+              <path
+                class="fill-current text-gray-300 group-hover:text-cyan-300"
+                d="M4 4a2 2 0 00-2 2v1h16V6a2 2 0 00-2-2H4z"
+              />
+              <path
+                class="fill-current text-gray-600 group-hover:text-cyan-600"
+                fill-rule="evenodd"
+                d="M18 9H2v5a2 2 0 002 2h12a2 2 0 002-2V9zM4 13a1 1 0 011-1h1a1 1 0 110 2H5a1 1 0 01-1-1zm5-1a1 1 0 100 2h1a1 1 0 100-2H9z"
+                clip-rule="evenodd"
+              />
+            </svg>
+          </span>
+          <span class="ml-2 text-sm tracking-wide truncate">Other Menu</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="fixed min-h-screen lg:hidden bg-gray-100 z-50">
+  <div
+    class="sidebar min-h-screen w-[3.35rem] overflow-hidden border-r hover:w-56 hover:bg-white hover:shadow-lg"
+  >
+    <div class="flex h-screen flex-col justify-between pt-2 pb-6">
+      <div>
+        <div class="w-max p-2.5 pb-10 pt-10">
+          <img src="../../assets/img/small.png" class="w-10" alt="" />
+        </div>
+        <!-- <div class="mt-8 text-center">
+          <img src="../../assets/img/Satriya-Polinema.jpg" alt="" class="w-12 h-12 m-auto rounded-full object-cover lg:w-28 lg:h-28">
+          <h5 class="hidden mt-4 text-xl font-semibold text-gray-600 group-hover:block">Satriya</h5>
+          <span class="hidden text-gray-400 group-hover:block">Pemagang</span>
+        </div> -->
+
+        <ul class="mt-6 space-y-2 tracking-wide">
+          <li class="min-w-max">
+            <a
+              [routerLink]="['/dashboard']"
+              routerLinkActive="router-link-active"
+              aria-label="dashboard"
+              class="relative flex items-center space-x-4 py-3"
+              [ngClass]="
+                router.url == '/dashboard'
+                  ? 'bg-gradient-to-r from-sky-600 to-cyan-400  px-4  text-white  border-l-0  '
+                  : ' text-gray-600 hover:bg-gray-50 hover:text-gray-800 border-l-4 px-3 border-transparent hover:border-indigo-500'
+              "
+            >
+              <svg class="-ml-1 h-6 w-6" viewBox="0 0 24 24" fill="none">
+                <path
+                  d="M6 8a2 2 0 0 1 2-2h1a2 2 0 0 1 2 2v1a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V8ZM6 15a2 2 0 0 1 2-2h1a2 2 0 0 1 2 2v1a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2v-1Z"
+                  class="fill-current text-cyan-400 dark:fill-slate-600"
+                ></path>
+                <path
+                  d="M13 8a2 2 0 0 1 2-2h1a2 2 0 0 1 2 2v1a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2V8Z"
+                  class="fill-current text-cyan-200 group-hover:text-cyan-300"
+                ></path>
+                <path
+                  d="M13 15a2 2 0 0 1 2-2h1a2 2 0 0 1 2 2v1a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-1Z"
+                  class="fill-current group-hover:text-sky-300"
+                ></path>
+              </svg>
+              <span class="group-hover:text-gray-700">Dashboard</span>
+            </a>
+          </li>
+
+          <li class="min-w-max">
+            <a
+              [routerLink]="['/dashboard/test']"
+              class="relative flex items-center space-x-4 py-3"
+              [ngClass]="
+                router.url == '/dashboard/test'
+                  ? 'bg-gradient-to-r from-sky-600 to-cyan-400  px-4  text-white  border-l-0  '
+                  : ' text-gray-600 hover:bg-gray-50 hover:text-gray-800 border-l-4 px-3 border-transparent hover:border-indigo-500'
+              "
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-5 w-5"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+              >
+                <path
+                  class="fill-current text-gray-300 group-hover:text-cyan-300"
+                  fill-rule="evenodd"
+                  d="M2 6a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1H8a3 3 0 00-3 3v1.5a1.5 1.5 0 01-3 0V6z"
+                  clip-rule="evenodd"
+                />
+                <path
+                  class="fill-current text-gray-600 group-hover:text-cyan-600"
+                  d="M6 12a2 2 0 012-2h8a2 2 0 012 2v2a2 2 0 01-2 2H2h2a2 2 0 002-2v-2z"
+                />
+              </svg>
+              <span class="group-hover:text-gray-700">Activity</span>
+            </a>
+          </li>
+          <!-- <div *ngIf="router.url === '/dashboard'; else lain">
+            <li>
+              <a  [routerLink]="['/dashboard']" class="relative flex items-center space-x-4 bg-gradient-to-r from-sky-600 to-cyan-400 px-4 py-3 text-white">
+                <span class="inline-flex justify-center items-center ml-4">
+                  <svg class="-ml-1 h-6 w-6" viewBox="0 0 24 24" fill="none">
+                    <path d="M6 8a2 2 0 0 1 2-2h1a2 2 0 0 1 2 2v1a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V8ZM6 15a2 2 0 0 1 2-2h1a2 2 0 0 1 2 2v1a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2v-1Z" class="fill-current text-cyan-400 dark:fill-slate-600"></path>
+                    <path d="M13 8a2 2 0 0 1 2-2h1a2 2 0 0 1 2 2v1a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2V8Z" class="fill-current text-cyan-200 group-hover:text-cyan-300"></path>
+                    <path d="M13 15a2 2 0 0 1 2-2h1a2 2 0 0 1 2 2v1a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-1Z" class="fill-current group-hover:text-sky-300"></path>
+                  </svg>
+                </span>
+                <span class="ml-2 text-sm tracking-wide truncate">Dashboard</span>
+              </a>
+            </li>
           </div>
-        </li>
-        <div *ngIf="router.url === '/dashboard'; else lain">
-          <li>
-            <a  [routerLink]="['/dashboard']" class="relative flex items-center space-x-4 bg-gradient-to-r from-sky-600 to-cyan-400 px-4 py-3 text-white">
-              <span class="inline-flex justify-center items-center ml-4">
-                <svg class="-ml-1 h-6 w-6" viewBox="0 0 24 24" fill="none">
-                  <path d="M6 8a2 2 0 0 1 2-2h1a2 2 0 0 1 2 2v1a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V8ZM6 15a2 2 0 0 1 2-2h1a2 2 0 0 1 2 2v1a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2v-1Z" class="fill-current text-cyan-400 dark:fill-slate-600"></path>
-                  <path d="M13 8a2 2 0 0 1 2-2h1a2 2 0 0 1 2 2v1a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2V8Z" class="fill-current text-cyan-200 group-hover:text-cyan-300"></path>
-                  <path d="M13 15a2 2 0 0 1 2-2h1a2 2 0 0 1 2 2v1a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-1Z" class="fill-current group-hover:text-sky-300"></path>
-                </svg>
-              </span>
-              <span class="ml-2 text-sm tracking-wide truncate">Dashboard</span>
+
+            <ng-template #lain>
+              <a [routerLink]="['/dashboard']" class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-50 text-gray-600 hover:text-gray-800 border-l-4 border-transparent hover:border-indigo-500 pr-6">
+                <span class="inline-flex justify-center items-center ml-4">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                    <path class="fill-current text-gray-600 group-hover:text-cyan-600" fill-rule="evenodd" d="M2 5a2 2 0 012-2h8a2 2 0 012 2v10a2 2 0 002 2H4a2 2 0 01-2-2V5zm3 1h6v4H5V6zm6 6H5v2h6v-2z" clip-rule="evenodd" />
+                    <path class="fill-current text-gray-300 group-hover:text-cyan-300" d="M15 7h1a2 2 0 012 2v5.5a1.5 1.5 0 01-3 0V7z" />
+                  </svg>
+                </span>
+                <span class="ml-2 text-sm tracking-wide truncate">Dashboard</span>
+              </a>
+            </ng-template>
+
+
+          <div *ngIf="router.url === '/profil'; else lain2">
+            <li>
+              <a  [routerLink]="['/profil']" class="relative flex items-center space-x-4 bg-gradient-to-r from-sky-600 to-cyan-400 px-4 py-3 text-white">
+                <span class="inline-flex justify-center items-center ml-4">
+                  <svg class="-ml-1 h-6 w-6" viewBox="0 0 24 24" fill="none">
+                    <path d="M6 8a2 2 0 0 1 2-2h1a2 2 0 0 1 2 2v1a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V8ZM6 15a2 2 0 0 1 2-2h1a2 2 0 0 1 2 2v1a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2v-1Z" class="fill-current text-cyan-400 dark:fill-slate-600"></path>
+                    <path d="M13 8a2 2 0 0 1 2-2h1a2 2 0 0 1 2 2v1a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2V8Z"></path>
+                    <path d="M13 15a2 2 0 0 1 2-2h1a2 2 0 0 1 2 2v1a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-1Z"></path>
+                  </svg>
+                </span>
+                <span class="ml-2 text-sm tracking-wide truncate">Activity</span>
+              </a>
+            </li>
+          </div>
+
+            <ng-template #lain2>
+              <a [routerLink]="['/profil']" class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-50 text-gray-600 hover:text-gray-800 border-l-4 border-transparent hover:border-indigo-500 pr-6">
+                <span class="inline-flex justify-center items-center ml-4">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                    <path class="fill-current text-gray-600 group-hover:text-cyan-600" fill-rule="evenodd" d="M2 5a2 2 0 012-2h8a2 2 0 012 2v10a2 2 0 002 2H4a2 2 0 01-2-2V5zm3 1h6v4H5V6zm6 6H5v2h6v-2z" clip-rule="evenodd" />
+                    <path class="fill-current text-gray-300 group-hover:text-cyan-300" d="M15 7h1a2 2 0 012 2v5.5a1.5 1.5 0 01-3 0V7z" />
+                  </svg>
+                </span>
+                <span class="ml-2 text-sm tracking-wide truncate">Activity</span>
+              </a>
+            </ng-template> -->
+          <li class="min-w-max">
+            <a
+              href="#"
+              class="group flex items-center space-x-4 rounded-md px-4 py-3 text-gray-600"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-5 w-5"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+              >
+                <path
+                  class="fill-current text-gray-600 group-hover:text-cyan-600"
+                  fill-rule="evenodd"
+                  d="M2 5a2 2 0 012-2h8a2 2 0 012 2v10a2 2 0 002 2H4a2 2 0 01-2-2V5zm3 1h6v4H5V6zm6 6H5v2h6v-2z"
+                  clip-rule="evenodd"
+                />
+                <path
+                  class="fill-current text-gray-300 group-hover:text-cyan-300"
+                  d="M15 7h1a2 2 0 012 2v5.5a1.5 1.5 0 01-3 0V7z"
+                />
+              </svg>
+              <span class="group-hover:text-gray-700">Tabless</span>
             </a>
           </li>
-        </div>
-
-          <ng-template #lain>
-            <a [routerLink]="['/dashboard']" class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-50 text-gray-600 hover:text-gray-800 border-l-4 border-transparent hover:border-indigo-500 pr-6">
-              <span class="inline-flex justify-center items-center ml-4">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                  <path class="fill-current text-gray-600 group-hover:text-cyan-600" fill-rule="evenodd" d="M2 5a2 2 0 012-2h8a2 2 0 012 2v10a2 2 0 002 2H4a2 2 0 01-2-2V5zm3 1h6v4H5V6zm6 6H5v2h6v-2z" clip-rule="evenodd" />
-                  <path class="fill-current text-gray-300 group-hover:text-cyan-300" d="M15 7h1a2 2 0 012 2v5.5a1.5 1.5 0 01-3 0V7z" />
-                </svg>
-              </span>
-              <span class="ml-2 text-sm tracking-wide truncate">Dashboard</span>
-            </a>
-          </ng-template>
-
-
-        <div *ngIf="router.url === '/profil'; else lain2">
-          <li>
-            <a  [routerLink]="['/profil']" class="relative flex items-center space-x-4 bg-gradient-to-r from-sky-600 to-cyan-400 px-4 py-3 text-white">
-              <span class="inline-flex justify-center items-center ml-4">
-                <svg class="-ml-1 h-6 w-6" viewBox="0 0 24 24" fill="none">
-                  <path d="M6 8a2 2 0 0 1 2-2h1a2 2 0 0 1 2 2v1a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V8ZM6 15a2 2 0 0 1 2-2h1a2 2 0 0 1 2 2v1a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2v-1Z" class="fill-current text-cyan-400 dark:fill-slate-600"></path>
-                  <path d="M13 8a2 2 0 0 1 2-2h1a2 2 0 0 1 2 2v1a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2V8Z"></path>
-                  <path d="M13 15a2 2 0 0 1 2-2h1a2 2 0 0 1 2 2v1a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-1Z"></path>
-                </svg>
-              </span>
-              <span class="ml-2 text-sm tracking-wide truncate">Profile</span>
+          <li class="min-w-max">
+            <a
+              href="#"
+              class="group flex items-center space-x-4 rounded-md px-4 py-3 text-gray-600"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-5 w-5"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+              >
+                <path
+                  class="fill-current text-gray-600 group-hover:text-cyan-600"
+                  d="M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z"
+                />
+                <path
+                  class="fill-current text-gray-300 group-hover:text-cyan-300"
+                  d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z"
+                />
+              </svg>
+              <span class="group-hover:text-gray-700">Chart</span>
             </a>
           </li>
-        </div>
-
-          <ng-template #lain2>
-            <a [routerLink]="['/profil']" class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-50 text-gray-600 hover:text-gray-800 border-l-4 border-transparent hover:border-indigo-500 pr-6">
-              <span class="inline-flex justify-center items-center ml-4">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                  <path class="fill-current text-gray-600 group-hover:text-cyan-600" fill-rule="evenodd" d="M2 5a2 2 0 012-2h8a2 2 0 012 2v10a2 2 0 002 2H4a2 2 0 01-2-2V5zm3 1h6v4H5V6zm6 6H5v2h6v-2z" clip-rule="evenodd" />
-                  <path class="fill-current text-gray-300 group-hover:text-cyan-300" d="M15 7h1a2 2 0 012 2v5.5a1.5 1.5 0 01-3 0V7z" />
-                </svg>
-              </span>
-              <span class="ml-2 text-sm tracking-wide truncate">Profile</span>
+          <li class="min-w-max">
+            <a
+              href="#"
+              class="group flex items-center space-x-4 rounded-md px-4 py-3 text-gray-600"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-5 w-5"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+              >
+                <path
+                  class="fill-current text-gray-300 group-hover:text-cyan-300"
+                  d="M4 4a2 2 0 00-2 2v1h16V6a2 2 0 00-2-2H4z"
+                />
+                <path
+                  class="fill-current text-gray-600 group-hover:text-cyan-600"
+                  fill-rule="evenodd"
+                  d="M18 9H2v5a2 2 0 002 2h12a2 2 0 002-2V9zM4 13a1 1 0 011-1h1a1 1 0 110 2H5a1 1 0 01-1-1zm5-1a1 1 0 100 2h1a1 1 0 100-2H9z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+              <span class="group-hover:text-gray-700">Other Menu</span>
             </a>
-          </ng-template>
-
-
-
-
-        <li>
-          <a href="#" class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-50 text-gray-600 hover:text-gray-800 border-l-4 border-transparent hover:border-indigo-500 pr-6">
-            <span class="inline-flex justify-center items-center ml-4">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                <path class="fill-current text-gray-600 group-hover:text-cyan-600" fill-rule="evenodd" d="M2 5a2 2 0 012-2h8a2 2 0 012 2v10a2 2 0 002 2H4a2 2 0 01-2-2V5zm3 1h6v4H5V6zm6 6H5v2h6v-2z" clip-rule="evenodd" />
-                <path class="fill-current text-gray-300 group-hover:text-cyan-300" d="M15 7h1a2 2 0 012 2v5.5a1.5 1.5 0 01-3 0V7z" />
-              </svg>
-            </span>
-            <span class="ml-2 text-sm tracking-wide truncate">Report</span>
-          </a>
-        </li>
-        <li>
-          <a href="#" class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-50 text-gray-600 hover:text-gray-800 border-l-4 border-transparent hover:border-indigo-500 pr-6">
-            <span class="inline-flex justify-center items-center ml-4">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                <path class="fill-current text-gray-600 group-hover:text-cyan-600" d="M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z" />
-                <path class="fill-current text-gray-300 group-hover:text-cyan-300" d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z" />
-              </svg>
-            </span>
-            <span class="ml-2 text-sm tracking-wide truncate">Chart</span>
-          </a>
-        </li>
-        <li>
-          <a href="#" class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-50 text-gray-600 hover:text-gray-800 border-l-4 border-transparent hover:border-indigo-500 pr-6">
-            <span class="inline-flex justify-center items-center ml-4">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                <path class="fill-current text-gray-300 group-hover:text-cyan-300" d="M4 4a2 2 0 00-2 2v1h16V6a2 2 0 00-2-2H4z" />
-                <path class="fill-current text-gray-600 group-hover:text-cyan-600" fill-rule="evenodd" d="M18 9H2v5a2 2 0 002 2h12a2 2 0 002-2V9zM4 13a1 1 0 011-1h1a1 1 0 110 2H5a1 1 0 01-1-1zm5-1a1 1 0 100 2h1a1 1 0 100-2H9z" clip-rule="evenodd" />
-              </svg>
-            </span>
-            <span class="ml-2 text-sm tracking-wide truncate">Other Menu</span>
-          </a>
-        </li>
-      </ul>
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
 </div>
