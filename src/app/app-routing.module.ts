@@ -14,6 +14,7 @@ import { DashboardAdminComponent } from './dashboard/dashboard-admin/dashboard-a
 import { TestComponent } from './dashboard/test/test.component';
 import { UsersComponent } from './dashboard/tables/users/users.component';
 import { UserStatusComponent } from './dashboard/tables/user-status/user-status.component';
+import { EditComponent as UserEditComponent } from './dashboard/tables/users/edit/edit.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -24,6 +25,7 @@ const routes: Routes = [
       { path: '', component: DashboardAdminComponent },
       { path: 'users', component: UsersComponent },
       { path: 'user-status', component: UserStatusComponent},
+      { path: 'users/edit/:id', component: UserEditComponent },
       { path: 'test', component: TestComponent },
     ],
   },
