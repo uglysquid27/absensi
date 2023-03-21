@@ -13,6 +13,7 @@ import { DashboardComponent } from './dashboard/dashboard/dashboard.component';
 import { DashboardAdminComponent } from './dashboard/dashboard-admin/dashboard-admin.component';
 import { TestComponent } from './dashboard/test/test.component';
 import { UsersComponent } from './dashboard/tables/users/users.component';
+import { UserStatusComponent } from './dashboard/tables/user-status/user-status.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -22,6 +23,7 @@ const routes: Routes = [
     children: [
       { path: '', component: DashboardAdminComponent },
       { path: 'users', component: UsersComponent },
+      { path: 'user-status', component: UserStatusComponent},
       { path: 'test', component: TestComponent },
     ],
   },
