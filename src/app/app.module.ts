@@ -27,6 +27,7 @@ import { TestComponent } from './dashboard/test/test.component';
 import { UserStatusComponent } from './dashboard/tables/user-status/user-status.component';
 import { UsersComponent } from './dashboard/tables/users/users.component';
 import { InstitutionsComponent } from './dashboard/tables/institutions/institutions.component';
+import { EditComponent } from './dashboard/tables/users/edit/edit.component';
 // import {MatTableModule} from '@angular/material/table';
 
 @NgModule({
@@ -50,6 +51,7 @@ import { InstitutionsComponent } from './dashboard/tables/institutions/instituti
     UserStatusComponent,
     UsersComponent,
     InstitutionsComponent,
+    EditComponent,
   ],
   imports: [
     BrowserModule,
