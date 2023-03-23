@@ -1,0 +1,302 @@
+<div class="pl-14 lg:pl-52 py-5">
+  <div class="w-full flex justify-between pb-5">
+    <a
+      class="w-fit"
+      [routerLink]="['/dashboard/users']"
+      routerLinkActive="router-link-active"
+    >
+      <span
+        class="mx-2 text-gray-700 flex flex-row dark:text-gray-600 rtl:-scale-x-100 space-x-1"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          height="24"
+          viewBox="0 96 960 960"
+          width="24"
+          fill="gray"
+        >
+          <path d="M640 976 240 576l400-400 71 71-329 329 329 329-71 71Z" />
+        </svg>
+        <p>Back</p>
+      </span>
+    </a>
+  </div>
+
+  <div class="mx-5 shadow-lg rounded-md border-1 border">
+    <div class="w-full flex justify-between items-center">
+      <h2 class="font-semibold font-sans text-xl py-5 px-10">Edit User Data</h2>
+      <button
+        class="text-white w-1/4 h-1/2 bg-blue-700 shadow-md hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-md text-sm mx-5 px-5 py-2.5 text-center dark:bg-violet-500 dark:hover:bg-purple-600 dark:focus:ring-blue-800"
+      >
+        Change Password
+      </button>
+    </div>
+
+    <form class="" [formGroup]="form" (ngSubmit)="onSubmit()">
+      <div
+        class="flex lg:w-11/12 w-full sm:flex-row flex-col mx-auto px-4 sm:space-x-4 sm:space-y-0 space-y-4 sm:px-0 items-end py-4"
+      >
+        <div class="relative flex-grow w-full">
+          <label for="nikInput" class="leading-7 text-sm text-gray-600"
+            >NIK</label
+          >
+          <input
+            type="text"
+            id="nikInput"
+            name="nikInput"
+            formControlName="nikInput"
+            value="{{ user.nik }}"
+            class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-transparent focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+          />
+        </div>
+        <div class="relative flex-grow w-full">
+          <label for="nameInput" class="leading-7 text-sm text-gray-600"
+            >Name</label
+          >
+          <input
+            type="text"
+            id="nameInput"
+            name="nameInput"
+            formControlName="nameInput"
+            value="{{ user.name }}"
+            class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-transparent focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+          />
+        </div>
+      </div>
+      <div
+        class="flex lg:w-11/12 w-full sm:flex-row flex-col mx-auto px-4 sm:space-x-4 sm:space-y-0 space-y-4 sm:px-0 items-end py-4"
+      >
+        <div class="relative flex-grow w-full">
+          <label for="statusInput" class="leading-7 text-sm text-gray-600"
+            >Employee Status</label
+          >
+          <select
+            id="statusInput"
+            name="statusInput"
+            formControlName="statusInput"
+            class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-transparent focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+          >
+            <option
+              *ngFor="let item of status.data"
+              
+              [value]="item.id"
+            >
+              {{ item.employeeStatus }}
+            </option>
+          </select>
+        </div>
+        <div class="relative flex-grow w-full">
+          <label for="emailInput" class="leading-7 text-sm text-gray-600"
+            >Email</label
+          >
+          <input
+            type="email"
+            id="emailInput"
+            name="emailInput"
+            formControlName="emailInput"
+            value="{{ user.email }}"
+            class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-transparent focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+          />
+        </div>
+        <!-- <div class="relative flex-grow w-full">
+          <label for="email" class="leading-7 text-sm text-gray-600"
+            >Password</label
+          >
+          <input
+            type="email"
+            id="email"
+            name="email"
+            value="{{ user.password }}"
+            class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-transparent focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+          />
+        </div> -->
+      </div>
+      <div
+        class="flex lg:w-11/12 w-full sm:flex-row flex-col mx-auto px-4 sm:space-x-4 sm:space-y-0 space-y-4 sm:px-0 items-end py-4"
+      >
+        <div class="relative flex-grow w-full">
+          <label for="placeBirthInput" class="leading-7 text-sm text-gray-600"
+            >Place of Birth</label
+          >
+          <input
+            type="text"
+            id="placeBirthInput"
+            name="placeBirthInput"
+            formControlName="placeBirthInput"
+            value="{{ user.placeOfBirth }}"
+            class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-transparent focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+          />
+        </div>
+        <div class="relative flex-grow w-full">
+          <label for="dateBirthInput" class="leading-7 text-sm text-gray-600"
+            >Date of Birth</label
+          >
+          <input
+            id="dateBirthInput"
+            name="dateBirthInput"
+            formControlName="dateBirthInput"
+            value="{{ user.dateOfBirth | date }}"
+            class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-transparent focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+          />
+        </div>
+        <div class="relative flex-grow w-full">
+          <label for="genderInput" class="leading-7 text-sm text-gray-600"
+            >Gender</label
+          >
+          <select
+            id="genderInput"
+            name="genderInput"
+            formControlName="genderInput"
+            class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-transparent focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+          >
+            <option
+              *ngFor="let item of genderEnum"
+              [selected]="item == user.gender"
+              value="{{ item }}"
+            >
+              {{ genders[item] }}
+            </option>
+          </select>
+        </div>
+        <div class="relative flex-grow w-full">
+          <label for="bloodInput" class="leading-7 text-sm text-gray-600"
+            >Blood Type</label
+          >
+          <select
+            id="bloodInput"
+            name="bloodInput"
+            formControlName="bloodInput"
+            class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-transparent focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+          >
+            <option
+              *ngFor="let item of bloodEnum"
+              [selected]="item == user.blood"
+              value="{{ item }}"
+            >
+              {{ item }}
+            </option>
+          </select>
+        </div>
+      </div>
+      <div
+        class="flex lg:w-11/12 w-full sm:flex-row flex-col mx-auto px-4 sm:space-x-4 sm:space-y-0 space-y-4 sm:px-0 items-end py-4"
+      >
+        <div class="relative flex-grow w-full">
+          <label for="institutionInput" class="leading-7 text-sm text-gray-600"
+            >Institution</label
+          >
+          <select
+            id="institutionInput"
+            name="institutionInput"
+            formControlName="institutionInput"
+            class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-transparent focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+          >
+            <option
+              *ngFor="let item of institutions.data"
+              [selected]="item.id == user.institutionId"
+              value="{{ item.id }}"
+            >
+              {{ item.institution }}
+            </option>
+          </select>
+        </div>
+        <div class="relative flex-grow w-full">
+          <label for="departmentInput" class="leading-7 text-sm text-gray-600"
+            >Departement</label
+          >
+          <select
+            id="departmentInput"
+            name="departmentInput"
+            formControlName="departmentInput"
+            class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-transparent focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+          >
+            <option
+              *ngFor="let item of departments.data"
+              [selected]="item.id == user.departementId"
+              value="{{ item.id }}"
+            >
+              {{ item.departementName }}
+            </option>
+          </select>
+        </div>
+        <div class="relative flex-grow w-full">
+          <label for="bankInput" class="leading-7 text-sm text-gray-600"
+            >Bank</label
+          >
+          <select
+            id="bankInput"
+            name="bankInput"
+            formControlName="bankInput"
+            class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-transparent focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+          >
+            <option
+              *ngFor="let item of banks.data"
+              [selected]="item.id == user.bankId"
+              value="{{ item.id }}"
+            >
+              {{ item.bankName }}
+            </option>
+          </select>
+        </div>
+      </div>
+      <div
+        class="flex lg:w-11/12 w-full sm:flex-row flex-col mx-auto px-4 sm:space-x-4 sm:space-y-0 space-y-4 sm:px-0 items-end py-4"
+      >
+        <div class="relative flex-grow w-full">
+          <label for="majorInput" class="leading-7 text-sm text-gray-600"
+            >Major</label
+          >
+          <input
+            type="text"
+            id="majorInput"
+            name="majorInput"
+            formControlName="majorInput"
+            value="{{ user.major }}"
+            class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-transparent focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+          />
+        </div>
+        <div class="relative flex-grow w-full">
+          <label for="studyInput" class="leading-7 text-sm text-gray-600"
+            >Study Program</label
+          >
+          <input
+            type="text"
+            id="studyInput"
+            name="studyInput"
+            formControlName="studyInput"
+            value="{{ user.existingEdu }}"
+            class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-transparent focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+          />
+        </div>
+        <div class="relative flex-grow w-full">
+          <label for="longAppInput" class="leading-7 text-sm text-gray-600"
+            >Long Apprentice</label
+          >
+          <div class="flex items-center">
+            <input
+              type="number"
+              id="longAppInput"
+              name="longAppInput"
+              formControlName="longAppInput"
+              value="{{ user.longApprentice }}"
+              class="w-full bg-gray-100 bg-opacity-50 rounded border rounded-r-none rtl:rounded-r-lg rtl:rounded-l-none border-gray-300 focus:border-indigo-500 focus:bg-transparent focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+            />
+            <p
+              class="py-2 px-3 text-gray-700 bg-gray-100 border border-l-0 rtl:rounded-l-lg rtl:rounded-r-none rtl:border-r-0 rtl:border-l rounded-r"
+            >
+              Month
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="w-full px-10 py-5 flex justify-center">
+        <button
+          type="submit"
+          class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-1/2 px-5 py-2.5 text-center dark:bg-sky-500 dark:hover:bg-sky-600 dark:focus:ring-blue-800"
+        >
+          Submit
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
