@@ -1,8 +1,9 @@
+import { InstitutionsComponent } from './dashboard/tables/institutions/institutions.component';
 import { DashboardComponentComponent } from './dashboard/dashboard-component/dashboard-component.component';
 import { ProfilComponent } from './dashboard/profil/profil.component';
 import { LoginComponent } from './auth/login/login.component';
 import { PesertaComponent } from './peserta/peserta.component';
-import { NgModule } from '@angular/core';
+import { NgModule, Component } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './service/auth/auth.guard';
 // import { AppComponent } from './app.component';
@@ -25,6 +26,7 @@ const routes: Routes = [
       { path: '', component: DashboardAdminComponent },
       { path: 'users', component: UsersComponent },
       { path: 'user-status', component: UserStatusComponent},
+      { path: 'institutions', component: InstitutionsComponent},
       { path: 'users/edit/:id', component: UserEditComponent },
       { path: 'test', component: TestComponent },
     ],
