@@ -45,42 +45,35 @@
                 <tr>
                   <th
                     scope="col"
-                    class="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-400 dark:text-gray-700"
+                    class="py-3.5 px-4 text-sm font-semibold rtl:text-right text-gray-400 dark:text-gray-700 text-center"
                   >
-                    <div class="flex items-center gap-x-3">
-                      <input
-                        type="checkbox"
-                        class="text-blue-500 border-gray-700 rounded dark:bg-gray-100 dark:ring-offset-gray-900 dark:border-gray-300"
-                      />
-                      <button class="flex items-center gap-x-2">
-                        <span>NIK</span>
-
-
-                      </button>
-                    </div>
+                    Id
                   </th>
 
                   <th
                     scope="col"
-                    class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-700"
+                    class="py-3.5 px-4 text-sm font-semibold rtl:text-right text-gray-400 dark:text-gray-700 text-center"
                   >
                     City
                   </th>
 
                   <th
                     scope="col"
-                    class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-700"
+                    class="py-3.5 px-4 text-sm font-semibold rtl:text-right text-gray-400 dark:text-gray-700 text-center"
                   >
-                    Institutions
+                    Institution
                   </th>
 
                   <th scope="col" class="relative py-3.5 px-4">
-                    <span class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-700">Actions</span>
+                    <span
+                      class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-700"
+                      >Actions</span
+                    >
                   </th>
-
                 </tr>
               </thead>
-              <tbody *ngFor="let item of usersData.data"
+              <tbody
+                *ngFor="let item of usersData.data"
                 class="bg-gray-900 divide-y divide-gray-700 dark:divide-gray-300 dark:bg-white"
               >
                 <tr>
@@ -99,10 +92,10 @@
 
                   <button>
                     <td
-                    class="px-4 py-4 text-sm text-gray-500 dark:text-gray-700 whitespace-nowrap"
-                  >
-                    {{ item.city }}
-                  </td>
+                      class="px-4 py-4 text-sm text-gray-500 dark:text-gray-700 whitespace-nowrap"
+                    >
+                      {{ item.city }}
+                    </td>
                   </button>
 
                   <td
@@ -111,8 +104,9 @@
                     <div
                       class="inline-flex items-center px-3 py-1 rounded-full gap-x-2 text-emerald-500 bg-gray-800 dark:bg-emerald-50/50"
                     >
-
-                      <h2 class="text-sm font-normal">{{ item.institution }}</h2>
+                      <h2 class="text-sm font-normal">
+                        {{ item.institution }}
+                      </h2>
                     </div>
                   </td>
                 </tr>
@@ -124,4 +118,3 @@
     </div>
   </div>
 </div>
-
