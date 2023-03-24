@@ -1,164 +1,122 @@
-<div class="pl-14 lg:pl-52 py-10">
-  <div class="px-4">
-    <div class="flex flex-col">
-      <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
-        <div class="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
-          <div
-            class="overflow-hidden border border-gray-700 dark:border-gray-200 md:rounded-lg"
+<div class="pl-14 lg:pl-52 py-5">
+  <div class="">
+    <div class="px-10 py-5">
+      <h2 class="text-3xl font-bold">Table User</h2>
+    </div>
+    <div class="-my-2 overflow-x-auto">
+      <div class="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
+        <div
+          class="overflow-hidden border border-gray-700 dark:border-gray-200 md:rounded-lg"
+        >
+          <table
+            class="min-w-full divide-y divide-gray-700 dark:divide-gray-200"
           >
-            <table
-              class="min-w-full divide-y divide-gray-700 dark:divide-gray-200"
+            <thead class="bg-gray-80 dark:bg-gray-100">
+              <tr>
+                <th
+                  scope="col"
+                  class="py-3.5 px-4 text-sm font-semibold rtl:text-right text-gray-400 dark:text-gray-700 text-center"
+                >
+                  NIK
+                </th>
+
+                <th
+                  scope="col"
+                  class="px-4 py-3.5 text-sm font-semibold rtl:text-right text-gray-500 dark:text-gray-700"
+                >
+                  Name
+                </th>
+
+                <th
+                  scope="col"
+                  class="px-4 py-3.5 text-sm font-semibold rtl:text-right text-gray-500 dark:text-gray-700 text-center"
+                >
+                  User Status
+                </th>
+
+                <th
+                  scope="col"
+                  class="px-4 py-3.5 text-sm font-semibold rtl:text-right text-gray-500 dark:text-gray-700 text-center"
+                >
+                  Email
+                </th>
+
+                <th
+                  scope="col"
+                  class="px-4 py-3.5 text-sm font-semibold rtl:text-right text-gray-500 dark:text-gray-700 text-center"
+                >
+                  Origin
+                </th>
+                <th
+                  scope="col"
+                  class="px-4 py-3.5 text-sm font-semibold rtl:text-right text-gray-500 dark:text-gray-700 text-center"
+                >
+                  IsActive
+                </th>
+                <th
+                  scope="col"
+                  class="px-4 py-3.5 text-sm font-semibold rtl:text-right text-gray-500 dark:text-gray-700 text-center"
+                >
+                  Actions
+                </th>
+
+                <!-- <th scope="col" class="relative py-3.5 px-4">
+                  <span class="sr-only">Actions</span>
+                </th> -->
+              </tr>
+            </thead>
+            <tbody
+              class="bg-gray-900 divide-y divide-gray-700 dark:divide-gray-300 dark:bg-white"
             >
-              <thead class="bg-gray-80 dark:bg-gray-100">
-                <tr>
-                  <th
-                    scope="col"
-                    class="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-400 dark:text-gray-700"
-                  >
-                    <div class="flex items-center gap-x-3">
-                      <input
-                        type="checkbox"
-                        class="text-blue-500 border-gray-700 rounded dark:bg-gray-100 dark:ring-offset-gray-900 dark:border-gray-300"
-                      />
-                      <button class="flex items-center gap-x-2">
-                        <span>NIK</span>
-                      </button>
-                    </div>
-                  </th>
+              <tr *ngFor="let user of usersData.data">
+                <td
+                  class="px-4 py-4 text-sm text-center text-gray-700 dark:text-gray-700 whitespace-nowrap"
+                >
+                  {{ user.nik }}
+                </td>
+                <td
+                  class="px-4 py-4 text-sm text-gray-500 dark:text-gray-700 whitespace-nowrap text-center"
+                >
+                  {{ user.name }}
+                </td>
+                <td
+                  class="px-4 py-4 text-sm text-gray-500 dark:text-gray-700 whitespace-nowrap text-center"
+                >
+                  {{ user.employeeStatusId }}
+                </td>
 
-                  <th
-                    scope="col"
-                    class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-700"
+                <td
+                  class="px-4 py-4 text-sm text-gray-500 dark:text-gray-700 whitespace-nowrap text-center"
+                >
+                  {{ user.email }}
+                </td>
+                <td
+                  class="px-4 py-4 text-sm text-gray-500 dark:text-gray-700 whitespace-nowrap text-center"
+                >
+                  {{ user.placeOfBirth }}
+                </td>
+                <td
+                  class="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap flex justify-center"
+                >
+                  <div
+                    class="inline-flex items-center px-3 py-1 rounded-full gap-x-2"
+                    [ngClass]="
+                      user.isActive == 1
+                        ? 'text-emerald-500 bg-emerald-50/50'
+                        : 'text-red-500 bg-red-50/50'
+                    "
                   >
-                    Name
-                  </th>
-
-                  <th
-                    scope="col"
-                    class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-700"
-                  >
-                    User Status
-                  </th>
-
-                  <th
-                    scope="col"
-                    class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-700"
-                  >
-                    Email
-                  </th>
-
-                  <th
-                    scope="col"
-                    class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-700"
-                  >
-                    Origin
-                  </th>
-                  <th
-                    scope="col"
-                    class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-700"
-                  >
-                    IsActive
-                  </th>
-                  <th
-                    scope="col"
-                    class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-700"
-                  >
-                    Actions
-                  </th>
-
-                  <th scope="col" class="relative py-3.5 px-4">
-                    <span class="sr-only">Actions</span>
-                  </th>
-                </tr>
-              </thead>
-              <tbody
-                class="bg-gray-900 divide-y divide-gray-700 dark:divide-gray-300 dark:bg-white"
-              >
-                <tr *ngFor="let user of usersData.data">
-                  <td
-                    class="px-4 py-4 text-sm font-medium text-gray-700 dark:text-gray-700 whitespace-nowrap"
-                  >
-                    <div class="inline-flex items-center gap-x-3">
-                      <input
-                        type="checkbox"
-                        class="text-blue-500 border-gray-900 rounded dark:bg-gray-100 dark:ring-offset-gray-900 dark:border-gray-700"
-                      />
-
-                      <span>{{ user.nik }}</span>
-                    </div>
-                  </td>
-                  <td
-                    class="px-4 py-4 text-sm text-gray-500 dark:text-gray-700 whitespace-nowrap"
-                  >
-                    {{ user.name }}
-                  </td>
-                  <td class="px-4 py-4 text-sm whitespace-nowrap">
-                    <div class="flex items-center gap-x-6">
-                      <button
-                        class="text-gray-500 transition-colors duration-200 dark:hover:text-indigo-500 dark:text-gray-700 hover:text-indigo-500 focus:outline-none"
+                    <h2 class="text-sm font-normal">
+                      <span *ngIf="user.isActive == 1; else inActive"
+                        >Active</span
                       >
-                        {{ user.employeeStatusId }}
-                      </button>
-                    </div>
-                  </td>
-
-                  <td
-                    class="px-4 py-4 text-sm text-gray-500 dark:text-gray-700 whitespace-nowrap"
-                  >
-                    <div class="flex items-center gap-x-2">
-                      <img
-                        class="object-cover w-8 h-8 rounded-full"
-                        src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80"
-                        alt=""
-                      />
-                      <div>
-                        <h2
-                          class="text-sm font-medium text-gray-800 dark:text-white"
-                        >
-                          Arthur Melo
-                        </h2>
-                        <p
-                          class="text-xs font-normal text-gray-600 dark:text-gray-700"
-                        >
-                          {{ user.email }}
-                        </p>
-                      </div>
-                    </div>
-                  </td>
-                  <td
-                    class="px-4 py-4 text-sm text-gray-500 dark:text-gray-700 whitespace-nowrap"
-                  >
-                    {{ user.placeOfBirth }}
-                  </td>
-                  <td
-                    class="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap"
-                  >
-                    <div
-                      class="inline-flex items-center px-3 py-1 rounded-full gap-x-2 text-emerald-500 bg-gray-800 dark:bg-emerald-50/50"
-                    >
-                      <svg
-                        width="12"
-                        height="12"
-                        viewBox="0 0 12 12"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M10 3L4.5 8.5L2 6"
-                          stroke="currentColor"
-                          stroke-width="1.5"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                        />
-                      </svg>
-
-                      <h2 class="text-sm font-normal">
-                        {{ user.isActive }}
-                      </h2>
-                    </div>
-                  </td>
-                  <td>
-                    <!--------------------------- EDIT BUTTON--------------------------->
+                      <ng-template #inActive>Inactive</ng-template>
+                    </h2>
+                  </div>
+                </td>
+                <td class="px-2 py-4 whitespace-nowrap">
+                  <!--------------------------- EDIT BUTTON--------------------------->
+                  <div class="w-full flex justify-center">
                     <button
                       [routerLink]="['edit/', user.nik]"
                       routerLinkActive="router-link-active"
@@ -189,10 +147,11 @@
                         />
                       </svg>
                     </button>
-                  </td>
-                </tr>
+                  </div>
+                </td>
+              </tr>
 
-                <!-- <tr>
+              <!-- <tr>
                   <td
                     class="px-4 py-4 text-sm font-medium text-gray-700 dark:text-gray-700 whitespace-nowrap"
                   >
@@ -367,9 +326,8 @@
                     </div>
                   </td>
                 </tr> -->
-              </tbody>
-            </table>
-          </div>
+            </tbody>
+          </table>
         </div>
       </div>
     </div>
