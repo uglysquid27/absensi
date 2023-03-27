@@ -51,11 +51,13 @@ export class CreateComponent {
     private apiService: AttendanceService,
     private formBuilder: FormBuilder
   ) {
+    this.subscribeData();
     this.form = this.formBuilder.group({
       nikInput: ['', Validators.required],
       statusInput: ['', Validators.required],
       nameInput: ['', Validators.required],
       emailInput: ['', Validators.required],
+      passwordInput: ['', Validators.required],
       placeBirthInput: ['', Validators.required],
       dateBirthInput: ['', Validators.required],
       genderInput: ['', Validators.required],
@@ -68,7 +70,7 @@ export class CreateComponent {
       longAppInput: ['', Validators.required],
       isActiveInput: ['', Validators.required],
     });
-    this.subscribeData();
+    
   }
   onSubmit() {
     this.submitted = true;
@@ -112,7 +114,7 @@ export class CreateComponent {
       this.institutions = inst;
       this.banks = bank;
 
-      console.log(this.status.data[0].employeeStatus);
+      console.log(this.status.data);
 
     });
   }
