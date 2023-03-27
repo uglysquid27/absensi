@@ -27,7 +27,6 @@ export enum bloodType {
   styleUrls: ['./create.component.css']
 })
 export class CreateComponent {
-  id = this.activeRoute.snapshot.paramMap.get('id');
   genderEnum = Object.keys(gender);
   genders: any = gender;
   bloodEnum = Object.values(bloodType);
@@ -96,52 +95,25 @@ export class CreateComponent {
 
     // console.log(body);
 
-    this.apiService.updateEmployee(this.id, body).subscribe(
-      (data) => {
-        console.log(data);
-        this.alertServie.onCallAlert('Success Edited', AlertType.Success)
-        this.router.navigate(['/dashboard/users']);
-      },
-      (err) => {
-        this.alertServie.setAlert('Edited Failed', AlertType.Error)
-        console.log(err);
 
-      }
-    );
+
   }
 
   subscribeData() {
     forkJoin(
-      this.apiService.getEmployeebyId(this.id),
+
       this.apiService.getEmployeeStatus(),
       this.apiService.getDepartements(),
       this.apiService.getInstitutions(),
       this.apiService.getBank()
-    ).subscribe(([employee, status, dep, inst, bank]) => {
-      this.user = employee;
+    ).subscribe(([status, dep, inst, bank]) => {
       this.status = status;
       this.departments = dep;
       this.institutions = inst;
       this.banks = bank;
 
-      this.f['nikInput'].setValue(this.user.nik);
-      this.f['nameInput'].setValue(this.user.name);
-      this.f['emailInput'].setValue(this.user.email);
-      this.f['statusInput'].setValue(this.user.employeeStatusId);
-      this.f['placeBirthInput'].setValue(this.user.placeOfBirth);
-      this.f['dateBirthInput'].patchValue(
-        this.formatDate(this.user.dateOfBirth)
-      );
-      this.f['genderInput'].setValue(this.user.gender);
-      this.f['bloodInput'].setValue(this.user.blood);
-      this.f['institutionInput'].setValue(this.user.institutionId);
-      this.f['departmentInput'].setValue(this.user.departementId);
-      this.f['bankInput'].setValue(this.user.bankId);
-      this.f['majorInput'].setValue(this.user.major);
-      this.f['studyInput'].setValue(this.user.existingEdu);
-      this.f['longAppInput'].setValue(this.user.longApprentice);
-      this.f['isActiveInput'].setValue(this.user.isActive);
-      console.log(this.user.isActive);
+      console.log(this.status.data[0].employeeStatus);
+
     });
   }
   private formatDate(date: any) {
