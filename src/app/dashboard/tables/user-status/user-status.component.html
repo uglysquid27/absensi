@@ -1,6 +1,13 @@
 <div class="pl-14 lg:pl-52 py-5">
   <div class="px-4">
     <div class="px-10 py-5">
+      <a
+      [routerLink]="['/dashboard/users/add']"
+      class="text-white w-1/6 h-1/2 bg-blue-700 shadow-md hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-md text-sm mx-5 px-5 py-2.5 text-center dark:bg-violet-500 dark:hover:bg-purple-600 dark:focus:ring-blue-800"
+      style="float: right;"
+    >
+      Add Data
+    </a>
       <h2 class="text-3xl font-bold">Table User Status</h2>
     </div>
     <div class="flex flex-col">
@@ -14,12 +21,12 @@
             >
               <thead class="bg-gray-80 dark:bg-gray-100">
                 <tr>
-                  <th
+                  <!-- <th
                     scope="col"
                     class="py-3.5 px-4 text-sm font-semibold rtl:text-right text-gray-400 dark:text-gray-700 text-center"
                   >
                     NIK
-                  </th>
+                  </th> -->
 
                   <th
                     scope="col"
@@ -48,11 +55,11 @@
                 class="bg-gray-900 divide-y divide-gray-700 dark:divide-gray-300 dark:bg-white"
               >
                 <tr>
-                  <td
+                  <!-- <td
                     class="px-4 py-4 text-sm text-gray-500 dark:text-gray-700 whitespace-nowrap text-center"
                   >
                     {{ item.id }}
-                  </td>
+                  </td> -->
 
                   <td
                     class="px-4 py-4 text-sm text-gray-500 dark:text-gray-700 whitespace-nowrap text-center"
