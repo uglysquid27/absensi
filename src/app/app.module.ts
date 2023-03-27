@@ -29,6 +29,7 @@ import { UsersComponent } from './dashboard/tables/users/users.component';
 import { InstitutionsComponent } from './dashboard/tables/institutions/institutions.component';
 import { EditComponent } from './dashboard/tables/users/edit/edit.component';
 import { ActivityAdminComponent } from './dashboard/activity-admin/activity-admin.component';
+import { CreateComponent } from './dashboard/tables/users/create/create.component';
 // import {MatTableModule} from '@angular/material/table';
 
 @NgModule({
@@ -54,6 +55,7 @@ import { ActivityAdminComponent } from './dashboard/activity-admin/activity-admi
     InstitutionsComponent,
     EditComponent,
     ActivityAdminComponent,
+    CreateComponent,
   ],
   imports: [
     BrowserModule,
