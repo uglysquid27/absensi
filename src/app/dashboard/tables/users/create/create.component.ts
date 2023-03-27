@@ -67,10 +67,11 @@ export class CreateComponent {
       bankInput: ['', Validators.required],
       majorInput: ['', Validators.required],
       studyInput: ['', Validators.required],
+      dateInInput: ['', Validators.required],
       longAppInput: ['', Validators.required],
       isActiveInput: ['', Validators.required],
     });
-    
+
   }
   onSubmit() {
     this.submitted = true;
@@ -86,18 +87,31 @@ export class CreateComponent {
       name: this.f['nameInput'].value,
       isActive: this.f['isActiveInput'].value,
       email: this.f['emailInput'].value,
+      password: this.f['passwordInput'].value,
       placeOfBirth: this.f['placeBirthInput'].value,
       dateOfBirth: this.f['dateBirthInput'].value,
       gender: this.f['genderInput'].value,
+      dateIn: this.f['dateInInput'].value,
       longApprentice: this.f['longAppInput'].value,
       existingEdu: this.f['studyInput'].value,
       major: this.f['majorInput'].value,
       blood: this.f['bloodInput'].value,
     };
 
-    // console.log(body);
+    console.log(body);
 
+    this.apiService.storeEmployee(body).subscribe(
+      (data) => {
+        console.log(data);
+        this.alertServie.onCallAlert('Success Add Data', AlertType.Success)
+        this.router.navigate(['/dashboard/users']);
+      },
+      (err) => {
+        this.alertServie.setAlert('Add Data Failed', AlertType.Error)
+        console.log(err);
 
+      }
+    );
 
   }
 

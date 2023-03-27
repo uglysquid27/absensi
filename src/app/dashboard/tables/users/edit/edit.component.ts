@@ -105,7 +105,7 @@ export class EditComponent {
       (err) => {
         this.alertServie.setAlert('Edited Failed', AlertType.Error)
         console.log(err);
-        
+
       }
     );
   }
@@ -123,7 +123,7 @@ export class EditComponent {
       this.departments = dep;
       this.institutions = inst;
       this.banks = bank;
-      
+
       this.f['nikInput'].setValue(this.user.nik);
       this.f['nameInput'].setValue(this.user.name);
       this.f['emailInput'].setValue(this.user.email);

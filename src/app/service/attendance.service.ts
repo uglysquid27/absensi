@@ -26,6 +26,9 @@ export class AttendanceService {
   updateEmployee(id: any, body: any) {
     return this.httpClient.put(api + 'employee/' + id, body);
   }
+  storeEmployee(body: any) {
+    return this.httpClient.post(api + 'employee/', body);
+  }
   getBank() {
     return this.httpClient.get(api + 'banks');
   }
