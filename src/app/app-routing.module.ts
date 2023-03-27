@@ -1,3 +1,4 @@
+import { BanksComponent } from './dashboard/tables/banks/banks.component';
 import { DepartmentsComponent } from './dashboard/tables/departments/departments.component';
 import { InstitutionsComponent } from './dashboard/tables/institutions/institutions.component';
 import { DashboardComponentComponent } from './dashboard/dashboard-component/dashboard-component.component';
@@ -31,6 +32,7 @@ const routes: Routes = [
       { path: 'user-status', component: UserStatusComponent},
       { path: 'institutions', component: InstitutionsComponent},
       { path: 'departments', component: DepartmentsComponent},
+      { path: 'banks', component: BanksComponent},
       { path: 'users/edit/:id', component: UserEditComponent },
       { path: 'users/add', component: UserAddComponent},
       { path: 'activity', component: ActivityAdminComponent },
