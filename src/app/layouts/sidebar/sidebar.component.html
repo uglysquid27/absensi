@@ -168,9 +168,10 @@
           </li>
           <li>
             <a
+              [routerLink]="['/dashboard/departments']"
               class="relative flex items-center space-x-4 p-3"
               [ngClass]="
-                router.url == '//'
+                router.url == '/dashboard/departments'
                   ? 'bg-gradient-to-r from-sky-600 to-cyan-400  px-4  text-white  border-l-0  '
                   : 'bg-white text-gray-600 hover:bg-gray-50 hover:text-gray-800 border-l-4 border-transparent hover:border-indigo-500'
               "

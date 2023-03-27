@@ -30,6 +30,8 @@ import { InstitutionsComponent } from './dashboard/tables/institutions/instituti
 import { EditComponent } from './dashboard/tables/users/edit/edit.component';
 import { ActivityAdminComponent } from './dashboard/activity-admin/activity-admin.component';
 import { CreateComponent } from './dashboard/tables/users/create/create.component';
+import { DepartmentsComponent } from './dashboard/tables/departments/departments.component';
+import { BanksComponent } from './dashboard/tables/banks/banks.component';
 // import {MatTableModule} from '@angular/material/table';
 
 @NgModule({
@@ -56,6 +58,8 @@ import { CreateComponent } from './dashboard/tables/users/create/create.componen
     EditComponent,
     ActivityAdminComponent,
     CreateComponent,
+    DepartmentsComponent,
+    BanksComponent,
   ],
   imports: [
     BrowserModule,
