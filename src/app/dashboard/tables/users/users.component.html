@@ -68,7 +68,10 @@
             <tbody
               class="bg-gray-900 divide-y divide-gray-700 dark:divide-gray-300 dark:bg-white"
             >
-              <tr *ngFor="let user of usersData.data">
+              <tr
+                *ngFor="let user of usersData.data"
+                class="transition duration-300 ease-in-out dark:hover:bg-neutral-200"
+              >
                 <td
                   class="px-4 py-4 text-sm text-center text-gray-700 dark:text-gray-700 whitespace-nowrap"
                 >
