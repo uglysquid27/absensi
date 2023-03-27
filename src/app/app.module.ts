@@ -28,6 +28,7 @@ import { UserStatusComponent } from './dashboard/tables/user-status/user-status.
 import { UsersComponent } from './dashboard/tables/users/users.component';
 import { InstitutionsComponent } from './dashboard/tables/institutions/institutions.component';
 import { EditComponent } from './dashboard/tables/users/edit/edit.component';
+import { ActivityAdminComponent } from './dashboard/activity-admin/activity-admin.component';
 // import {MatTableModule} from '@angular/material/table';
 
 @NgModule({
@@ -52,6 +53,7 @@ import { EditComponent } from './dashboard/tables/users/edit/edit.component';
     UsersComponent,
     InstitutionsComponent,
     EditComponent,
+    ActivityAdminComponent,
   ],
   imports: [
     BrowserModule,

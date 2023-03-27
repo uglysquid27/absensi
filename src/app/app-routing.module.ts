@@ -16,6 +16,7 @@ import { TestComponent } from './dashboard/test/test.component';
 import { UsersComponent } from './dashboard/tables/users/users.component';
 import { UserStatusComponent } from './dashboard/tables/user-status/user-status.component';
 import { EditComponent as UserEditComponent } from './dashboard/tables/users/edit/edit.component';
+import { ActivityAdminComponent } from './dashboard/activity-admin/activity-admin.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -28,7 +29,7 @@ const routes: Routes = [
       { path: 'user-status', component: UserStatusComponent},
       { path: 'institutions', component: InstitutionsComponent},
       { path: 'users/edit/:id', component: UserEditComponent },
-      { path: 'test', component: TestComponent },
+      { path: 'activity', component: ActivityAdminComponent },
     ],
   },
   { path: 'peserta', component: PesertaComponent },
