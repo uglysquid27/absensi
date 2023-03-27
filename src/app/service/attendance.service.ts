@@ -20,8 +20,14 @@ export class AttendanceService {
   getEmployeebyId(id: any) {
     return this.httpClient.get(api + 'employee/' + id);
   }
+  getEmployeeStatusbyId(id: any) {
+    return this.httpClient.get(api + 'employeestatus/' + id);
+  }
   getEmployeeStatus() {
     return this.httpClient.get(api + 'employeestatus');
+  }
+  updateEmployeeStatus(id: any, body: any){
+    return this.httpClient.put(api + 'employeestatus/' + id, body);
   }
   updateEmployee(id: any, body: any) {
     return this.httpClient.put(api + 'employee/' + id, body);

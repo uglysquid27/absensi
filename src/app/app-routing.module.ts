@@ -19,6 +19,7 @@ import { UsersComponent } from './dashboard/tables/users/users.component';
 import { UserStatusComponent } from './dashboard/tables/user-status/user-status.component';
 import { EditComponent as UserEditComponent } from './dashboard/tables/users/edit/edit.component';
 import { CreateComponent as UserAddComponent } from './dashboard/tables/users/create/create.component';
+import {EditComponent as StatusEditComponent} from './dashboard/tables/user-status/edit/edit.component';
 import { ActivityAdminComponent } from './dashboard/activity-admin/activity-admin.component';
 
 const routes: Routes = [
@@ -30,6 +31,7 @@ const routes: Routes = [
       { path: '', component: DashboardAdminComponent },
       { path: 'users', component: UsersComponent },
       { path: 'user-status', component: UserStatusComponent},
+      { path: 'user-status/edit/:id', component: StatusEditComponent},
       { path: 'institutions', component: InstitutionsComponent},
       { path: 'departments', component: DepartmentsComponent},
       { path: 'banks', component: BanksComponent},
