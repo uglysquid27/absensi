@@ -98,8 +98,6 @@ export class CreateComponent {
       blood: this.f['bloodInput'].value,
     };
 
-    console.log(body);
-
     this.apiService.storeEmployee(body).subscribe(
       (data) => {
         console.log(data);

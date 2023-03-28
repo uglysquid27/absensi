@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
 var api = environment.baseUrlApi;
@@ -14,28 +15,34 @@ const httpOptions = {
 export class AttendanceService {
   constructor(private httpClient: HttpClient) {}
 
-  getProfile() {
+  getProfile():Observable<any> {
     return this.httpClient.get(api + 'profile');
   }
-  getEmployeebyId(id: any) {
+  getEmployeebyId(id: any):Observable<any> {
     return this.httpClient.get(api + 'employee/' + id);
   }
-  getEmployeeStatus() {
+  getEmployeeStatus():Observable<any> {
     return this.httpClient.get(api + 'employeestatus');
   }
   updateEmployee(id: any, body: any) {
     return this.httpClient.put(api + 'employee/' + id, body);
   }
-  storeEmployee(body: any) {
-    return this.httpClient.post(api + 'employee/', body);
+  storeEmployee(body: any):Observable<any> {
+    return this.httpClient.post(api + 'employee', body);
   }
-  getBank() {
+  getAttendance():Observable<any> {
+    return this.httpClient.get(api + 'attendance');
+  }
+  getActivity(): Observable<any> {
+    return this.httpClient.get(api + 'activities');
+  }
+  getBank():Observable<any> {
     return this.httpClient.get(api + 'banks');
   }
-  getInstitutions() {
+  getInstitutions():Observable<any> {
     return this.httpClient.get(api + 'institutions');
   }
-  getDepartements() {
+  getDepartements():Observable<any> {
     return this.httpClient.get(api + 'departements');
   }
 }

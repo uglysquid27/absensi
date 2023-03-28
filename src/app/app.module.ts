@@ -32,6 +32,7 @@ import { ActivityAdminComponent } from './dashboard/activity-admin/activity-admi
 import { CreateComponent } from './dashboard/tables/users/create/create.component';
 import { DepartmentsComponent } from './dashboard/tables/departments/departments.component';
 import { BanksComponent } from './dashboard/tables/banks/banks.component';
+import { AddComponent } from './dashboard/activity-admin/add/add.component';
 // import {MatTableModule} from '@angular/material/table';
 
 @NgModule({
@@ -60,6 +61,7 @@ import { BanksComponent } from './dashboard/tables/banks/banks.component';
     CreateComponent,
     DepartmentsComponent,
     BanksComponent,
+    AddComponent,
   ],
   imports: [
     BrowserModule,

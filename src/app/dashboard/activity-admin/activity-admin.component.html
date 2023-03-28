@@ -1,7 +1,14 @@
 <div class="pl-14 lg:pl-52 py-5">
   <div class="">
     <div class="px-10 py-5">
-      <h2 class="text-3xl font-bold">Table User</h2>
+      <a
+        [routerLink]="['/dashboard/activity']"
+        class="text-white w-1/6 h-1/2 bg-blue-700 shadow-md hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-md text-sm mx-5 px-5 py-2.5 text-center dark:bg-violet-500 dark:hover:bg-purple-600 dark:focus:ring-blue-800"
+        style="float: right"
+      >
+        Add Data
+      </a>
+      <h2 class="text-3xl font-bold">Latest Activity</h2>
     </div>
     <div class="-my-2 overflow-x-auto">
       <div class="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
@@ -26,6 +33,12 @@
                 >
                   Name
                 </th>
+                <th
+                  scope="col"
+                  class="px-4 py-3.5 w-1/12 text-sm font-semibold rtl:text-right text-gray-500 dark:text-gray-700"
+                >
+                  Date
+                </th>
 
                 <th
                   scope="col"
@@ -49,15 +62,24 @@
               class="bg-gray-900 divide-y divide-gray-700 dark:divide-gray-300 dark:bg-white"
             >
               <tr
-                *ngFor="let user of usersData.data"
+                *ngFor="let user of usersData"
                 class="transition duration-300 ease-in-out dark:hover:bg-neutral-200"
               >
                 <td
                   class="px-4 py-4 text-sm text-center text-gray-700 dark:text-gray-700 whitespace-nowrap"
-                >{{ user.nik }}</td>
+                >
+                  {{ user.nik }}
+                </td>
                 <td
                   class="px-4 py-4 text-sm text-gray-500 dark:text-gray-700 whitespace-nowrap text-center"
-                >{{ user.name }}</td>
+                >
+                  {{ user.name }}
+                </td>
+                <td
+                  class="px-4 py-4 text-sm text-gray-500 dark:text-gray-700 whitespace-nowrap text-center"
+                >
+                  {{ now | date }}
+                </td>
 
                 <td
                   class="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap flex justify-center"
@@ -65,20 +87,26 @@
                   <div
                     class="inline-flex items-center px-3 py-1 rounded-full gap-x-2"
                     [ngClass]="
-                      1 == 1
+                      filterAttend(user.nik).length != 0
                         ? 'text-emerald-500 bg-emerald-50/50'
                         : 'text-red-500 bg-red-50/50'
                     "
                   >
                     <h2 class="text-sm font-normal">
-                      <span>In</span>
-                      <ng-template #inActive>Inactive</ng-template>
+                      <span *ngIf="filterAttend(user.nik).length != 0; else out"
+                        >In</span
+                      >
+                      <ng-template #out>Out </ng-template>
                     </h2>
                   </div>
                 </td>
                 <td
                   class="px-4 py-4 text-sm text-gray-500 dark:text-gray-700 whitespace-nowrap text-center"
-                ></td>
+                >
+                  <span *ngIf="this.filterAttend(user.nik).length != 0 && this.filterActivity(this.filterAttend(user.nik)[0].nik).length != 0 ">
+                    {{ this.filterActivity(this.filterAttend(user.nik)[0].nik)[0].activity }}
+                  </span>
+                </td>
                 <!-- <td class="px-2 py-4 whitespace-nowrap">
                   
                   <div class="w-full flex justify-center">
