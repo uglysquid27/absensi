@@ -12,22 +12,26 @@ export class ActivityAdminComponent {
   usersData: any;
   attendData: any;
   activityData: any;
+  activData: any;
   result: any;
   now = new Date();
   constructor(private apiService: AttendanceService) {
-    // apiService.getProfile().subscribe((data) => {
-    //   this.usersData = data;
-    //   console.log(this.usersData.data);
-    // });
+    apiService.getActivity().subscribe((data) => {
+      this.activData = data.data;
+      console.log(data.data);
+    });
     forkJoin(
-      apiService.getProfile(),
+      this.apiService.getProfile(),
       this.apiService.getAttendance(),
-      apiService.getActivity()
+      this.apiService.getActivity()
     ).subscribe(([users, attend, activ]) => {
       this.usersData = users.data;
       this.attendData = attend.data;
-      this.activityData = activ.data;
-      console.log(activ);
+      this.activityData= activ.data;
+      console.log(activ.data);
+      
+      
+     
       
       // console.log(this.convertDate(this.now));
       // console.log(this.convertDate(this.attendData[1].date));
@@ -45,7 +49,7 @@ export class ActivityAdminComponent {
     );
   }
   filterActivity(id: any) {
-    return this.activityData.filter((data: any) => (data.attendanceId = id));
+    return this.activityData.filter((data: any) => data.attendanceId == id);
   }
   convertDate(date: any) {
     return datepipe.transform(date, 'dd-MMM-YYYY');

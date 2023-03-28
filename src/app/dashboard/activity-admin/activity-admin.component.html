@@ -103,9 +103,20 @@
                 <td
                   class="px-4 py-4 text-sm text-gray-500 dark:text-gray-700 whitespace-nowrap text-center"
                 >
-                  <span *ngIf="this.filterAttend(user.nik).length != 0 && this.filterActivity(this.filterAttend(user.nik)[0].nik).length != 0 ">
-                    {{ this.filterActivity(this.filterAttend(user.nik)[0].nik)[0].activity }}
+                  <span
+                    *ngIf="
+                      this.filterAttend(user.nik).length != 0 &&
+                        this.filterActivity(this.filterAttend(user.nik)[0].id)
+                          .length != 0;
+                      else notyet
+                    "
+                  >
+                    {{
+                      this.filterActivity(this.filterAttend(user.nik)[0].id)[0]
+                        .activity
+                    }}
                   </span>
+                  <ng-template #notyet> - </ng-template>
                 </td>
                 <!-- <td class="px-2 py-4 whitespace-nowrap">
                   
