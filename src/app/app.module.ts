@@ -28,6 +28,7 @@ import { UserStatusComponent } from './dashboard/tables/user-status/user-status.
 import { UsersComponent } from './dashboard/tables/users/users.component';
 import { InstitutionsComponent } from './dashboard/tables/institutions/institutions.component';
 import { EditComponent } from './dashboard/tables/users/edit/edit.component';
+import { EditComponent as StatusEditComponent  } from './dashboard/tables/user-status/edit/edit.component';
 import { ActivityAdminComponent } from './dashboard/activity-admin/activity-admin.component';
 import { CreateComponent } from './dashboard/tables/users/create/create.component';
 import { DepartmentsComponent } from './dashboard/tables/departments/departments.component';
@@ -62,10 +63,11 @@ import { AddComponent } from './dashboard/activity-admin/add/add.component';
     DepartmentsComponent,
     BanksComponent,
     AddComponent,
+    StatusEditComponent,
   ],
   imports: [
-    BrowserModule,
     AppRoutingModule,
+    BrowserModule,
     NgApexchartsModule,
     HttpClientModule,
     FormsModule,
