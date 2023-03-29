@@ -16,16 +16,7 @@ export enum attendance {
   'Not Attend' = 'off day',
   'Leaving' = 'leave day',
 }
-export enum gender {
-  L = 'Laki - Laki',
-  P = 'Perempuan',
-}
-export enum bloodType {
-  A = 'A',
-  B = 'B',
-  AB = 'AB',
-  O = 'O',
-}
+
 
 @Component({
   selector: 'app-create',
@@ -33,9 +24,6 @@ export enum bloodType {
   styleUrls: ['./create.component.css'],
 })
 export class CreateComponent {
-  genderEnum = Object.keys(gender);
-  genders: any = gender;
-  bloodEnum = Object.values(bloodType);
   attendanceEnum = Object.keys(attendance);
   attendances: any = attendance;
   form!: FormGroup;
@@ -80,7 +68,7 @@ export class CreateComponent {
       (data) => {
         console.log(data);
         this.alertServie.onCallAlert('Success Add Data', AlertType.Success);
-        this.router.navigate(['/dashboard/users']);
+        this.router.navigate(['/dashboard/activity']);
       },
       (err) => {
         this.alertServie.setAlert('Add Data Failed', AlertType.Error);
