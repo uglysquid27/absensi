@@ -1,9 +1,9 @@
 <div
-  class="fixed flex flex-col top-0 left-0 w-52 bg-white h-full border-r max-lg:hidden"
+  class="fixed top-0 left-0 flex flex-col h-full bg-white border-r w-52 max-lg:hidden"
 >
   <a
     [routerLink]="['/']"
-    class="flex items-center justify-center h-28 border-b"
+    class="flex items-center justify-center border-b h-28"
   >
     <img
       src="https://www.aio.co.id/assets/images/logo-otsuka-aio-fc-5152dcf72befeb8e418adcc6d8d0481d.png"
@@ -12,7 +12,7 @@
     />
   </a>
 
-  <div class="overflow-y-auto overflow-x-hidden flex-grow">
+  <div class="flex-grow overflow-x-hidden overflow-y-auto">
     <ul class="flex flex-col py-4 space-y-1" role="group">
       <!-- <li class="px-5">
         <div class="flex flex-row items-center h-8">
@@ -23,15 +23,16 @@
       <li>
         <a
           [routerLink]="['/dashboard']"
-          class="relative flex items-center space-x-4 py-3"
+          routerLinkActive="active"
+          class="relative flex items-center py-3 space-x-4"
           [ngClass]="
             router.url == '/dashboard'
               ? 'bg-gradient-to-r from-sky-600 to-cyan-400  text-white  border-l-0 px-1 '
               : 'bg-white text-gray-600 hover:bg-gray-50 hover:text-gray-800 border-l-4 border-transparent hover:border-indigo-500'
           "
         >
-          <span class="inline-flex justify-center items-center ml-3">
-            <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none">
+          <span class="inline-flex items-center justify-center ml-3">
+            <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none">
               <path
                 d="M6 8a2 2 0 0 1 2-2h1a2 2 0 0 1 2 2v1a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V8ZM6 15a2 2 0 0 1 2-2h1a2 2 0 0 1 2 2v1a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2v-1Z"
                 class="text-cyan-400 fill-slate-600"
@@ -52,28 +53,29 @@
       <li>
         <a
           [routerLink]="['/dashboard/activity']"
-          class="relative flex items-center space-x-4 py-3"
+          routerLinkActive="active"
+          class="relative flex items-center py-3 space-x-4"
           [ngClass]="
             router.url == '/dashboard/activity'
               ? 'bg-gradient-to-r from-sky-600 to-cyan-400 text-white  border-l-0 px-1'
               : 'bg-white text-gray-600 hover:bg-gray-50 hover:text-gray-800 border-l-4 border-transparent hover:border-indigo-500'
           "
         >
-          <span class="inline-flex justify-center items-center ml-4">
+          <span class="inline-flex items-center justify-center ml-4">
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              class="h-5 w-5"
+              class="w-5 h-5"
               viewBox="0 0 20 20"
               fill="currentColor"
             >
               <path
-                class="fill-current text-gray-600 group-hover:text-cyan-600"
+                class="text-gray-600 fill-current group-hover:text-cyan-600"
                 fill-rule="evenodd"
                 d="M2 5a2 2 0 012-2h8a2 2 0 012 2v10a2 2 0 002 2H4a2 2 0 01-2-2V5zm3 1h6v4H5V6zm6 6H5v2h6v-2z"
                 clip-rule="evenodd"
               />
               <path
-                class="fill-current text-gray-300 group-hover:text-cyan-300"
+                class="text-gray-300 fill-current group-hover:text-cyan-300"
                 d="M15 7h1a2 2 0 012 2v5.5a1.5 1.5 0 01-3 0V7z"
               />
             </svg>
@@ -85,30 +87,30 @@
       <li>
         <a
           (click)="dropdown()"
-          class="relative flex flex-row items-center space-x-4 h-11 focus:outline-none hover:bg-gray-50 text-gray-600 hover:text-gray-800 border-l-4 border-transparent hover:border-indigo-500 pr-6"
+          class="relative flex flex-row items-center pr-6 space-x-4 text-gray-600 border-l-4 border-transparent h-11 focus:outline-none hover:bg-gray-50 hover:text-gray-800 hover:border-indigo-500"
           [ngClass]="boolDropdown ? 'bg-gray-50' : ''"
         >
-          <span class="inline-flex justify-center items-center ml-4">
+          <span class="inline-flex items-center justify-center ml-4">
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              class="h-5 w-5"
+              class="w-5 h-5"
               viewBox="0 0 20 20"
               fill="currentColor"
             >
               <path
-                class="fill-current text-gray-600 group-hover:text-cyan-600"
+                class="text-gray-600 fill-current group-hover:text-cyan-600"
                 fill-rule="evenodd"
                 d="M2 5a2 2 0 012-2h8a2 2 0 012 2v10a2 2 0 002 2H4a2 2 0 01-2-2V5zm3 1h6v4H5V6zm6 6H5v2h6v-2z"
                 clip-rule="evenodd"
               />
               <path
-                class="fill-current text-gray-300 group-hover:text-cyan-300"
+                class="text-gray-300 fill-current group-hover:text-cyan-300"
                 d="M15 7h1a2 2 0 012 2v5.5a1.5 1.5 0 01-3 0V7z"
               />
             </svg>
           </span>
           <span class="ml-2 text-sm tracking-wide truncate">Tables</span>
-          <span class="grow flex justify-end">
+          <span class="flex justify-end grow">
             <svg
               class="w-5 h-5 text-white"
               [ngClass]="boolDropdown ? 'rotate-180' : ''"
@@ -127,13 +129,13 @@
         </a>
         <ul
           *ngIf="boolDropdown"
-          class="mx-auto shadow bg-base-100 rounded-sm w-11/12 text-sm truncate"
+          class="w-11/12 mx-auto text-sm truncate rounded-sm shadow bg-base-100"
         >
           <li>
             <a
               [routerLink]="['/dashboard/users']"
               routerLinkActive="router-link-active"
-              class="relative flex items-center space-x-4 p-3"
+              class="relative flex items-center p-3 space-x-4"
               [ngClass]="
                 router.url == '/dashboard/users'
                   ? 'bg-gradient-to-r from-sky-600 to-cyan-400  px-4  text-white  border-l-0  '
@@ -145,7 +147,7 @@
           <li>
             <a
               [routerLink]="['/dashboard/user-status']"
-              class="relative flex items-center space-x-4 p-3"
+              class="relative flex items-center p-3 space-x-4"
               [ngClass]="
                 router.url == '/dashboard/user-status'
                   ? 'bg-gradient-to-r from-sky-600 to-cyan-400  px-4  text-white  border-l-0  '
@@ -169,7 +171,7 @@
           <li>
             <a
               [routerLink]="['/dashboard/departments']"
-              class="relative flex items-center space-x-4 p-3"
+              class="relative flex items-center p-3 space-x-4"
               [ngClass]="
                 router.url == '/dashboard/departments'
                   ? 'bg-gradient-to-r from-sky-600 to-cyan-400  px-4  text-white  border-l-0  '
@@ -181,7 +183,7 @@
           <li>
             <a
               [routerLink]="['/dashboard/banks']"
-              class="relative flex items-center space-x-4 p-3"
+              class="relative flex items-center p-3 space-x-4"
               [ngClass]="
                 router.url == '/dashboard/banks'
                   ? 'bg-gradient-to-r from-sky-600 to-cyan-400  px-4  text-white  border-l-0  '
@@ -195,21 +197,22 @@
       <li>
         <a
           href="#"
-          class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-50 text-gray-600 hover:text-gray-800 border-l-4 border-transparent hover:border-indigo-500 pr-6"
+          routerLinkActive="active"
+          class="relative flex flex-row items-center pr-6 text-gray-600 border-l-4 border-transparent h-11 focus:outline-none hover:bg-gray-50 hover:text-gray-800 hover:border-indigo-500"
         >
-          <span class="inline-flex justify-center items-center ml-4">
+          <span class="inline-flex items-center justify-center ml-4">
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              class="h-5 w-5"
+              class="w-5 h-5"
               viewBox="0 0 20 20"
               fill="currentColor"
             >
               <path
-                class="fill-current text-gray-600 group-hover:text-cyan-600"
+                class="text-gray-600 fill-current group-hover:text-cyan-600"
                 d="M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z"
               />
               <path
-                class="fill-current text-gray-300 group-hover:text-cyan-300"
+                class="text-gray-300 fill-current group-hover:text-cyan-300"
                 d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z"
               />
             </svg>
@@ -220,21 +223,22 @@
       <li>
         <a
           href="#"
-          class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-50 text-gray-600 hover:text-gray-800 border-l-4 border-transparent hover:border-indigo-500 pr-6"
+          routerLinkActive="active"
+          class="relative flex flex-row items-center pr-6 text-gray-600 border-l-4 border-transparent h-11 focus:outline-none hover:bg-gray-50 hover:text-gray-800 hover:border-indigo-500"
         >
-          <span class="inline-flex justify-center items-center ml-4">
+          <span class="inline-flex items-center justify-center ml-4">
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              class="h-5 w-5"
+              class="w-5 h-5"
               viewBox="0 0 20 20"
               fill="currentColor"
             >
               <path
-                class="fill-current text-gray-300 group-hover:text-cyan-300"
+                class="text-gray-300 fill-current group-hover:text-cyan-300"
                 d="M4 4a2 2 0 00-2 2v1h16V6a2 2 0 00-2-2H4z"
               />
               <path
-                class="fill-current text-gray-600 group-hover:text-cyan-600"
+                class="text-gray-600 fill-current group-hover:text-cyan-600"
                 fill-rule="evenodd"
                 d="M18 9H2v5a2 2 0 002 2h12a2 2 0 002-2V9zM4 13a1 1 0 011-1h1a1 1 0 110 2H5a1 1 0 01-1-1zm5-1a1 1 0 100 2h1a1 1 0 100-2H9z"
                 clip-rule="evenodd"
@@ -244,21 +248,43 @@
           <span class="ml-2 text-sm tracking-wide truncate">Other Menu</span>
         </a>
       </li>
+      <li>
+        <a
+          routerLink="/dashboard/myActivity"
+          routerLinkActive="active"
+          class="relative flex flex-row items-center pr-6 text-gray-600 border-l-4 border-transparent h-11 focus:outline-none hover:bg-gray-50 hover:text-gray-800 hover:border-indigo-500"
+        >
+          <span class="inline-flex items-center justify-center ml-4">
+            <svg
+              viewBox="0 0 32 32"
+              version="1.1"
+              class="w-5 h-5"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                class="text-gray-600 fill-current group-hover:text-cyan-300"
+                d="M28 9h-1.958v-2.938l-4.042-0.062 0.021 3h-12.146l0.083-3-3.958 0.062v3l-2-0.062c-1.104 0-2 0.896-2 2v14c0 1.104 0.896 2 2 2h24c1.104 0 2-0.896 2-2v-14c0-1.104-0.896-2-2-2zM23 7h2v4h-2v-4zM10 13.812c1.208 0 2.188 1.287 2.188 2.875s-0.98 2.875-2.188 2.875-2.188-1.287-2.188-2.875 0.98-2.875 2.188-2.875zM7 7h2v4h-2v-4zM5.667 22.948c0 0 0.237-1.902 0.776-2.261s2.090-0.598 2.090-0.598 1.006 1.075 1.434 1.075c0.427 0 1.433-1.075 1.433-1.075s1.552 0.238 2.091 0.598c0.633 0.422 0.791 2.261 0.791 2.261h-8.615zM26 22h-9v-1h9v1zM26 20h-9v-1h9v1zM26 18h-9v-1h9v1zM26 16h-9v-1h9v1z"
+              ></path>
+            </svg>
+          </span>
+          <span class="ml-2 text-sm tracking-wide truncate">My Activities</span>
+        </a>
+      </li>
     </ul>
   </div>
 </div>
 
-<div class="fixed min-h-screen lg:hidden bg-gray-100 z-50">
+<div class="fixed z-50 min-h-screen bg-gray-100 lg:hidden">
   <div
     class="sidebar min-h-screen w-[3.35rem] overflow-hidden border-r hover:w-56 hover:bg-white hover:shadow-lg"
   >
-    <div class="flex h-screen flex-col justify-between pt-2 pb-6">
+    <div class="flex flex-col justify-between h-screen pt-2 pb-6">
       <div>
         <div class="w-max p-2.5 pb-10 pt-10">
           <img src="../../assets/img/small.png" class="w-10" alt="" />
         </div>
         <!-- <div class="mt-8 text-center">
-          <img src="../../assets/img/Satriya-Polinema.jpg" alt="" class="w-12 h-12 m-auto rounded-full object-cover lg:w-28 lg:h-28">
+          <img src="../../assets/img/Satriya-Polinema.jpg" alt="" class="object-cover w-12 h-12 m-auto rounded-full lg:w-28 lg:h-28">
           <h5 class="hidden mt-4 text-xl font-semibold text-gray-600 group-hover:block">Satriya</h5>
           <span class="hidden text-gray-400 group-hover:block">Pemagang</span>
         </div> -->
@@ -269,14 +295,14 @@
               [routerLink]="['/dashboard']"
               routerLinkActive="router-link-active"
               aria-label="dashboard"
-              class="relative flex items-center space-x-4 py-3"
+              class="relative flex items-center py-3 space-x-4"
               [ngClass]="
                 router.url == '/dashboard'
                   ? 'bg-gradient-to-r from-sky-600 to-cyan-400  px-4  text-white  border-l-0  '
                   : ' text-gray-600 hover:bg-gray-50 hover:text-gray-800 border-l-4 px-3 border-transparent hover:border-indigo-500'
               "
             >
-              <svg class="-ml-1 h-6 w-6" viewBox="0 0 24 24" fill="none">
+              <svg class="w-6 h-6 -ml-1" viewBox="0 0 24 24" fill="none">
                 <path
                   d="M6 8a2 2 0 0 1 2-2h1a2 2 0 0 1 2 2v1a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V8ZM6 15a2 2 0 0 1 2-2h1a2 2 0 0 1 2 2v1a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2v-1Z"
                   class="text-cyan-400 fill-slate-600"
@@ -297,7 +323,7 @@
           <li class="min-w-max">
             <a
               [routerLink]="['/dashboard/test']"
-              class="relative flex items-center space-x-4 py-3"
+              class="relative flex items-center py-3 space-x-4"
               [ngClass]="
                 router.url == '/dashboard/test'
                   ? 'bg-gradient-to-r from-sky-600 to-cyan-400  px-4  text-white  border-l-0  '
@@ -306,18 +332,18 @@
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                class="h-5 w-5"
+                class="w-5 h-5"
                 viewBox="0 0 20 20"
                 fill="currentColor"
               >
                 <path
-                  class="fill-current text-gray-300 group-hover:text-cyan-300"
+                  class="text-gray-300 fill-current group-hover:text-cyan-300"
                   fill-rule="evenodd"
                   d="M2 6a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1H8a3 3 0 00-3 3v1.5a1.5 1.5 0 01-3 0V6z"
                   clip-rule="evenodd"
                 />
                 <path
-                  class="fill-current text-gray-600 group-hover:text-cyan-600"
+                  class="text-gray-600 fill-current group-hover:text-cyan-600"
                   d="M6 12a2 2 0 012-2h8a2 2 0 012 2v2a2 2 0 01-2 2H2h2a2 2 0 002-2v-2z"
                 />
               </svg>
@@ -340,11 +366,11 @@
           </div>
 
             <ng-template #lain>
-              <a [routerLink]="['/dashboard']" class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-50 text-gray-600 hover:text-gray-800 border-l-4 border-transparent hover:border-indigo-500 pr-6">
-                <span class="inline-flex justify-center items-center ml-4">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                    <path class="fill-current text-gray-600 group-hover:text-cyan-600" fill-rule="evenodd" d="M2 5a2 2 0 012-2h8a2 2 0 012 2v10a2 2 0 002 2H4a2 2 0 01-2-2V5zm3 1h6v4H5V6zm6 6H5v2h6v-2z" clip-rule="evenodd" />
-                    <path class="fill-current text-gray-300 group-hover:text-cyan-300" d="M15 7h1a2 2 0 012 2v5.5a1.5 1.5 0 01-3 0V7z" />
+              <a [routerLink]="['/dashboard']" class="relative flex flex-row items-center pr-6 text-gray-600 border-l-4 border-transparent h-11 focus:outline-none hover:bg-gray-50 hover:text-gray-800 hover:border-indigo-500">
+                <span class="inline-flex items-center justify-center ml-4">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 20 20" fill="currentColor">
+                    <path class="text-gray-600 fill-current group-hover:text-cyan-600" fill-rule="evenodd" d="M2 5a2 2 0 012-2h8a2 2 0 012 2v10a2 2 0 002 2H4a2 2 0 01-2-2V5zm3 1h6v4H5V6zm6 6H5v2h6v-2z" clip-rule="evenodd" />
+                    <path class="text-gray-300 fill-current group-hover:text-cyan-300" d="M15 7h1a2 2 0 012 2v5.5a1.5 1.5 0 01-3 0V7z" />
                   </svg>
                 </span>
                 <span class="ml-2 text-sm tracking-wide truncate">Dashboard</span>
@@ -368,11 +394,11 @@
           </div>
 
             <ng-template #lain2>
-              <a [routerLink]="['/profil']" class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-50 text-gray-600 hover:text-gray-800 border-l-4 border-transparent hover:border-indigo-500 pr-6">
-                <span class="inline-flex justify-center items-center ml-4">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                    <path class="fill-current text-gray-600 group-hover:text-cyan-600" fill-rule="evenodd" d="M2 5a2 2 0 012-2h8a2 2 0 012 2v10a2 2 0 002 2H4a2 2 0 01-2-2V5zm3 1h6v4H5V6zm6 6H5v2h6v-2z" clip-rule="evenodd" />
-                    <path class="fill-current text-gray-300 group-hover:text-cyan-300" d="M15 7h1a2 2 0 012 2v5.5a1.5 1.5 0 01-3 0V7z" />
+              <a [routerLink]="['/profil']" class="relative flex flex-row items-center pr-6 text-gray-600 border-l-4 border-transparent h-11 focus:outline-none hover:bg-gray-50 hover:text-gray-800 hover:border-indigo-500">
+                <span class="inline-flex items-center justify-center ml-4">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 20 20" fill="currentColor">
+                    <path class="text-gray-600 fill-current group-hover:text-cyan-600" fill-rule="evenodd" d="M2 5a2 2 0 012-2h8a2 2 0 012 2v10a2 2 0 002 2H4a2 2 0 01-2-2V5zm3 1h6v4H5V6zm6 6H5v2h6v-2z" clip-rule="evenodd" />
+                    <path class="text-gray-300 fill-current group-hover:text-cyan-300" d="M15 7h1a2 2 0 012 2v5.5a1.5 1.5 0 01-3 0V7z" />
                   </svg>
                 </span>
                 <span class="ml-2 text-sm tracking-wide truncate">Activity</span>
@@ -381,22 +407,22 @@
           <li class="min-w-max">
             <a
               href="#"
-              class="group flex items-center space-x-4 rounded-md px-4 py-3 text-gray-600"
+              class="flex items-center px-4 py-3 space-x-4 text-gray-600 rounded-md group"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                class="h-5 w-5"
+                class="w-5 h-5"
                 viewBox="0 0 20 20"
                 fill="currentColor"
               >
                 <path
-                  class="fill-current text-gray-600 group-hover:text-cyan-600"
+                  class="text-gray-600 fill-current group-hover:text-cyan-600"
                   fill-rule="evenodd"
                   d="M2 5a2 2 0 012-2h8a2 2 0 012 2v10a2 2 0 002 2H4a2 2 0 01-2-2V5zm3 1h6v4H5V6zm6 6H5v2h6v-2z"
                   clip-rule="evenodd"
                 />
                 <path
-                  class="fill-current text-gray-300 group-hover:text-cyan-300"
+                  class="text-gray-300 fill-current group-hover:text-cyan-300"
                   d="M15 7h1a2 2 0 012 2v5.5a1.5 1.5 0 01-3 0V7z"
                 />
               </svg>
@@ -406,20 +432,20 @@
           <li class="min-w-max">
             <a
               href="#"
-              class="group flex items-center space-x-4 rounded-md px-4 py-3 text-gray-600"
+              class="flex items-center px-4 py-3 space-x-4 text-gray-600 rounded-md group"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                class="h-5 w-5"
+                class="w-5 h-5"
                 viewBox="0 0 20 20"
                 fill="currentColor"
               >
                 <path
-                  class="fill-current text-gray-600 group-hover:text-cyan-600"
+                  class="text-gray-600 fill-current group-hover:text-cyan-600"
                   d="M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z"
                 />
                 <path
-                  class="fill-current text-gray-300 group-hover:text-cyan-300"
+                  class="text-gray-300 fill-current group-hover:text-cyan-300"
                   d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z"
                 />
               </svg>
@@ -429,20 +455,20 @@
           <li class="min-w-max">
             <a
               href="#"
-              class="group flex items-center space-x-4 rounded-md px-4 py-3 text-gray-600"
+              class="flex items-center px-4 py-3 space-x-4 text-gray-600 rounded-md group"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                class="h-5 w-5"
+                class="w-5 h-5"
                 viewBox="0 0 20 20"
                 fill="currentColor"
               >
                 <path
-                  class="fill-current text-gray-300 group-hover:text-cyan-300"
+                  class="text-gray-300 fill-current group-hover:text-cyan-300"
                   d="M4 4a2 2 0 00-2 2v1h16V6a2 2 0 00-2-2H4z"
                 />
                 <path
-                  class="fill-current text-gray-600 group-hover:text-cyan-600"
+                  class="text-gray-600 fill-current group-hover:text-cyan-600"
                   fill-rule="evenodd"
                   d="M18 9H2v5a2 2 0 002 2h12a2 2 0 002-2V9zM4 13a1 1 0 011-1h1a1 1 0 110 2H5a1 1 0 01-1-1zm5-1a1 1 0 100 2h1a1 1 0 100-2H9z"
                   clip-rule="evenodd"

@@ -1,0 +1,207 @@
+<div class="py-5 pl-14 lg:pl-52">
+  <div class="fixed right-0 z-50 px-5">
+    <img
+      src="assets/img/attendance.png"
+      alt=""
+      width="50px"
+      class="m-2 bg-gray-100 cursor-pointer rounded-xl hover:-translate-y-0.5 hover:shadow-2xl"
+      (click)="showAttendance = true"
+      *ngIf="!showAttendance"
+    />
+    <div
+      *ngIf="showAttendance"
+      class="h-full max-w-sm px-6 bg-white border border-gray-200 rounded-lg shadow-xl hover:bg-indigo-100"
+    >
+      <div class="flex justify-end mt-3">
+        <svg
+          (click)="showAttendance = false"
+          width="30px"
+          height="30px"
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          class="cursor-pointer"
+        >
+          <g id="Edit / Close_Circle">
+            <path
+              id="Vector"
+              d="M9 9L11.9999 11.9999M11.9999 11.9999L14.9999 14.9999M11.9999 11.9999L9 14.9999M11.9999 11.9999L14.9999 9M12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12C21 16.9706 16.9706 21 12 21Z"
+              stroke="#DF2E38"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </g>
+        </svg>
+      </div>
+      <h2
+        class="mb-4 text-xl font-semibold text-center text-gray-900 title-font"
+      >
+        {{ session.getUser().name }}
+      </h2>
+      <div class="grid grid-cols-3 mb-5 gap-x-6">
+        <div class="mb-12 md:mb-0">
+          <div
+            class="flex justify-center w-full p-4 bg-blue-500 rounded-md shadow-lg"
+          >
+            <svg
+              class="w-5 h-5 text-white"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 496 512"
+            >
+              <path
+                fill="currentColor"
+                d="M248 8C111 8 0 119 0 256s111 248 248 248 248-111 248-248S385 8 248 8zm80 144c23.8 0 52.7 29.3 56 71.4.7 8.6-10.8 11.9-14.9 4.5l-9.5-17c-7.7-13.7-19.2-21.6-31.5-21.6s-23.8 7.9-31.5 21.6l-9.5 17c-4.1 7.3-15.6 4-14.9-4.5 3.1-42.1 32-71.4 55.8-71.4zm-160 0c23.8 0 52.7 29.3 56 71.4.7 8.6-10.8 11.9-14.9 4.5l-9.5-17c-7.7-13.7-19.2-21.6-31.5-21.6s-23.8 7.9-31.5 21.6l-9.5 17c-4.2 7.4-15.6 4-14.9-4.5 3.1-42.1 32-71.4 55.8-71.4zm80 280c-60.6 0-134.5-38.3-143.8-93.3-2-11.9 9.4-21.6 20.7-17.9C155.1 330.5 200 336 248 336s92.9-5.5 123.1-15.2c11.4-3.7 22.6 6.1 20.7 17.9-9.3 55-83.2 93.3-143.8 93.3z"
+              />
+            </svg>
+          </div>
+          <h3 class="text-2xl font-bold text-center text-blue-500">
+            {{ attended }}
+          </h3>
+          <h5 class="font-medium text-center text-gray-500 text-md">Attend</h5>
+        </div>
+
+        <div class="mb-12 md:mb-0">
+          <div
+            class="flex justify-center w-full p-4 bg-yellow-300 rounded-md shadow-lg"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              height="24"
+              width="24"
+              fill="white"
+            >
+              <path
+                d="M15.4 10.8q.55 0 .925-.375T16.7 9.5q0-.55-.375-.925T15.4 8.2q-.55 0-.925.375T14.1 9.5q0 .55.375.925t.925.375Zm-6.8 0q.55 0 .925-.375T9.9 9.5q0-.55-.375-.925T8.6 8.2q-.55 0-.925.375T7.3 9.5q0 .55.375.925t.925.375Zm.475 4.55h5.85v-1.2h-5.85ZM12 21.5q-1.975 0-3.712-.75Q6.55 20 5.275 18.725T3.25 15.712Q2.5 13.975 2.5 12t.75-3.713Q4 6.55 5.275 5.275T8.288 3.25Q10.025 2.5 12 2.5t3.713.75q1.737.75 3.012 2.025t2.025 3.012q.75 1.738.75 3.713t-.75 3.712q-.75 1.738-2.025 3.013t-3.012 2.025q-1.738.75-3.713.75Z"
+              />
+            </svg>
+          </div>
+          <h3 class="text-2xl font-bold text-center text-yellow-300">
+            {{ leaving }}
+          </h3>
+          <h5 class="font-medium text-center text-gray-500 text-md">Leaving</h5>
+        </div>
+
+        <div class="mb-12 md:mb-0">
+          <div
+            class="flex justify-center w-full p-4 bg-red-400 rounded-md shadow-lg"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              height="24"
+              width="24"
+              fill="white"
+            >
+              <path
+                d="M15.4 10.8q.55 0 .925-.375T16.7 9.5q0-.55-.375-.925T15.4 8.2q-.55 0-.925.375T14.1 9.5q0 .55.375.925t.925.375Zm-6.8 0q.55 0 .925-.375T9.9 9.5q0-.55-.375-.925T8.6 8.2q-.55 0-.925.375T7.3 9.5q0 .55.375.925t.925.375Zm3.4 2.7q-1.575 0-2.862.875-1.288.875-1.913 2.325H8.55q.55-.925 1.462-1.462.913-.538 1.988-.538t1.988.538q.912.537 1.462 1.462h1.325q-.625-1.45-1.912-2.325Q13.575 13.5 12 13.5Zm0 8q-1.975 0-3.712-.75Q6.55 20 5.275 18.725T3.25 15.712Q2.5 13.975 2.5 12t.75-3.713Q4 6.55 5.275 5.275T8.288 3.25Q10.025 2.5 12 2.5t3.713.75q1.737.75 3.012 2.025t2.025 3.012q.75 1.738.75 3.713t-.75 3.712q-.75 1.738-2.025 3.013t-3.012 2.025q-1.738.75-3.713.75Z"
+              />
+            </svg>
+          </div>
+          <h3 class="text-2xl font-bold text-center text-red-500">
+            {{ notAttended }}
+          </h3>
+          <h5 class="font-medium text-center text-gray-500 text-md">
+            Not Attend
+          </h5>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div
+    class="max-w-lg p-6 mx-4 bg-white border border-gray-200 rounded-lg shadow"
+    *ngIf="!isAttended"
+  >
+    <h5
+      class="mb-2 text-2xl font-bold tracking-tight text-center text-gray-900"
+    >
+      Attendance
+    </h5>
+
+    <form [formGroup]="formAttendance" (submit)="submit()">
+      <label
+        for="countries"
+        class="block mb-2 text-sm font-medium text-gray-900"
+        >Select an option</label
+      >
+      <select
+        id="countries"
+        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+        formControlName="dayStatus"
+        [(ngModel)]="dayStatus"
+        (change)="onSelect(dayStatus)"
+      >
+        <option value="Attended">Attended</option>
+        <option value="Not Attended">Not Attended</option>
+        <option value="Off Day">Off Day</option>
+        <option value="Leaving">Leaving</option>
+      </select>
+      <div class="mt-5" *ngIf="dayStatus == 'Leaving'">
+        <div class="flex items-center justify-between gap-2">
+          <div class="w-full">
+            <label
+              for="first_name"
+              class="block mb-2 text-sm font-medium text-gray-900"
+              >Time In</label
+            >
+            <input
+              type="time"
+              id="first_name"
+              formControlName="timeIn"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+              placeholder="John"
+              required
+            />
+          </div>
+          <div class="w-full">
+            <label
+              for="first_name"
+              class="block mb-2 text-sm font-medium text-gray-900"
+              >Time Out</label
+            >
+            <input
+              type="time"
+              id="first_name"
+              formControlName="timeOut"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+              placeholder="John"
+              required
+            />
+          </div>
+        </div>
+      </div>
+      <div
+        class="mt-5"
+        *ngIf="dayStatus == 'Leaving' || dayStatus == 'Not Attended'"
+      >
+        <label
+          for="message"
+          class="block mb-2 text-sm font-medium text-gray-900"
+          >Description</label
+        >
+        <textarea
+          id="message"
+          rows="4"
+          formControlName="description"
+          class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
+          placeholder="Description..."
+        ></textarea>
+      </div>
+
+      <div class="flex justify-center mt-5">
+        <button
+          type="submit"
+          class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 focus:outline-none"
+        >
+          Submit
+        </button>
+        <button
+          type="reset"
+          class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 focus:outline-none"
+        >
+          Reset
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
