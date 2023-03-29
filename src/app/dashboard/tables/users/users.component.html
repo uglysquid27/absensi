@@ -2,68 +2,63 @@
   <div class="">
     <div class="px-10 py-5">
       <a
-      [routerLink]="['/dashboard/users/add']"
-      class="text-white w-1/6 h-1/2 bg-blue-700 shadow-md hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-md text-sm mx-5 px-5 py-2.5 text-center dark:bg-violet-500 dark:hover:bg-purple-600 dark:focus:ring-blue-800"
-      style="float: right;"
-    >
-      Add Data
-    </a>
+        [routerLink]="['/dashboard/users/add']"
+        class="text-white w-1/6 h-1/2 shadow-md focus:ring-4 focus:outline-none font-medium rounded-md text-sm mx-5 px-5 py-2.5 text-center bg-violet-500 hover:bg-purple-600 focus:ring-blue-800"
+        style="float: right"
+      >
+        Add Data
+      </a>
       <h2 class="text-3xl font-bold">Table User</h2>
-
     </div>
     <div class="-my-2 overflow-x-auto">
       <div class="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
-        <div
-          class="overflow-hidden border border-gray-700 dark:border-gray-200 md:rounded-lg"
-        >
-          <table
-            class="min-w-full divide-y divide-gray-700 dark:divide-gray-200"
-          >
-            <thead class="bg-gray-80 dark:bg-gray-100">
+        <div class="overflow-hidden border border-gray-200 md:rounded-lg">
+          <table class="min-w-full divide-y divide-gray-200">
+            <thead class="bg-gray-80 bg-gray-100">
               <tr>
                 <th
                   scope="col"
-                  class="py-3.5 px-4 text-sm font-semibold rtl:text-right text-gray-400 dark:text-gray-700 text-center"
+                  class="py-3.5 px-4 text-sm font-semibold rtl:text-right text-gray-700 text-center"
                 >
                   NIK
                 </th>
 
                 <th
                   scope="col"
-                  class="px-4 py-3.5 text-sm font-semibold rtl:text-right text-gray-500 dark:text-gray-700"
+                  class="px-4 py-3.5 text-sm font-semibold rtl:text-right text-gray-700"
                 >
                   Name
                 </th>
 
                 <th
                   scope="col"
-                  class="px-4 py-3.5 text-sm font-semibold rtl:text-right text-gray-500 dark:text-gray-700 text-center"
+                  class="px-4 py-3.5 text-sm font-semibold rtl:text-right text-gray-700 text-center"
                 >
                   User Status
                 </th>
 
                 <th
                   scope="col"
-                  class="px-4 py-3.5 text-sm font-semibold rtl:text-right text-gray-500 dark:text-gray-700 text-center"
+                  class="px-4 py-3.5 text-sm font-semibold rtl:text-right text-gray-700 text-center"
                 >
                   Email
                 </th>
 
                 <th
                   scope="col"
-                  class="px-4 py-3.5 text-sm font-semibold rtl:text-right text-gray-500 dark:text-gray-700 text-center"
+                  class="px-4 py-3.5 text-sm font-semibold rtl:text-right text-gray-700 text-center"
                 >
                   Origin
                 </th>
                 <th
                   scope="col"
-                  class="px-4 py-3.5 text-sm font-semibold rtl:text-right text-gray-500 dark:text-gray-700 text-center"
+                  class="px-4 py-3.5 text-sm font-semibold rtl:text-right text-gray-700 text-center"
                 >
                   IsActive
                 </th>
                 <th
                   scope="col"
-                  class="px-4 py-3.5 text-sm font-semibold rtl:text-right text-gray-500 dark:text-gray-700 text-center"
+                  class="px-4 py-3.5 text-sm font-semibold rtl:text-right text-gray-700 text-center"
                 >
                   Actions
                 </th>
@@ -73,36 +68,34 @@
                 </th> -->
               </tr>
             </thead>
-            <tbody
-              class="bg-gray-900 divide-y divide-gray-700 dark:divide-gray-300 dark:bg-white"
-            >
+            <tbody class="divide-y divide-gray-300 bg-white">
               <tr
                 *ngFor="let user of usersData.data"
-                class="transition duration-300 ease-in-out dark:hover:bg-neutral-200"
+                class="transition duration-300 ease-in-out hover:bg-neutral-200"
               >
                 <td
-                  class="px-4 py-4 text-sm text-center text-gray-700 dark:text-gray-700 whitespace-nowrap"
+                  class="px-4 py-4 text-sm text-center text-gray-700 whitespace-nowrap"
                 >
                   {{ user.nik }}
                 </td>
                 <td
-                  class="px-4 py-4 text-sm text-gray-500 dark:text-gray-700 whitespace-nowrap text-center"
+                  class="px-4 py-4 text-sm text-gray-700 whitespace-nowrap text-center"
                 >
                   {{ user.name }}
                 </td>
                 <td
-                  class="px-4 py-4 text-sm text-gray-500 dark:text-gray-700 whitespace-nowrap text-center"
+                  class="px-4 py-4 text-sm text-gray-700 whitespace-nowrap text-center"
                 >
                   {{ user.employeeStatusId }}
                 </td>
 
                 <td
-                  class="px-4 py-4 text-sm text-gray-500 dark:text-gray-700 whitespace-nowrap text-center"
+                  class="px-4 py-4 text-sm text-gray-700 whitespace-nowrap text-center"
                 >
                   {{ user.email }}
                 </td>
                 <td
-                  class="px-4 py-4 text-sm text-gray-500 dark:text-gray-700 whitespace-nowrap text-center"
+                  class="px-4 py-4 text-sm text-gray-700 whitespace-nowrap text-center"
                 >
                   {{ user.placeOfBirth }}
                 </td>
@@ -161,182 +154,6 @@
                   </div>
                 </td>
               </tr>
-
-              <!-- <tr>
-                  <td
-                    class="px-4 py-4 text-sm font-medium text-gray-700 dark:text-gray-700 whitespace-nowrap"
-                  >
-                    <div class="inline-flex items-center gap-x-3">
-                      <input
-                        type="checkbox"
-                        class="text-blue-500 border-gray-900 rounded dark:bg-gray-100 dark:ring-offset-gray-900 dark:border-gray-700"
-                      />
-
-                      <span>#3065</span>
-                    </div>
-                  </td>
-                  <td
-                    class="px-4 py-4 text-sm text-gray-500 dark:text-gray-700 whitespace-nowrap"
-                  >
-                    Jan 5, 2022
-                  </td>
-                  <td
-                    class="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap"
-                  >
-                    <div
-                      class="inline-flex items-center px-3 py-1 text-red-500 rounded-full gap-x-2 bg-gray-800 dark:bg-emerald-50/50"
-                    >
-                      <svg
-                        width="12"
-                        height="12"
-                        viewBox="0 0 12 12"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M9 3L3 9M3 3L9 9"
-                          stroke="currentColor"
-                          stroke-width="1.5"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                        />
-                      </svg>
-
-                      <h2 class="text-sm font-normal">Cancelled</h2>
-                    </div>
-                  </td>
-                  <td
-                    class="px-4 py-4 text-sm text-gray-500 dark:text-gray-700 whitespace-nowrap"
-                  >
-                    <div class="flex items-center gap-x-2">
-                      <img
-                        class="object-cover w-8 h-8 rounded-full"
-                        src="https://images.unsplash.com/photo-1531590878845-12627191e687?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=764&q=80"
-                        alt=""
-                      />
-                      <div>
-                        <h2
-                          class="text-sm font-medium text-gray-800 dark:text-white"
-                        >
-                          Andi Lane
-                        </h2>
-                        <p
-                          class="text-xs font-normal text-gray-600 dark:text-gray-700"
-                        >
-                          andi@example.com
-                        </p>
-                      </div>
-                    </div>
-                  </td>
-                  <td
-                    class="px-4 py-4 text-sm text-gray-500 dark:text-gray-700 whitespace-nowrap"
-                  >
-                    Monthly subscription
-                  </td>
-                  <td class="px-4 py-4 text-sm whitespace-nowrap">
-                    <div class="flex items-center gap-x-6">
-                      <button
-                        class="text-gray-500 transition-colors duration-200 dark:hover:text-indigo-500 dark:text-gray-700 hover:text-indigo-500 focus:outline-none"
-                      >
-                        Archive
-                      </button>
-
-                      <button
-                        class="text-blue-500 transition-colors duration-200 hover:text-indigo-500 focus:outline-none"
-                      >
-                        Download
-                      </button>
-                    </div>
-                  </td>
-                </tr>
-
-                <tr>
-                  <td
-                    class="px-4 py-4 text-sm font-medium text-gray-700 dark:text-gray-700 whitespace-nowrap"
-                  >
-                    <div class="inline-flex items-center gap-x-3">
-                      <input
-                        type="checkbox"
-                        class="text-blue-500 border-gray-900 rounded dark:bg-gray-100 dark:ring-offset-gray-900 dark:border-gray-700"
-                      />
-
-                      <span>#3064</span>
-                    </div>
-                  </td>
-                  <td
-                    class="px-4 py-4 text-sm text-gray-500 dark:text-gray-700 whitespace-nowrap"
-                  >
-                    Jan 5, 2022
-                  </td>
-                  <td
-                    class="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap"
-                  >
-                    <div
-                      class="inline-flex items-center px-3 py-1 rounded-full gap-x-2 text-emerald-500 bg-gray-800 dark:bg-emerald-50/50"
-                    >
-                      <svg
-                        width="12"
-                        height="12"
-                        viewBox="0 0 12 12"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M10 3L4.5 8.5L2 6"
-                          stroke="currentColor"
-                          stroke-width="1.5"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                        />
-                      </svg>
-
-                      <h2 class="text-sm font-normal">Paid</h2>
-                    </div>
-                  </td>
-                  <td
-                    class="px-4 py-4 text-sm text-gray-500 dark:text-gray-700 whitespace-nowrap"
-                  >
-                    <div class="flex items-center gap-x-2">
-                      <img
-                        class="object-cover w-8 h-8 rounded-full"
-                        src="https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=761&q=80"
-                        alt=""
-                      />
-                      <div>
-                        <h2
-                          class="text-sm font-medium text-gray-800 dark:text-white"
-                        >
-                          Kate Morrison
-                        </h2>
-                        <p
-                          class="text-xs font-normal text-gray-600 dark:text-gray-700"
-                        >
-                          kate@example.com
-                        </p>
-                      </div>
-                    </div>
-                  </td>
-                  <td
-                    class="px-4 py-4 text-sm text-gray-500 dark:text-gray-700 whitespace-nowrap"
-                  >
-                    Monthly subscription
-                  </td>
-                  <td class="px-4 py-4 text-sm whitespace-nowrap">
-                    <div class="flex items-center gap-x-6">
-                      <button
-                        class="text-gray-500 transition-colors duration-200 dark:hover:text-indigo-500 dark:text-gray-700 hover:text-indigo-500 focus:outline-none"
-                      >
-                        Archive
-                      </button>
-
-                      <button
-                        class="text-blue-500 transition-colors duration-200 hover:text-indigo-500 focus:outline-none"
-                      >
-                        Download
-                      </button>
-                    </div>
-                  </td>
-                </tr> -->
             </tbody>
           </table>
         </div>
