@@ -13,12 +13,12 @@ const httpOptions = {
   providedIn: 'root',
 })
 export class AttendanceService {
-  constructor(private httpClient: HttpClient) {}
+  constructor(private httpClient: HttpClient) { }
 
-  getProfile():Observable<any> {
+  getProfile(): Observable<any> {
     return this.httpClient.get(api + 'profile');
   }
-  getEmployeebyId(id: any):Observable<any> {
+  getEmployeebyId(id: any): Observable<any> {
     return this.httpClient.get(api + 'employee/' + id);
   }
   getEmployeeStatusbyId(id: any) {
@@ -27,28 +27,38 @@ export class AttendanceService {
   getEmployeeStatus() {
     return this.httpClient.get(api + 'employeestatus');
   }
-  updateEmployeeStatus(id: any, body: any){
+  updateEmployeeStatus(id: any, body: any) {
     return this.httpClient.put(api + 'employeestatus/' + id, body);
   }
   updateEmployee(id: any, body: any) {
     return this.httpClient.put(api + 'employee/' + id, body);
   }
-  storeEmployee(body: any):Observable<any> {
+  storeEmployee(body: any): Observable<any> {
     return this.httpClient.post(api + 'employee', body);
   }
-  getAttendance():Observable<any> {
+  getAttendance(): Observable<any> {
     return this.httpClient.get(api + 'attendance');
   }
   getActivity(): Observable<any> {
     return this.httpClient.get(api + 'activities');
   }
-  getBank():Observable<any> {
+  getBank(): Observable<any> {
     return this.httpClient.get(api + 'banks');
   }
-  getInstitutions():Observable<any> {
+  getInstitutions(): Observable<any> {
     return this.httpClient.get(api + 'institutions');
   }
-  getDepartements():Observable<any> {
+  getDepartements(): Observable<any> {
     return this.httpClient.get(api + 'departements');
+  }
+
+  getAmountAttendance(id: any): Observable<any> {
+    return this.httpClient.get(api + 'countAttending/' + id);
+  }
+  storeAttendance(body: any): Observable<any> {
+    return this.httpClient.post(api + 'attendance', body);
+  }
+  isAttended(id: any): Observable<any> {
+    return this.httpClient.get(api + 'isAttended/' + id);
   }
 }
