@@ -204,4 +204,11 @@
       </div>
     </form>
   </div>
+  <div class="p-10">
+    <ckeditor
+      [(ngModel)]="editorData"
+      [config]="config"
+      formControlName="desc"
+    ></ckeditor>
+  </div>
 </div>

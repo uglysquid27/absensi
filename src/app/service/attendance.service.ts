@@ -15,10 +15,6 @@ const httpOptions = {
 export class AttendanceService {
   constructor(private httpClient: HttpClient) { }
 
-<<<<<<< HEAD
-=======
-  /* Employee ------------------------------------------------------------------------*/
->>>>>>> 1f21f18717ae9d798567e962d1d495a8829c4146
   getProfile(): Observable<any> {
     return this.httpClient.get(api + 'profile');
   }

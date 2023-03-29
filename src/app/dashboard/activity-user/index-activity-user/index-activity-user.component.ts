@@ -4,6 +4,7 @@ import { TokenStorageService } from './../../../service/auth/token-storage.servi
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import * as moment from 'moment';
+import { CKEditorComponent } from 'ckeditor4-angular';
 
 @Component({
   selector: 'app-index-activity-user',
@@ -28,6 +29,18 @@ export class IndexActivityUserComponent implements OnInit {
   // ShowAttendance
   showAttendance: boolean = false;
   isAttended: any;
+
+  public config = {
+    toolbar: [
+
+      { name: 'forms', items: ['Form', 'Checkbox', 'Radio', 'TextField', 'Textarea', 'Select', 'Button', 'ImageButton', 'HiddenField'] },
+
+      '/',
+      { name: 'basicstyles', items: ['Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript', '-'] },
+      { name: 'paragraph', items: ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', , 'CreateDiv', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', '-', 'BidiLtr', 'BidiRtl', 'Language'] },
+    ]
+  }
+  editorData: any;
 
   ngOnInit(): void {
     this.service.getAmountAttendance(this.session.getUser().nik).subscribe((res: any) => {
