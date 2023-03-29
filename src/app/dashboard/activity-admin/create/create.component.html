@@ -24,7 +24,9 @@
 
   <div class="mx-5 shadow-lg rounded-md border-1 border">
     <div class="w-full flex justify-between items-center">
-      <h2 class="font-semibold font-sans text-xl py-5 px-10">Add Activity Data</h2>
+      <h2 class="font-semibold font-sans text-xl py-5 px-10">
+        Add Activity Data
+      </h2>
       <!-- <button
         class="text-white w-1/4 h-1/2 bg-blue-700 shadow-md hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-md text-sm mx-5 px-5 py-2.5 text-center dark:bg-violet-500 dark:hover:bg-purple-600 dark:focus:ring-blue-800"
       >
@@ -34,31 +36,54 @@
 
     <form class="" [formGroup]="form" (ngSubmit)="onSubmit()">
       <div
-        class="flex lg:w-11/12 w-full sm:flex-row flex-col mx-auto px-4 sm:space-x-4 sm:space-y-0 space-y-4 sm:px-0 items-end py-4"
+        class="flex lg:w-11/12 w-full sm:flex-row flex-col mx-auto px-4 sm:space-x-4 sm:space-y-0 space-y-4 sm:px-4 items-end py-4"
       >
         <div class="relative flex-grow w-full">
           <label for="nikInput" class="leading-7 text-sm text-gray-600"
-            >NIK</label
+            >Intern Participant</label
           >
-          <input
-            type="text"
+          <select
             id="nikInput"
             name="nikInput"
             formControlName="nikInput"
             class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-transparent focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
-          />
+          >
+            <option
+              *ngFor="let user of users"
+              value="{{ user.nik }}"
+            >
+              {{ user.name }}
+            </option>
+          </select>
         </div>
         <div class="relative flex-grow w-full">
-          <label for="nameInput" class="leading-7 text-sm text-gray-600"
-            >Status</label
+          <label for="statusInput" class="leading-7 text-sm text-gray-600"
+            >Status Attendance</label
           >
-          <input
-            type="text"
-            id="nameInput"
-            name="nameInput"
-            formControlName="nameInput"
+          <select
+            id="statusInput"
+            name="statusInput"
+            formControlName="statusInput"
             class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-transparent focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
-          />
+            [ngClass]="
+              this.f['statusInput'].value == 'off day'
+                ? 'bg-red-200 border-red-300'
+                : ( this.f['statusInput'].value == 'work day'
+                ? 'bg-green-200 border-green-300'
+                : ( this.f['statusInput'].value == 'leave day'
+                ? 'bg-yellow-200 border-yellow-300'
+                : ( this.f['statusInput'].value == 'holiday'
+                ? 'bg-gray-300 border-gray-400'
+                : '')))
+            "
+          >
+            <option
+              *ngFor="let attend of attendanceEnum"
+              value="{{ attendances[attend] }}"
+            >
+              {{ attend }}
+            </option>
+          </select>
         </div>
       </div>
       <div class="w-full px-10 py-5 flex justify-center">
