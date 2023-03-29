@@ -28,7 +28,7 @@ import { UserStatusComponent } from './dashboard/tables/user-status/user-status.
 import { UsersComponent } from './dashboard/tables/users/users.component';
 import { InstitutionsComponent } from './dashboard/tables/institutions/institutions.component';
 import { EditComponent } from './dashboard/tables/users/edit/edit.component';
-import { EditComponent as StatusEditComponent  } from './dashboard/tables/user-status/edit/edit.component';
+import { EditComponent as StatusEditComponent } from './dashboard/tables/user-status/edit/edit.component';
 import { ActivityAdminComponent } from './dashboard/activity-admin/activity-admin.component';
 import { CreateComponent } from './dashboard/tables/users/create/create.component';
 import { DepartmentsComponent } from './dashboard/tables/departments/departments.component';
@@ -37,6 +37,7 @@ import { CreateComponent as ActivityAddComponent } from './dashboard/activity-ad
 import { IndexActivityUserComponent } from './dashboard/activity-user/index-activity-user/index-activity-user.component';
 import { CreateActivityUserComponent } from './dashboard/activity-user/create-activity-user/create-activity-user.component';
 import { UpdateActivityUserComponent } from './dashboard/activity-user/update-activity-user/update-activity-user.component';
+import { CKEditorModule } from 'ckeditor4-angular';
 // import {MatTableModule} from '@angular/material/table';
 
 @NgModule({
@@ -80,9 +81,10 @@ import { UpdateActivityUserComponent } from './dashboard/activity-user/update-ac
     ReactiveFormsModule,
     BrowserModule,
     BrowserAnimationsModule,
+    CKEditorModule,
     NgIdleKeepaliveModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }
