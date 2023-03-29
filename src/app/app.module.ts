@@ -33,7 +33,7 @@ import { ActivityAdminComponent } from './dashboard/activity-admin/activity-admi
 import { CreateComponent } from './dashboard/tables/users/create/create.component';
 import { DepartmentsComponent } from './dashboard/tables/departments/departments.component';
 import { BanksComponent } from './dashboard/tables/banks/banks.component';
-import { AddComponent } from './dashboard/activity-admin/add/add.component';
+import { CreateComponent as ActivityAddComponent } from './dashboard/activity-admin/create/create.component';
 // import {MatTableModule} from '@angular/material/table';
 
 @NgModule({
@@ -62,8 +62,8 @@ import { AddComponent } from './dashboard/activity-admin/add/add.component';
     CreateComponent,
     DepartmentsComponent,
     BanksComponent,
-    AddComponent,
     StatusEditComponent,
+    ActivityAddComponent,
   ],
   imports: [
     AppRoutingModule,

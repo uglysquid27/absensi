@@ -21,7 +21,7 @@ import { EditComponent as UserEditComponent } from './dashboard/tables/users/edi
 import { CreateComponent as UserAddComponent } from './dashboard/tables/users/create/create.component';
 import {EditComponent as StatusEditComponent} from './dashboard/tables/user-status/edit/edit.component';
 import { ActivityAdminComponent } from './dashboard/activity-admin/activity-admin.component';
-import { AddComponent } from './dashboard/activity-admin/add/add.component';
+import { CreateComponent as ActivityAddComponent } from './dashboard/activity-admin/create/create.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -39,7 +39,7 @@ const routes: Routes = [
       { path: 'users/edit/:id', component: UserEditComponent },
       { path: 'users/add', component: UserAddComponent},
       { path: 'activity', component: ActivityAdminComponent },
-      { path: 'activity/add', component: AddComponent },
+      { path: 'activity/create', component: ActivityAddComponent},
     ],
   },
   { path: 'peserta', component: PesertaComponent },
