@@ -40,6 +40,12 @@ export class EditComponent {
   institutions: any;
   banks: any;
   submitted: Boolean = false;
+  cardPhotoSrc: any;
+  cardPhotoFile!: File;
+  ofPhotoSrc: any;
+  ofPhotoFile!: File;
+  bankPhotoSrc: any;
+  bankPhotoFile!: File;
 
   get f() {
     return this.form.controls;
@@ -68,6 +74,9 @@ export class EditComponent {
       studyInput: ['', Validators.required],
       longAppInput: ['', Validators.required],
       isActiveInput: ['', Validators.required],
+      cardPhotoInput: ['', Validators.required],
+      ofPhotoInput: ['', Validators.required],
+      bankPhotoInput: ['', Validators.required],
     });
     this.subscribeData();
   }
@@ -108,6 +117,8 @@ export class EditComponent {
 
       }
     );
+
+    
   }
 
   subscribeData() {
@@ -116,7 +127,7 @@ export class EditComponent {
       this.apiService.getEmployeeStatus(),
       this.apiService.getDepartements(),
       this.apiService.getInstitutions(),
-      this.apiService.getBank()
+      this.apiService.getBank(),
     ).subscribe(([employee, status, dep, inst, bank]) => {
       this.user = employee;
       this.status = status;

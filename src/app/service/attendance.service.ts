@@ -57,6 +57,23 @@ export class AttendanceService {
     return this.httpClient.get(api + 'activities');
   }
 
+   /* Documents ------------------------------------------------------------------------*/
+    getDocument(): Observable<any> {
+      return this.httpClient.get(api + 'documents');
+    }
+    storeDocument(body: any): Observable<any> {
+      return this.httpClient.post(api + 'documents', body);
+    }
+    getDocumentbyId(id: any): Observable<any> {
+      return this.httpClient.get(api + 'documents/' + id);
+    }
+    updateDocument(id: any, body: any) {
+      return this.httpClient.put(api + 'documents/' + id, body);
+    }
+    deleteDocument(id: any) {
+      return this.httpClient.delete(api + 'documents/' + id);
+    }
+
 
   /* Other ------------------------------------------------------------------------*/
   getBank(): Observable<any> {
@@ -68,5 +85,7 @@ export class AttendanceService {
   getDepartements(): Observable<any> {
     return this.httpClient.get(api + 'departements');
   }
+
+  
   
 }
