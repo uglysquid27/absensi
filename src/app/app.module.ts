@@ -37,6 +37,7 @@ import { BanksComponent } from './dashboard/tables/banks/banks.component';
 import { CreateComponent as ActivityAddComponent } from './dashboard/activity-admin/create/create.component';
 import { CreateComponent as StatusAddComponent } from './dashboard/tables/user-status/create/create.component';
 import { CreateComponent as InstAddComponent } from './dashboard/tables/institutions/create/create.component';
+import { CreateComponent as DepAddComponent } from './dashboard/tables/departments/create/create.component';
 import { IndexActivityUserComponent } from './dashboard/activity-user/index-activity-user/index-activity-user.component';
 import { CreateActivityUserComponent } from './dashboard/activity-user/create-activity-user/create-activity-user.component';
 import { UpdateActivityUserComponent } from './dashboard/activity-user/update-activity-user/update-activity-user.component';
@@ -77,6 +78,7 @@ import { CKEditorModule } from 'ckeditor4-angular';
     StatusAddComponent,
     InstEditComponent,
     InstAddComponent,
+    DepAddComponent,
   ],
   imports: [
     AppRoutingModule,

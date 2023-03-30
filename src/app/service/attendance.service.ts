@@ -80,5 +80,14 @@ export class AttendanceService {
   getDepartements(): Observable<any> {
     return this.httpClient.get(api + 'departements');
   }
+  getDepartementsbyId(id: any) {
+    return this.httpClient.get(api + 'departements/' + id);
+  }
+  UpdateDepartementsStatus(id: any, body: any) {
+    return this.httpClient.put(api + 'departements/' + id, body);
+  }
+  storeDepartements(body: any): Observable<any> {
+    return this.httpClient.post(api + 'departements', body);
+  }
 
 }
