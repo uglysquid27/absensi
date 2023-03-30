@@ -23,11 +23,10 @@
       <li>
         <a
           [routerLink]="['/dashboard']"
-          routerLinkActive="active"
           class="relative flex items-center py-3 space-x-4"
           [ngClass]="
             router.url == '/dashboard'
-              ? 'bg-gradient-to-r from-sky-600 to-cyan-400 text-white border-l-0 px-1 '
+              ? 'bg-gradient-to-r from-sky-600 to-cyan-400  border-l-0 px-1'
               : 'bg-white text-gray-600 hover:bg-gray-50 hover:text-gray-800 border-l-4 border-transparent hover:border-indigo-500'
           "
         >
@@ -36,14 +35,17 @@
               <path
                 d="M6 8a2 2 0 0 1 2-2h1a2 2 0 0 1 2 2v1a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V8ZM6 15a2 2 0 0 1 2-2h1a2 2 0 0 1 2 2v1a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2v-1Z"
                 class="text-cyan-400 fill-slate-600"
+                [ngClass]="router.url == '/dashboard' ? 'fill-white' : ''"
               ></path>
               <path
                 d="M13 8a2 2 0 0 1 2-2h1a2 2 0 0 1 2 2v1a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2V8Z"
                 class="fill-current text-cyan-200 group-hover:text-cyan-300"
+                [ngClass]="router.url == '/dashboard' ? 'fill-white' : ''"
               ></path>
               <path
                 d="M13 15a2 2 0 0 1 2-2h1a2 2 0 0 1 2 2v1a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-1Z"
                 class="fill-current group-hover:text-sky-300"
+                [ngClass]="router.url == '/dashboard' ? 'fill-white' : ''"
               ></path>
             </svg>
           </span>
@@ -73,6 +75,9 @@
               fill="currentColor"
             >
               <path
+                [ngClass]="
+                  router.url == '/dashboard/activity' ? 'fill-white' : ''
+                "
                 class="text-gray-600 fill-current group-hover:text-cyan-600"
                 fill-rule="evenodd"
                 d="M2 5a2 2 0 012-2h8a2 2 0 012 2v10a2 2 0 002 2H4a2 2 0 01-2-2V5zm3 1h6v4H5V6zm6 6H5v2h6v-2z"
@@ -202,7 +207,7 @@
           </li>
         </ul>
       </li>
-      <li>
+      <!-- <li>
         <a
           href="#"
           routerLinkActive="active"
@@ -255,12 +260,17 @@
           </span>
           <span class="ml-2 text-sm tracking-wide truncate">Other Menu</span>
         </a>
-      </li>
+      </li> -->
       <li>
         <a
           routerLink="/dashboard/myActivity"
           routerLinkActive="active"
-          class="relative flex flex-row items-center pr-6 text-gray-600 border-l-4 border-transparent h-11 focus:outline-none hover:bg-gray-50 hover:text-gray-800 hover:border-indigo-500"
+          class="relative flex items-center py-3 space-x-4"
+          [ngClass]="
+            router.url == '/dashboard/myActivity'
+              ? 'bg-gradient-to-r from-sky-600 to-cyan-400  border-l-0'
+              : 'bg-white text-gray-600 hover:bg-gray-50 hover:text-gray-800 border-l-4 border-transparent hover:border-indigo-500 '
+          "
         >
           <span class="inline-flex items-center justify-center ml-4">
             <svg
@@ -271,11 +281,20 @@
             >
               <path
                 class="text-gray-600 fill-current group-hover:text-cyan-300"
+                [ngClass]="
+                  router.url == '/dashboard/myActivity' ? 'fill-white' : ''
+                "
                 d="M28 9h-1.958v-2.938l-4.042-0.062 0.021 3h-12.146l0.083-3-3.958 0.062v3l-2-0.062c-1.104 0-2 0.896-2 2v14c0 1.104 0.896 2 2 2h24c1.104 0 2-0.896 2-2v-14c0-1.104-0.896-2-2-2zM23 7h2v4h-2v-4zM10 13.812c1.208 0 2.188 1.287 2.188 2.875s-0.98 2.875-2.188 2.875-2.188-1.287-2.188-2.875 0.98-2.875 2.188-2.875zM7 7h2v4h-2v-4zM5.667 22.948c0 0 0.237-1.902 0.776-2.261s2.090-0.598 2.090-0.598 1.006 1.075 1.434 1.075c0.427 0 1.433-1.075 1.433-1.075s1.552 0.238 2.091 0.598c0.633 0.422 0.791 2.261 0.791 2.261h-8.615zM26 22h-9v-1h9v1zM26 20h-9v-1h9v1zM26 18h-9v-1h9v1zM26 16h-9v-1h9v1z"
               ></path>
             </svg>
           </span>
-          <span class="ml-2 text-sm tracking-wide truncate">My Activities</span>
+          <span
+            class="ml-2 text-sm tracking-wide truncate align-middle"
+            [ngClass]="
+              router.url == '/dashboard/myActivity' ? 'text-white' : ''
+            "
+            >My Activities</span
+          >
         </a>
       </li>
     </ul>
@@ -284,18 +303,33 @@
 
 <div
   class="fixed z-50 min-h-screen bg-gray-100 lg:hidden"
+  (mouseenter)="onMouseEnter()"
   (mouseleave)="onMouseOut()"
 >
   <div
-    class="sidebar min-h-screen w-[3.35rem] overflow-hidden border-r hover:w-56 hover:bg-white hover:shadow-lg"
+    class="sidebar min-h-screen w-[3.3rem] overflow-hidden border-r hover:w-48 hover:bg-white hover:shadow-lg"
   >
-    <div class="flex flex-col justify-between h-screen pt-2 pb-6">
+    <div class="flex flex-col justify-between h-screen pb-6">
       <div>
-        <div class="w-max p-2.5 pb-10 pt-10">
+        <div
+          class="w-max p-2 pb-8 pt-8 border-b"
+          *ngIf="hideElement; else unHide"
+        >
           <img src="../../assets/img/small.png" class="w-10" alt="" />
         </div>
+        <ng-template #unHide
+          ><a
+            [routerLink]="['/']"
+            class="flex items-center justify-center border-b h-28"
+          >
+            <img
+              src="https://www.aio.co.id/assets/images/logo-otsuka-aio-fc-5152dcf72befeb8e418adcc6d8d0481d.png"
+              class="w-28"
+              alt=""
+            /> </a
+        ></ng-template>
 
-        <ul class="mt-6 space-y-2 tracking-wide">
+        <ul class="mt-2 space-y-2 tracking-wide">
           <li class="min-w-max">
             <a
               [routerLink]="['/dashboard']"
@@ -331,7 +365,7 @@
               [routerLink]="['/dashboard/activity']"
               class="relative flex items-center py-3 space-x-4"
               [ngClass]="
-                router.url == '/dashboard/test'
+                router.url == '/dashboard/activity'
                   ? 'bg-gradient-to-r from-sky-600 to-cyan-400  px-4  text-white  border-l-0  '
                   : ' text-gray-600 hover:bg-gray-50 hover:text-gray-800 border-l-4 px-3 border-transparent hover:border-indigo-500'
               "
@@ -343,6 +377,9 @@
                 fill="currentColor"
               >
                 <path
+                  [ngClass]="
+                    router.url == '/dashboard/activity' ? 'fill-white' : ''
+                  "
                   class="text-gray-300 fill-current group-hover:text-cyan-300"
                   fill-rule="evenodd"
                   d="M2 6a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1H8a3 3 0 00-3 3v1.5a1.5 1.5 0 01-3 0V6z"
@@ -380,6 +417,22 @@
                 />
               </svg>
               <span class="group-hover:text-gray-700">Tables</span>
+              <span class="flex justify-end grow">
+                <svg
+                  class="w-5 h-5 text-white"
+                  [ngClass]="boolDropdown ? 'rotate-180' : ''"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                    clip-rule="evenodd"
+                    fill="gray"
+                  />
+                </svg>
+              </span>
             </a>
             <ul
               *ngIf="boolDropdown"
@@ -453,7 +506,12 @@
             <a
               [routerLink]="['/dashboard/myActivity']"
               routerLinkActive="router-link-active"
-              class="flex items-center px-4 py-3 space-x-4 text-gray-600 rounded-md group"
+              class="relative flex items-center py-3 space-x-4"
+              [ngClass]="
+                router.url == '/dashboard/myActivity'
+                  ? 'bg-gradient-to-r from-sky-600 to-cyan-400 px-4 text-white border-l-0  '
+                  : ' text-gray-600 hover:bg-gray-50 hover:text-gray-800 border-l-4 px-3 border-transparent hover:border-indigo-500'
+              "
             >
               <svg
                 viewBox="0 0 32 32"
@@ -462,6 +520,9 @@
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <path
+                  [ngClass]="
+                    router.url == '/dashboard/myActivity' ? 'fill-white' : ''
+                  "
                   class="text-gray-600 fill-current group-hover:text-cyan-300"
                   d="M28 9h-1.958v-2.938l-4.042-0.062 0.021 3h-12.146l0.083-3-3.958 0.062v3l-2-0.062c-1.104 0-2 0.896-2 2v14c0 1.104 0.896 2 2 2h24c1.104 0 2-0.896 2-2v-14c0-1.104-0.896-2-2-2zM23 7h2v4h-2v-4zM10 13.812c1.208 0 2.188 1.287 2.188 2.875s-0.98 2.875-2.188 2.875-2.188-1.287-2.188-2.875 0.98-2.875 2.188-2.875zM7 7h2v4h-2v-4zM5.667 22.948c0 0 0.237-1.902 0.776-2.261s2.090-0.598 2.090-0.598 1.006 1.075 1.434 1.075c0.427 0 1.433-1.075 1.433-1.075s1.552 0.238 2.091 0.598c0.633 0.422 0.791 2.261 0.791 2.261h-8.615zM26 22h-9v-1h9v1zM26 20h-9v-1h9v1zM26 18h-9v-1h9v1zM26 16h-9v-1h9v1z"
                 ></path>
@@ -471,7 +532,7 @@
               >
             </a>
           </li>
-          <li class="min-w-max">
+          <!-- <li class="min-w-max">
             <a
               [routerLink]="['/dashboard']"
               routerLinkActive="router-link-active"
@@ -520,7 +581,7 @@
               </svg>
               <span class="group-hover:text-gray-700">Other Menu</span>
             </a>
-          </li>
+          </li> -->
         </ul>
       </div>
     </div>
