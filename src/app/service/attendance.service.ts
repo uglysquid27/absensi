@@ -56,6 +56,21 @@ export class AttendanceService {
   getActivity(): Observable<any> {
     return this.httpClient.get(api + 'activities');
   }
+  storeActivity(body: any): Observable<any> {
+    return this.httpClient.post(api + 'activities', body);
+  }
+  showActivity(id: any): Observable<any> {
+    return this.httpClient.get(api + 'showActivities/' + id);
+  }
+  deleteActivity(id: any): Observable<any> {
+    return this.httpClient.delete(api + 'activities/' + id);
+  }
+  getActivitybyId(id: any): Observable<any> { 
+    return this.httpClient.get(api + 'getActivities/' + id);
+  }
+  updateActivity(id: any, body: any): Observable<any> { 
+    return this.httpClient.put(api + 'activities/' + id, body);
+  }
 
 
   /* Other ------------------------------------------------------------------------*/
@@ -68,5 +83,5 @@ export class AttendanceService {
   getDepartements(): Observable<any> {
     return this.httpClient.get(api + 'departements');
   }
-  
+
 }

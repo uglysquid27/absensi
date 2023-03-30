@@ -1,3 +1,4 @@
+import { UpdateActivityUserComponent } from './dashboard/activity-user/update-activity-user/update-activity-user.component';
 import { IndexActivityUserComponent } from './dashboard/activity-user/index-activity-user/index-activity-user.component';
 import { BanksComponent } from './dashboard/tables/banks/banks.component';
 import { DepartmentsComponent } from './dashboard/tables/departments/departments.component';
@@ -40,6 +41,7 @@ const routes: Routes = [
       { path: 'users/edit/:id', component: UserEditComponent },
       { path: 'users/add', component: UserAddComponent },
       { path: 'activity', component: ActivityAdminComponent },
+      { path: 'activity/edit/:id', component: UpdateActivityUserComponent },
       { path: 'activity/create', component: ActivityAddComponent },
       { path: 'myActivity', component: IndexActivityUserComponent },
     ],
