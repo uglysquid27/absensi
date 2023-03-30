@@ -80,6 +80,59 @@ export class EditComponent {
     });
     this.subscribeData();
   }
+
+  cardChange(event: any) {
+    const reader = new FileReader();
+
+    if (event.target.files && event.target.files.length) {
+      const [cardPhotoFile] = event.target.files;
+      reader.readAsDataURL(cardPhotoFile);
+
+      reader.onload = () => {
+        this.cardPhotoSrc = reader.result as string;
+        this.form.patchValue({
+          cardPhotoFile: reader.result,
+        })
+      }
+    }
+
+    this.cardPhotoFile = event.target.files[0];
+  }
+  ofChange(event: any) {
+    const reader = new FileReader();
+
+    if (event.target.files && event.target.files.length) {
+      const [ofPhotoFile] = event.target.files;
+      reader.readAsDataURL(ofPhotoFile);
+
+      reader.onload = () => {
+        this.ofPhotoSrc = reader.result as string;
+        this.form.patchValue({
+          ofPhotoFile: reader.result,
+        })
+      }
+    }
+
+    this.ofPhotoFile = event.target.files[0];
+  }
+  bankChange(event: any) {
+    const reader = new FileReader();
+
+    if (event.target.files && event.target.files.length) {
+      const [bankPhotoFile] = event.target.files;
+      reader.readAsDataURL(bankPhotoFile);
+
+      reader.onload = () => {
+        this.bankPhotoSrc = reader.result as string;
+        this.form.patchValue({
+          bankPhotoFile: reader.result,
+        })
+      }
+    }
+
+    this.bankPhotoFile = event.target.files[0];
+  }
+
   onSubmit() {
     this.submitted = true;
     if (this.form.invalid) {
@@ -103,6 +156,14 @@ export class EditComponent {
       blood: this.f['bloodInput'].value,
     };
 
+    const formData = new FormData();
+    formData.append('nik', body.nik);
+    formData.append('nik', body.nik);
+    formData.append('idCardPhoto', this.cardPhotoFile, this.cardPhotoFile.name);
+    formData.append('officialPhoto', this.ofPhotoFile, this.ofPhotoFile.name);
+    formData.append('bankPhoto', this.bankPhotoFile, this.bankPhotoFile.name);
+    
+
     // console.log(body);
 
     this.apiService.updateEmployee(this.id, body).subscribe(
@@ -118,6 +179,18 @@ export class EditComponent {
       }
     );
 
+    this.apiService.updateDocument(this.id, formData).subscribe(
+      (data) => {
+        console.log(data);
+        this.alertServie.onCallAlert('Success Edited', AlertType.Success)
+        this.router.navigate(['/dashboard/users']);
+      },
+      (err) => {
+        this.alertServie.setAlert('Edited Failed', AlertType.Error)
+        console.log(err);
+
+      }
+    )
     
   }
 
@@ -127,7 +200,7 @@ export class EditComponent {
       this.apiService.getEmployeeStatus(),
       this.apiService.getDepartements(),
       this.apiService.getInstitutions(),
-      this.apiService.getBank(),
+      this.apiService.getBank()
     ).subscribe(([employee, status, dep, inst, bank]) => {
       this.user = employee;
       this.status = status;
@@ -152,7 +225,13 @@ export class EditComponent {
       this.f['studyInput'].setValue(this.user.existingEdu);
       this.f['longAppInput'].setValue(this.user.longApprentice);
       this.f['isActiveInput'].setValue(this.user.isActive);
+      this.f['cardPhotoInput'].setValue(this.user.documents.idCardPhoto);
+        
       console.log(this.user.isActive);
+      this.cardPhotoSrc = `http://localhost:3000/${this.user.documents[0].idCardPhoto}`;
+      this.ofPhotoSrc = `http://localhost:3000/${this.user.documents[0].officialPhoto}`;
+      this.bankPhotoSrc = `http://localhost:3000/${this.user.documents[0].bankPhoto}`;
+      
     });
   }
   private formatDate(date: any) {
