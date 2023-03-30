@@ -74,6 +74,9 @@ export class AttendanceService {
   updateInstitutionsStatus(id: any, body: any) {
     return this.httpClient.put(api + 'institutions/' + id, body);
   }
+  storeInstitutionsStatus(body: any): Observable<any> {
+    return this.httpClient.post(api + 'institutions', body);
+  }
   getDepartements(): Observable<any> {
     return this.httpClient.get(api + 'departements');
   }
