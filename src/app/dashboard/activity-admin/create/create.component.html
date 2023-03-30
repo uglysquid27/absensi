@@ -48,12 +48,11 @@
             formControlName="nikInput"
             class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-transparent focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
           >
-            <option
-              *ngFor="let user of users"
-              value="{{ user.nik }}"
+            <ng-container *ngFor="let user of users" 
+              ><option *ngIf="this.filterFilledAttendance(user.nik).length == 0" value="{{ user.nik }}">
+                {{ user.name }}
+              </option></ng-container
             >
-              {{ user.name }}
-            </option>
           </select>
         </div>
         <div class="relative flex-grow w-full">
@@ -68,13 +67,13 @@
             [ngClass]="
               this.f['statusInput'].value == 'off day'
                 ? 'bg-red-200 border-red-300'
-                : ( this.f['statusInput'].value == 'work day'
+                : this.f['statusInput'].value == 'work day'
                 ? 'bg-green-200 border-green-300'
-                : ( this.f['statusInput'].value == 'leave day'
+                : this.f['statusInput'].value == 'leave day'
                 ? 'bg-yellow-200 border-yellow-300'
-                : ( this.f['statusInput'].value == 'holiday'
+                : this.f['statusInput'].value == 'holiday'
                 ? 'bg-gray-300 border-gray-400'
-                : '')))
+                : ''
             "
           >
             <option

@@ -1,0 +1,5 @@
+.active {
+  border-color: rgb(99, 102, 241);
+  border-left-width: 4px;
+  color: rgb(31, 41, 55);
+}

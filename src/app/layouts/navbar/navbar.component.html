@@ -13,7 +13,7 @@
       <a [routerLink]="['']" class="flex items-center">
         <img
           src="https://www.aio.co.id/assets/images/logo-otsuka-aio-1d4745d44cbb6ad4430c1c3a05b9dce4.png"
-          class="pl-3 h-10 mr-3 sm:h-9"
+          class="h-10 pl-3 mr-3 sm:h-9"
           alt="Otsuka Logo"
         />
       </a>
@@ -29,7 +29,7 @@
       <a [routerLink]="['']" class="flex items-center">
         <img
           src="https://www.aio.co.id/assets/images/logo-otsuka-aio-fc-5152dcf72befeb8e418adcc6d8d0481d.png"
-          class="pl-3 h-8 mr-3 sm:h-9"
+          class="h-8 pl-3 mr-3 sm:h-9"
           alt="Otsuka Logo"
         />
       </a>
@@ -53,10 +53,11 @@
       <button
         [routerLink]="['/login']"
         *ngIf="
-          (!boolAvatar && router.url == '/peserta') ||
-          router.url == '/pkl' ||
-          router.url == '/magang' ||
-          router.url == '/intern'
+          !boolAvatar &&
+          (router.url == '/peserta' ||
+            router.url == '/pkl' ||
+            router.url == '/magang' ||
+            router.url == '/intern')
         "
         type="button"
         class="text-white bg-blue-500 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-3 md:mr-0"
@@ -78,37 +79,33 @@
         <div
           *ngIf="boolAvatarDropdown"
           id="userDropdown"
-          class="z-10 fixed bg-gray-700 divide-y divide-gray-600 rounded-lg shadow w-44 dark:bg-white dark:divide-gray-100 right-4"
+          class="z-10 fixed divide-y rounded-lg shadow w-44 bg-white divide-gray-100 right-4"
         >
-          <div class="px-4 py-3 text-sm text-white dark:text-gray-900">
+          <div class="px-4 py-3 text-sm text-gray-900">
             <div>{{ this.session.getUser().name }}</div>
             <div class="font-medium truncate">
               {{ this.session.getUser().email }}
             </div>
           </div>
-          <ul
-            class="py-2 text-sm text-gray-200 dark:text-gray-700"
-            aria-labelledby="avatarButton"
-          >
+          <ul class="py-2 text-sm text-gray-700" aria-labelledby="avatarButton">
             <li>
               <a
                 [routerLink]="['/dashboard']"
                 routerLinkActive="router-link-active"
-                class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                class="block px-4 py-2 hover:bg-gray-600 hover:text-white"
                 >Dashboard</a
               >
             </li>
-            <li>
+            <li class="px-2 py-1">
               <a
                 [routerLink]="['/']"
                 routerLinkActive="router-link-active"
-                class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                class="block px-4 py-2 hover:bg-gray-600 hover:text-white"
                 >Settings</a
               >
             </li>
             <li>
-              <a
-                class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+              <a class="block px-4 py-2 hover:bg-gray-600 hover:text-white"
                 >Earnings</a
               >
             </li>
@@ -117,7 +114,7 @@
             <a
               [routerLink]="['/']"
               routerLinkActive="router-link-active"
-              class="block px-4 py-2 text-sm text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-700 dark:hover:text-white"
+              class="block px-4 py-2 text-sm hover:bg-gray-600 text-gray-700 hover:text-white"
               >Sign out</a
             >
           </div>
@@ -126,7 +123,7 @@
 
       <button
         type="button"
-        class="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200"
+        class="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 hover:text-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-200"
         aria-controls="navbar-sticky"
         aria-expanded="false"
         data-te-collapse-init
@@ -168,7 +165,7 @@
         <li>
           <a
             routerLink=""
-            class="block py-2 pl-3 pr-4 text-gray-700 bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white"
+            class="block py-2 pl-3 pr-4 bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 text-white"
             aria-current="page"
             >Home</a
           >
@@ -176,21 +173,21 @@
         <!-- <li>
           <a
             href="#about"
-            class="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0"
+            class="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 hover:text-gray-700 md:hover:bg-transparent md:hover:text-blue-700 md:p-0"
             >About</a
           >
         </li>
         <li>
           <a
             href="#project"
-            class="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0"
+            class="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 hover:text-gray-700 md:hover:bg-transparent md:hover:text-blue-700 md:p-0"
             >Project</a
           >
         </li> -->
         <li>
           <a
             [routerLink]="['/peserta']"
-            class="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0"
+            class="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 hover:text-gray-700 md:hover:bg-transparent md:hover:text-blue-700 md:p-0"
             >Peserta</a
           >
         </li>
@@ -212,14 +209,14 @@
         <li>
           <a
             routerLink=""
-            class="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0"
+            class="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 hover:text-gray-700 md:hover:bg-transparent md:hover:text-blue-700 md:p-0"
             >Home</a
           >
         </li>
         <li>
           <a
             [routerLink]="['/peserta']"
-            class="block py-2 pl-3 pr-4 text-white bg-blue-300 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white"
+            class="block py-2 pl-3 pr-4 bg-blue-300 rounded md:bg-transparent md:text-blue-700 md:p-0 text-white"
             aria-current="page"
             >Peserta</a
           >
@@ -237,11 +234,11 @@
   class="fixed top-0 left-0 right-0 z-50 p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] md:h-full bg-gray-900 bg-opacity-60"
 >
   <div class="relative w-full h-full mx-auto max-w-sm md:h-auto">
-    <div class="relative bg-gray-700 rounded-lg shadow dark:bg-white">
+    <div class="relative rounded-lg shadow bg-white">
       <button
         (click)="signOut($event)"
         type="button"
-        class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white"
+        class="absolute top-3 right-2.5 text-gray-400 bg-transparent rounded-lg text-sm p-1.5 ml-auto inline-flex items-center hover:bg-gray-800 hover:text-white"
         data-modal-hide="popup-modal"
       >
         <svg
@@ -262,7 +259,7 @@
       <div class="p-6 text-center">
         <svg
           aria-hidden="true"
-          class="mx-auto mb-4 text-gray-200 w-14 h-14 dark:text-gray-400"
+          class="mx-auto mb-4 w-14 h-14 text-gray-400"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
@@ -275,7 +272,7 @@
             d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
           ></path>
         </svg>
-        <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">
+        <h3 class="mb-5 text-lg font-normal text-gray-400">
           Are you sure to Logout?
         </h3>
         <button
@@ -283,7 +280,7 @@
           id="yesBtn"
           data-modal-hide="popup-modal"
           type="button"
-          class="text-white bg-red-600 hover:bg-red-800 focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2"
+          class="text-white bg-red-600 hover:bg-red-800 focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2"
         >
           Yes, I'm sure
         </button>
@@ -292,7 +289,7 @@
           id="noBtn"
           data-modal-hide="popup-modal"
           type="button"
-          class="text-gray-300 bg-gray-700 hover:bg-gray-100 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-white dark:text-gray-500 dark:border-gray-300 dark:hover:text-white dark:hover:bg-gray-600"
+          class="rounded-lg border text-sm font-medium px-5 py-2.5 focus:z-10 bg-white text-gray-500 border-gray-300 hover:text-white hover:bg-gray-600"
         >
           No, cancel
         </button>

@@ -3,7 +3,7 @@
     <div class="px-10 py-5">
       <a
       [routerLink]="['/dashboard/users/add']"
-      class="text-white w-1/6 h-1/2 bg-blue-700 shadow-md hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-md text-sm mx-5 px-5 py-2.5 text-center dark:bg-violet-500 dark:hover:bg-purple-600 dark:focus:ring-blue-800"
+      class="text-white w-1/6 h-1/2 shadow-md  focus:ring-4 focus:outline-none font-medium rounded-md text-sm mx-5 px-5 py-2.5 text-center bg-violet-500 hover:bg-purple-600 focus:ring-blue-800"
       style="float: right;"
     >
       Add Data
@@ -14,37 +14,37 @@
       <div class="-my-2 overflow-x-auto ">
         <div class="inline-block min-w-full py-2 align-middle md:px-3 lg:px-4">
           <div
-            class="overflow-hidden border border-gray-700 dark:border-gray-200 md:rounded-lg"
+            class="overflow-hidden border  border-gray-200 md:rounded-lg"
           >
             <table
-              class="min-w-full divide-y divide-gray-700 dark:divide-gray-200"
+              class="min-w-full divide-y divide-gray-200"
             >
-              <thead class="bg-gray-80 dark:bg-gray-100">
+              <thead class="bg-gray-80 bg-gray-100">
                 <tr>
                   <!-- <th
                     scope="col"
-                    class="py-3.5 px-4 text-sm font-semibold rtl:text-right text-gray-400 dark:text-gray-700 text-center"
+                    class="py-3.5 px-4 text-sm font-semibold rtl:text-right  text-gray-700 text-center"
                   >
                     NIK
                   </th> -->
 
                   <th
                     scope="col"
-                    class="py-3.5 px-4 text-sm font-semibold rtl:text-right text-gray-400 dark:text-gray-700 text-center"
+                    class="py-3.5 px-4 text-sm font-semibold rtl:text-right text-gray-700 text-center"
                   >
                     Status
                   </th>
 
                   <th
                     scope="col"
-                    class="py-3.5 px-4 text-sm font-semibold rtl:text-right text-gray-400 dark:text-gray-700 text-center"
+                    class="py-3.5 px-4 text-sm font-semibold rtl:text-right text-gray-700 text-center"
                   >
                     Salary / Day
                   </th>
 
                   <th
                     scope="col"
-                    class="py-3.5 px-4 text-sm font-semibold rtl:text-right text-gray-400 dark:text-gray-700 text-center"
+                    class="py-3.5 px-4 text-sm font-semibold rtl:text-right text-gray-700 text-center"
                   >
                     Action
                   </th>
@@ -52,17 +52,17 @@
               </thead>
               <tbody
                 *ngFor="let item of data.data"
-                class="bg-gray-900 divide-y divide-gray-700 dark:divide-gray-300 dark:bg-white"
+                class="divide-y  divide-gray-300 bg-white"
               >
                 <tr>
                   <!-- <td
-                    class="px-4 py-4 text-sm text-gray-500 dark:text-gray-700 whitespace-nowrap text-center"
+                    class="px-4 py-4 text-sm  text-gray-700 whitespace-nowrap text-center"
                   >
                     {{ item.id }}
                   </td> -->
 
                   <td
-                    class="px-4 py-4 text-sm text-gray-500 dark:text-gray-700 whitespace-nowrap text-center"
+                    class="px-4 py-4 text-sm  text-gray-700 whitespace-nowrap text-center"
                   >
                     <button (click)="toggle(item.id)">
                       {{ item.employeeStatus }}
@@ -125,21 +125,21 @@
       <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
         <div class="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
           <div
-            class="overflow-hidden border border-gray-700 dark:border-gray-200 md:rounded-lg"
+            class="overflow-hidden border  border-gray-200 md:rounded-lg"
           >
             <table
-              class="min-w-full divide-y divide-gray-700 dark:divide-gray-200"
+              class="min-w-full divide-y  divide-gray-200"
             >
-              <thead class="bg-gray-80 dark:bg-gray-100">
+              <thead class="bg-gray-80 bg-gray-100">
                 <tr>
                   <th
                     scope="col"
-                    class="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-400 dark:text-gray-700"
+                    class="py-3.5 px-4 text-sm font-normal text-left rtl:text-right  text-gray-700"
                   >
                     <div class="flex items-center gap-x-3">
                       <input
                         type="checkbox"
-                        class="text-blue-500 border-gray-700 rounded dark:bg-gray-100 dark:ring-offset-gray-900 dark:border-gray-300"
+                        class="text-blue-500  rounded bg-gray-100 ring-offset-gray-900 border-gray-300"
                       />
                       <button class="flex items-center gap-x-2">
                         <span>NIK</span>
@@ -149,28 +149,28 @@
 
                   <th
                     scope="col"
-                    class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-700"
+                    class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right  text-gray-700"
                   >
                     Name
                   </th>
 
                   <th
                     scope="col"
-                    class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-700"
+                    class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right  text-gray-700"
                   >
                     User Status
                   </th>
 
                   <th
                     scope="col"
-                    class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-700"
+                    class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right  text-gray-700"
                   >
                     Email
                   </th>
 
                   <th
                     scope="col"
-                    class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-700"
+                    class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right  text-gray-700"
                   >
                     isActive
                   </th>
@@ -182,16 +182,16 @@
               </thead>
               <tbody
                 *ngFor="let item of datapkl"
-                class="bg-gray-900 divide-y divide-gray-700 dark:divide-gray-300 dark:bg-white"
+                class=" divide-y  divide-gray-300 bg-white"
               >
                 <tr>
                   <td
-                    class="px-4 py-4 text-sm font-medium text-gray-700 dark:text-gray-700 whitespace-nowrap"
+                    class="px-4 py-4 text-sm font-medium  text-gray-700 whitespace-nowrap"
                   >
                     <div class="inline-flex items-center gap-x-3">
                       <input
                         type="checkbox"
-                        class="text-blue-500 border-gray-900 rounded dark:bg-gray-100 dark:ring-offset-gray-900 dark:border-gray-700"
+                        class="text-blue-500 border-gray-900 rounded bg-gray-100 ring-offset-gray-900 "
                       />
 
                       <span>{{ item.nik }}</span>
@@ -199,7 +199,7 @@
                   </td>
 
                   <td
-                    class="px-4 py-4 text-sm text-gray-500 dark:text-gray-700 whitespace-nowrap"
+                    class="px-4 py-4 text-sm  text-gray-700 whitespace-nowrap"
                   >
                     {{ item.name }}
                   </td>
@@ -207,7 +207,7 @@
                     class="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap"
                   >
                     <div
-                      class="inline-flex items-center px-3 py-1 rounded-full gap-x-2 text-emerald-500 bg-gray-800 dark:bg-emerald-50/50"
+                      class="inline-flex items-center px-3 py-1 rounded-full gap-x-2 text-emerald-500 bg-gray-800 bg-emerald-50/50"
                     >
                       <svg
                         width="12"
@@ -229,7 +229,7 @@
                     </div>
                   </td>
                   <td
-                    class="px-4 py-4 text-sm text-gray-500 dark:text-gray-700 whitespace-nowrap"
+                    class="px-4 py-4 text-sm  text-gray-700 whitespace-nowrap"
                   >
                     <div class="flex items-center gap-x-2">
                       <img
@@ -239,12 +239,12 @@
                       />
                       <div>
                         <h2
-                          class="text-sm font-medium text-gray-800 dark:text-white"
+                          class="text-sm font-medium  text-white"
                         >
                           Arthur Melo
                         </h2>
                         <p
-                          class="text-xs font-normal text-gray-600 dark:text-gray-700"
+                          class="text-xs font-normal  text-gray-700"
                         >
                           authurmelo@example.com
                         </p>
@@ -252,14 +252,14 @@
                     </div>
                   </td>
                   <td
-                    class="px-4 py-4 text-sm text-gray-500 dark:text-gray-700 whitespace-nowrap"
+                    class="px-4 py-4 text-sm  text-gray-700 whitespace-nowrap"
                   >
                     Monthly subscription
                   </td>
                   <td class="px-4 py-4 text-sm whitespace-nowrap">
                     <div class="flex items-center gap-x-6">
                       <button
-                        class="text-gray-500 transition-colors duration-200 dark:hover:text-indigo-500 dark:text-gray-700 hover:text-indigo-500 focus:outline-none"
+                        class=" transition-colors duration-200  text-gray-700 hover:text-indigo-500 focus:outline-none"
                       >
                         Archive
                       </button>
@@ -287,21 +287,21 @@
       <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
         <div class="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
           <div
-            class="overflow-hidden border border-gray-700 dark:border-gray-200 md:rounded-lg"
+            class="overflow-hidden border  border-gray-200 md:rounded-lg"
           >
             <table
-              class="min-w-full divide-y divide-gray-700 dark:divide-gray-200"
+              class="min-w-full divide-y  divide-gray-200"
             >
-              <thead class="bg-gray-80 dark:bg-gray-100">
+              <thead class="bg-gray-80 bg-gray-100">
                 <tr>
                   <th
                     scope="col"
-                    class="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-400 dark:text-gray-700"
+                    class="py-3.5 px-4 text-sm font-normal text-left rtl:text-right  text-gray-700"
                   >
                     <div class="flex items-center gap-x-3">
                       <input
                         type="checkbox"
-                        class="text-blue-500 border-gray-700 rounded dark:bg-gray-100 dark:ring-offset-gray-900 dark:border-gray-300"
+                        class="text-blue-500  rounded bg-gray-100 ring-offset-gray-900 border-gray-300"
                       />
                       <button class="flex items-center gap-x-2">
                         <span>NIK</span>
@@ -311,28 +311,28 @@
 
                   <th
                     scope="col"
-                    class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-700"
+                    class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right  text-gray-700"
                   >
                     Name
                   </th>
 
                   <th
                     scope="col"
-                    class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-700"
+                    class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right  text-gray-700"
                   >
                     User Status
                   </th>
 
                   <th
                     scope="col"
-                    class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-700"
+                    class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right  text-gray-700"
                   >
                     Email
                   </th>
 
                   <th
                     scope="col"
-                    class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-700"
+                    class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right  text-gray-700"
                   >
                     isActive
                   </th>
@@ -344,16 +344,16 @@
               </thead>
               <tbody
                 *ngFor="let item of dataintern"
-                class="bg-gray-900 divide-y divide-gray-700 dark:divide-gray-300 dark:bg-white"
+                class=" divide-y  divide-gray-300 bg-white"
               >
                 <tr>
                   <td
-                    class="px-4 py-4 text-sm font-medium text-gray-700 dark:text-gray-700 whitespace-nowrap"
+                    class="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap"
                   >
                     <div class="inline-flex items-center gap-x-3">
                       <input
                         type="checkbox"
-                        class="text-blue-500 border-gray-900 rounded dark:bg-gray-100 dark:ring-offset-gray-900 dark:border-gray-700"
+                        class="text-blue-500 border-gray-900 rounded bg-gray-100 ring-offset-gray-900 "
                       />
 
                       <span>{{ item.nik }}</span>
@@ -361,7 +361,7 @@
                   </td>
 
                   <td
-                    class="px-4 py-4 text-sm text-gray-500 dark:text-gray-700 whitespace-nowrap"
+                    class="px-4 py-4 text-sm  text-gray-700 whitespace-nowrap"
                   >
                     {{ item.name }}
                   </td>
@@ -369,7 +369,7 @@
                     class="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap"
                   >
                     <div
-                      class="inline-flex items-center px-3 py-1 rounded-full gap-x-2 text-emerald-500 bg-gray-800 dark:bg-emerald-50/50"
+                      class="inline-flex items-center px-3 py-1 rounded-full gap-x-2 text-emerald-500 bg-gray-800 bg-emerald-50/50"
                     >
                       <svg
                         width="12"
@@ -391,7 +391,7 @@
                     </div>
                   </td>
                   <td
-                    class="px-4 py-4 text-sm text-gray-500 dark:text-gray-700 whitespace-nowrap"
+                    class="px-4 py-4 text-sm  text-gray-700 whitespace-nowrap"
                   >
                     <div class="flex items-center gap-x-2">
                       <img
@@ -401,12 +401,12 @@
                       />
                       <div>
                         <h2
-                          class="text-sm font-medium text-gray-800 dark:text-white"
+                          class="text-sm font-medium text-white"
                         >
                           Arthur Melo
                         </h2>
                         <p
-                          class="text-xs font-normal text-gray-600 dark:text-gray-700"
+                          class="text-xs font-normal text-gray-700"
                         >
                           authurmelo@example.com
                         </p>
@@ -414,14 +414,14 @@
                     </div>
                   </td>
                   <td
-                    class="px-4 py-4 text-sm text-gray-500 dark:text-gray-700 whitespace-nowrap"
+                    class="px-4 py-4 text-sm  text-gray-700 whitespace-nowrap"
                   >
                     Monthly subscription
                   </td>
                   <td class="px-4 py-4 text-sm whitespace-nowrap">
                     <div class="flex items-center gap-x-6">
                       <button
-                        class="text-gray-500 transition-colors duration-200 dark:hover:text-indigo-500 dark:text-gray-700 hover:text-indigo-500 focus:outline-none"
+                        class=" transition-colors duration-200 text-gray-700 hover:text-indigo-500 focus:outline-none"
                       >
                         Archive
                       </button>
@@ -449,21 +449,21 @@
       <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
         <div class="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
           <div
-            class="overflow-hidden border border-gray-700 dark:border-gray-200 md:rounded-lg"
+            class="overflow-hidden border  border-gray-200 md:rounded-lg"
           >
             <table
-              class="min-w-full divide-y divide-gray-700 dark:divide-gray-200"
+              class="min-w-full divide-y  divide-gray-200"
             >
-              <thead class="bg-gray-80 dark:bg-gray-100">
+              <thead class="bg-gray-80 bg-gray-100">
                 <tr>
                   <th
                     scope="col"
-                    class="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-400 dark:text-gray-700"
+                    class="py-3.5 px-4 text-sm font-normal text-left rtl:text-right  text-gray-700"
                   >
                     <div class="flex items-center gap-x-3">
                       <input
                         type="checkbox"
-                        class="text-blue-500 border-gray-700 rounded dark:bg-gray-100 dark:ring-offset-gray-900 dark:border-gray-300"
+                        class="text-blue-500  rounded bg-gray-100 ring-offset-gray-900 border-gray-300"
                       />
                       <button class="flex items-center gap-x-2">
                         <span>NIK</span>
@@ -473,28 +473,28 @@
 
                   <th
                     scope="col"
-                    class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-700"
+                    class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right  text-gray-700"
                   >
                     Name
                   </th>
 
                   <th
                     scope="col"
-                    class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-700"
+                    class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right  text-gray-700"
                   >
                     User Status
                   </th>
 
                   <th
                     scope="col"
-                    class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-700"
+                    class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right  text-gray-700"
                   >
                     Email
                   </th>
 
                   <th
                     scope="col"
-                    class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-700"
+                    class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right  text-gray-700"
                   >
                     isActive
                   </th>
@@ -506,16 +506,16 @@
               </thead>
               <tbody
                 *ngFor="let item of datamagang"
-                class="bg-gray-900 divide-y divide-gray-700 dark:divide-gray-300 dark:bg-white"
+                class=" divide-y  divide-gray-300 bg-white"
               >
                 <tr>
                   <td
-                    class="px-4 py-4 text-sm font-medium text-gray-700 dark:text-gray-700 whitespace-nowrap"
+                    class="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap"
                   >
                     <div class="inline-flex items-center gap-x-3">
                       <input
                         type="checkbox"
-                        class="text-blue-500 border-gray-900 rounded dark:bg-gray-100 dark:ring-offset-gray-900 dark:border-gray-700"
+                        class="text-blue-500 border-gray-900 rounded bg-gray-100 ring-offset-gray-900 "
                       />
 
                       <span>{{ item.nik }}</span>
@@ -523,7 +523,7 @@
                   </td>
 
                   <td
-                    class="px-4 py-4 text-sm text-gray-500 dark:text-gray-700 whitespace-nowrap"
+                    class="px-4 py-4 text-sm  text-gray-700 whitespace-nowrap"
                   >
                     {{ item.name }}
                   </td>
@@ -531,7 +531,7 @@
                     class="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap"
                   >
                     <div
-                      class="inline-flex items-center px-3 py-1 rounded-full gap-x-2 text-emerald-500 bg-gray-800 dark:bg-emerald-50/50"
+                      class="inline-flex items-center px-3 py-1 rounded-full gap-x-2 text-emerald-500 bg-gray-800 bg-emerald-50/50"
                     >
                       <svg
                         width="12"
@@ -553,7 +553,7 @@
                     </div>
                   </td>
                   <td
-                    class="px-4 py-4 text-sm text-gray-500 dark:text-gray-700 whitespace-nowrap"
+                    class="px-4 py-4 text-sm  text-gray-700 whitespace-nowrap"
                   >
                     <div class="flex items-center gap-x-2">
                       <img
@@ -563,12 +563,12 @@
                       />
                       <div>
                         <h2
-                          class="text-sm font-medium text-gray-800 dark:text-white"
+                          class="text-sm font-medium text-white"
                         >
                           Arthur Melo
                         </h2>
                         <p
-                          class="text-xs font-normal text-gray-600 dark:text-gray-700"
+                          class="text-xs font-normal text-gray-700"
                         >
                           authurmelo@example.com
                         </p>
@@ -576,14 +576,14 @@
                     </div>
                   </td>
                   <td
-                    class="px-4 py-4 text-sm text-gray-500 dark:text-gray-700 whitespace-nowrap"
+                    class="px-4 py-4 text-sm  text-gray-700 whitespace-nowrap"
                   >
                     Monthly subscription
                   </td>
                   <td class="px-4 py-4 text-sm whitespace-nowrap">
                     <div class="flex items-center gap-x-6">
                       <button
-                        class="text-gray-500 transition-colors duration-200 dark:hover:text-indigo-500 dark:text-gray-700 hover:text-indigo-500 focus:outline-none"
+                        class=" transition-colors duration-200 text-gray-700 hover:text-indigo-500 focus:outline-none"
                       >
                         Archive
                       </button>

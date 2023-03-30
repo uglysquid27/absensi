@@ -13,7 +13,7 @@ const httpOptions = {
   providedIn: 'root',
 })
 export class AttendanceService {
-  constructor(private httpClient: HttpClient) {}
+  constructor(private httpClient: HttpClient) { }
 
   /* Employee ------------------------------------------------------------------------*/
   getProfile(): Observable<any> {
@@ -38,12 +38,18 @@ export class AttendanceService {
     return this.httpClient.post(api + 'employee', body);
   }
 
-  /* Attendances ------------------------------------------------------------------------*/
+  /* Attendance ------------------------------------------------------------------------*/
   getAttendance(): Observable<any> {
     return this.httpClient.get(api + 'attendance');
   }
   storeAttendance(body: any): Observable<any> {
     return this.httpClient.post(api + 'attendance', body);
+  }
+  getAmountAttendance(id: any): Observable<any> {
+    return this.httpClient.get(api + 'countAttending/' + id);
+  }
+  isAttended(id: any): Observable<any> {
+    return this.httpClient.get(api + 'isAttended/' + id);
   }
 
   /* Activities ------------------------------------------------------------------------*/
@@ -51,18 +57,16 @@ export class AttendanceService {
     return this.httpClient.get(api + 'activities');
   }
 
-  /* Banks ------------------------------------------------------------------------*/
+
+  /* Other ------------------------------------------------------------------------*/
   getBank(): Observable<any> {
     return this.httpClient.get(api + 'banks');
   }
-
-  /* Institutions ------------------------------------------------------------------------*/
   getInstitutions(): Observable<any> {
     return this.httpClient.get(api + 'institutions');
   }
-
-  /* Departments ------------------------------------------------------------------------*/
   getDepartements(): Observable<any> {
     return this.httpClient.get(api + 'departements');
   }
+  
 }
