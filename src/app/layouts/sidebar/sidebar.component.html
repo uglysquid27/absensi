@@ -27,7 +27,7 @@
           class="relative flex items-center py-3 space-x-4"
           [ngClass]="
             router.url == '/dashboard'
-              ? 'bg-gradient-to-r from-sky-600 to-cyan-400  text-white  border-l-0 px-1 '
+              ? 'bg-gradient-to-r from-sky-600 to-cyan-400 text-white border-l-0 px-1 '
               : 'bg-white text-gray-600 hover:bg-gray-50 hover:text-gray-800 border-l-4 border-transparent hover:border-indigo-500'
           "
         >
@@ -47,7 +47,11 @@
               ></path>
             </svg>
           </span>
-          <span class="ml-2 text-sm tracking-wide truncate">Dashboard</span>
+          <span
+            [ngClass]="router.url == '/dashboard' ? 'text-white' : ''"
+            class="ml-2 text-sm tracking-wide truncate"
+            >Dashboard</span
+          >
         </a>
       </li>
       <li>
@@ -57,7 +61,7 @@
           class="relative flex items-center py-3 space-x-4"
           [ngClass]="
             router.url == '/dashboard/activity'
-              ? 'bg-gradient-to-r from-sky-600 to-cyan-400 text-white  border-l-0 px-1'
+              ? 'bg-gradient-to-r from-sky-600 to-cyan-400  border-l-0 px-1'
               : 'bg-white text-gray-600 hover:bg-gray-50 hover:text-gray-800 border-l-4 border-transparent hover:border-indigo-500'
           "
         >
@@ -80,7 +84,11 @@
               />
             </svg>
           </span>
-          <span class="ml-2 text-sm tracking-wide truncate">Activity</span>
+          <span
+            [ngClass]="router.url == '/dashboard/activity' ? 'text-white' : ''"
+            class="ml-2 text-sm tracking-wide truncate"
+            >Activity</span
+          >
         </a>
       </li>
 
@@ -274,7 +282,10 @@
   </div>
 </div>
 
-<div class="fixed z-50 min-h-screen bg-gray-100 lg:hidden">
+<div
+  class="fixed z-50 min-h-screen bg-gray-100 lg:hidden"
+  (mouseleave)="onMouseOut()"
+>
   <div
     class="sidebar min-h-screen w-[3.35rem] overflow-hidden border-r hover:w-56 hover:bg-white hover:shadow-lg"
   >
@@ -283,11 +294,6 @@
         <div class="w-max p-2.5 pb-10 pt-10">
           <img src="../../assets/img/small.png" class="w-10" alt="" />
         </div>
-        <!-- <div class="mt-8 text-center">
-          <img src="../../assets/img/Satriya-Polinema.jpg" alt="" class="object-cover w-12 h-12 m-auto rounded-full lg:w-28 lg:h-28">
-          <h5 class="hidden mt-4 text-xl font-semibold text-gray-600 group-hover:block">Satriya</h5>
-          <span class="hidden text-gray-400 group-hover:block">Pemagang</span>
-        </div> -->
 
         <ul class="mt-6 space-y-2 tracking-wide">
           <li class="min-w-max">
@@ -298,7 +304,7 @@
               class="relative flex items-center py-3 space-x-4"
               [ngClass]="
                 router.url == '/dashboard'
-                  ? 'bg-gradient-to-r from-sky-600 to-cyan-400  px-4  text-white  border-l-0  '
+                  ? 'bg-gradient-to-r from-sky-600 to-cyan-400 px-4 text-white border-l-0  '
                   : ' text-gray-600 hover:bg-gray-50 hover:text-gray-800 border-l-4 px-3 border-transparent hover:border-indigo-500'
               "
             >
@@ -322,7 +328,7 @@
 
           <li class="min-w-max">
             <a
-              [routerLink]="['/dashboard/test']"
+              [routerLink]="['/dashboard/activity']"
               class="relative flex items-center py-3 space-x-4"
               [ngClass]="
                 router.url == '/dashboard/test'
@@ -350,63 +356,10 @@
               <span class="group-hover:text-gray-700">Activity</span>
             </a>
           </li>
-          <!-- <div *ngIf="router.url === '/dashboard'; else lain">
-            <li>
-              <a  [routerLink]="['/dashboard']" class="relative flex items-center space-x-4 bg-gradient-to-r from-sky-600 to-cyan-400 px-4 py-3 text-white">
-                <span class="inline-flex justify-center items-center ml-4">
-                  <svg class="-ml-1 h-6 w-6" viewBox="0 0 24 24" fill="none">
-                    <path d="M6 8a2 2 0 0 1 2-2h1a2 2 0 0 1 2 2v1a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V8ZM6 15a2 2 0 0 1 2-2h1a2 2 0 0 1 2 2v1a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2v-1Z" class="fill-current text-cyan-400 fill-slate-600"></path>
-                    <path d="M13 8a2 2 0 0 1 2-2h1a2 2 0 0 1 2 2v1a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2V8Z" class="fill-current text-cyan-200 group-hover:text-cyan-300"></path>
-                    <path d="M13 15a2 2 0 0 1 2-2h1a2 2 0 0 1 2 2v1a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-1Z" class="fill-current group-hover:text-sky-300"></path>
-                  </svg>
-                </span>
-                <span class="ml-2 text-sm tracking-wide truncate">Dashboard</span>
-              </a>
-            </li>
-          </div>
 
-            <ng-template #lain>
-              <a [routerLink]="['/dashboard']" class="relative flex flex-row items-center pr-6 text-gray-600 border-l-4 border-transparent h-11 focus:outline-none hover:bg-gray-50 hover:text-gray-800 hover:border-indigo-500">
-                <span class="inline-flex items-center justify-center ml-4">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 20 20" fill="currentColor">
-                    <path class="text-gray-600 fill-current group-hover:text-cyan-600" fill-rule="evenodd" d="M2 5a2 2 0 012-2h8a2 2 0 012 2v10a2 2 0 002 2H4a2 2 0 01-2-2V5zm3 1h6v4H5V6zm6 6H5v2h6v-2z" clip-rule="evenodd" />
-                    <path class="text-gray-300 fill-current group-hover:text-cyan-300" d="M15 7h1a2 2 0 012 2v5.5a1.5 1.5 0 01-3 0V7z" />
-                  </svg>
-                </span>
-                <span class="ml-2 text-sm tracking-wide truncate">Dashboard</span>
-              </a>
-            </ng-template>
-
-
-          <div *ngIf="router.url === '/profil'; else lain2">
-            <li>
-              <a  [routerLink]="['/profil']" class="relative flex items-center space-x-4 bg-gradient-to-r from-sky-600 to-cyan-400 px-4 py-3 text-white">
-                <span class="inline-flex justify-center items-center ml-4">
-                  <svg class="-ml-1 h-6 w-6" viewBox="0 0 24 24" fill="none">
-                    <path d="M6 8a2 2 0 0 1 2-2h1a2 2 0 0 1 2 2v1a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V8ZM6 15a2 2 0 0 1 2-2h1a2 2 0 0 1 2 2v1a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2v-1Z" class="fill-current text-cyan-400 fill-slate-600"></path>
-                    <path d="M13 8a2 2 0 0 1 2-2h1a2 2 0 0 1 2 2v1a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2V8Z"></path>
-                    <path d="M13 15a2 2 0 0 1 2-2h1a2 2 0 0 1 2 2v1a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-1Z"></path>
-                  </svg>
-                </span>
-                <span class="ml-2 text-sm tracking-wide truncate">Activity</span>
-              </a>
-            </li>
-          </div>
-
-            <ng-template #lain2>
-              <a [routerLink]="['/profil']" class="relative flex flex-row items-center pr-6 text-gray-600 border-l-4 border-transparent h-11 focus:outline-none hover:bg-gray-50 hover:text-gray-800 hover:border-indigo-500">
-                <span class="inline-flex items-center justify-center ml-4">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 20 20" fill="currentColor">
-                    <path class="text-gray-600 fill-current group-hover:text-cyan-600" fill-rule="evenodd" d="M2 5a2 2 0 012-2h8a2 2 0 012 2v10a2 2 0 002 2H4a2 2 0 01-2-2V5zm3 1h6v4H5V6zm6 6H5v2h6v-2z" clip-rule="evenodd" />
-                    <path class="text-gray-300 fill-current group-hover:text-cyan-300" d="M15 7h1a2 2 0 012 2v5.5a1.5 1.5 0 01-3 0V7z" />
-                  </svg>
-                </span>
-                <span class="ml-2 text-sm tracking-wide truncate">Activity</span>
-              </a>
-            </ng-template> -->
           <li class="min-w-max">
             <a
-              href="#"
+              (click)="dropdown()"
               class="flex items-center px-4 py-3 space-x-4 text-gray-600 rounded-md group"
             >
               <svg
@@ -426,12 +379,102 @@
                   d="M15 7h1a2 2 0 012 2v5.5a1.5 1.5 0 01-3 0V7z"
                 />
               </svg>
-              <span class="group-hover:text-gray-700">Tabless</span>
+              <span class="group-hover:text-gray-700">Tables</span>
+            </a>
+            <ul
+              *ngIf="boolDropdown"
+              class="w-11/12 mx-auto text-sm truncate rounded-sm shadow bg-base-100"
+            >
+              <li>
+                <a
+                  [routerLink]="['/dashboard/users']"
+                  routerLinkActive="router-link-active"
+                  class="relative flex items-center p-3 space-x-4"
+                  [ngClass]="
+                    router.url == '/dashboard/users'
+                      ? 'bg-gradient-to-r from-sky-600 to-cyan-400  px-4  text-white  border-l-0  '
+                      : 'bg-white text-gray-600 hover:bg-gray-50 hover:text-gray-800 border-l-4 border-transparent hover:border-indigo-500'
+                  "
+                  >Users</a
+                >
+              </li>
+              <li>
+                <a
+                  [routerLink]="['/dashboard/user-status']"
+                  class="relative flex items-center p-3 space-x-4"
+                  [ngClass]="
+                    router.url == '/dashboard/user-status'
+                      ? 'bg-gradient-to-r from-sky-600 to-cyan-400  px-4  text-white  border-l-0  '
+                      : 'bg-white text-gray-600 hover:bg-gray-50 hover:text-gray-800 border-l-4 border-transparent hover:border-indigo-500'
+                  "
+                  >User Status</a
+                >
+              </li>
+              <li>
+                <a
+                  [routerLink]="['/dashboard/institutions']"
+                  class="relative flex items-center space-x-4 p-3"
+                  [ngClass]="
+                    router.url == '/dashboard/institutions'
+                      ? 'bg-gradient-to-r from-sky-600 to-cyan-400  px-4  text-white  border-l-0  '
+                      : 'bg-white text-gray-600 hover:bg-gray-50 hover:text-gray-800 border-l-4 border-transparent hover:border-indigo-500'
+                  "
+                  >Institutions</a
+                >
+              </li>
+              <li>
+                <a
+                  [routerLink]="['/dashboard/departments']"
+                  class="relative flex items-center p-3 space-x-4"
+                  [ngClass]="
+                    router.url == '/dashboard/departments'
+                      ? 'bg-gradient-to-r from-sky-600 to-cyan-400  px-4  text-white  border-l-0  '
+                      : 'bg-white text-gray-600 hover:bg-gray-50 hover:text-gray-800 border-l-4 border-transparent hover:border-indigo-500'
+                  "
+                  >Departments</a
+                >
+              </li>
+              <li>
+                <a
+                  [routerLink]="['/dashboard/banks']"
+                  class="relative flex items-center p-3 space-x-4"
+                  [ngClass]="
+                    router.url == '/dashboard/banks'
+                      ? 'bg-gradient-to-r from-sky-600 to-cyan-400  px-4  text-white  border-l-0  '
+                      : 'bg-white text-gray-600 hover:bg-gray-50 hover:text-gray-800 border-l-4 border-transparent hover:border-indigo-500'
+                  "
+                  >Banks</a
+                >
+              </li>
+            </ul>
+          </li>
+
+          <li class="min-w-max">
+            <a
+              [routerLink]="['/dashboard/myActivity']"
+              routerLinkActive="router-link-active"
+              class="flex items-center px-4 py-3 space-x-4 text-gray-600 rounded-md group"
+            >
+              <svg
+                viewBox="0 0 32 32"
+                version="1.1"
+                class="w-5 h-5"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  class="text-gray-600 fill-current group-hover:text-cyan-300"
+                  d="M28 9h-1.958v-2.938l-4.042-0.062 0.021 3h-12.146l0.083-3-3.958 0.062v3l-2-0.062c-1.104 0-2 0.896-2 2v14c0 1.104 0.896 2 2 2h24c1.104 0 2-0.896 2-2v-14c0-1.104-0.896-2-2-2zM23 7h2v4h-2v-4zM10 13.812c1.208 0 2.188 1.287 2.188 2.875s-0.98 2.875-2.188 2.875-2.188-1.287-2.188-2.875 0.98-2.875 2.188-2.875zM7 7h2v4h-2v-4zM5.667 22.948c0 0 0.237-1.902 0.776-2.261s2.090-0.598 2.090-0.598 1.006 1.075 1.434 1.075c0.427 0 1.433-1.075 1.433-1.075s1.552 0.238 2.091 0.598c0.633 0.422 0.791 2.261 0.791 2.261h-8.615zM26 22h-9v-1h9v1zM26 20h-9v-1h9v1zM26 18h-9v-1h9v1zM26 16h-9v-1h9v1z"
+                ></path>
+              </svg>
+              <span class="ml-2 text-sm tracking-wide truncate"
+                >My Activities</span
+              >
             </a>
           </li>
           <li class="min-w-max">
             <a
-              href="#"
+              [routerLink]="['/dashboard']"
+              routerLinkActive="router-link-active"
               class="flex items-center px-4 py-3 space-x-4 text-gray-600 rounded-md group"
             >
               <svg
@@ -454,7 +497,8 @@
           </li>
           <li class="min-w-max">
             <a
-              href="#"
+              [routerLink]="['/dashboard']"
+              routerLinkActive="router-link-active"
               class="flex items-center px-4 py-3 space-x-4 text-gray-600 rounded-md group"
             >
               <svg

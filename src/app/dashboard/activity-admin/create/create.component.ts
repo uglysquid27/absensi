@@ -1,3 +1,4 @@
+import { DatePipe } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {
@@ -9,6 +10,7 @@ import { forkJoin } from 'rxjs';
 import { AlertType } from 'src/app/service/alert/alert.model';
 import { AlertService } from 'src/app/service/alert/alert.service';
 import { AttendanceService } from 'src/app/service/attendance.service';
+const datepipe: DatePipe = new DatePipe('en-US');
 
 export enum attendance {
   'Attended' = 'work day',
@@ -33,6 +35,7 @@ export class CreateComponent {
   institutions: any;
   banks: any;
   submitted: Boolean = false;
+  now = new Date();
 
   get f() {
     return this.form.controls;
@@ -50,6 +53,8 @@ export class CreateComponent {
       nikInput: ['', Validators.required],
       statusInput: ['', Validators.required],
     });
+    
+    
   }
   onSubmit() {
     this.submitted = true;
@@ -86,7 +91,16 @@ export class CreateComponent {
       this.status = attendance.data;
 
       console.log(this.users);
+      console.log(this.filterFilledAttendance('10271'));
     });
+  }
+  filterFilledAttendance(nik: any) {
+    return this.status.filter((data: any) => data.nik == nik &&
+    this.convertDate(data.date) == this.convertDate(this.now));
+  }
+
+  convertDate(date: any) {
+    return datepipe.transform(date, 'dd-MMM-YYYY');
   }
   private formatDate(date: any) {
     const d = new Date(date);

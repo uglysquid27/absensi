@@ -11,6 +11,14 @@ export class SidebarComponent {
   constructor(public router: Router) {
     // console.log(this.router.url)
   }
+  onMouseEnter() {
+    
+  }
+  onMouseOut() {
+    console.log('out');
+    
+    this.boolDropdown = false;
+  }
 
   dropdown() {
     this.boolDropdown = !this.boolDropdown;
