@@ -25,10 +25,12 @@ export class IndexActivityUserComponent implements OnInit {
   formAttendance!: FormGroup;
   dayStatus: String = '';
   dateNow: any;
+  formActivity!: FormGroup;
 
   // ShowAttendance
   showAttendance: boolean = false;
   isAttended: any;
+  showEditor: boolean = false;
 
   public config = {
     toolbar: [
@@ -42,6 +44,9 @@ export class IndexActivityUserComponent implements OnInit {
   }
   editorData: any;
 
+  // Activity
+  activities: any;
+
   ngOnInit(): void {
     this.service.getAmountAttendance(this.session.getUser().nik).subscribe((res: any) => {
       this.attended = res.attended;
@@ -49,10 +54,20 @@ export class IndexActivityUserComponent implements OnInit {
       this.leaving = res.leave;
     })
 
-    forkJoin(([this.service.getAmountAttendance(this.session.getUser().nik),
-    this.service.isAttended(this.session.getUser().nik)])).subscribe(([amount,isAttended]) => {
+    forkJoin(([
+      this.service.getAmountAttendance(this.session.getUser().nik),
+      this.service.isAttended(this.session.getUser().nik),
+      this.service.showActivity(this.session.getUser().nik)
+    ])).subscribe(([
+      amount,
+      isAttended,
+      activities
+    ]) => {
       console.log(isAttended);
       this.isAttended = isAttended;
+      this.activities = activities.activity;
+      console.log(this.activities);
+
     })
 
     this.dateNow = moment().format('YYYY-MM-DD HH:mm:ss');
@@ -66,6 +81,11 @@ export class IndexActivityUserComponent implements OnInit {
       timeIn: new FormControl('08:00:00'),
       timeOut: new FormControl('17:00:00'),
       description: new FormControl('')
+    })
+
+    this.formActivity = new FormGroup({
+      nik: new FormControl(this.session.getUser().nik),
+      activity: new FormControl('')
     })
   }
 
@@ -92,6 +112,25 @@ export class IndexActivityUserComponent implements OnInit {
         })
       }
     }
+  }
+  submitActivity() {
+    this.formActivity.value.nik = Number(this.formActivity.value.nik);
 
+    let data = this.formActivity.value.activity;
+    let data2 = data.replace(/<ol/g, '<ol class="list-decimal"');
+    let data3 = data2.replace(/<ul/g, '<ul class="list-disc"');
+    this.formActivity.value.activity = data3;
+
+    this.service.storeActivity(this.formActivity.value).subscribe((res: any) => {
+      console.log(res);
+      this.ngOnInit();
+    })
+  }
+
+  deleteActivity(id: any) {
+    this.service.deleteActivity(id).subscribe((res: any) => {
+      console.log(res);
+      this.ngOnInit();
+    })
   }
 }

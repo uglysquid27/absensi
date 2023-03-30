@@ -204,11 +204,83 @@
       </div>
     </form>
   </div>
-  <div class="p-10">
-    <ckeditor
-      [(ngModel)]="editorData"
-      [config]="config"
-      formControlName="desc"
-    ></ckeditor>
+
+  <img
+    src="assets/img/todo.png"
+    width="50px"
+    class="cursor-pointer hover:-translate-y-1"
+    (click)="showEditor = !showEditor"
+    alt=""
+  />
+  <form
+    action=""
+    *ngIf="showEditor"
+    [formGroup]="formActivity"
+    (submit)="submitActivity()"
+  >
+    <div class="p-10">
+      <ckeditor
+        [(ngModel)]="editorData"
+        [config]="config"
+        formControlName="activity"
+      ></ckeditor>
+    </div>
+    <div class="flex justify-center mt-5">
+      <button
+        type="submit"
+        class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 focus:outline-none"
+      >
+        Submit
+      </button>
+      <button
+        type="reset"
+        class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 focus:outline-none"
+      >
+        Reset
+      </button>
+    </div>
+  </form>
+  <div class="relative p-4 overflow-x-auto bg-red-500 mt-14">
+    <table
+      class="w-full text-sm text-left text-gray-500 dark:text-gray-400 rounded-xl"
+    >
+      <thead
+        class="text-xs text-gray-700 uppercase bg-gray-500 dark:bg-gray-700 dark:text-gray-400 rounded-xl"
+      >
+        <tr>
+          <th scope="col" class="px-6 py-3 rounded-tl-lg">Activities</th>
+          <th scope="col" class="px-6 py-3 rounded-tr-lg">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          class="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
+          *ngFor="let item of activities"
+        >
+          <th
+            scope="row"
+            class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+            [innerHTML]="item.activity"
+          ></th>
+          <td class="px-6 py-4">
+            <div class="text-xl text-black">
+              <a
+                routerLink="/dashboard/activity/edit/{{ item.id }}"
+                class="text-white bg-yellow-500 hover:bg-yellow-800 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 focus:outline-none"
+              >
+            edit</a>
+              <!-- <i class="cursor-pointer fas fa-edit hover:text-blue-500" (click)="editActivity(item)"></i> -->
+              <button
+                (click)="deleteActivity(item.id)"
+                type="reset"
+                class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 focus:outline-none"
+              >
+                Delete
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </div>

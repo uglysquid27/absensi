@@ -28,6 +28,9 @@ export class AttendanceService {
   getEmployeeStatus() {
     return this.httpClient.get(api + 'employeestatus');
   }
+  storeEmployeeStatus(body: any): Observable<any> {
+    return this.httpClient.post(api + 'employeestatus', body);
+  }
   updateEmployeeStatus(id: any, body: any) {
     return this.httpClient.put(api + 'employeestatus/' + id, body);
   }
@@ -56,6 +59,21 @@ export class AttendanceService {
   getActivity(): Observable<any> {
     return this.httpClient.get(api + 'activities');
   }
+  storeActivity(body: any): Observable<any> {
+    return this.httpClient.post(api + 'activities', body);
+  }
+  showActivity(id: any): Observable<any> {
+    return this.httpClient.get(api + 'showActivities/' + id);
+  }
+  deleteActivity(id: any): Observable<any> {
+    return this.httpClient.delete(api + 'activities/' + id);
+  }
+  getActivitybyId(id: any): Observable<any> {
+    return this.httpClient.get(api + 'getActivities/' + id);
+  }
+  updateActivity(id: any, body: any): Observable<any> {
+    return this.httpClient.put(api + 'activities/' + id, body);
+  }
 
    /* Documents ------------------------------------------------------------------------*/
     getDocument(): Observable<any> {
@@ -82,10 +100,25 @@ export class AttendanceService {
   getInstitutions(): Observable<any> {
     return this.httpClient.get(api + 'institutions');
   }
+  getInstitutionsbyId(id: any) {
+    return this.httpClient.get(api + 'institutions/' + id);
+  }
+  updateInstitutionsStatus(id: any, body: any) {
+    return this.httpClient.put(api + 'institutions/' + id, body);
+  }
+  storeInstitutionsStatus(body: any): Observable<any> {
+    return this.httpClient.post(api + 'institutions', body);
+  }
   getDepartements(): Observable<any> {
     return this.httpClient.get(api + 'departements');
   }
-
-  
-  
+  getDepartementsbyId(id: any) {
+    return this.httpClient.get(api + 'departements/' + id);
+  }
+  UpdateDepartementsStatus(id: any, body: any) {
+    return this.httpClient.put(api + 'departements/' + id, body);
+  }
+  storeDepartements(body: any): Observable<any> {
+    return this.httpClient.post(api + 'departements', body);
+  }
 }
