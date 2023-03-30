@@ -19,6 +19,7 @@ import { TestComponent } from './dashboard/test/test.component';
 import { UsersComponent } from './dashboard/tables/users/users.component';
 import { UserStatusComponent } from './dashboard/tables/user-status/user-status.component';
 import { EditComponent as UserEditComponent } from './dashboard/tables/users/edit/edit.component';
+import { EditComponent as InstEditComponent } from './dashboard/tables/institutions/edit/edit.component';
 import { CreateComponent as UserAddComponent } from './dashboard/tables/users/create/create.component';
 import { CreateComponent as StatusAddComponent } from './dashboard/tables/user-status/create/create.component';
 import { EditComponent as StatusEditComponent } from './dashboard/tables/user-status/edit/edit.component';
@@ -37,6 +38,7 @@ const routes: Routes = [
       { path: 'user-status/edit/:id', component: StatusEditComponent },
       { path: 'user-status/add', component: StatusAddComponent},
       { path: 'institutions', component: InstitutionsComponent },
+      { path: 'institutions/edit/:id', component: InstEditComponent},
       { path: 'departments', component: DepartmentsComponent },
       { path: 'banks', component: BanksComponent },
       { path: 'users/edit/:id', component: UserEditComponent },

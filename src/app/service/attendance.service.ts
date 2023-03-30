@@ -68,6 +68,12 @@ export class AttendanceService {
   getInstitutions(): Observable<any> {
     return this.httpClient.get(api + 'institutions');
   }
+  getInstitutionsbyId(id: any) {
+    return this.httpClient.get(api + 'institutions/' + id);
+  }
+  updateInstitutionsStatus(id: any, body: any) {
+    return this.httpClient.put(api + 'institutions/' + id, body);
+  }
   getDepartements(): Observable<any> {
     return this.httpClient.get(api + 'departements');
   }

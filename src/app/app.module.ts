@@ -29,6 +29,7 @@ import { UsersComponent } from './dashboard/tables/users/users.component';
 import { InstitutionsComponent } from './dashboard/tables/institutions/institutions.component';
 import { EditComponent } from './dashboard/tables/users/edit/edit.component';
 import { EditComponent as StatusEditComponent } from './dashboard/tables/user-status/edit/edit.component';
+import { EditComponent as InstEditComponent } from './dashboard/tables/institutions/edit/edit.component';
 import { ActivityAdminComponent } from './dashboard/activity-admin/activity-admin.component';
 import { CreateComponent } from './dashboard/tables/users/create/create.component';
 import { DepartmentsComponent } from './dashboard/tables/departments/departments.component';
@@ -73,6 +74,7 @@ import { CKEditorModule } from 'ckeditor4-angular';
     CreateActivityUserComponent,
     UpdateActivityUserComponent,
     StatusAddComponent,
+    InstEditComponent,
   ],
   imports: [
     AppRoutingModule,
