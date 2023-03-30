@@ -2,7 +2,7 @@
   <div class="w-full flex justify-between pb-5">
     <a
       class="w-fit"
-      [routerLink]="['/dashboard/user-status']"
+      [routerLink]="['/dashboard/institutions']"
       routerLinkActive="router-link-active"
     >
       <span
@@ -24,7 +24,7 @@
 
   <div class="mx-5 shadow-lg rounded-md border-1 border">
     <div class="w-full flex justify-between items-center">
-      <h2 class="font-semibold font-sans text-xl py-5 px-10">Edit User Data</h2>
+      <h2 class="font-semibold font-sans text-xl py-5 px-10">Edit Institutions Data</h2>
     </div>
 
     <form class="" [formGroup]="form" (ngSubmit)="onSubmit()">
@@ -33,26 +33,26 @@
       >
         <div class="relative flex-grow w-full">
           <label for="nikInput" class="leading-7 text-sm text-gray-600"
-            >Status</label
+            >City</label
           >
           <input
             type="text"
-            id="statusInput"
-            name="statusInput"
-            formControlName="statusInput"
+            id="cityInput"
+            name="cityInput"
+            formControlName="cityInput"
             value="{{ user.employeeStatus }}"
             class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-transparent focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
           />
         </div>
         <div class="relative flex-grow w-full">
           <label for="nameInput" class="leading-7 text-sm text-gray-600"
-            >Salary</label
+            >Institutions</label
           >
           <input
             type="text"
-            id="salaryInput"
-            name="salaryInput"
-            formControlName="salaryInput"
+            id="instInput"
+            name="instInput"
+            formControlName="instInput"
             value="{{ user.salary }}"
             class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-transparent focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
           />

@@ -28,6 +28,9 @@ export class AttendanceService {
   getEmployeeStatus() {
     return this.httpClient.get(api + 'employeestatus');
   }
+  storeEmployeeStatus(body: any): Observable<any> {
+    return this.httpClient.post(api + 'employeestatus', body);
+  }
   updateEmployeeStatus(id: any, body: any) {
     return this.httpClient.put(api + 'employeestatus/' + id, body);
   }
@@ -79,6 +82,15 @@ export class AttendanceService {
   }
   getInstitutions(): Observable<any> {
     return this.httpClient.get(api + 'institutions');
+  }
+  getInstitutionsbyId(id: any) {
+    return this.httpClient.get(api + 'institutions/' + id);
+  }
+  updateInstitutionsStatus(id: any, body: any) {
+    return this.httpClient.put(api + 'institutions/' + id, body);
+  }
+  storeInstitutionsStatus(body: any): Observable<any> {
+    return this.httpClient.post(api + 'institutions', body);
   }
   getDepartements(): Observable<any> {
     return this.httpClient.get(api + 'departements');
