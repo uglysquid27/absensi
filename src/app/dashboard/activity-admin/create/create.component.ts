@@ -13,10 +13,10 @@ import { AttendanceService } from 'src/app/service/attendance.service';
 const datepipe: DatePipe = new DatePipe('en-US');
 
 export enum attendance {
-  'Attended' = 'work day',
-  'Off Day' = 'holiday',
-  'Not Attend' = 'off day',
-  'Leaving' = 'leave day',
+  Attended = '',
+  'Off Day' = '' ,
+  'Not Attended' = '',
+  Leaving = ''
 }
 
 

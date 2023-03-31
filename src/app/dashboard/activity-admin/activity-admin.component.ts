@@ -35,11 +35,11 @@ export class ActivityAdminComponent {
       this.activityData = activ.data;
       console.log(activ.data);
 
-      console.log(this.filterEnum(this.filterAttend('10282')[0].dayStatus));
+      // console.log(this.filterEnum(this.filterAttend('10282')[0].dayStatus));
       
-      console.log(this.attendData);
+      // console.log(this.attendData);
       
-      console.log(this.filterAttend('10282')[0].dayStatus);
+      // console.log(this.filterAttend('10290'));
 
       // console.log(this.convertDate(this.now));
       // console.log(this.convertDate(this.attendData[1].date));
