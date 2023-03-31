@@ -83,7 +83,7 @@ export class CreateComponent {
 
   }
 
-  
+
 
   cardChange(event: any) {
     const reader = new FileReader();
@@ -136,7 +136,7 @@ export class CreateComponent {
 
     this.bankPhotoFile = event.target.files[0];
   }
-  
+
 
 
   onSubmit() {
@@ -165,13 +165,14 @@ export class CreateComponent {
     };
 
     console.log(this.bankPhotoFile.name);
-    
+    console.log(body.nik);
+
     const formData = new FormData();
     formData.append('nik', body.nik);
     formData.append('idCardPhoto', this.cardPhotoFile, this.cardPhotoFile.name);
     formData.append('officialPhoto', this.ofPhotoFile, this.ofPhotoFile.name);
     formData.append('bankPhoto', this.bankPhotoFile, this.bankPhotoFile.name);
-    
+
 
     this.apiService.storeEmployee(body).subscribe(
       (data) => {
@@ -185,20 +186,26 @@ export class CreateComponent {
 
       }
     );
-
+    console.log("testluar");
     this.apiService.storeDocument(formData).subscribe(
       (data) => {
+        console.log("test");
         console.log(data);
-        console.log('test');
-        
+
+
         this.alertServie.onCallAlert('Success Add Data', AlertType.Success)
         this.router.navigate(['/dashboard/users']);
+      },
+      (er) => {
+        console.log("error");
+        console.log(er);
+
       }
     )
 
   }
 
-  
+
   subscribeData() {
     forkJoin(
 

@@ -74,7 +74,9 @@
 
         this.f['cityInput'].setValue(this.user.city);
         this.f['instInput'].setValue(this.user.institution);
-        console.log(this.user.status);
+        console.log(this.id);
+
+        console.log(this.user);
       });
     }
   }
