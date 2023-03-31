@@ -228,9 +228,9 @@ export class EditComponent {
       this.f['cardPhotoInput'].setValue(this.user.documents.idCardPhoto);
         
       console.log(this.user.isActive);
-      this.cardPhotoSrc = `http://localhost:3000/${this.user.documents[0].idCardPhoto}`;
-      this.ofPhotoSrc = `http://localhost:3000/${this.user.documents[0].officialPhoto}`;
-      this.bankPhotoSrc = `http://localhost:3000/${this.user.documents[0].bankPhoto}`;
+      this.cardPhotoSrc = `http://127.0.0.1:3000/${this.user.documents[0].idCardPhoto}`;
+      this.ofPhotoSrc = `http://127.0.0.1:3000/${this.user.documents[0].officialPhoto}`;
+      this.bankPhotoSrc = `http://127.0.0.1:3000/${this.user.documents[0].bankPhoto}`;
       
     });
   }

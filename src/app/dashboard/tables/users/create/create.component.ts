@@ -177,7 +177,7 @@ export class CreateComponent {
       (data) => {
         console.log(data);
         this.alertServie.onCallAlert('Success Add Data', AlertType.Success)
-        this.router.navigate(['/dashboard/users']);
+        // this.router.navigate(['/dashboard/users']);
       },
       (err) => {
         this.alertServie.setAlert('Add Data Failed', AlertType.Error)
@@ -189,6 +189,8 @@ export class CreateComponent {
     this.apiService.storeDocument(formData).subscribe(
       (data) => {
         console.log(data);
+        console.log('test');
+        
         this.alertServie.onCallAlert('Success Add Data', AlertType.Success)
         this.router.navigate(['/dashboard/users']);
       }

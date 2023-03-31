@@ -12,14 +12,8 @@
     />
   </a>
 
-  <div class="flex-grow overflow-x-hidden overflow-y-auto">
+  <div class="flex-grow overflow-x-hidden overflow-y-auto grid content-between">
     <ul class="flex flex-col py-4 space-y-1" role="group">
-      <!-- <li class="px-5">
-        <div class="flex flex-row items-center h-8">
-          <div class="text-sm font-light tracking-wide text-gray-500">Menu</div>
-        </div>
-      </li> -->
-
       <li>
         <a
           [routerLink]="['/dashboard']"
@@ -298,9 +292,196 @@
         </a>
       </li>
     </ul>
+    <div class="my-5">
+      <a
+        (click)="AccountDropdown()"
+        class="relative flex flex-row items-center pr-6 space-x-4 text-gray-600 border-l-4 border-transparent h-11 focus:outline-none hover:bg-gray-50 hover:text-gray-800 hover:border-indigo-500"
+        [ngClass]="boolAcc ? 'bg-gray-50' : ''"
+      >
+        <span class="inline-flex items-center justify-center ml-4">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            height="24"
+            viewBox="0 96 960 960"
+            width="24"
+            fill="currentColor"
+          >
+            <path
+              d="M640 656q-50 0-85-35t-35-85q0-50 35-85t85-35q50 0 85 35t35 85q0 50-35 85t-85 35ZM400 896v-76q0-21 10-40t28-30q45-27 95.5-40.5T640 696q56 0 106.5 13.5T842 750q18 11 28 30t10 40v76H400Zm86-80h308q-35-20-74-30t-80-10q-41 0-80 10t-74 30Zm154-240q17 0 28.5-11.5T680 536q0-17-11.5-28.5T640 496q-17 0-28.5 11.5T600 536q0 17 11.5 28.5T640 576Zm0-40Zm0 280ZM120 656v-80h320v80H120Zm0-320v-80h480v80H120Zm324 160H120v-80h360q-14 17-22.5 37T444 496Z"
+            />
+          </svg>
+        </span>
+        <span class="ml-2 text-sm tracking-wide truncate">Account</span>
+        <span class="flex justify-end grow">
+          <svg
+            class="w-5 h-5 text-white"
+            [ngClass]="boolAcc ? 'rotate-180' : ''"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 20 20"
+            fill="currentColor"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+              clip-rule="evenodd"
+              fill="gray"
+            />
+          </svg>
+        </span>
+      </a>
+      <ul
+        *ngIf="boolAcc"
+        class="w-11/12 mx-auto text-sm truncate rounded-sm shadow bg-base-100 transition ease-in-out delay-150"
+      >
+        <li>
+          <a
+            [routerLink]="['/']"
+            routerLinkActive="router-link-active"
+            class="relative flex items-center justify-between p-3 space-x-4"
+            [ngClass]="
+              router.url == '/'
+                ? 'bg-gradient-to-r from-sky-600 to-cyan-400  px-4  text-white  border-l-0  '
+                : 'bg-white text-gray-600 hover:bg-gray-50 hover:text-gray-800 border-l-4 border-transparent hover:border-indigo-500'
+            "
+            >Home
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              height="24"
+              viewBox="0 96 960 960"
+              width="24"
+              class="fill-gray-500"
+            >
+              <path
+                d="M197.386 915.999q-23.538 0-40.077-16.491-16.538-16.49-16.538-40.048v-72.538L291.539 653v262.999h-94.153Zm131.076 0V765.23h303.076v150.769H328.462Zm339.999 0V606.66L506.692 463.308l114.077-100.845 179.614 159.383q9.231 8.616 14.039 19.453 4.807 10.838 4.807 23.089v294.974q0 23.56-16.49 40.098-16.49 16.539-40.048 16.539h-94.23Zm-527.69-179.23V564.647q0-12.227 4.807-23.514 4.808-11.287 14.039-19.287l282.691-250.614q8-7.615 17.748-10.923 9.749-3.308 19.962-3.308t19.943 3.308q9.731 3.308 17.731 10.923l75.384 67.154-452.305 398.383Z"
+              />
+            </svg>
+          </a>
+        </li>
+        <li>
+          <a
+            class="relative flex items-center justify-between p-3 space-x-4"
+            [ngClass]="
+              router.url == '/'
+                ? 'bg-gradient-to-r from-sky-600 to-cyan-400  px-4  text-white  border-l-0  '
+                : 'bg-white text-gray-600 hover:bg-gray-50 hover:text-gray-800 border-l-4 border-transparent hover:border-indigo-500'
+            "
+            >Settings
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              height="24"
+              viewBox="0 96 960 960"
+              width="24"
+              class="fill-gray-500"
+            >
+              <path
+                d="M400 576q-66 0-113-47t-47-113q0-66 47-113t113-47q66 0 113 47t47 113q0 66-47 113t-113 47ZM80 896V784q0-33 17-62t47-44q51-26 115-44t141-18h14q6 0 12 2-8 18-13.5 37.5T404 696h-4q-71 0-127.5 18T180 750q-9 5-14.5 14t-5.5 20v32h252q6 21 16 41.5t22 38.5H80Zm560 40-12-60q-12-5-22.5-10.5T584 852l-58 18-40-68 46-40q-2-14-2-26t2-26l-46-40 40-68 58 18q11-8 21.5-13.5T628 596l12-60h80l12 60q12 5 22.5 11t21.5 15l58-20 40 70-46 40q2 12 2 25t-2 25l46 40-40 68-58-18q-11 8-21.5 13.5T732 876l-12 60h-80Zm40-120q33 0 56.5-23.5T760 736q0-33-23.5-56.5T680 656q-33 0-56.5 23.5T600 736q0 33 23.5 56.5T680 816ZM400 496q33 0 56.5-23.5T480 416q0-33-23.5-56.5T400 336q-33 0-56.5 23.5T320 416q0 33 23.5 56.5T400 496Zm0-80Zm12 400Z"
+              />
+            </svg>
+          </a>
+        </li>
+        <li>
+          <a
+            type="button"
+            (click)="signOutModal()"
+            class="relative flex items-center justify-between space-x-4 p-3"
+            [ngClass]="
+              router.url == '/'
+                ? 'bg-gradient-to-r from-sky-600 to-cyan-400  px-4 text-white  border-l-0  '
+                : 'bg-white text-gray-600 hover:bg-gray-50 hover:text-gray-800 border-l-4 border-transparent hover:border-indigo-500'
+            "
+            >Log Out
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              height="24"
+              viewBox="0 96 960 960"
+              width="24"
+              class="fill-gray-500"
+            >
+              <path
+                d="M200 936q-33 0-56.5-23.5T120 856V296q0-33 23.5-56.5T200 216h280v80H200v560h280v80H200Zm440-160-55-58 102-102H360v-80h327L585 434l55-58 200 200-200 200Z"
+              />
+            </svg>
+          </a>
+        </li>
+      </ul>
+    </div>
   </div>
 </div>
 
+<!-- * ------------------------------Modal Sign Out---------------------------- * -->
+<div
+  *ngIf="boolModal"
+  #signOutModal
+  id="popup-modal"
+  tabindex="-1"
+  class="fixed top-0 left-0 right-0 z-50 p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] md:h-full bg-gray-900 bg-opacity-60"
+>
+  <div class="relative w-full h-full mx-auto max-w-sm md:h-auto">
+    <div class="relative rounded-lg shadow bg-white">
+      <button
+        (click)="signOut($event)"
+        type="button"
+        class="absolute top-3 right-2.5 text-gray-400 bg-transparent rounded-lg text-sm p-1.5 ml-auto inline-flex items-center hover:bg-gray-800 hover:text-white"
+        data-modal-hide="popup-modal"
+      >
+        <svg
+          aria-hidden="true"
+          class="w-5 h-5"
+          fill="currentColor"
+          viewBox="0 0 20 20"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+            clip-rule="evenodd"
+          ></path>
+        </svg>
+        <span class="sr-only">Close modal</span>
+      </button>
+      <div class="p-6 text-center">
+        <svg
+          aria-hidden="true"
+          class="mx-auto mb-4 w-14 h-14 text-gray-400"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+          ></path>
+        </svg>
+        <h3 class="mb-5 text-lg font-normal text-gray-400">
+          Are you sure to Logout?
+        </h3>
+        <button
+          (click)="signOut($event)"
+          id="yesBtn"
+          data-modal-hide="popup-modal"
+          type="button"
+          class="text-white bg-red-600 hover:bg-red-800 focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2"
+        >
+          Yes, I'm sure
+        </button>
+        <button
+          (click)="signOut($event)"
+          id="noBtn"
+          data-modal-hide="popup-modal"
+          type="button"
+          class="rounded-lg border text-sm font-medium px-5 py-2.5 focus:z-10 bg-white text-gray-500 border-gray-300 hover:text-white hover:bg-gray-600"
+        >
+          No, cancel
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- /* ------------------------------Short Sidebar---------------------------- */ -->
 <div
   class="fixed z-50 min-h-screen bg-gray-100 lg:hidden"
   (mouseenter)="onMouseEnter()"
@@ -309,7 +490,7 @@
   <div
     class="sidebar min-h-screen w-[3.3rem] overflow-hidden border-r hover:w-48 hover:bg-white hover:shadow-lg"
   >
-    <div class="flex flex-col justify-between h-screen pb-6">
+    <div class="flex flex-col h-screen">
       <div>
         <div
           class="w-max p-2 pb-8 pt-8 border-b"
@@ -328,7 +509,8 @@
               alt=""
             /> </a
         ></ng-template>
-
+      </div>
+      <div class="grid content-between flex-grow overflow-x-hidden overflow-y-auto">
         <ul class="mt-2 space-y-2 tracking-wide">
           <li class="min-w-max">
             <a
@@ -532,57 +714,120 @@
               >
             </a>
           </li>
-          <!-- <li class="min-w-max">
-            <a
-              [routerLink]="['/dashboard']"
-              routerLinkActive="router-link-active"
-              class="flex items-center px-4 py-3 space-x-4 text-gray-600 rounded-md group"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="w-5 h-5"
-                viewBox="0 0 20 20"
-                fill="currentColor"
-              >
-                <path
-                  class="text-gray-600 fill-current group-hover:text-cyan-600"
-                  d="M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z"
-                />
-                <path
-                  class="text-gray-300 fill-current group-hover:text-cyan-300"
-                  d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z"
-                />
-              </svg>
-              <span class="group-hover:text-gray-700">Chart</span>
-            </a>
-          </li>
-          <li class="min-w-max">
-            <a
-              [routerLink]="['/dashboard']"
-              routerLinkActive="router-link-active"
-              class="flex items-center px-4 py-3 space-x-4 text-gray-600 rounded-md group"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="w-5 h-5"
-                viewBox="0 0 20 20"
-                fill="currentColor"
-              >
-                <path
-                  class="text-gray-300 fill-current group-hover:text-cyan-300"
-                  d="M4 4a2 2 0 00-2 2v1h16V6a2 2 0 00-2-2H4z"
-                />
-                <path
-                  class="text-gray-600 fill-current group-hover:text-cyan-600"
-                  fill-rule="evenodd"
-                  d="M18 9H2v5a2 2 0 002 2h12a2 2 0 002-2V9zM4 13a1 1 0 011-1h1a1 1 0 110 2H5a1 1 0 01-1-1zm5-1a1 1 0 100 2h1a1 1 0 100-2H9z"
-                  clip-rule="evenodd"
-                />
-              </svg>
-              <span class="group-hover:text-gray-700">Other Menu</span>
-            </a>
-          </li> -->
         </ul>
+        <div class="my-5">
+          <a
+            (click)="AccountDropdown()"
+            class="relative flex flex-row items-center pr-6 space-x-4 text-gray-600 border-l-4 border-transparent h-11 focus:outline-none hover:bg-gray-50 hover:text-gray-800 hover:border-indigo-500"
+            [ngClass]="boolAcc ? 'bg-gray-50 px-4' : ' px-3'"
+          >
+            <span class="inline-flex items-center justify-center">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                height="24"
+                viewBox="0 96 960 960"
+                width="24"
+                fill="currentColor"
+              >
+                <path
+                  d="M640 656q-50 0-85-35t-35-85q0-50 35-85t85-35q50 0 85 35t35 85q0 50-35 85t-85 35ZM400 896v-76q0-21 10-40t28-30q45-27 95.5-40.5T640 696q56 0 106.5 13.5T842 750q18 11 28 30t10 40v76H400Zm86-80h308q-35-20-74-30t-80-10q-41 0-80 10t-74 30Zm154-240q17 0 28.5-11.5T680 536q0-17-11.5-28.5T640 496q-17 0-28.5 11.5T600 536q0 17 11.5 28.5T640 576Zm0-40Zm0 280ZM120 656v-80h320v80H120Zm0-320v-80h480v80H120Zm324 160H120v-80h360q-14 17-22.5 37T444 496Z"
+                />
+              </svg>
+            </span>
+            <span class="ml-2 text-sm tracking-wide truncate">Account</span>
+            <span class="flex justify-end grow">
+              <svg
+                class="w-5 h-5 text-white"
+                [ngClass]="boolAcc ? 'rotate-180' : ''"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                  clip-rule="evenodd"
+                  fill="gray"
+                />
+              </svg>
+            </span>
+          </a>
+          <ul
+            *ngIf="boolAcc"
+            class="w-11/12 mx-auto text-sm truncate rounded-sm shadow bg-base-100 transition ease-in-out delay-150"
+          >
+            <li>
+              <a
+                [routerLink]="['/']"
+                routerLinkActive="router-link-active"
+                class="relative flex items-center justify-between p-3 space-x-4"
+                [ngClass]="
+                  router.url == '/'
+                    ? 'bg-gradient-to-r from-sky-600 to-cyan-400  px-4  text-white  border-l-0  '
+                    : 'bg-white text-gray-600 hover:bg-gray-50 hover:text-gray-800 border-l-4 border-transparent hover:border-indigo-500'
+                "
+                >Home
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  height="24"
+                  viewBox="0 96 960 960"
+                  width="24"
+                  class="fill-gray-500"
+                >
+                  <path
+                    d="M197.386 915.999q-23.538 0-40.077-16.491-16.538-16.49-16.538-40.048v-72.538L291.539 653v262.999h-94.153Zm131.076 0V765.23h303.076v150.769H328.462Zm339.999 0V606.66L506.692 463.308l114.077-100.845 179.614 159.383q9.231 8.616 14.039 19.453 4.807 10.838 4.807 23.089v294.974q0 23.56-16.49 40.098-16.49 16.539-40.048 16.539h-94.23Zm-527.69-179.23V564.647q0-12.227 4.807-23.514 4.808-11.287 14.039-19.287l282.691-250.614q8-7.615 17.748-10.923 9.749-3.308 19.962-3.308t19.943 3.308q9.731 3.308 17.731 10.923l75.384 67.154-452.305 398.383Z"
+                  />
+                </svg>
+              </a>
+            </li>
+            <li>
+              <a
+                class="relative flex items-center justify-between p-3 space-x-4"
+                [ngClass]="
+                  router.url == '/'
+                    ? 'bg-gradient-to-r from-sky-600 to-cyan-400  px-4  text-white  border-l-0  '
+                    : 'bg-white text-gray-600 hover:bg-gray-50 hover:text-gray-800 border-l-4 border-transparent hover:border-indigo-500'
+                "
+                >Settings
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  height="24"
+                  viewBox="0 96 960 960"
+                  width="24"
+                  class="fill-gray-500"
+                >
+                  <path
+                    d="M400 576q-66 0-113-47t-47-113q0-66 47-113t113-47q66 0 113 47t47 113q0 66-47 113t-113 47ZM80 896V784q0-33 17-62t47-44q51-26 115-44t141-18h14q6 0 12 2-8 18-13.5 37.5T404 696h-4q-71 0-127.5 18T180 750q-9 5-14.5 14t-5.5 20v32h252q6 21 16 41.5t22 38.5H80Zm560 40-12-60q-12-5-22.5-10.5T584 852l-58 18-40-68 46-40q-2-14-2-26t2-26l-46-40 40-68 58 18q11-8 21.5-13.5T628 596l12-60h80l12 60q12 5 22.5 11t21.5 15l58-20 40 70-46 40q2 12 2 25t-2 25l46 40-40 68-58-18q-11 8-21.5 13.5T732 876l-12 60h-80Zm40-120q33 0 56.5-23.5T760 736q0-33-23.5-56.5T680 656q-33 0-56.5 23.5T600 736q0 33 23.5 56.5T680 816ZM400 496q33 0 56.5-23.5T480 416q0-33-23.5-56.5T400 336q-33 0-56.5 23.5T320 416q0 33 23.5 56.5T400 496Zm0-80Zm12 400Z"
+                  />
+                </svg>
+              </a>
+            </li>
+            <li>
+              <a
+                type="button"
+                (click)="signOutModal()"
+                class="relative flex items-center justify-between space-x-4 p-3"
+                [ngClass]="
+                  router.url == '/'
+                    ? 'bg-gradient-to-r from-sky-600 to-cyan-400  px-4 text-white  border-l-0  '
+                    : 'bg-white text-gray-600 hover:bg-gray-50 hover:text-gray-800 border-l-4 border-transparent hover:border-indigo-500'
+                "
+                >Log Out
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  height="24"
+                  viewBox="0 96 960 960"
+                  width="24"
+                  class="fill-gray-500"
+                >
+                  <path
+                    d="M200 936q-33 0-56.5-23.5T120 856V296q0-33 23.5-56.5T200 216h280v80H200v560h280v80H200Zm440-160-55-58 102-102H360v-80h327L585 434l55-58 200 200-200 200Z"
+                  />
+                </svg>
+              </a>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>

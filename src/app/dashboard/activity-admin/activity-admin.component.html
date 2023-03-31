@@ -3,7 +3,7 @@
     <div class="px-10 py-5">
       <a
         [routerLink]="['/dashboard/activity/create']"
-        class="text-white w-1/6 h-1/2  shadow-md  focus:ring-4 focus:outline-none  font-medium rounded-md text-sm mx-5 px-5 py-2.5 text-center bg-violet-500 hover:bg-purple-600 focus:ring-blue-800"
+        class="text-white w-1/6 h-1/2 shadow-md focus:ring-4 focus:outline-none font-medium rounded-md text-sm mx-5 px-5 py-2.5 text-center bg-violet-500 hover:bg-purple-600 focus:ring-blue-800"
         style="float: right"
       >
         Add Data
@@ -12,43 +12,39 @@
     </div>
     <div class="-my-2 overflow-x-auto">
       <div class="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
-        <div
-          class="overflow-hidden border  border-gray-200 md:rounded-lg"
-        >
-          <table
-            class="min-w-full divide-y  divide-gray-200"
-          >
+        <div class="overflow-hidden border border-gray-200 md:rounded-lg">
+          <table class="min-w-full divide-y divide-gray-200">
             <thead class="bg-gray-80 bg-gray-100">
               <tr>
                 <th
                   scope="col"
-                  class="py-3.5 px-4 w-1/12 text-sm font-semibold rtl:text-right  text-gray-700 text-center"
+                  class="py-3.5 px-4 w-1/12 text-sm font-semibold rtl:text-right text-gray-700 text-center"
                 >
                   NIK
                 </th>
 
                 <th
                   scope="col"
-                  class="px-4 py-3.5 w-3/12 text-sm font-semibold rtl:text-right  text-gray-700"
+                  class="px-4 py-3.5 w-3/12 text-sm font-semibold rtl:text-right text-gray-700"
                 >
                   Name
                 </th>
                 <th
                   scope="col"
-                  class="px-4 py-3.5 w-1/12 text-sm font-semibold rtl:text-right  text-gray-700"
+                  class="px-4 py-3.5 w-1/12 text-sm font-semibold rtl:text-right text-gray-700"
                 >
                   Date
                 </th>
 
                 <th
                   scope="col"
-                  class="px-4 py-3.5 w-1/12 text-sm font-semibold rtl:text-right  text-gray-700 text-center"
+                  class="px-4 py-3.5 w-1/12 text-sm font-semibold rtl:text-right text-gray-700 text-center"
                 >
                   Attendance
                 </th>
                 <th
                   scope="col"
-                  class="px-4 py-3.5 text-sm font-semibold rtl:text-right  text-gray-700 text-center"
+                  class="px-4 py-3.5 text-sm font-semibold rtl:text-right text-gray-700 text-center"
                 >
                   Activity
                 </th>
@@ -58,46 +54,44 @@
                 </th> -->
               </tr>
             </thead>
-            <tbody
-              class=" divide-y  divide-gray-300 bg-white"
-            >
+            <tbody class="divide-y divide-gray-300 bg-white">
               <tr
                 *ngFor="let user of usersData"
                 class="transition duration-300 ease-in-out hover:bg-neutral-200"
               >
                 <td
-                  class="px-4 py-4 text-sm text-center  text-gray-700 whitespace-nowrap"
+                  class="px-4 py-4 text-sm text-center text-gray-700 whitespace-nowrap"
                 >
                   {{ user.nik }}
                 </td>
                 <td
-                  class="px-4 py-4 text-sm  text-gray-700 whitespace-nowrap text-center"
+                  class="px-4 py-4 text-sm text-gray-700 whitespace-nowrap text-center"
                 >
                   {{ user.name }}
                 </td>
                 <td
-                  class="px-4 py-4 text-sm  text-gray-700 whitespace-nowrap text-center"
+                  class="px-4 py-4 text-sm text-gray-700 whitespace-nowrap text-center"
                 >
                   {{ now | date }}
                 </td>
 
                 <td
-                  class="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap flex justify-center"
+                  class="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap h-full"
                 >
                   <div
                     class="inline-flex items-center px-3 py-1 rounded-full gap-x-2"
                     [ngClass]="
                       filterAttend(user.nik).length != 0
-                        ? this.filterAttend(user.nik)[0].dayStatus == 'off day'
+                        ? this.filterAttend(user.nik)[0].dayStatus == 'Not Attended'
                           ? 'bg-red-200 border-red-300'
                           : this.filterAttend(user.nik)[0].dayStatus ==
-                            'work day'
+                            'Attended'
                           ? 'bg-green-200 border-green-300'
                           : this.filterAttend(user.nik)[0].dayStatus ==
-                            'leave day'
+                            'Leaving'
                           ? 'bg-yellow-200 border-yellow-300'
                           : this.filterAttend(user.nik)[0].dayStatus ==
-                            'holiday'
+                            'Off Day'
                           ? 'bg-gray-300 border-gray-400'
                           : ''
                         : ''
@@ -107,39 +101,21 @@
                       <h2
                         class="text-sm font-normal"
                         *ngIf="filterAttend(user.nik).length != 0; else notyet"
-                        [ngSwitch]="this.filterAttend(user.nik)[0].dayStatus"
                       >
-                        <span *ngSwitchCase="'work day'">{{
-                          this.filterEnum(
-                            this.filterAttend(user.nik)[0].dayStatus
-                          )
-                        }}</span>
-                        <span *ngSwitchCase="'off day'">{{
-                          this.filterEnum(
-                            this.filterAttend(user.nik)[0].dayStatus
-                          )
-                        }}</span>
-                        <span *ngSwitchCase="'holiday'">{{
-                          this.filterEnum(
-                            this.filterAttend(user.nik)[0].dayStatus
-                          )
-                        }}</span>
-                        <span *ngSwitchCase="'leave day'">{{
+                        <span>{{
                           this.filterEnum(
                             this.filterAttend(user.nik)[0].dayStatus
                           )
                         }}</span>
                       </h2>
                       <ng-template #notyet
-                        ><h2 class="text-sm font-normal">
-                          -
-                        </h2></ng-template
+                        ><h2 class="text-sm font-normal">-</h2></ng-template
                       >
                     </div>
                   </div>
                 </td>
                 <td
-                  class="px-4 py-4 text-sm  text-gray-700 whitespace-nowrap text-center"
+                  class="px-4 py-4 text-sm text-gray-700 whitespace-nowrap text-center"
                 >
                   <span
                     *ngIf="
@@ -148,11 +124,8 @@
                           .length != 0;
                       else notyet
                     "
+                    [innerHTML]="this.filterActivity(this.filterAttend(user.nik)[0].id)[0].activity"
                   >
-                    {{
-                      this.filterActivity(this.filterAttend(user.nik)[0].id)[0]
-                        .activity
-                    }}
                   </span>
                   <ng-template #notyet> - </ng-template>
                 </td>

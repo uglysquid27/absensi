@@ -5,10 +5,10 @@ import { AttendanceService } from 'src/app/service/attendance.service';
 const datepipe: DatePipe = new DatePipe('en-US');
 
 export enum attendance {
-  'Attended' = 'work day',
-  'Off Day' = 'holiday',
-  'Not Attend' = 'off day',
-  'Leaving' = 'leave day',
+  Attended,
+  'Off Day' ,
+  'Not Attended',
+  Leaving
 }
 @Component({
   selector: 'app-activity-admin',
@@ -25,10 +25,6 @@ export class ActivityAdminComponent {
   result: any;
   now = new Date();
   constructor(private apiService: AttendanceService) {
-    apiService.getActivity().subscribe((data) => {
-      this.activData = data.data;
-      console.log(data.data);
-    });
     forkJoin(
       this.apiService.getProfile(),
       this.apiService.getAttendance(),
@@ -39,9 +35,11 @@ export class ActivityAdminComponent {
       this.activityData = activ.data;
       console.log(activ.data);
 
-      // console.log(this.filterEnum(1));
-
-      // console.log(this.filterAttend('10278')[0].dayStatus);
+      console.log(this.filterEnum(this.filterAttend('10282')[0].dayStatus));
+      
+      console.log(this.attendData);
+      
+      console.log(this.filterAttend('10282')[0].dayStatus);
 
       // console.log(this.convertDate(this.now));
       // console.log(this.convertDate(this.attendData[1].date));
@@ -63,7 +61,7 @@ export class ActivityAdminComponent {
   }
   filterEnum(val: any) {
     return this.attendanceEnum.filter(
-      (data: any) => this.attendances[data] == val
+      (data: any) => data == val
     );
   }
   convertDate(date: any) {

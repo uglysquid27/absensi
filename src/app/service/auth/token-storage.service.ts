@@ -20,7 +20,8 @@ export class TokenStorageService {
   ) {}
   signOut(): void {
     window.sessionStorage.clear();
-    window.location.reload();
+    // window.location.reload();
+    window.location.href='/'
   }
 
   public saveToken(token: string): void {

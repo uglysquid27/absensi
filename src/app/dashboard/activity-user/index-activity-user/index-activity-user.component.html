@@ -240,12 +240,12 @@
       </button>
     </div>
   </form>
-  <div class="relative p-4 overflow-x-auto bg-red-500 mt-14">
+  <div class="relative p-4 overflow-x-auto mt-14">
     <table
-      class="w-full text-sm text-left text-gray-500 dark:text-gray-400 rounded-xl"
+      class="w-full text-sm text-left text-gray-500 rounded-xl shadow-md"
     >
       <thead
-        class="text-xs text-gray-700 uppercase bg-gray-500 dark:bg-gray-700 dark:text-gray-400 rounded-xl"
+        class="text-xs text-gray-700 uppercase bg-gray-200 0 rounded-xl"
       >
         <tr>
           <th scope="col" class="px-6 py-3 rounded-tl-lg">Activities</th>
@@ -254,12 +254,12 @@
       </thead>
       <tbody>
         <tr
-          class="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
+          class="bg-white border-b  border-gray-700"
           *ngFor="let item of activities"
         >
           <th
             scope="row"
-            class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+            class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap "
             [innerHTML]="item.activity"
           ></th>
           <td class="px-6 py-4">
