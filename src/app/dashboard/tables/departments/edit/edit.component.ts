@@ -12,6 +12,7 @@ import { AttendanceService } from 'src/app/service/attendance.service';
   styleUrls: ['./edit.component.css']
 })
 export class EditComponent {
+  id = this.activeRoute.snapshot.paramMap.get('id');
   form!: FormGroup;
   user: any;
   status: any;
@@ -48,7 +49,7 @@ export class EditComponent {
       description: this.f['descInput'].value,
     };
 
-    this.apiService.storeDepartements(body).subscribe(
+    this.apiService.UpdateDepartementsStatus(this.id, body).subscribe(
       (data) => {
         console.log(data);
         this.alertServie.onCallAlert('Success Add Data', AlertType.Success)
@@ -73,11 +74,10 @@ export class EditComponent {
 
       this.f['depInput'].setValue(this.user.departementName);
       this.f['descInput'].setValue(this.user.description);
-      console.log(this.user.status);
+      console.log(this.id);
+
+      console.log(this.user);
     });
-  }
-  id(id: any): import("rxjs").ObservableInput<Object> {
-    throw new Error('Method not implemented.');
   }
 }
 

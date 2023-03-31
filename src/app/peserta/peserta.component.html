@@ -94,7 +94,7 @@
     class="mt-8 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4"
   >
     <a
-      *ngFor="let profile of profile"
+      *ngFor="let profile of profile; index as i"
       data-aos="fade-up"
       [routerLink]="['/profil', profile.nik]"
       class="relative block group drop-shadow-lg"
@@ -103,7 +103,7 @@
         class="relative overflow-hidden bg-no-repeat content-end h-fit bg-cover max-w-xs rounded"
       >
         <img
-          src="assets/img/Satriya-Polinema.jpg"
+        [src]="profilePhoto[i]"
           alt=""
           class="w-full object-cover transition duration-500 hover:scale-110 h-[450px] rounded"
         />
@@ -133,7 +133,7 @@
     class="mt-8 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4"
   >
     <a
-      *ngFor="let profile of profilePKL"
+      *ngFor="let profile of profilePKL; index as i"
       data-aos="fade-up"
       [routerLink]="['/profil', profile.nik]"
       class="relative block group drop-shadow-lg"
@@ -142,7 +142,7 @@
         class="relative overflow-hidden bg-no-repeat content-end h-fit bg-cover max-w-xs rounded"
       >
         <img
-          src="assets/img/Satriya-Polinema.jpg"
+          [src]="link + this.filterDoc(profile.nik)[0].officialPhoto"
           alt=""
           class="w-full object-cover transition duration-500 hover:scale-110 h-[450px] rounded"
         />
@@ -172,7 +172,7 @@
     class="mt-8 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4"
   >
     <a
-      *ngFor="let profile of profileMagang"
+      *ngFor="let profile of profileMagang; index as i"
       data-aos="fade-up"
       [routerLink]="['/profil', profile.nik]"
       class="relative block group drop-shadow-lg"
@@ -181,7 +181,7 @@
         class="relative overflow-hidden bg-no-repeat content-end h-fit bg-cover max-w-xs rounded"
       >
         <img
-          src="assets/img/Satriya-Polinema.jpg"
+          [src]="link + this.filterDoc(profile.nik)[0].officialPhoto"
           alt=""
           class="w-full object-cover transition duration-500 hover:scale-110 h-[450px] rounded"
         />
@@ -207,11 +207,11 @@
   </div>
 
   <div
-    *ngIf="router.url == '/internship'"
+    *ngIf="router.url == '/intern'"
     class="mt-8 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4"
   >
     <a
-      *ngFor="let profile of profileInternship"
+      *ngFor="let profile of profileInternship; index as i"
       data-aos="fade-up"
       [routerLink]="['/profil', profile.nik]"
       class="relative block group drop-shadow-lg"
@@ -220,7 +220,7 @@
         class="relative overflow-hidden bg-no-repeat content-end h-fit bg-cover max-w-xs rounded"
       >
         <img
-          src="assets/img/Satriya-Polinema.jpg"
+          [src]="link + this.filterDoc(profile.nik)[0].officialPhoto"
           alt=""
           class="w-full object-cover transition duration-500 hover:scale-110 h-[450px] rounded"
         />
