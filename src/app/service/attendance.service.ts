@@ -40,6 +40,9 @@ export class AttendanceService {
   storeEmployee(body: any): Observable<any> {
     return this.httpClient.post(api + 'employee', body);
   }
+  deleteEmployee(id: any) {
+    return this.httpClient.delete(api + 'employee/' + id);
+  }
 
   /* Attendance ------------------------------------------------------------------------*/
   getAttendance(): Observable<any> {
@@ -92,11 +95,16 @@ export class AttendanceService {
       return this.httpClient.delete(api + 'documents/' + id);
     }
 
+   /* Banks ------------------------------------------------------------------------*/  
+   getBank(): Observable<any> {
+     return this.httpClient.get(api + 'banks');
+   }
+   deleteBank(id: any) {
+      return this.httpClient.delete(api + 'banks/' + id);
+   }
+
 
   /* Other ------------------------------------------------------------------------*/
-  getBank(): Observable<any> {
-    return this.httpClient.get(api + 'banks');
-  }
   getInstitutions(): Observable<any> {
     return this.httpClient.get(api + 'institutions');
   }
@@ -109,6 +117,11 @@ export class AttendanceService {
   storeInstitutionsStatus(body: any): Observable<any> {
     return this.httpClient.post(api + 'institutions', body);
   }
+  deleteInstitutions(id: any) {
+    return this.httpClient.delete(api + 'institutions/' + id);
+  }
+
+  /* Departement ------------------------------------------------------------------------*/
   getDepartements(): Observable<any> {
     return this.httpClient.get(api + 'departements');
   }
@@ -121,4 +134,9 @@ export class AttendanceService {
   storeDepartements(body: any): Observable<any> {
     return this.httpClient.post(api + 'departements', body);
   }
+  deleteDepartements(id: any) {
+    return this.httpClient.delete(api + 'departements/' + id);
+  }
+  
+
 }
