@@ -93,6 +93,7 @@ import { CKEditorModule } from 'ckeditor4-angular';
     BrowserAnimationsModule,
     CKEditorModule,
     NgIdleKeepaliveModule.forRoot(),
+    BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

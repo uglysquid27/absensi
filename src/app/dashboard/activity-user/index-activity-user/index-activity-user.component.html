@@ -1,13 +1,16 @@
 <div class="py-5 pl-14 lg:pl-52">
   <div class="fixed right-0 z-50 px-5">
-    <img
+    <!-- <img
       src="assets/img/attendance.png"
       alt=""
       width="50px"
       class="m-2 bg-gray-100 cursor-pointer rounded-xl hover:-translate-y-0.5 hover:shadow-2xl"
       (click)="showAttendance = true"
       *ngIf="!showAttendance"
-    />
+    /> -->
+    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#4B5563" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar m-2 bg-gray-100 cursor-pointer rounded-xl hover:-translate-y-0.5 hover:shadow-2xl"
+    (click)="showAttendance = true"
+    *ngIf="!showAttendance"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
     <div
       *ngIf="showAttendance"
       class="h-full max-w-sm px-6 bg-white border border-gray-200 rounded-lg shadow-xl hover:bg-indigo-100"
@@ -205,13 +208,16 @@
     </form>
   </div>
 
-  <img
+  <!-- <img
     src="assets/img/todo.png"
     width="50px"
     class="cursor-pointer hover:-translate-y-1"
     (click)="showEditor = !showEditor"
     alt=""
-  />
+  /> -->
+  <svg xmlns="http://www.w3.org/2000/svg" width="70" height="70" viewBox="0 0 24 24" fill="none" stroke="#4B5563" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="pt-8 feather feather-file cursor-pointer hover:-translate-y-1"
+  (click)="showEditor = !showEditor"
+  alt=""><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><polyline points="13 2 13 9 20 9"></polyline></svg>
   <form
     action=""
     *ngIf="showEditor"

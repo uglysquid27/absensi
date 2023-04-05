@@ -54,7 +54,7 @@ export class SidebarComponent {
     // console.log(event.target.id);
     if (event.target.id == 'yesBtn') {
       this.session.signOut();
-      
+
     } else {
       this.signOutModal();
     }
