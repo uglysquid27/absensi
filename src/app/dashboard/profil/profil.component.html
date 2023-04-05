@@ -6,11 +6,13 @@
       <div class="w-full md:w-3/12 mx-2">
         <!-- Profile Card -->
         <div class="bg-white shadow-md p-3 border-t-4 border-blue-400">
-          <!-- <div class="image overflow-hidden">
-                    <img class="h-auto w-full mx-auto"
-                        src="https://lavinephotography.com.au/wp-content/uploads/2017/01/PROFILE-Photography-112.jpg"
-                        alt="">
-                </div> -->
+          <div class="image overflow-hidden">
+            <a
+            [routerLink]="['/peserta']"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#4B5563" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-left"><polyline points="15 18 9 12 15 6"></polyline></svg>
+            </a>
+                </div>
           <div class="mt-8 text-center">
             <img src="../../assets/img/Satriya-Polinema.jpg" alt="" class="m-auto rounded-full object-cover w-28 h-28">
             <h5 class="mt-4 text-xl font-semibold text-gray-600">{{ profile.name }}</h5>
