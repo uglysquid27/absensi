@@ -13,8 +13,8 @@
               <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#4B5563" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-left"><polyline points="15 18 9 12 15 6"></polyline></svg>
             </a>
                 </div>
-          <div class="mt-8 text-center">
-            <img src="../../assets/img/Satriya-Polinema.jpg" alt="" class="m-auto rounded-full object-cover w-28 h-28">
+          <div class="mt-8 text-center" *ngFor="let photo of profilePhoto">
+            <img [src]="this.profilePhoto" alt="" class="m-auto rounded-full object-cover w-28 h-28">
             <h5 class="mt-4 text-xl font-semibold text-gray-600">{{ profile.name }}</h5>
             <span class="text-gray-400 lg:block pb-2">{{ employeeStatus.employeeStatus }}</span>
           </div>
@@ -154,6 +154,7 @@
                 <li>
                   <div class="text-gray-600">{{ bank.bankName }}</div>
                   <div class="text-gray-500 text-xs">Salary Rp. {{ employeeStatus.salary }}</div>
+                  <div class="text-gray-500 text-2xs">Total salary this month Rp. {{ employeeStatus.salary }}</div>
                 </li>
               </ul>
             </div>
