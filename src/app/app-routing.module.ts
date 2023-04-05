@@ -29,6 +29,7 @@ import { CreateComponent as DepAddComponent } from './dashboard/tables/departmen
 import { EditComponent as StatusEditComponent } from './dashboard/tables/user-status/edit/edit.component';
 import { ActivityAdminComponent } from './dashboard/activity-admin/activity-admin.component';
 import { CreateComponent as ActivityAddComponent } from './dashboard/activity-admin/create/create.component';
+import { AllComponent } from './dashboard/activity-admin/all/all.component'
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -54,6 +55,7 @@ const routes: Routes = [
       { path: 'activity/edit/:id', component: UpdateActivityUserComponent },
       { path: 'activity/create', component: ActivityAddComponent },
       { path: 'myActivity', component: IndexActivityUserComponent },
+      { path: 'allActivity/:id', component: AllComponent},
     ],
   },
   { path: 'peserta', component: PesertaComponent },

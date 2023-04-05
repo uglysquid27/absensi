@@ -43,6 +43,7 @@ import { IndexActivityUserComponent } from './dashboard/activity-user/index-acti
 import { CreateActivityUserComponent } from './dashboard/activity-user/create-activity-user/create-activity-user.component';
 import { UpdateActivityUserComponent } from './dashboard/activity-user/update-activity-user/update-activity-user.component';
 import { CKEditorModule } from 'ckeditor4-angular';
+import { AllComponent } from './dashboard/activity-admin/all/all.component';
 // import {MatTableModule} from '@angular/material/table';
 
 @NgModule({
@@ -81,6 +82,7 @@ import { CKEditorModule } from 'ckeditor4-angular';
     InstAddComponent,
     DepAddComponent,
     DepEditComponent,
+    AllComponent,
   ],
   imports: [
     AppRoutingModule,

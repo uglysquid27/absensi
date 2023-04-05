@@ -1,16 +1,24 @@
 import { ActivatedRoute } from '@angular/router';
-import { AttendanceService } from './../../service/attendance.service';
+import { AttendanceService } from './../../../service/attendance.service';
 import { HttpClient } from '@angular/common/http';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { forkJoin } from 'rxjs';
-import { filter } from 'rxjs/operators';
+import { DatePipe } from '@angular/common';
+const datepipe: DatePipe = new DatePipe('en-US');
+
+export enum att {
+  Attended,
+  'Off Day' ,
+  'Not Attended',
+  Leaving
+}
 
 @Component({
-  selector: 'app-profil',
-  templateUrl: './profil.component.html',
-  styleUrls: ['./profil.component.css'],
+  selector: 'app-all',
+  templateUrl: './all.component.html',
+  styleUrls: ['./all.component.css']
 })
-export class ProfilComponent implements OnInit {
+export class AllComponent implements OnInit {
   profile: any;
   profileAll: any;
   gender: any;
@@ -27,14 +35,14 @@ export class ProfilComponent implements OnInit {
   institution: any;
   departement: any;
   id = this.actRoute.snapshot.paramMap.get('id');
-  profilePKL: any[] = [];
-  profileMagang: any[] = [];
-  profileInternship: any[] = [];
-  profilePhoto: any[] = [];
-  user: any;
-  status: any;
-  cardPhotoSrc: any;
-  link='http://localhost:3000/';
+  attendanceEnum = Object.keys(att);
+  attendances: any = att;
+  usersData: any;
+  attendData: any;
+  activityData: any;
+  activData: any;
+  result: any;
+  now = new Date();
 
   constructor(
     private actRoute: ActivatedRoute,
@@ -43,7 +51,6 @@ export class ProfilComponent implements OnInit {
 
   ngOnInit(): void {
     this.getProfileData();
-    this.subscribeData();
   }
 
   // getProfile() {
@@ -82,6 +89,7 @@ export class ProfilComponent implements OnInit {
         let lengthAct = this.activity.data.length;
         let lengthAtt = this.attend.data.length;
 
+
         //GET PROFILE ALL
         for (let i = 0; i < lenght; i++) {
           this.profileAll = this.profileAll.data[i];
@@ -109,9 +117,11 @@ export class ProfilComponent implements OnInit {
         //GET ATTENDANCES THEN ACTIVITY
         for(let i = 0; i < lengthAtt; i++){
           if(this.attend.data[i].nik == this.id){
-            for(let j = 0; j < 5; j++){
+            for(let j = 0; j < lengthAct; j++){
               if(this.activity.data[i].attendanceId == this.attend.data[i].id){
                 this.recentAct.push(this.activity.data[i]);
+                console.log(this.activity.data[i]);
+
               }
             }
           }
@@ -160,34 +170,24 @@ export class ProfilComponent implements OnInit {
       }
     );
   }
-        //GET PHOTO
-        subscribeData() {
-          forkJoin(
-            this.attendance.getProfile(),
-            this.attendance.getDocument(),
-          ).subscribe(([employee, status]) => {
-            this.user = employee.data;
-            this.status = status.data;
-            let length = this.user.length;
-            // console.log(length);
-            // console.log(this.filterDoc('10282'));
-
-
-            // console.log(this.status.data[1].idCardPhoto);
-
-            for (let i = 0; i < length; i++) {
-              if (this.user[i].nik == this.id) {
-                this.cardPhotoSrc = `http://localhost:3000/${this.filterDoc(this.user[i].nik)[0].officialPhoto}`;
-                this.profilePhoto.push(this.cardPhotoSrc);
-                // console.log(this.profilePhoto);
-              }
-            }
-          });
-        }
-
-  filterDoc(nik:any){
-    return this.status.filter(
-      (data: any) => data.nik == nik
+  filterAttend(nik: any) {
+    return this.attendData.filter(
+      (data: any) =>
+        data.nik == nik &&
+        this.convertDate(data.date) == this.convertDate(this.now)
     );
   }
+
+  filterActivity(id: any) {
+    return this.activityData.filter((data: any) => data.attendanceId == id);
+  }
+  filterEnum(val: any) {
+    return this.attendanceEnum.filter(
+      (data: any) => data == val
+    );
+  }
+  convertDate(date: any) {
+    return datepipe.transform(date, 'dd-MMM-YYYY');
+  }
 }
+
