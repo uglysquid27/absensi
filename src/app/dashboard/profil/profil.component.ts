@@ -16,6 +16,10 @@ export class ProfilComponent implements OnInit {
   gender: any;
   statusId: any;
   bankId: any;
+  activity: any;
+  recentAct: any[] = [];
+  recentDate: any[] = [];
+  attend: any;
   institutionId: any;
   departementId: any;
   employeeStatus: any;
@@ -56,9 +60,11 @@ export class ProfilComponent implements OnInit {
       this.attendance.getEmployeeStatus(),
       this.attendance.getBank(),
       this.attendance.getInstitutions(),
-      this.attendance.getDepartements()
+      this.attendance.getDepartements(),
+      this.attendance.getActivity(),
+      this.attendance.getAttendance()
     ).subscribe(
-      ([profileRes, statusRes, bankRes, institutionRes, departementRes]) => {
+      ([profileRes, statusRes, bankRes, institutionRes, departementRes, actRes, attRes]) => {
         //PROFILE
         this.profile = profileRes;
         this.profileAll = profileRes;
@@ -66,22 +72,26 @@ export class ProfilComponent implements OnInit {
         this.bank = bankRes;
         this.institution = institutionRes;
         this.departement = departementRes;
+        this.activity = actRes;
+        this.attend = attRes;
         let lenght = this.profile.data.length;
         let lengthStatus = this.employeeStatus.data.length;
         let lengthBank = this.bank.data.length;
         let lengthInstitution = this.institution.data.length;
         let lengthDepartement = this.departement.data.length;
+        let lengthAct = this.activity.data.length;
+        let lengthAtt = this.attend.data.length;
 
         //GET PROFILE ALL
         for (let i = 0; i < lenght; i++) {
           this.profileAll = this.profileAll.data[i];
-          console.log(this.profileAll);
+          // console.log(this.profileAll);
           break;
         }
         //GET PROFILE
         for (let i = 0; i < lenght; i++) {
           if (this.profile.data[i].nik == this.id) {
-            console.log(this.profile);
+            // console.log(this.profile);
 
             this.profile = this.profile.data[i];
             this.statusId = this.profile.employeeStatusId;
@@ -96,43 +106,55 @@ export class ProfilComponent implements OnInit {
             break;
           }
         }
+        //GET ATTENDANCES THEN ACTIVITY
+        for(let i = 0; i < lengthAtt; i++){
+          if(this.attend.data[i].nik == this.id){
+            for(let j = 0; j < lengthAct; j++){
+              if(this.activity.data[i].attendanceId == this.attend.data[i].id){
+                this.recentAct.push(this.activity.data[i]);
+              }
+            }
+          }
+        }
+        console.log(this.recentAct);
+
         //EMPLOYEE STATUS
         for (let i = 0; i < lengthStatus; i++) {
           if (this.employeeStatus.data[i].id == this.statusId) {
             this.employeeStatus = this.employeeStatus.data[i];
-            console.log(this.employeeStatus);
+            // console.log(this.employeeStatus);
           } else {
-            console.log('status fail');
+            // console.log('status fail');
           }
         }
         //BANK
         for (let i = 0; i < lengthBank; i++) {
           if (this.bank.data[i].id == this.bankId) {
             this.bank = this.bank.data[i];
-            console.log(this.bank.bankName);
+            // console.log(this.bank.bankName);
             break;
           } else {
-            console.log('bank fail');
+            // console.log('bank fail');
           }
         }
         //INSTITUTIONS
         for (let i = 0; i < lengthInstitution; i++) {
           if (this.institution.data[i].id == this.institutionId) {
             this.institution = this.institution.data[i];
-            console.log(this.institution);
+            // console.log(this.institution);
             break;
           } else {
-            console.log('inst fail');
+            // console.log('inst fail');
           }
         }
         //DEPARTEMENTS
         for (let i = 0; i < lengthDepartement; i++) {
           if (this.departement.data[i].id == this.departementId) {
             this.departement = this.departement.data[i];
-            console.log(this.departement);
+            // console.log(this.departement);
             break;
           } else {
-            console.log('dept fail');
+            // console.log('dept fail');
           }
         }
       }
@@ -147,8 +169,8 @@ export class ProfilComponent implements OnInit {
             this.user = employee.data;
             this.status = status.data;
             let length = this.user.length;
-            console.log(length);
-            console.log(this.filterDoc('10282'));
+            // console.log(length);
+            // console.log(this.filterDoc('10282'));
 
 
             // console.log(this.status.data[1].idCardPhoto);
@@ -157,7 +179,7 @@ export class ProfilComponent implements OnInit {
               if (this.user[i].nik == this.id) {
                 this.cardPhotoSrc = `http://localhost:3000/${this.filterDoc(this.user[i].nik)[0].officialPhoto}`;
                 this.profilePhoto.push(this.cardPhotoSrc);
-                console.log(this.profilePhoto);
+                // console.log(this.profilePhoto);
               }
             }
           });
