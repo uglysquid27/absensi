@@ -74,65 +74,19 @@
                   </th>
                 </tr>
               </thead>
-                <tbody *ngFor="let item of recentAct"
+                <tbody *ngFor="let item of recentAct; index as i"
                 class=" divide-y  divide-gray-300 bg-white"
               >
                 <tr>
-                  <!-- <td
-                    class="px-4 py-4 text-sm font-medium text-gray-700 text-gray-700 whitespace-nowrap"
-                  >
-                    <div class="items-center gap-x-3 justify-center flex">
-                      <span>{{ item.id }}</span>
-                    </div>
-                  </td> -->
-
                   <td
                     class="px-4 py-4 text-sm  text-gray-700 whitespace-nowrap text-center"
                   >
                     {{ item.createdAt | date }}
                   </td>
                   <td></td>
-
-                  <!-- <td
-                  class="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap h-full"
-                >
-                  <div
-                    class="inline-flex items-center px-3 py-1 rounded-full gap-x-2"
-                    [ngClass]="
-                      filterAttend(user.nik).length != 0
-                        ? this.filterAttend(user.nik)[0].dayStatus == 'Not Attended'
-                          ? 'bg-red-200 border-red-300'
-                          : this.filterAttend(user.nik)[0].dayStatus ==
-                            'Attended'
-                          ? 'bg-green-200 border-green-300'
-                          : this.filterAttend(user.nik)[0].dayStatus ==
-                            'Leaving'
-                          ? 'bg-yellow-200 border-yellow-300'
-                          : this.filterAttend(user.nik)[0].dayStatus ==
-                            'Off Day'
-                          ? 'bg-gray-300 border-gray-400'
-                          : ''
-                        : ''
-                    "
-                  >
-                    <div>
-                      <h2
-                        class="text-sm font-normal"
-                        *ngIf="filterAttend(user.nik).length != 0; else notyet"
-                      >
-                        <span>{{
-                          this.filterEnum(
-                            this.filterAttend(user.nik)[0].dayStatus
-                          )
-                        }}</span>
-                      </h2>
-                      <ng-template #notyet
-                        ><h2 class="text-sm font-normal">-</h2></ng-template
-                      >
-                    </div>
-                  </div>
-                </td> -->
-
+                  <!-- <td  class="text-gray-700 inline-flex items-center px-3 pt-1 rounded-full gap-x-2 bg-green-200 border-green-300">
+                    {{this.recentDate[i]}}
+                  </td> -->
                   <td
                     class="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap text-center"
                     [innerHTML]="item.activity"

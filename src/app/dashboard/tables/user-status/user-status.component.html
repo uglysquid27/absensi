@@ -46,6 +46,20 @@
                     scope="col"
                     class="py-3.5 px-4 text-sm font-semibold rtl:text-right text-gray-700 text-center"
                   >
+                    Bonus
+                  </th>
+
+                  <th
+                    scope="col"
+                    class="py-3.5 px-4 text-sm font-semibold rtl:text-right text-gray-700 text-center"
+                  >
+                    Total
+                  </th>
+
+                  <th
+                    scope="col"
+                    class="py-3.5 px-4 text-sm font-semibold rtl:text-right text-gray-700 text-center"
+                  >
                     Action
                   </th>
                 </tr>
@@ -73,6 +87,18 @@
                     class="px-4 py-4 text-sm font-medium text-green-500 whitespace-nowrap text-center"
                   >
                     Rp. {{ item.salary }},00
+                  </td>
+
+                  <td
+                    class="px-4 py-4 text-sm font-medium text-green-500 whitespace-nowrap text-center"
+                  >
+                    Rp. {{ item.bonus }},00
+                  </td>
+
+                  <td
+                    class="px-4 py-4 text-sm font-medium text-green-500 whitespace-nowrap text-center"
+                  >
+                    Rp. {{ item.salary + item.bonus}},00
                   </td>
                   <td class="px-2 py-4 whitespace-nowrap">
                     <!--------------------------- EDIT BUTTON--------------------------->

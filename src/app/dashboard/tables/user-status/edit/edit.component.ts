@@ -35,6 +35,7 @@ export class EditComponent {
     this.form = this.formBuilder.group({
       statusInput: ['', Validators.required],
       salaryInput: ['', Validators.required],
+      bonusInput: ['', Validators.required],
     });
     this.subscribeData();
   }
@@ -46,6 +47,7 @@ export class EditComponent {
     let body = {
       employeeStatus: this.f['statusInput'].value,
       salary: this.f['salaryInput'].value,
+      bonus: this.f['bonusInput'].value,
     };
 
     // console.log(body);
@@ -74,6 +76,7 @@ export class EditComponent {
 
       this.f['statusInput'].setValue(this.user.employeeStatus);
       this.f['salaryInput'].setValue(this.user.salary);
+      this.f['bonusInput'].setValue(this.user.bonus);
       console.log(this.user.status);
     });
   }

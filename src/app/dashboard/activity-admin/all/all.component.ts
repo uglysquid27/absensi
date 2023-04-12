@@ -116,17 +116,20 @@ export class AllComponent implements OnInit {
         }
         //GET ATTENDANCES THEN ACTIVITY
         for(let i = 0; i < lengthAtt; i++){
-          if(this.attend.data[i].nik == this.id){
+          if(this.attend.data[i].nik == this.id && this.activity.data[i] != null){
             for(let j = 0; j < lengthAct; j++){
               if(this.activity.data[i].attendanceId == this.attend.data[i].id){
                 this.recentAct.push(this.activity.data[i]);
-                console.log(this.activity.data[i]);
-
+                this.recentDate.push(this.attend.data[i].dayStatus);
               }
             }
+          }else{
+            this.recentDate.push(this.attend.data[i].dayStatus);
           }
         }
         console.log(this.recentAct);
+        console.log(this.recentDate);
+
 
         //EMPLOYEE STATUS
         for (let i = 0; i < lengthStatus; i++) {
