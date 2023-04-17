@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./create-activity-user.component.css']
 })
 export class CreateActivityUserComponent {
-
+  
 }
