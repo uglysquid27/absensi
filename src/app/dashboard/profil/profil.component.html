@@ -6,13 +6,15 @@
       <div class="w-full md:w-3/12 mx-2">
         <!-- Profile Card -->
         <div class="bg-white shadow-md p-3 border-t-4 border-blue-400">
-          <!-- <div class="image overflow-hidden">
-                    <img class="h-auto w-full mx-auto"
-                        src="https://lavinephotography.com.au/wp-content/uploads/2017/01/PROFILE-Photography-112.jpg"
-                        alt="">
-                </div> -->
-          <div class="mt-8 text-center">
-            <img src="../../assets/img/Satriya-Polinema.jpg" alt="" class="m-auto rounded-full object-cover w-28 h-28">
+          <div class="image overflow-hidden">
+            <a
+            [routerLink]="['/peserta']"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-left stroke-gray-400 hover:stroke-cyan-600"><polyline points="15 18 9 12 15 6"></polyline></svg>
+            </a>
+                </div>
+          <div class="mt-8 text-center" *ngFor="let photo of profilePhoto">
+            <img [src]="this.profilePhoto" alt="" class="m-auto rounded-full object-cover w-28 h-28">
             <h5 class="mt-4 text-xl font-semibold text-gray-600">{{ profile.name }}</h5>
             <span class="text-gray-400 lg:block pb-2">{{ employeeStatus.employeeStatus }}</span>
           </div>
@@ -49,7 +51,7 @@
           <div class="grid grid-cols-3">
             <div *ngFor="let profileAll of profileAll"  class="text-center my-2">
               <img class="h-16 w-16 rounded-full mx-auto"
-                src="../../assets/img/Satriya-Polinema.jpg"
+                src="assets/img/Satriya-Polinema.jpg"
                 alt="">
               <a href="#" class="text-main-color">{{ profileAll.name }}</a>
             </div>
@@ -152,6 +154,7 @@
                 <li>
                   <div class="text-gray-600">{{ bank.bankName }}</div>
                   <div class="text-gray-500 text-xs">Salary Rp. {{ employeeStatus.salary }}</div>
+                  <div class="text-gray-500 text-2xs">Total salary this month Rp. {{ employeeStatus.salary }}</div>
                 </li>
               </ul>
             </div>
@@ -179,6 +182,80 @@
           </div>
           <!-- End of Experience and education grid -->
         </div>
+       <!--Start of table activity-->
+      <div class="mt-6 bg-white shadow-md p-3 rounded-sm">
+        <div class="flex items-center space-x-2 font-semibold text-gray-900 leading-8 mb-3">
+          <span clas="text-green-500">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-archive"><polyline points="21 8 21 21 3 21 3 8"></polyline><rect x="1" y="3" width="22" height="5"></rect><line x1="10" y1="12" x2="14" y2="12"></line></svg>
+          </span>
+          <span class="tracking-wide">Recent Activity</span>
+        </div>
+        <div class="flex flex-col">
+          <div class="-my-2 overflow-x-auto">
+            <div class="inline-block min-w-full py-2 align-middle md:px-3 lg:px-4">
+              <div
+                class="overflow-hidden border border-gray-200 md:rounded-lg"
+              >
+                <table
+                  class="min-w-full divide-y divide-gray-200"
+                >
+                  <thead class="bg-gray-80 bg-gray-100">
+                    <tr>
+                      <!-- <th
+                        scope="col"
+                        class="py-3.5 px-4 text-sm font-semibold rtl:text-right text-gray-700 text-center"
+                      >
+                        Id
+                      </th> -->
+
+                      <th
+                        scope="col"
+                        class="py-3.5 px-4 text-sm font-semibold rtl:text-right text-gray-700 text-center"
+                      >
+                      Date
+                      </th>
+
+                      <th
+                        scope="col"
+                        class="py-3.5 px-4 text-sm font-semibold rtl:text-right text-gray-700 text-center"
+                      >
+                      Activity
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody
+                    *ngFor="let item of recentAct"
+                    class=" divide-y  divide-gray-300 bg-white"
+                  >
+                    <tr>
+                      <!-- <td
+                        class="px-4 py-4 text-sm font-medium text-gray-700 text-gray-700 whitespace-nowrap"
+                      >
+                        <div class="items-center gap-x-3 justify-center flex">
+                          <span>{{ item.id }}</span>
+                        </div>
+                      </td> -->
+
+                      <td
+                        class="px-4 py-4 text-sm  text-gray-700 whitespace-nowrap text-center"
+                      >
+                        {{ item.createdAt | date }}
+                      </td>
+
+                      <td
+                        class="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap text-center"
+                        [innerHTML]="item.activity"
+                      >
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--End of table activity-->
+      </div>
         <!-- End of profile tab -->
       </div>
     </div>
