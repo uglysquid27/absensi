@@ -129,6 +129,7 @@
           class="block mb-2 text-sm font-medium text-gray-900"
           >Select an option</label
         >
+        <a (click)="onSelect(dayStatus)">click me</a>
         <!-- <select
         id="countries"
         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
@@ -147,16 +148,16 @@
           <li class="w-full border-b border-gray-200 sm:border-b-0 sm:border-r">
             <div class="flex items-center pl-3">
               <input
-                id="horizontal-list-radio-license"
+                id="horizontal-dayStatus-license"
                 type="radio"
                 value="Attended"
                 formControlName="dayStatus"
                 [(ngModel)]="dayStatus"
-                name="list-radio"
+                name="dayStatus"
                 class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 focus:ring-2"
               />
               <label
-                for="horizontal-list-radio-license"
+                for="horizontal-dayStatus-license"
                 class="w-full py-3 ml-2 text-sm font-medium text-gray-900"
                 >Attended
               </label>
@@ -165,16 +166,16 @@
           <li class="w-full border-b border-gray-200 sm:border-b-0 sm:border-r">
             <div class="flex items-center pl-3">
               <input
-                id="horizontal-list-radio-id"
+                id="horizontal-dayStatus-id"
                 type="radio"
                 value="Not Attended"
                 formControlName="dayStatus"
                 [(ngModel)]="dayStatus"
-                name="list-radio"
+                name="dayStatus"
                 class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 focus:ring-2"
               />
               <label
-                for="horizontal-list-radio-id"
+                for="horizontal-dayStatus-id"
                 class="w-full py-3 ml-2 text-sm font-medium text-gray-900"
                 >Not Attended</label
               >
@@ -183,43 +184,58 @@
           <li class="w-full border-b border-gray-200 sm:border-b-0 sm:border-r">
             <div class="flex items-center pl-3">
               <input
-                id="horizontal-list-radio-millitary"
+                id="horizontal-dayStatus-millitary"
                 type="radio"
                 value="Off Day"
                 formControlName="dayStatus"
                 [(ngModel)]="dayStatus"
-                name="list-radio"
+                name="dayStatus"
                 class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 focus:ring-2"
               />
               <label
-                for="horizontal-list-radio-millitary"
+                for="horizontal-dayStatus-millitary"
                 class="w-full py-3 ml-2 text-sm font-medium text-gray-900"
                 >Off Day</label
               >
             </div>
           </li>
-          <li class="w-full">
+          <!-- <li class="w-full">
             <div class="flex items-center pl-3">
               <input
-                id="horizontal-list-radio-passport"
+                id="horizontal-dayStatus-passport"
                 type="radio"
                 value="Leaving"
                 formControlName="dayStatus"
                 [(ngModel)]="dayStatus"
-                name="list-radio"
+                name="dayStatus"
                 class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 focus:ring-2"
               />
               <label
-                for="horizontal-list-radio-passport"
+                for="horizontal-dayStatus-passport"
                 class="w-full py-3 ml-2 text-sm font-medium text-gray-900"
                 >Leaving</label
               >
             </div>
-          </li>
+          </li> -->
         </ul>
-        <div class="mt-5" *ngIf="dayStatus == 'Leaving'">
+        <div class="flex items-center pl-3" *ngIf="dayStatus == 'Attended'">
+          <input
+            id="horizontal-dayStatus-passport"
+            type="checkbox"
+            [value]="dayStatus!='Attended'? false:''"
+            formControlName="leave"
+            [(ngModel)]="leave"
+            class="w-4 h-4 rounded-full text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 focus:ring-2"
+          />
+          <label
+            for="horizontal-dayStatus-passport"
+            class="w-full py-3 ml-2 text-sm font-medium text-gray-900"
+            >Leaving
+          </label>
+        </div>
+        <div class="mt-5" *ngIf="leave && dayStatus == 'Attended'">
           <div class="flex items-center justify-between gap-2">
-            <div class="w-full">
+            <!-- <div class="w-full">
               <label
                 for="first_name"
                 class="block mb-2 text-sm font-medium text-gray-900"
@@ -233,7 +249,7 @@
                 placeholder="John"
                 required
               />
-            </div>
+            </div> -->
             <div class="w-full">
               <label
                 for="first_name"
@@ -248,6 +264,22 @@
                 placeholder="John"
                 required
               />
+            </div>
+            <div
+              class="w-full"
+            >
+              <label
+                for="message"
+                class="block mb-2 text-sm font-medium text-gray-900"
+                >Description</label
+              >
+              <textarea
+                id="message"
+                rows="4"
+                formControlName="description"
+                class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
+                placeholder="Description..."
+              ></textarea>
             </div>
           </div>
         </div>
@@ -329,7 +361,7 @@
             formControlName="activity"
           ></ckeditor>
         </div>
-        <div class="flex justify-center ">
+        <div class="flex justify-center">
           <button
             type="submit"
             class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 focus:outline-none"

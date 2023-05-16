@@ -28,7 +28,7 @@ export class BanksComponent {
       cancelButtonColor: '#d33',
       confirmButtonText: 'Yes, delete it!',
       reverseButtons: true
-    }).then((result) => {
+    }).then((result:any) => {
       if (result.isConfirmed) {
         this.apiService.deleteBank(id).subscribe((data) => {
           this.apiService.getBank().subscribe((data) => {

@@ -3,7 +3,7 @@
     <div class="px-10 py-5 max-sm:pl-8">
       <a
         [routerLink]="['/dashboard/activity/create']"
-        class="text-white w-1/4 h-1/2 shadow-md focus:ring-4 focus:outline-none font-medium rounded-md text-sm mx-5 px-5 py-2.5 text-center bg-violet-500 hover:bg-purple-600 focus:ring-blue-800 "
+        class="text-white w-1/4 h-1/2 shadow-md focus:ring-4 focus:outline-none font-medium rounded-md text-sm mx-5 px-5 py-2.5 text-center bg-violet-500 hover:bg-purple-600 focus:ring-blue-800"
         style="float: right"
       >
         Add Data
@@ -85,17 +85,17 @@
                   class="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap h-full"
                 >
                   <div
-                    class="inline-flex items-center px-3 py-1 rounded-full gap-x-2"
+                    class="inline-flex items-center px-3 py-1 rounded-full gap-x-2 w-full"
                     [ngClass]="
                       filterAttend(user.nik).length != 0
-                        ? this.filterAttend(user.nik)[0].dayStatus == 'Not Attended'
+                        ? this.filterAttend(user.nik)[0].dayStatus ==
+                          'Not Attended'
                           ? 'bg-red-200 border-red-300'
                           : this.filterAttend(user.nik)[0].dayStatus ==
                             'Attended'
-                          ? 'bg-green-200 border-green-300'
-                          : this.filterAttend(user.nik)[0].dayStatus ==
-                            'Leaving'
-                          ? 'bg-yellow-200 border-yellow-300'
+                          ? this.filterAttend(user.nik)[0].leave == true
+                            ? 'bg-yellow-200 border-yellow-300'
+                            : 'bg-green-200 border-green-300'
                           : this.filterAttend(user.nik)[0].dayStatus ==
                             'Off Day'
                           ? 'bg-gray-300 border-gray-400'
@@ -103,19 +103,27 @@
                         : ''
                     "
                   >
-                    <div>
+                    <div class="w-full flex justify-center">
                       <h2
                         class="text-sm font-normal"
                         *ngIf="filterAttend(user.nik).length != 0; else notyet"
                       >
-                        <span>{{
-                          this.filterEnum(
-                            this.filterAttend(user.nik)[0].dayStatus
-                          )
-                        }}</span>
+                        <span
+                          *ngIf="filterAttend(user.nik)[0].leave == false"
+                          >{{
+                            this.filterEnum(
+                              this.filterAttend(user.nik)[0].dayStatus
+                            )
+                          }}</span
+                        >
+                        <span *ngIf="filterAttend(user.nik)[0].leave == true"
+                          >Leaving</span
+                        >
                       </h2>
                       <ng-template #notyet
-                        ><h2 class="text-sm font-normal">-</h2></ng-template
+                        ><h2 class="text-sm font-normal">
+                          -
+                        </h2></ng-template
                       >
                     </div>
                   </div>
@@ -130,7 +138,10 @@
                           .length != 0;
                       else notyet
                     "
-                    [innerHTML]="this.filterActivity(this.filterAttend(user.nik)[0].id)[0].activity"
+                    [innerHTML]="
+                      this.filterActivity(this.filterAttend(user.nik)[0].id)[0]
+                        .activity
+                    "
                   >
                   </span>
                   <ng-template #notyet> - </ng-template>
@@ -174,16 +185,21 @@
                   <!--------------------------- ACTION BUTTON--------------------------->
                   <div class="w-full flex justify-center">
                     <button
-                    [routerLink]="['/dashboard/allActivity/', user.nik]"
+                      [routerLink]="['/dashboard/allActivity/', user.nik]"
                       routerLinkActive="router-link-active"
                       class="text-blue-500 bg-green-400 mx-1 rounded-md p-1 hover:animate-pulse transition-colors duration-200 hover:text-indigo-500 focus:outline-none"
                     >
-                    <svg xmlns="http://www.w3.org/2000/svg"
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
                         height="24"
                         viewBox="0 96 960 960"
-                         width="24"
-                         fill="white">
-                         <path d="M480.121 741.746q77.444 0 131.534-54.211 54.091-54.211 54.091-131.656 0-77.444-54.211-131.534-54.211-54.091-131.656-54.091-77.444 0-131.534 54.211-54.091 54.211-54.091 131.656 0 77.444 54.211 131.534 54.211 54.091 131.656 54.091Zm-.344-78.21q-44.511 0-75.912-31.624-31.401-31.624-31.401-76.135 0-44.511 31.624-75.912 31.624-31.401 76.135-31.401 44.511 0 75.912 31.624 31.401 31.624 31.401 76.135 0 44.511-31.624 75.912-31.624 31.401-76.135 31.401ZM480 877.833q-154.746 0-280.532-88.717Q73.682 700.398 15.124 556q58.558-144.398 184.344-233.116Q325.254 234.167 480 234.167q154.746 0 280.532 88.717Q886.318 411.602 944.876 556q-58.558 144.398-184.344 233.116Q634.746 877.833 480 877.833ZM480 556Zm-.091 235.522q120.006 0 219.644-63.826Q799.192 663.871 852.247 556q-53.055-107.871-152.603-171.696-99.547-63.826-219.553-63.826t-219.978 63.826Q160.142 448.129 107.087 556q53.055 107.871 152.935 171.696 99.881 63.826 219.887 63.826Z"/></svg>
+                        width="24"
+                        fill="white"
+                      >
+                        <path
+                          d="M480.121 741.746q77.444 0 131.534-54.211 54.091-54.211 54.091-131.656 0-77.444-54.211-131.534-54.211-54.091-131.656-54.091-77.444 0-131.534 54.211-54.091 54.211-54.091 131.656 0 77.444 54.211 131.534 54.211 54.091 131.656 54.091Zm-.344-78.21q-44.511 0-75.912-31.624-31.401-31.624-31.401-76.135 0-44.511 31.624-75.912 31.624-31.401 76.135-31.401 44.511 0 75.912 31.624 31.401 31.624 31.401 76.135 0 44.511-31.624 75.912-31.624 31.401-76.135 31.401ZM480 877.833q-154.746 0-280.532-88.717Q73.682 700.398 15.124 556q58.558-144.398 184.344-233.116Q325.254 234.167 480 234.167q154.746 0 280.532 88.717Q886.318 411.602 944.876 556q-58.558 144.398-184.344 233.116Q634.746 877.833 480 877.833ZM480 556Zm-.091 235.522q120.006 0 219.644-63.826Q799.192 663.871 852.247 556q-53.055-107.871-152.603-171.696-99.547-63.826-219.553-63.826t-219.978 63.826Q160.142 448.129 107.087 556q53.055 107.871 152.935 171.696 99.881 63.826 219.887 63.826Z"
+                        />
+                      </svg>
                     </button>
                     <!-- <button type="submit" (click)="deleteDepartement(item.id)"
                       class="text-blue-500 bg-red-500 mx-1 rounded-md p-1 hover:animate-pulse transition-colors duration-200 hover:text-indigo-500 focus:outline-none"

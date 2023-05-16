@@ -9,11 +9,13 @@ import { CKEditorComponent } from 'ckeditor4-angular';
 @Component({
   selector: 'app-index-activity-user',
   templateUrl: './index-activity-user.component.html',
-  styleUrls: ['./index-activity-user.component.css']
+  styleUrls: ['./index-activity-user.component.css'],
 })
 export class IndexActivityUserComponent implements OnInit {
-
-  constructor(public session: TokenStorageService, public service: AttendanceService) { }
+  constructor(
+    public session: TokenStorageService,
+    public service: AttendanceService
+  ) {}
 
   // Status
   attended: any;
@@ -24,6 +26,7 @@ export class IndexActivityUserComponent implements OnInit {
   // Form
   formAttendance!: FormGroup;
   dayStatus: String = '';
+  leave: Boolean = false;
   dateNow: any;
   formActivity!: FormGroup;
 
@@ -34,82 +37,135 @@ export class IndexActivityUserComponent implements OnInit {
 
   public config = {
     toolbar: [
-
-      { name: 'forms', items: ['Form', 'Checkbox', 'Radio', 'TextField', 'Textarea', 'Select', 'Button', 'ImageButton', 'HiddenField'] },
+      {
+        name: 'forms',
+        items: [
+          'Form',
+          'Checkbox',
+          'Radio',
+          'TextField',
+          'Textarea',
+          'Select',
+          'Button',
+          'ImageButton',
+          'HiddenField',
+        ],
+      },
 
       '/',
-      { name: 'basicstyles', items: ['Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript', '-'] },
-      { name: 'paragraph', items: ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', , 'CreateDiv', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', '-', 'BidiLtr', 'BidiRtl', 'Language'] },
-    ]
-  }
+      {
+        name: 'basicstyles',
+        items: [
+          'Bold',
+          'Italic',
+          'Underline',
+          'Strike',
+          'Subscript',
+          'Superscript',
+          '-',
+        ],
+      },
+      {
+        name: 'paragraph',
+        items: [
+          'NumberedList',
+          'BulletedList',
+          '-',
+          'Outdent',
+          'Indent',
+          '-',
+          ,
+          'CreateDiv',
+          '-',
+          'JustifyLeft',
+          'JustifyCenter',
+          'JustifyRight',
+          'JustifyBlock',
+          '-',
+          'BidiLtr',
+          'BidiRtl',
+          'Language',
+        ],
+      },
+    ],
+  };
   editorData: any;
 
   // Activity
   activities: any;
 
   ngOnInit(): void {
-    this.service.getAmountAttendance(this.session.getUser().nik).subscribe((res: any) => {
-      this.attended = res.attended;
-      this.notAttended = res.notAttended;
-      this.leaving = res.leave;
-    })
+    this.service
+      .getAmountAttendance(this.session.getUser().nik)
+      .subscribe((res: any) => {
+        this.attended = res.attended;
+        this.notAttended = res.notAttended;
+        this.leaving = res.leave;
+      });
 
-    forkJoin(([
+    forkJoin([
       this.service.getAmountAttendance(this.session.getUser().nik),
       this.service.isAttended(this.session.getUser().nik),
-      this.service.showActivity(this.session.getUser().nik)
-    ])).subscribe(([
-      amount,
-      isAttended,
-      activities
-    ]) => {
+      this.service.showActivity(this.session.getUser().nik),
+    ]).subscribe(([amount, isAttended, activities]) => {
       console.log(isAttended);
       this.isAttended = isAttended;
       this.activities = activities.activity;
       console.log(this.activities);
-
-    })
+    });
 
     this.dateNow = moment().format('YYYY-MM-DD HH:mm:ss');
-
-
 
     this.formAttendance = new FormGroup({
       nik: new FormControl(this.session.getUser().nik),
       dayStatus: new FormControl(''),
+      leave: new FormControl(false),
       date: new FormControl(this.dateNow),
       timeIn: new FormControl('08:00:00'),
       timeOut: new FormControl('17:00:00'),
-      description: new FormControl('')
-    })
+      description: new FormControl(''),
+    });
 
     this.formActivity = new FormGroup({
       nik: new FormControl(this.session.getUser().nik),
-      activity: new FormControl('')
-    })
+      activity: new FormControl(''),
+    });
   }
 
-
   onSelect(status: any) {
-    this.dayStatus = status;
+    // this.dayStatus = status;
+    console.log(this.formAttendance.controls['nik'].value);
+    console.log(this.formAttendance.controls['leave'].value);
   }
 
   submit() {
+    if (this.formAttendance.controls['dayStatus'].value != 'Attended') {
+      this.formAttendance.controls['leave'].setValue(false);
+      console.log(this.formAttendance.controls['leave'].value);
+      return;
+    }
     this.formAttendance.value.nik = Number(this.formAttendance.value.nik);
-    if (this.formAttendance.value.dayStatus == 'Attended' || this.formAttendance.value.dayStatus == 'Off Day') {
-      this.service.storeAttendance(this.formAttendance.value).subscribe((res: any) => {
-        console.log(res);
-        this.ngOnInit()
-      })
+    if (
+      this.formAttendance.value.dayStatus == 'Attended' ||
+      this.formAttendance.value.dayStatus == 'Off Day'
+    ) {
+      this.service
+        .storeAttendance(this.formAttendance.value)
+        .subscribe((res: any) => {
+          console.log(res);
+          this.ngOnInit();
+        });
     } else {
       if (this.formAttendance.value.description == '') {
         alert('Please fill the description');
         return;
       } else {
-        this.service.storeAttendance(this.formAttendance.value).subscribe((res: any) => {
-          console.log(res);
-          this.ngOnInit();
-        })
+        this.service
+          .storeAttendance(this.formAttendance.value)
+          .subscribe((res: any) => {
+            console.log(res);
+            this.ngOnInit();
+          });
       }
     }
   }
@@ -121,16 +177,18 @@ export class IndexActivityUserComponent implements OnInit {
     let data3 = data2.replace(/<ul/g, '<ul class="list-disc"');
     this.formActivity.value.activity = data3;
 
-    this.service.storeActivity(this.formActivity.value).subscribe((res: any) => {
-      console.log(res);
-      this.ngOnInit();
-    })
+    this.service
+      .storeActivity(this.formActivity.value)
+      .subscribe((res: any) => {
+        console.log(res);
+        this.ngOnInit();
+      });
   }
 
   deleteActivity(id: any) {
     this.service.deleteActivity(id).subscribe((res: any) => {
       console.log(res);
       this.ngOnInit();
-    })
+    });
   }
 }
