@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, NgZone } from '@angular/core';
 import { forkJoin } from 'rxjs';
 import { AttendanceService } from 'src/app/service/attendance.service';
 
@@ -11,16 +11,26 @@ export class DashboardAdminComponent {
   data: any;
   employees: any;
   attendances: any;
-  constructor(private attendService: AttendanceService) {
-    forkJoin([
-      attendService.getProfile(),
-      attendService.getAttendance(),
-    ]).subscribe(([emps, attends]) => {
-      this.employees = emps;
-      this.attendances = attends;
-      console.log(this.attendances.data);
-      console.log(this.countAttendances('10282'));
+  dateNow = new Date();
+  constructor(
+    private attendService: AttendanceService,
+    private ngZone: NgZone
+  ) {
+    this.ngZone.run(() => {
+      forkJoin([
+        attendService.getProfile(),
+        attendService.getTwoMonthAttendances(),
+      ]).subscribe(([emps, attends]: any) => {
+        this.employees = emps;
+        this.attendances = attends;
+        console.log();
+        console.log(this.attendances);
+
+        console.log(this.countAttendances('10282'));
+      });
     });
+
+    console.log(this.dateNow.getDate());
 
     // attendService.getProfile().subscribe((loh) => {
     //   this.data = loh;
@@ -28,19 +38,61 @@ export class DashboardAdminComponent {
     // });
   }
   countAttendances(nik: any) {
-    let attend = this.filterAttendances(nik).filter(
-      (data: any) => data.dayStatus == 'Attended'
-    ).length;
+    let date = new Date();
+    let attend;
+    let notAttend;
+    let dayOff;
+    let start: string | number;
+    let end: string | number;
+    // console.log(new Date(new Date().setDate(14)).toISOString());
 
-    let notAttend = this.filterAttendances(nik).filter(
-      (data: any) => data.dayStatus == 'Not Attended'
-    ).length;
-    let dayOff = this.filterAttendances(nik).filter(
-      (data: any) => data.dayStatus == 'Off Day'
-    ).length;
-    return { attend, notAttend, dayOff };
+    if (date.getDate() >= 15) {
+      // console.log('after');
+      start = new Date(new Date().setDate(14)).toISOString();
+      end = new Date(
+        new Date().setMonth(new Date().getMonth() + 1, 14)
+      ).toISOString();
+      attend = this.filterAttendances(nik).filter(
+        (data: any) =>
+          data.dayStatus == 'Attended' && data.date > start && data.date <= end
+      ).length;
+      notAttend = this.filterAttendances(nik).filter(
+        (data: any) =>
+          data.dayStatus == 'Not Attended' &&
+          data.date > start &&
+          data.date <= end
+      ).length;
+      dayOff = this.filterAttendances(nik).filter(
+        (data: any) =>
+          data.dayStatus == 'Off Day' && data.date > start && data.date <= end
+      ).length;
+      // console.log(attend + ' ' + notAttend);
+    } else {
+      // console.log('before');
+      start = new Date(
+        new Date().setMonth(new Date().getMonth() - 1, 14)
+      ).toISOString();
+      end = new Date(new Date().setDate(14)).toISOString();
+      attend = this.filterAttendances(nik).filter(
+        (data: any) =>
+          data.dayStatus == 'Attended' && data.date < end && data.date >= start
+      ).length;
+
+      notAttend = this.filterAttendances(nik).filter(
+        (data: any) =>
+          data.dayStatus == 'Not Attended' &&
+          data.date > end &&
+          data.date <= start
+      ).length;
+      dayOff = this.filterAttendances(nik).filter(
+        (data: any) =>
+          data.dayStatus == 'Off Day' && data.date > end && data.date <= start
+      ).length;
+    }
+
+    return { attend, notAttend, dayOff, start, end };
   }
   filterAttendances(nik: any) {
-    return this.attendances.data.filter((data: any) => data.nik == nik);
+    return this.attendances.filter((data: any) => data.nik == nik);
   }
 }

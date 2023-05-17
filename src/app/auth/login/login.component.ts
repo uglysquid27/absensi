@@ -83,7 +83,8 @@ export class LoginComponent {
           // this.errorMessage = err.error.message;
           // this.isLoginFailed = true;
           this.submitted = false;
-          this.form.setValue({ email: '', password: '' });
+          this.f['password'].setValue('');
+          // this.form.setValue({ email: '', password: '' });
         }
       );
   }

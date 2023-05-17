@@ -48,6 +48,9 @@ export class AttendanceService {
   getAttendance(): Observable<any> {
     return this.httpClient.get(api + 'attendance');
   }
+  getTwoMonthAttendances(): Observable<any> {
+    return this.httpClient.get(api + 'attendance/two');
+  }
   storeAttendance(body: any): Observable<any> {
     return this.httpClient.post(api + 'attendance', body);
   }
