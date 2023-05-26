@@ -14,11 +14,9 @@ const datepipe: DatePipe = new DatePipe('en-US');
 
 export enum attendance {
   Attended = '',
-  'Off Day' = '' ,
+  'Off Day' = '',
   'Not Attended' = '',
-  Leaving = ''
 }
-
 
 @Component({
   selector: 'app-create',
@@ -34,6 +32,8 @@ export class CreateComponent {
   departments: any;
   institutions: any;
   banks: any;
+  dayStatus: any;
+  leave = false;
   submitted: Boolean = false;
   now = new Date();
 
@@ -52,21 +52,27 @@ export class CreateComponent {
     this.form = this.formBuilder.group({
       nikInput: ['', Validators.required],
       statusInput: ['', Validators.required],
+      leave: [false],
+      timeOut: ['17:00:00', Validators.required],
+      description: [''],
     });
-    
-    
   }
   onSubmit() {
     this.submitted = true;
     if (this.form.invalid) {
       return;
     }
+    if (this.f['statusInput'].value != 'Attended') {
+      this.f['leave'].setValue(false);
+    }
     let body = {
       nik: this.f['nikInput'].value,
       dayStatus: this.f['statusInput'].value,
       date: new Date(),
+      leave: this.f['leave'].value,
       timeIn: '08:00:00',
-      timeOut: '17:00:00',
+      timeOut: this.f['timeOut'].value,
+      description: this.f['description'].value,
     };
 
     this.apiService.storeAttendance(body).subscribe(
@@ -95,8 +101,11 @@ export class CreateComponent {
     });
   }
   filterFilledAttendance(nik: any) {
-    return this.status.filter((data: any) => data.nik == nik &&
-    this.convertDate(data.date) == this.convertDate(this.now));
+    return this.status.filter(
+      (data: any) =>
+        data.nik == nik &&
+        this.convertDate(data.date) == this.convertDate(this.now)
+    );
   }
 
   convertDate(date: any) {

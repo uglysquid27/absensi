@@ -33,17 +33,14 @@
 <div class="pl-14 lg:pl-52 py-5">
   <div class="px-4">
     <div class="px-10 py-5">
-      <h2 class="text-3xl font-bold"> Activities</h2>
+      <h2 class="text-3xl font-bold">Activities</h2>
+      <h2 class="pt-3 text-2xl text-gray-500"> {{ id }}</h2>
     </div>
     <div class="flex flex-col">
       <div class="-my-2 overflow-x-auto">
         <div class="inline-block min-w-full py-2 align-middle md:px-3 lg:px-4">
-          <div
-            class="overflow-hidden border border-gray-200 md:rounded-lg"
-          >
-            <table
-              class="min-w-full divide-y divide-gray-200"
-            >
+          <div class="overflow-hidden border border-gray-200 md:rounded-lg">
+            <table class="min-w-full divide-y divide-gray-200">
               <thead class="bg-gray-80 bg-gray-100">
                 <tr>
                   <!-- <th
@@ -55,14 +52,14 @@
 
                   <th
                     scope="col"
-                    class="py-3.5 px-4 text-sm font-semibold rtl:text-right text-gray-700 text-center"
+                    class="py-3.5 px-4 text-sm font-semibold rtl:text-right text-gray-700 text-center w-1/4"
                   >
-                  Date
+                    Date
                   </th>
 
                   <th
                     scope="col"
-                    class="py-3.5 px-4 text-sm font-semibold rtl:text-right text-gray-700 text-center"
+                    class="py-3.5 px-4 text-sm font-semibold rtl:text-right text-gray-700 text-center w-1/4"
                   >
                     Attendance
                   </th>
@@ -74,23 +71,53 @@
                   </th>
                 </tr>
               </thead>
-                <tbody *ngFor="let item of recentAct; index as i"
-                class=" divide-y  divide-gray-300 bg-white"
+              <tbody
+                *ngFor="let item of recentAttend; index as i"
+                class="divide-y divide-gray-300 bg-white"
               >
-                <tr>
+                <tr >
                   <td
-                    class="px-4 py-4 text-sm  text-gray-700 whitespace-nowrap text-center"
+                    *ngIf="recentAct.length != 0"
+                    class="px-4 py-4 text-sm text-gray-700 whitespace-nowrap text-center"
                   >
-                    {{ item.createdAt | date }}
+                    {{ item.date | date }}
                   </td>
-                  <td></td>
-                  <!-- <td  class="text-gray-700 inline-flex items-center px-3 pt-1 rounded-full gap-x-2 bg-green-200 border-green-300">
-                    {{this.recentDate[i]}}
-                  </td> -->
+                  <td
+                    *ngIf="recentAct.length == 0"
+                    class="px-4 py-4 text-sm text-gray-700 whitespace-nowrap text-center"
+                  >
+                    -
+                  </td>
+                  <td
+                    class="text-gray-700 flex justify-center py-4"
+                  >
+                    <div class="rounded-full px-3"
+                      [ngClass]="
+                        recentAttend.length != 0
+                          ? item.dayStatus == 'Not Attended'
+                            ? 'bg-red-200 border-red-300'
+                            : item.dayStatus == 'Attended'
+                            ? item.leave == true
+                              ? 'bg-yellow-200 border-yellow-300'
+                              : 'bg-green-200 border-green-300'
+                            : item.dayStatus == 'Off Day'
+                            ? 'bg-gray-300 border-gray-400'
+                            : ''
+                          : ''
+                      "
+                    >
+                      <span *ngIf="item.leave"> Leaving </span>
+                      <span *ngIf="!item.leave"> {{ item.dayStatus }}</span>
+                    </div>
+                  </td>
                   <td
                     class="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap text-center"
-                    [innerHTML]="item.activity"
-                    >
+                  >
+                    <span
+                      *ngIf="filterActivity(item.id).length != 0"
+                      [innerHTML]="filterActivity(item.id)[0].activity"
+                    ></span>
+                    <span *ngIf="filterActivity(item.id).length == 0">-</span>
                   </td>
                 </tr>
               </tbody>

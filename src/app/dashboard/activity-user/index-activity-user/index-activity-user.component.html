@@ -129,7 +129,6 @@
           class="block mb-2 text-sm font-medium text-gray-900"
           >Select an option</label
         >
-        <a (click)="onSelect(dayStatus)">click me</a>
         <!-- <select
         id="countries"
         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
@@ -222,7 +221,7 @@
           <input
             id="horizontal-dayStatus-passport"
             type="checkbox"
-            [value]="dayStatus!='Attended'? false:''"
+            [value]="dayStatus != 'Attended' ? false : ''"
             formControlName="leave"
             [(ngModel)]="leave"
             class="w-4 h-4 rounded-full text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 focus:ring-2"
@@ -265,9 +264,7 @@
                 required
               />
             </div>
-            <div
-              class="w-full"
-            >
+            <div class="w-full">
               <label
                 for="message"
                 class="block mb-2 text-sm font-medium text-gray-900"
@@ -317,14 +314,82 @@
         </div>
       </form>
     </div>
+    {{ isAttended?.length }}
+    <div
+      *ngIf="
+        isAttended?.length !=0 &&
+        this.filterAttend(this.session.getUser().nik)[0]?.dayStatus ==
+          'Attended' &&
+        this.filterAttend(this.session.getUser().nik)[0]?.leave == false
+      "
+      class="w-screen"
+    >
+      <div class="flex items-center pl-3" *ngIf="dayStatus == 'Attended'">
+        <input
+          id="horizontal-dayStatus-passport"
+          type="checkbox"
+          formControlName="leave"
+          [(ngModel)]="leave"
+          class="w-4 h-4 rounded-full text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 focus:ring-2"
+        />
+        <label
+          for="horizontal-dayStatus-passport"
+          class="w-full py-3 ml-2 text-sm font-medium text-gray-900"
+          >Leaving
+        </label>
+      </div>
+      <div class="mt-5" *ngIf="leave">
+        <div class="flex items-center justify-between gap-2">
+          <div class="w-full">
+            <label
+              for="first_name"
+              class="block mb-2 text-sm font-medium text-gray-900"
+              >Time Out</label
+            >
+            <input
+              type="time"
+              id="first_name"
+              formControlName="timeOut"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+              placeholder="John"
+              required
+            />
+          </div>
+          <div class="w-full">
+            <label
+              for="message"
+              class="block mb-2 text-sm font-medium text-gray-900"
+              >Description</label
+            >
+            <textarea
+              id="message"
+              rows="4"
+              formControlName="description"
+              class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
+              placeholder="Description..."
+            ></textarea>
+          </div>
+        </div>
+      </div>
+      <div
+        class="mt-5"
+        *ngIf="dayStatus == 'Leaving' || dayStatus == 'Not Attended'"
+      >
+        <label
+          for="message"
+          class="block mb-2 text-sm font-medium text-gray-900"
+          >Description</label
+        >
+        <textarea
+          id="message"
+          rows="4"
+          formControlName="description"
+          class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
+          placeholder="Description..."
+        ></textarea>
+      </div>
+    </div>
     <div class="w-3/4 py-5">
-      <!-- <img
-        src="assets/img/todo.png"
-        width="50px"
-        class="cursor-pointer hover:-translate-y-1"
-        (click)="showEditor = !showEditor"
-        alt=""
-      /> -->
       <h2>
         <button
           type="button"
@@ -378,8 +443,68 @@
       </form>
     </div>
 
-    <div class="relative p-4 overflow-x-auto mt-14 w-3/4">
-      <table
+    <div class="relative p-4 overflow-x-auto mt-14 w-3/4 drop-shadow-lg">
+      <table class="min-w-full divide-y divide-gray-200">
+        <thead class="bg-gray-80 bg-gray-100">
+          <tr>
+            <!-- <th
+              scope="col"
+              class="py-3.5 px-4 text-sm font-semibold rtl:text-right text-gray-700 text-center"
+            >
+              Id
+            </th> -->
+
+            <th
+              scope="col"
+              class="py-3.5 px-4 text-sm font-semibold rtl:text-right text-gray-700 text-center w-1/4"
+            >
+              Date
+            </th>
+
+            <th
+              scope="col"
+              class="py-3.5 px-4 text-sm font-semibold rtl:text-right text-gray-700 text-center w-1/4"
+            >
+              Attendance
+            </th>
+            <th
+              scope="col"
+              class="py-3.5 px-4 text-sm font-semibold rtl:text-right text-gray-700 text-center"
+            >
+              Activity
+            </th>
+          </tr>
+        </thead>
+
+        <tbody
+          *ngFor="let item of attendances; index as i"
+          class="divide-y divide-gray-300 bg-white"
+        >
+          <tr>
+            <td
+              class="px-4 py-4 text-sm text-gray-700 whitespace-nowrap text-center"
+            >
+              {{ item.date | date }}
+            </td>
+            <td class="text-gray-700 flex justify-center py-4">
+              <div class="rounded-full px-3">
+                <span *ngIf="item.leave"> Leaving </span>
+                <span *ngIf="!item.leave"> {{ item.dayStatus }}</span>
+              </div>
+            </td>
+            <td
+              class="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap text-center"
+            >
+              <span
+                *ngIf="filterActivity(item.id).length != 0"
+                [innerHTML]="filterActivity(item.id)[0].activity"
+              ></span>
+              <span *ngIf="filterActivity(item.id).length == 0">-</span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <!-- <table
         class="w-full text-sm text-left text-gray-500 rounded-xl shadow-md"
       >
         <thead class="text-xs text-gray-700 uppercase bg-gray-200 0 rounded-xl">
@@ -406,7 +531,7 @@
                 >
                   edit</a
                 >
-                <!-- <i class="cursor-pointer fas fa-edit hover:text-blue-500" (click)="editActivity(item)"></i> -->
+                <i class="cursor-pointer fas fa-edit hover:text-blue-500" (click)="editActivity(item)"></i>
                 <button
                   (click)="deleteActivity(item.id)"
                   type="reset"
@@ -418,7 +543,7 @@
             </td>
           </tr>
         </tbody>
-      </table>
+      </table> -->
     </div>
   </div>
 </div>

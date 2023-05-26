@@ -6,9 +6,9 @@ const datepipe: DatePipe = new DatePipe('en-US');
 
 export enum attendance {
   Attended,
-  'Off Day' ,
+  'Off Day',
   'Not Attended',
-  Leaving
+  Leaving,
 }
 @Component({
   selector: 'app-activity-admin',
@@ -33,12 +33,12 @@ export class ActivityAdminComponent {
       this.usersData = users.data;
       this.attendData = attend.data;
       this.activityData = activ.data;
-      console.log(activ.data);
+      // console.log(this.attendData);
 
       // console.log(this.filterEnum(this.filterAttend('10282')[0].dayStatus));
-      
+
       // console.log(this.attendData);
-      
+
       // console.log(this.filterAttend('10290'));
 
       // console.log(this.convertDate(this.now));
@@ -60,9 +60,7 @@ export class ActivityAdminComponent {
     return this.activityData.filter((data: any) => data.attendanceId == id);
   }
   filterEnum(val: any) {
-    return this.attendanceEnum.filter(
-      (data: any) => data == val
-    );
+    return this.attendanceEnum.filter((data: any) => data == val);
   }
   convertDate(date: any) {
     return datepipe.transform(date, 'dd-MMM-YYYY');

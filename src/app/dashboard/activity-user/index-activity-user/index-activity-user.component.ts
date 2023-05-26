@@ -4,7 +4,9 @@ import { TokenStorageService } from './../../../service/auth/token-storage.servi
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import * as moment from 'moment';
+import { DatePipe } from '@angular/common';
 import { CKEditorComponent } from 'ckeditor4-angular';
+const datepipe: DatePipe = new DatePipe('en-US');
 
 @Component({
   selector: 'app-index-activity-user',
@@ -34,6 +36,10 @@ export class IndexActivityUserComponent implements OnInit {
   showAttendance: boolean = false;
   isAttended: any;
   showEditor: boolean = false;
+  leavingAfterSubmit: any;
+
+  //
+  attendances: any[] = [];
 
   public config = {
     toolbar: [
@@ -95,6 +101,8 @@ export class IndexActivityUserComponent implements OnInit {
   activities: any;
 
   ngOnInit(): void {
+    
+
     this.service
       .getAmountAttendance(this.session.getUser().nik)
       .subscribe((res: any) => {
@@ -104,14 +112,18 @@ export class IndexActivityUserComponent implements OnInit {
       });
 
     forkJoin([
-      this.service.getAmountAttendance(this.session.getUser().nik),
+      this.service.getAttendanceByNik(this.session.getUser().nik),
       this.service.isAttended(this.session.getUser().nik),
       this.service.showActivity(this.session.getUser().nik),
-    ]).subscribe(([amount, isAttended, activities]) => {
-      console.log(isAttended);
+    ]).subscribe(([attend, isAttended, activities]) => {
+      this;
+      this.attendances = attend;
       this.isAttended = isAttended;
       this.activities = activities.activity;
-      console.log(this.activities);
+      console.log(this.isAttended);
+      // console.log(this.filterAttend('10282')[0].leave);
+      // console.log(activities);
+      // console.log(this.attendances);
     });
 
     this.dateNow = moment().format('YYYY-MM-DD HH:mm:ss');
@@ -132,17 +144,11 @@ export class IndexActivityUserComponent implements OnInit {
     });
   }
 
-  onSelect(status: any) {
-    // this.dayStatus = status;
-    console.log(this.formAttendance.controls['nik'].value);
-    console.log(this.formAttendance.controls['leave'].value);
-  }
-
   submit() {
     if (this.formAttendance.controls['dayStatus'].value != 'Attended') {
       this.formAttendance.controls['leave'].setValue(false);
-      console.log(this.formAttendance.controls['leave'].value);
-      return;
+      // console.log(this.formAttendance.controls['leave'].value);
+      // return;
     }
     this.formAttendance.value.nik = Number(this.formAttendance.value.nik);
     if (
@@ -152,7 +158,7 @@ export class IndexActivityUserComponent implements OnInit {
       this.service
         .storeAttendance(this.formAttendance.value)
         .subscribe((res: any) => {
-          console.log(res);
+          // console.log(res);
           this.ngOnInit();
         });
     } else {
@@ -163,7 +169,7 @@ export class IndexActivityUserComponent implements OnInit {
         this.service
           .storeAttendance(this.formAttendance.value)
           .subscribe((res: any) => {
-            console.log(res);
+            // console.log(res);
             this.ngOnInit();
           });
       }
@@ -180,15 +186,29 @@ export class IndexActivityUserComponent implements OnInit {
     this.service
       .storeActivity(this.formActivity.value)
       .subscribe((res: any) => {
-        console.log(res);
+        // console.log(res);
         this.ngOnInit();
       });
   }
 
   deleteActivity(id: any) {
     this.service.deleteActivity(id).subscribe((res: any) => {
-      console.log(res);
+      // console.log(res);
       this.ngOnInit();
     });
+  }
+  filterAttend(nik: any): any {
+    return this.attendances.filter(
+      (data: any) =>
+        data.nik == nik &&
+        this.convertDate(data.date) == this.convertDate(new Date())
+    );
+  }
+
+  filterActivity(id: any) {
+    return this.activities.filter((data: any) => data.attendanceId == id);
+  }
+  convertDate(date: any) {
+    return datepipe.transform(date, 'dd-MMM-YYYY');
   }
 }

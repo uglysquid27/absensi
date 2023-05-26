@@ -13,7 +13,7 @@ const httpOptions = {
   providedIn: 'root',
 })
 export class AttendanceService {
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient) {}
 
   /* Employee ------------------------------------------------------------------------*/
   getProfile(): Observable<any> {
@@ -48,6 +48,9 @@ export class AttendanceService {
   getAttendance(): Observable<any> {
     return this.httpClient.get(api + 'attendance');
   }
+  getAttendanceByNik(id: any): Observable<any> {
+    return this.httpClient.get(api + 'attendance/' + id);
+  }
   getTwoMonthAttendances(): Observable<any> {
     return this.httpClient.get(api + 'attendance/two');
   }
@@ -81,31 +84,30 @@ export class AttendanceService {
     return this.httpClient.put(api + 'activities/' + id, body);
   }
 
-   /* Documents ------------------------------------------------------------------------*/
-    getDocument(): Observable<any> {
-      return this.httpClient.get(api + 'documents');
-    }
-    storeDocument(body: any): Observable<any> {
-      return this.httpClient.post(api + 'documents', body);
-    }
-    getDocumentbyId(id: any): Observable<any> {
-      return this.httpClient.get(api + 'documents/' + id);
-    }
-    updateDocument(id: any, body: any) {
-      return this.httpClient.put(api + 'documents/' + id, body);
-    }
-    deleteDocument(id: any) {
-      return this.httpClient.delete(api + 'documents/' + id);
-    }
+  /* Documents ------------------------------------------------------------------------*/
+  getDocument(): Observable<any> {
+    return this.httpClient.get(api + 'documents');
+  }
+  storeDocument(body: any): Observable<any> {
+    return this.httpClient.post(api + 'documents', body);
+  }
+  getDocumentbyId(id: any): Observable<any> {
+    return this.httpClient.get(api + 'documents/' + id);
+  }
+  updateDocument(id: any, body: any) {
+    return this.httpClient.put(api + 'documents/' + id, body);
+  }
+  deleteDocument(id: any) {
+    return this.httpClient.delete(api + 'documents/' + id);
+  }
 
-   /* Banks ------------------------------------------------------------------------*/  
-   getBank(): Observable<any> {
-     return this.httpClient.get(api + 'banks');
-   }
-   deleteBank(id: any) {
-      return this.httpClient.delete(api + 'banks/' + id);
-   }
-
+  /* Banks ------------------------------------------------------------------------*/
+  getBank(): Observable<any> {
+    return this.httpClient.get(api + 'banks');
+  }
+  deleteBank(id: any) {
+    return this.httpClient.delete(api + 'banks/' + id);
+  }
 
   /* Other ------------------------------------------------------------------------*/
   getInstitutions(): Observable<any> {
@@ -140,6 +142,4 @@ export class AttendanceService {
   deleteDepartements(id: any) {
     return this.httpClient.delete(api + 'departements/' + id);
   }
-  
-
 }
