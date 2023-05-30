@@ -23,6 +23,7 @@ export class IndexActivityUserComponent implements OnInit {
   attended: any;
   notAttended: any;
   leaving: any;
+  offDay: any;
   employeeStatus: any;
 
   // Form
@@ -108,7 +109,7 @@ export class IndexActivityUserComponent implements OnInit {
       .subscribe((res: any) => {
         this.attended = res.attended;
         this.notAttended = res.notAttended;
-        this.leaving = res.leave;
+        this.offDay = res.offDay;
       });
 
     forkJoin([

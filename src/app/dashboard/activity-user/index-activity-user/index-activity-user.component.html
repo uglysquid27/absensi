@@ -1,14 +1,27 @@
 <div class="py-5 ml-14 lg:ml-52">
   <div class="flex flex-wrap justify-center">
     <div class="fixed right-0 z-50 px-5">
-      <img
+      <!-- <img
         src="assets/img/attendance.png"
         alt=""
         width="50px"
         class="m-2 bg-gray-100 cursor-pointer rounded-xl hover:-translate-y-0.5 hover:shadow-2xl"
         (click)="showAttendance = true"
         *ngIf="!showAttendance"
-      />
+      /> -->
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        height="40"
+        viewBox="0 -960 960 960"
+        width="40"
+        class="m-2 p-1 bg-blue-500 fill-white cursor-pointer rounded-md hover:-translate-y-0.5 hover:shadow-2xl"
+        (click)="showAttendance = true"
+        *ngIf="!showAttendance"
+      >
+        <path
+          d="M180-80q-24 0-42-18t-18-42v-620q0-24 18-42t42-18h65v-60h65v60h340v-60h65v60h65q24 0 42 18t18 42v300h-60v-110H180v430h324v60H180ZM760 0q-73 0-127.5-45.5T564-160h62q13 44 49.5 72T760-60q58 0 99-41t41-99q0-58-41-99t-99-41q-29 0-54 10.5T662-300h58v60H560v-160h60v57q27-26 63-41.5t77-15.5q83 0 141.5 58.5T960-200q0 83-58.5 141.5T760 0ZM180-630h600v-130H180v130Zm0 0v-130 130Z"
+        />
+      </svg>
       <div
         *ngIf="showAttendance"
         class="h-full max-w-sm px-6 bg-white border border-gray-200 rounded-lg shadow-xl hover:bg-indigo-100"
@@ -51,7 +64,7 @@
                 viewBox="0 0 496 512"
               >
                 <path
-                  fill="currentColor"
+                  fill="white"
                   d="M248 8C111 8 0 119 0 256s111 248 248 248 248-111 248-248S385 8 248 8zm80 144c23.8 0 52.7 29.3 56 71.4.7 8.6-10.8 11.9-14.9 4.5l-9.5-17c-7.7-13.7-19.2-21.6-31.5-21.6s-23.8 7.9-31.5 21.6l-9.5 17c-4.1 7.3-15.6 4-14.9-4.5 3.1-42.1 32-71.4 55.8-71.4zm-160 0c23.8 0 52.7 29.3 56 71.4.7 8.6-10.8 11.9-14.9 4.5l-9.5-17c-7.7-13.7-19.2-21.6-31.5-21.6s-23.8 7.9-31.5 21.6l-9.5 17c-4.2 7.4-15.6 4-14.9-4.5 3.1-42.1 32-71.4 55.8-71.4zm80 280c-60.6 0-134.5-38.3-143.8-93.3-2-11.9 9.4-21.6 20.7-17.9C155.1 330.5 200 336 248 336s92.9-5.5 123.1-15.2c11.4-3.7 22.6 6.1 20.7 17.9-9.3 55-83.2 93.3-143.8 93.3z"
                 />
               </svg>
@@ -61,29 +74,6 @@
             </h3>
             <h5 class="font-medium text-center text-gray-500 text-md">
               Attend
-            </h5>
-          </div>
-
-          <div class="mb-12 md:mb-0">
-            <div
-              class="flex justify-center w-full p-4 bg-yellow-300 rounded-md shadow-lg"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                height="24"
-                width="24"
-                fill="white"
-              >
-                <path
-                  d="M15.4 10.8q.55 0 .925-.375T16.7 9.5q0-.55-.375-.925T15.4 8.2q-.55 0-.925.375T14.1 9.5q0 .55.375.925t.925.375Zm-6.8 0q.55 0 .925-.375T9.9 9.5q0-.55-.375-.925T8.6 8.2q-.55 0-.925.375T7.3 9.5q0 .55.375.925t.925.375Zm.475 4.55h5.85v-1.2h-5.85ZM12 21.5q-1.975 0-3.712-.75Q6.55 20 5.275 18.725T3.25 15.712Q2.5 13.975 2.5 12t.75-3.713Q4 6.55 5.275 5.275T8.288 3.25Q10.025 2.5 12 2.5t3.713.75q1.737.75 3.012 2.025t2.025 3.012q.75 1.738.75 3.713t-.75 3.712q-.75 1.738-2.025 3.013t-3.012 2.025q-1.738.75-3.713.75Z"
-                />
-              </svg>
-            </div>
-            <h3 class="text-2xl font-bold text-center text-yellow-300">
-              {{ leaving }}
-            </h3>
-            <h5 class="font-medium text-center text-gray-500 text-md">
-              Leaving
             </h5>
           </div>
 
@@ -107,6 +97,28 @@
             </h3>
             <h5 class="font-medium text-center text-gray-500 text-md">
               Not Attend
+            </h5>
+          </div>
+          <div class="mb-12 md:mb-0">
+            <div
+              class="flex justify-center w-full p-4 bg-gray-400 rounded-md shadow-lg"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                height="24"
+                width="24"
+                fill="white"
+              >
+                <path
+                  d="M15.4 10.8q.55 0 .925-.375T16.7 9.5q0-.55-.375-.925T15.4 8.2q-.55 0-.925.375T14.1 9.5q0 .55.375.925t.925.375Zm-6.8 0q.55 0 .925-.375T9.9 9.5q0-.55-.375-.925T8.6 8.2q-.55 0-.925.375T7.3 9.5q0 .55.375.925t.925.375Zm.475 4.55h5.85v-1.2h-5.85ZM12 21.5q-1.975 0-3.712-.75Q6.55 20 5.275 18.725T3.25 15.712Q2.5 13.975 2.5 12t.75-3.713Q4 6.55 5.275 5.275T8.288 3.25Q10.025 2.5 12 2.5t3.713.75q1.737.75 3.012 2.025t2.025 3.012q.75 1.738.75 3.713t-.75 3.712q-.75 1.738-2.025 3.013t-3.012 2.025q-1.738.75-3.713.75Z"
+                />
+              </svg>
+            </div>
+            <h3 class="text-2xl font-bold text-center text-gray-400">
+              {{ offDay }}
+            </h3>
+            <h5 class="font-medium text-center text-gray-500 text-md">
+              Off Day
             </h5>
           </div>
         </div>
@@ -389,7 +401,11 @@
     </div>
     <div
       class="w-3/4 py-5"
-      *ngIf="isAttended != null && filterActivity(isAttended.id).length == 0 && isAttended?.dayStatus == 'Attended'"
+      *ngIf="
+        isAttended != null &&
+        filterActivity(isAttended.id).length == 0 &&
+        isAttended?.dayStatus == 'Attended'
+      "
     >
       <h2>
         <button
@@ -488,7 +504,22 @@
               {{ item.date | date }}
             </td>
             <td class="text-gray-700 flex justify-center py-4">
-              <div class="rounded-full px-3">
+              <div
+                class="rounded-full px-3"
+                [ngClass]="
+                  attendances.length != 0
+                    ? item.dayStatus == 'Not Attended'
+                      ? 'bg-red-200 border-red-300'
+                      : item.dayStatus == 'Attended'
+                      ? item.leave == true
+                        ? 'bg-yellow-200 border-yellow-300'
+                        : 'bg-green-200 border-green-300'
+                      : item.dayStatus == 'Off Day'
+                      ? 'bg-gray-300 border-gray-400'
+                      : ''
+                    : ''
+                "
+              >
                 <span *ngIf="item.leave"> Leaving </span>
                 <span *ngIf="!item.leave"> {{ item.dayStatus }}</span>
               </div>

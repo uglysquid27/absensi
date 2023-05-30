@@ -20,13 +20,13 @@ export class SidebarComponent {
   }
   onMouseEnter() {
     this.hideElement = false;
-    console.log(this.hideElement);
+    // console.log(this.hideElement);
   }
   onMouseOut() {
-    console.log('out');
     this.boolDropdown = false;
+    this.boolAcc = false;
     this.hideElement = true;
-    console.log(this.hideElement);
+    // console.log(this.hideElement);
   }
 
   dropdown() {
