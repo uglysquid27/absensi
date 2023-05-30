@@ -57,6 +57,9 @@ export class AttendanceService {
   storeAttendance(body: any): Observable<any> {
     return this.httpClient.post(api + 'attendance', body);
   }
+  updateAttendance(body: any, id: any): Observable<any> {
+    return this.httpClient.post(api + 'attendance/update/' + id, body);
+  }
   getAmountAttendance(id: any): Observable<any> {
     return this.httpClient.get(api + 'countAttending/' + id);
   }

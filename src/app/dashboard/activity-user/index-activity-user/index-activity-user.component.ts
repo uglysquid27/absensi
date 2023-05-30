@@ -27,8 +27,10 @@ export class IndexActivityUserComponent implements OnInit {
 
   // Form
   formAttendance!: FormGroup;
+  formUpdateAttendance!: FormGroup;
   dayStatus: String = '';
   leave: Boolean = false;
+  leaveAfter: Boolean = false;
   dateNow: any;
   formActivity!: FormGroup;
 
@@ -101,8 +103,6 @@ export class IndexActivityUserComponent implements OnInit {
   activities: any;
 
   ngOnInit(): void {
-    
-
     this.service
       .getAmountAttendance(this.session.getUser().nik)
       .subscribe((res: any) => {
@@ -132,10 +132,16 @@ export class IndexActivityUserComponent implements OnInit {
       nik: new FormControl(this.session.getUser().nik),
       dayStatus: new FormControl(''),
       leave: new FormControl(false),
+      leaveAfter: new FormControl(false),
       date: new FormControl(this.dateNow),
       timeIn: new FormControl('08:00:00'),
       timeOut: new FormControl('17:00:00'),
       description: new FormControl(''),
+    });
+    this.formUpdateAttendance = new FormGroup({
+      leaveUpdate: new FormControl(false),
+      timeOutUpdate: new FormControl('17:00:00'),
+      descriptionUpdate: new FormControl(''),
     });
 
     this.formActivity = new FormGroup({
@@ -174,6 +180,41 @@ export class IndexActivityUserComponent implements OnInit {
           });
       }
     }
+  }
+  submitUpdate() {
+    if (this.formUpdateAttendance.value.descriptionUpdate == '') {
+      alert('Please fill the description');
+      return;
+    }
+
+    let dataUpdate = {
+      leave: this.formUpdateAttendance.value.leaveUpdate,
+      timeOut: this.formUpdateAttendance.value.timeOutUpdate,
+      description: this.formUpdateAttendance.value.descriptionUpdate,
+    };
+    console.log(this.formUpdateAttendance.value);
+
+    if (this.isAttended.dayStatus == 'Attended') {
+      this.service
+        .updateAttendance(dataUpdate, this.isAttended.id)
+        .subscribe((res: any) => {
+          console.log(res);
+          this.ngOnInit();
+        });
+    }
+    // else {
+    //   if (this.formAttendance.value.description == '') {
+    //     alert('Please fill the description');
+    //     return;
+    //   } else {
+    //     this.service
+    //       .storeAttendance(this.formAttendance.value)
+    //       .subscribe((res: any) => {
+    //         // console.log(res);
+    //         this.ngOnInit();
+    //       });
+    //   }
+    // }
   }
   submitActivity() {
     this.formActivity.value.nik = Number(this.formActivity.value.nik);
