@@ -1,0 +1,135 @@
+<div class="pl-14 lg:pl-52 py-5">
+  <section class="text-gray-600 body-font">
+    <div class="container px-5 mx-auto">
+      <div class="text-start">
+        <h1 class="sm:text-3xl text-2xl font-semibold text-gray-900 mb-4">
+          Approval Page
+        </h1>
+        <!-- <p class="text-base leading-relaxed xl:w-2/4 lg:w-3/4 mx-auto">
+          Blue bottle crucifix vinyl post-ironic four dollar toast vegan
+          taxidermy. Gastropub indxgo juice poutine, ramps microdosing banh mi
+          pug.
+        </p> -->
+      </div>
+      <div class="container px-5 py-5 mx-auto text-gray-600">
+        <div class="flex flex-wrap -m-4 text-center justify-center">
+          <div class="p-4 md:w-1/4 sm:w-1/2 w-full">
+            <div class="border-2 border-gray-200 px-2 py-3 rounded-lg">
+              <svg
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="3"
+                class="text-green-500 w-10 h-10 mb-3 inline-block"
+                viewBox="0 0 24 24"
+              >
+                <path d="M22 11.08V12a10 10 0 11-5.93-9.14"></path>
+                <path d="M22 4L12 14.01l-3-3"></path>
+              </svg>
+              <h2 class="title-font font-medium text-3xl text-gray-900">0</h2>
+              <p class="leading-relaxed">Approved</p>
+            </div>
+          </div>
+          <div class="p-4 md:w-1/4 sm:w-1/2 w-full">
+            <div class="border-2 border-gray-200 px-2 py-3 rounded-lg">
+              <svg
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="3"
+                class="text-gray-400 w-10 h-10 mb-3 inline-block"
+                viewBox="0 0 24 24"
+              >
+                <path d="M22 11.08V12a10 10 0 11-5.93-9.14"></path>
+                <path d="M22 4L12 14.01l-3-3"></path>
+              </svg>
+              <h2 class="title-font font-medium text-3xl text-gray-900">0</h2>
+              <p class="leading-relaxed">Unapproved</p>
+            </div>
+          </div>
+          <!-- <div class="p-4 md:w-1/4 sm:w-1/2 w-full">
+            <div class="border-2 border-gray-200 px-4 py-6 rounded-lg">
+              <svg
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                class="text-green-500 w-12 h-12 mb-3 inline-block"
+                viewBox="0 0 24 24"
+              >
+                <path d="M3 18v-6a9 9 0 0118 0v6"></path>
+                <path
+                  d="M21 19a2 2 0 01-2 2h-1a2 2 0 01-2-2v-3a2 2 0 012-2h3zM3 19a2 2 0 002 2h1a2 2 0 002-2v-3a2 2 0 00-2-2H3z"
+                ></path>
+              </svg>
+              <h2 class="title-font font-medium text-3xl text-gray-900">74</h2>
+              <p class="leading-relaxed">Files</p>
+            </div>
+          </div>
+          <div class="p-4 md:w-1/4 sm:w-1/2 w-full">
+            <div class="border-2 border-gray-200 px-4 py-6 rounded-lg">
+              <svg
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                class="text-green-500 w-12 h-12 mb-3 inline-block"
+                viewBox="0 0 24 24"
+              >
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+              </svg>
+              <h2 class="title-font font-medium text-3xl text-gray-900">46</h2>
+              <p class="leading-relaxed">Places</p>
+            </div>
+          </div> -->
+        </div>
+      </div>
+      <div class="pt-10 px-10">
+        <h1 class="text-xl font-semibold">List Peserta</h1>
+      </div>
+      <div class="flex flex-wrap lg:w-4/5 sm:mx-auto sm:mb-2 -mx-2">
+        <div class="p-2 sm:w-1/2 w-full" *ngFor="let emp of employees">
+          <div
+            class="bg-gray-100 border-2 rounded flex p-4 h-full items-center cursor-pointer hover:drop-shadow-lg"
+            [routerLink]="[emp.nik]"
+          >
+            <svg
+              fill="none"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="3"
+              class="text-gray-400 w-6 h-6 flex-shrink-0 mr-4"
+              viewBox="0 0 24 24"
+            >
+              <path d="M22 11.08V12a10 10 0 11-5.93-9.14"></path>
+              <path d="M22 4L12 14.01l-3-3"></path>
+            </svg>
+            <span class="title-font font-medium">{{ emp.name }}</span>
+          </div>
+        </div>
+        <!-- <div class="p-2 sm:w-1/2 w-full">
+          <div class=" border-2 rounded flex p-4 h-full items-center">
+            <svg
+              fill="none"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="3"
+              class="text-green-500 w-6 h-6 flex-shrink-0 mr-4"
+              viewBox="0 0 24 24"
+            >
+              <path d="M22 11.08V12a10 10 0 11-5.93-9.14"></path>
+              <path d="M22 4L12 14.01l-3-3"></path>
+            </svg>
+            <span class="title-font font-medium">Kinfolk Chips Snackwave</span>
+          </div>
+        </div> -->
+      </div>
+    </div>
+  </section>
+</div>

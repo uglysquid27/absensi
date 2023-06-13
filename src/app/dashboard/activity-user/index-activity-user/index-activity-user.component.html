@@ -1,6 +1,8 @@
 <div class="py-5 ml-14 lg:ml-52">
   <div class="flex flex-wrap justify-center">
-    <div class="fixed right-0 z-50 px-5">
+    <div></div>
+    <h1 class="font-semibold text-blue-500 text-xl w-full px-5 py-3">{{ this.session.getUser()?.nik }} Attendance & Activity</h1>
+    <div class="fixed right-0 z-30 px-5">
       <!-- <img
         src="assets/img/attendance.png"
         alt=""
@@ -210,24 +212,6 @@
               >
             </div>
           </li>
-          <!-- <li class="w-full">
-            <div class="flex items-center pl-3">
-              <input
-                id="horizontal-dayStatus-passport"
-                type="radio"
-                value="Leaving"
-                formControlName="dayStatus"
-                [(ngModel)]="dayStatus"
-                name="dayStatus"
-                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 focus:ring-2"
-              />
-              <label
-                for="horizontal-dayStatus-passport"
-                class="w-full py-3 ml-2 text-sm font-medium text-gray-900"
-                >Leaving</label
-              >
-            </div>
-          </li> -->
         </ul>
         <div class="flex items-center pl-3" *ngIf="dayStatus == 'Attended'">
           <input
@@ -246,21 +230,6 @@
         </div>
         <div class="mt-5" *ngIf="leave && dayStatus == 'Attended'">
           <div class="flex items-center justify-between gap-2">
-            <!-- <div class="w-full">
-              <label
-                for="first_name"
-                class="block mb-2 text-sm font-medium text-gray-900"
-                >Time In</label
-              >
-              <input
-                type="time"
-                id="first_name"
-                formControlName="timeIn"
-                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                placeholder="John"
-                required
-              />
-            </div> -->
             <div class="w-full">
               <label
                 for="first_name"
@@ -333,10 +302,10 @@
           'Attended' &&
         this.filterAttend(this.session.getUser().nik)[0]?.leave == false
       "
-      class="w-screen"
+      class="w-screen px-24"
     >
       <form [formGroup]="formUpdateAttendance" (submit)="submitUpdate()">
-        <div class="flex items-center pl-3">
+        <div class="flex items-center pl-3 justify-center">
           <input
             id="horizontal-dayStatus-passport"
             type="checkbox"
@@ -346,7 +315,7 @@
           />
           <label
             for="horizontal-dayStatus-passport"
-            class="w-full py-3 ml-2 text-sm font-medium text-gray-900"
+            class=" py-3 ml-2 text-sm font-medium text-gray-900"
             >Leaving
           </label>
         </div>

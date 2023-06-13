@@ -23,7 +23,6 @@ import { NgIdleModule } from '@ng-idle/core';
 import { NgIdleKeepaliveModule } from '@ng-idle/keepalive';
 import { DashboardComponent } from './dashboard/dashboard/dashboard.component';
 import { DashboardAdminComponent } from './dashboard/dashboard-admin/dashboard-admin.component';
-import { TestComponent } from './dashboard/test/test.component';
 import { UserStatusComponent } from './dashboard/tables/user-status/user-status.component';
 import { UsersComponent } from './dashboard/tables/users/users.component';
 import { InstitutionsComponent } from './dashboard/tables/institutions/institutions.component';
@@ -44,6 +43,8 @@ import { CreateActivityUserComponent } from './dashboard/activity-user/create-ac
 import { UpdateActivityUserComponent } from './dashboard/activity-user/update-activity-user/update-activity-user.component';
 import { CKEditorModule } from 'ckeditor4-angular';
 import { AllComponent } from './dashboard/activity-admin/all/all.component';
+import { ApprovalComponent } from './dashboard/approval/approval.component';
+import { DetailComponent } from './dashboard/approval/detail/detail.component';
 // import {MatTableModule} from '@angular/material/table';
 
 @NgModule({
@@ -63,7 +64,6 @@ import { AllComponent } from './dashboard/activity-admin/all/all.component';
     AlertComponent,
     DashboardComponent,
     DashboardAdminComponent,
-    TestComponent,
     UserStatusComponent,
     UsersComponent,
     InstitutionsComponent,
@@ -83,6 +83,8 @@ import { AllComponent } from './dashboard/activity-admin/all/all.component';
     DepAddComponent,
     DepEditComponent,
     AllComponent,
+    ApprovalComponent,
+    DetailComponent,
   ],
   imports: [
     AppRoutingModule,

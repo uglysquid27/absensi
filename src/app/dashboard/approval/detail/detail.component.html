@@ -1,0 +1,180 @@
+<div class="pl-14 lg:pl-52 py-5">
+  <div class="px-4">
+    <div class="px-10 py-5 flex justify-between">
+      <div>
+        <h2 class="text-3xl font-bold">Activities</h2>
+        <h2 class="pt-3 text-2xl text-gray-500">{{ id }}</h2>
+      </div>
+      <div>
+        <button
+          (click)="approvedModal()"
+          class="flex items-center px-4 py-2 text-sm font-medium rounded-md border border-gray-500 text-gray-600 transition-colors duration-200 sm:text-base sm:px-6 gap-x-3 hover:text-white hover:bg-gray-500"
+        >
+          <span>Approve</span>
+        </button>
+      </div>
+    </div>
+    <div class="flex flex-col">
+      <div class="-my-2 overflow-x-auto">
+        <div class="inline-block min-w-full py-2 align-middle md:px-3 lg:px-4">
+          <div class="overflow-hidden border border-gray-200 md:rounded-lg">
+            <table class="min-w-full divide-y divide-gray-200">
+              <thead class="bg-gray-80 bg-gray-100">
+                <tr>
+                  <!-- <th
+                      scope="col"
+                      class="py-3.5 px-4 text-sm font-semibold rtl:text-right text-gray-700 text-center"
+                    >
+                      Id
+                    </th> -->
+
+                  <th
+                    scope="col"
+                    class="py-3.5 px-4 text-sm font-semibold rtl:text-right text-gray-700 text-center w-1/4"
+                  >
+                    Date
+                  </th>
+
+                  <th
+                    scope="col"
+                    class="py-3.5 px-4 text-sm font-semibold rtl:text-right text-gray-700 text-center w-1/4"
+                  >
+                    Attendance
+                  </th>
+                  <th
+                    scope="col"
+                    class="py-3.5 px-4 text-sm font-semibold rtl:text-right text-gray-700 text-center"
+                  >
+                    Activity
+                  </th>
+                </tr>
+              </thead>
+              <tbody
+                *ngFor="let item of recentAttend; index as i"
+                class="divide-y divide-gray-300 bg-white"
+              >
+                <tr>
+                  <td
+                    *ngIf="recentAct.length != 0"
+                    class="px-4 py-4 text-sm text-gray-700 whitespace-nowrap text-center"
+                  >
+                    {{ item.date | date }}
+                  </td>
+                  <td
+                    *ngIf="recentAct.length == 0"
+                    class="px-4 py-4 text-sm text-gray-700 whitespace-nowrap text-center"
+                  >
+                    -
+                  </td>
+                  <td class="text-gray-700 flex justify-center py-4">
+                    <div
+                      class="rounded-full px-3"
+                      [ngClass]="
+                        recentAttend.length != 0
+                          ? item.dayStatus == 'Not Attended'
+                            ? 'bg-red-200 border-red-300'
+                            : item.dayStatus == 'Attended'
+                            ? item.leave == true
+                              ? 'bg-yellow-200 border-yellow-300'
+                              : 'bg-green-200 border-green-300'
+                            : item.dayStatus == 'Off Day'
+                            ? 'bg-gray-300 border-gray-400'
+                            : ''
+                          : ''
+                      "
+                    >
+                      <span *ngIf="item.leave"> Leaving </span>
+                      <span *ngIf="!item.leave"> {{ item.dayStatus }}</span>
+                    </div>
+                  </td>
+                  <td
+                    class="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap text-center"
+                  >
+                    <span
+                      *ngIf="filterActivity(item.id).length != 0"
+                      [innerHTML]="filterActivity(item.id)[0].activity"
+                    ></span>
+                    <span *ngIf="filterActivity(item.id).length == 0">-</span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- * ------------------------------Modal Sign Out---------------------------- * -->
+<div
+  *ngIf="boolModal"
+  #signOutModal
+  id="popup-modal"
+  tabindex="-1"
+  class="fixed top-0 left-0 right-0 z-50 p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] md:h-full bg-gray-900 bg-opacity-60"
+>
+  <div class="relative w-full h-full mx-auto max-w-sm md:h-auto">
+    <div class="relative rounded-lg shadow bg-white">
+      <button
+        (click)="approved($event)"
+        type="button"
+        class="absolute top-3 right-2.5 text-gray-400 bg-transparent rounded-lg text-sm p-1.5 ml-auto inline-flex items-center hover:bg-gray-800 hover:text-white"
+        data-modal-hide="popup-modal"
+      >
+        <svg
+          aria-hidden="true"
+          class="w-5 h-5"
+          fill="currentColor"
+          viewBox="0 0 20 20"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+            clip-rule="evenodd"
+          ></path>
+        </svg>
+        <span class="sr-only">Close modal</span>
+      </button>
+      <div class="p-6 text-center">
+        <svg
+          aria-hidden="true"
+          class="mx-auto mb-4 w-14 h-14 text-gray-400"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+          ></path>
+        </svg>
+        <h3 class="mb-5 text-lg font-normal text-gray-400">
+          Are you sure to Approve?
+        </h3>
+        <button
+          (click)="approved($event)"
+          id="yesBtn"
+          data-modal-hide="popup-modal"
+          type="button"
+          class="text-white bg-blue-600 hover:bg-blue-800 focus:ring-blue-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2"
+        >
+          Yes, I'm sure
+        </button>
+        <button
+          (click)="approved($event)"
+          id="noBtn"
+          data-modal-hide="popup-modal"
+          type="button"
+          class="rounded-lg border text-sm font-medium px-5 py-2.5 focus:z-10 bg-white text-gray-500 border-gray-300 hover:text-white hover:bg-gray-600"
+        >
+          No, cancel
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

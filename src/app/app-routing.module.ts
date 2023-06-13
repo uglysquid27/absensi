@@ -16,7 +16,6 @@ import { HomeComponent } from './home/home.component';
 import { OnAuthGuard } from './service/auth/on-auth.guard';
 import { DashboardComponent } from './dashboard/dashboard/dashboard.component';
 import { DashboardAdminComponent } from './dashboard/dashboard-admin/dashboard-admin.component';
-import { TestComponent } from './dashboard/test/test.component';
 import { UsersComponent } from './dashboard/tables/users/users.component';
 import { UserStatusComponent } from './dashboard/tables/user-status/user-status.component';
 import { EditComponent as UserEditComponent } from './dashboard/tables/users/edit/edit.component';
@@ -29,7 +28,9 @@ import { CreateComponent as DepAddComponent } from './dashboard/tables/departmen
 import { EditComponent as StatusEditComponent } from './dashboard/tables/user-status/edit/edit.component';
 import { ActivityAdminComponent } from './dashboard/activity-admin/activity-admin.component';
 import { CreateComponent as ActivityAddComponent } from './dashboard/activity-admin/create/create.component';
-import { AllComponent } from './dashboard/activity-admin/all/all.component'
+import { AllComponent } from './dashboard/activity-admin/all/all.component';
+import { ApprovalComponent } from './dashboard/approval/approval.component';
+import { DetailComponent } from './dashboard/approval/detail/detail.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -41,13 +42,13 @@ const routes: Routes = [
       { path: 'users', component: UsersComponent },
       { path: 'user-status', component: UserStatusComponent },
       { path: 'user-status/edit/:id', component: StatusEditComponent },
-      { path: 'user-status/add', component: StatusAddComponent},
+      { path: 'user-status/add', component: StatusAddComponent },
       { path: 'institutions', component: InstitutionsComponent },
-      { path: 'institutions/edit/:id', component: InstEditComponent},
-      { path: 'institutions/add', component: InstAddComponent},
+      { path: 'institutions/edit/:id', component: InstEditComponent },
+      { path: 'institutions/add', component: InstAddComponent },
       { path: 'departments', component: DepartmentsComponent },
-      { path: 'departments/add', component: DepAddComponent},
-      { path: 'departments/edit/:id', component: DepEditComponent},
+      { path: 'departments/add', component: DepAddComponent },
+      { path: 'departments/edit/:id', component: DepEditComponent },
       { path: 'banks', component: BanksComponent },
       { path: 'users/edit/:id', component: UserEditComponent },
       { path: 'users/add', component: UserAddComponent },
@@ -55,7 +56,13 @@ const routes: Routes = [
       { path: 'activity/edit/:id', component: UpdateActivityUserComponent },
       { path: 'activity/create', component: ActivityAddComponent },
       { path: 'myActivity', component: IndexActivityUserComponent },
-      { path: 'allActivity/:id', component: AllComponent},
+      {
+        path: 'approval',
+        component: ApprovalComponent,
+        children: [],
+      },
+      { path: 'approval/:id', component: DetailComponent },
+      { path: 'allActivity/:id', component: AllComponent },
     ],
   },
   { path: 'peserta', component: PesertaComponent },
@@ -71,5 +78,5 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
 export const routingComponent = [DashboardComponentComponent, ProfilComponent];
