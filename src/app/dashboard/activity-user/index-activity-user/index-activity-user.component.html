@@ -1,8 +1,18 @@
 <div class="py-5 ml-14 lg:ml-52">
   <div class="flex flex-wrap justify-center">
     <div></div>
-    <h1 class="font-semibold text-blue-500 text-xl w-full px-5 py-3">{{ this.session.getUser()?.nik }} Attendance & Activity</h1>
-    <div class="fixed right-0 z-30 px-5">
+    <h1 class="font-semibold text-blue-500 text-xl w-4/5 px-5 py-3">
+      {{ this.session.getUser()?.nik }} Attendance & Activity
+    </h1>
+    <div class="w-1/5 flex items-center">
+      <button
+      (click)="approvedModal()"
+        class="flex items-center h-10 px-2 py-1 text-sm font-medium rounded-md border border-blue-500 text-blue-600 transition-colors duration-200 sm:text-base sm:px-3 hover:text-white hover:bg-blue-500"
+      >
+        Ask for Approval
+      </button>
+    </div>
+    <div class="fixed flex right-0 z-30 px-5">
       <!-- <img
         src="assets/img/attendance.png"
         alt=""
@@ -11,6 +21,7 @@
         (click)="showAttendance = true"
         *ngIf="!showAttendance"
       /> -->
+
       <svg
         xmlns="http://www.w3.org/2000/svg"
         height="40"
@@ -305,19 +316,21 @@
       class="w-screen px-24"
     >
       <form [formGroup]="formUpdateAttendance" (submit)="submitUpdate()">
-        <div class="flex items-center pl-3 justify-center">
-          <input
-            id="horizontal-dayStatus-passport"
-            type="checkbox"
-            formControlName="leaveUpdate"
-            [(ngModel)]="leaveAfter"
-            class="w-4 h-4 rounded-full text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 focus:ring-2"
-          />
-          <label
-            for="horizontal-dayStatus-passport"
-            class=" py-3 ml-2 text-sm font-medium text-gray-900"
-            >Leaving
-          </label>
+        <div class="flex items-center justify-center">
+          <div class="shadow-md shadow-slate-400 rounded px-3 py-1">
+            <input
+              id="horizontal-dayStatus-passport"
+              type="checkbox"
+              formControlName="leaveUpdate"
+              [(ngModel)]="leaveAfter"
+              class="w-4 h-4 rounded-full text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 focus:ring-2"
+            />
+            <label
+              for="horizontal-dayStatus-passport"
+              class="py-3 ml-2 text-sm font-medium text-gray-900"
+              >Leaving
+            </label>
+          </div>
         </div>
         <div class="mt-5" *ngIf="leaveAfter">
           <div class="flex items-center justify-between gap-2">
@@ -505,46 +518,79 @@
           </tr>
         </tbody>
       </table>
-      <!-- <table
-        class="w-full text-sm text-left text-gray-500 rounded-xl shadow-md"
+    </div>
+  </div>
+</div>
+
+<!-- * ------------------------------Modal Sign Out---------------------------- * -->
+<div
+  *ngIf="boolModal"
+  #signOutModal
+  id="popup-modal"
+  tabindex="-1"
+  class="fixed top-0 left-0 right-0 z-50 p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] md:h-full bg-gray-900 bg-opacity-60"
+>
+  <div class="relative w-full h-full mx-auto max-w-sm md:h-auto">
+    <div class="relative rounded-lg shadow bg-white">
+      <button
+        (click)="approved($event)"
+        type="button"
+        class="absolute top-3 right-2.5 text-gray-400 bg-transparent rounded-lg text-sm p-1.5 ml-auto inline-flex items-center hover:bg-gray-800 hover:text-white"
+        data-modal-hide="popup-modal"
       >
-        <thead class="text-xs text-gray-700 uppercase bg-gray-200 0 rounded-xl">
-          <tr>
-            <th scope="col" class="px-6 py-3 rounded-tl-lg">Activities</th>
-            <th scope="col" class="px-6 py-3 rounded-tr-lg">Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr
-            class="bg-white border-b border-gray-700"
-            *ngFor="let item of activities"
-          >
-            <th
-              scope="row"
-              class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap"
-              [innerHTML]="item.activity"
-            ></th>
-            <td class="px-6 py-4">
-              <div class="text-xl text-black">
-                <a
-                  routerLink="/dashboard/activity/edit/{{ item.id }}"
-                  class="bg-yellow-500 hover:bg-yellow-800 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 focus:outline-none"
-                >
-                  edit</a
-                >
-                <i class="cursor-pointer fas fa-edit hover:text-blue-500" (click)="editActivity(item)"></i>
-                <button
-                  (click)="deleteActivity(item.id)"
-                  type="reset"
-                  class="bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 focus:outline-none"
-                >
-                  Delete
-                </button>
-              </div>
-            </td>
-          </tr>
-        </tbody>
-      </table> -->
+        <svg
+          aria-hidden="true"
+          class="w-5 h-5"
+          fill="currentColor"
+          viewBox="0 0 20 20"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+            clip-rule="evenodd"
+          ></path>
+        </svg>
+        <span class="sr-only">Close modal</span>
+      </button>
+      <div class="p-6 text-center">
+        <svg
+          aria-hidden="true"
+          class="mx-auto mb-4 w-14 h-14 text-gray-400"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+          ></path>
+        </svg>
+        <h3 class="mb-5 text-lg font-normal text-gray-400">
+          Are you sure to Ask for Approval?
+        </h3>
+        <button
+          (click)="approved($event)"
+          id="yesBtn"
+          data-modal-hide="popup-modal"
+          type="button"
+          class="text-white bg-blue-600 hover:bg-blue-800 focus:ring-blue-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2"
+        >
+          Yes, I'm sure
+        </button>
+        <button
+          (click)="approved($event)"
+          id="noBtn"
+          data-modal-hide="popup-modal"
+          type="button"
+          class="rounded-lg border text-sm font-medium px-5 py-2.5 focus:z-10 bg-white text-gray-500 border-gray-300 hover:text-white hover:bg-gray-600"
+        >
+          No, cancel
+        </button>
+      </div>
     </div>
   </div>
 </div>

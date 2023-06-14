@@ -6,6 +6,8 @@ import { FormGroup, FormControl } from '@angular/forms';
 import * as moment from 'moment';
 import { DatePipe } from '@angular/common';
 import { CKEditorComponent } from 'ckeditor4-angular';
+import { AlertService } from 'src/app/service/alert/alert.service';
+import { AlertType } from 'src/app/service/alert/alert.model';
 const datepipe: DatePipe = new DatePipe('en-US');
 
 @Component({
@@ -16,7 +18,8 @@ const datepipe: DatePipe = new DatePipe('en-US');
 export class IndexActivityUserComponent implements OnInit {
   constructor(
     public session: TokenStorageService,
-    public service: AttendanceService
+    public service: AttendanceService,
+    private alertService: AlertService
   ) {}
 
   // Status
@@ -44,6 +47,8 @@ export class IndexActivityUserComponent implements OnInit {
   //
   attendances: any[] = [];
 
+  // Approval
+  boolModal: Boolean = false;
   public config = {
     toolbar: [
       {
@@ -203,19 +208,6 @@ export class IndexActivityUserComponent implements OnInit {
           this.ngOnInit();
         });
     }
-    // else {
-    //   if (this.formAttendance.value.description == '') {
-    //     alert('Please fill the description');
-    //     return;
-    //   } else {
-    //     this.service
-    //       .storeAttendance(this.formAttendance.value)
-    //       .subscribe((res: any) => {
-    //         // console.log(res);
-    //         this.ngOnInit();
-    //       });
-    //   }
-    // }
   }
   submitActivity() {
     this.formActivity.value.nik = Number(this.formActivity.value.nik);
@@ -239,6 +231,61 @@ export class IndexActivityUserComponent implements OnInit {
       this.ngOnInit();
     });
   }
+
+  approvedModal() {
+    this.boolModal = !this.boolModal;
+  }
+
+  approved(event: any) {
+    // console.log(event.target.id);
+    if (event.target.id == 'yesBtn') {
+      this.askForApproval();
+      this.approvedModal();
+    } else {
+      this.approvedModal();
+    }
+  }
+
+  askForApproval() {
+    let date = new Date();
+    let dateStart;
+    let dateEnd;
+
+    if (date.getDate() > 15) {
+      dateStart = new Date(new Date().setDate(15)).toISOString();
+      dateEnd = new Date(
+        new Date().setMonth(new Date().getMonth() + 1, 14)
+      ).toISOString();
+    } else {
+      dateStart = new Date(
+        new Date().setMonth(new Date().getMonth() - 1, 14)
+      ).toISOString();
+      dateEnd = new Date(new Date().setDate(15)).toISOString();
+    }
+
+    let body = {
+      nik: this.session.getUser().nik,
+      dateStart: dateStart,
+      dateEnd: dateEnd,
+    };
+
+    this.service.storeApproval(body).subscribe(
+      (data: any) => {
+        console.log('Ask Approval Success');
+        console.log(data);
+        this.alertService.onCallAlert(
+          'Ask Approval Success',
+          AlertType.Success
+        );
+      },
+      (err) => {
+        console.log('Ask Approval Failed');
+        console.log(err);
+        this.alertService.onCallAlert('Ask Approval Failed', AlertType.Error);
+      }
+    );
+  }
+
   filterAttend(nik: any): any {
     return this.attendances.filter(
       (data: any) =>

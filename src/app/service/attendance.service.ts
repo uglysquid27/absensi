@@ -145,4 +145,12 @@ export class AttendanceService {
   deleteDepartements(id: any) {
     return this.httpClient.delete(api + 'departements/' + id);
   }
+
+  /* Approvals ---------------------------------------------------------------------------*/
+  getApprovals(): Observable<any> {
+    return this.httpClient.get(api + 'approvals');
+  }
+  storeApproval(body:any): Observable<any> {
+    return this.httpClient.post(api + 'approval', body);
+  }
 }
